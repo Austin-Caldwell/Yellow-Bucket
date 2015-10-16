@@ -1,3 +1,6 @@
+/* Austin Caldwell and Evan Wehr */
+-- Updated 10/16/2015
+
 USE YellowBucketCSC365
 GO
 

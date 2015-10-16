@@ -4,9 +4,10 @@
 USE YellowBucketCSC365
 GO
 
-CREATE TABLE CustomerAddress -- Create a table of customers' addresses
+CREATE TABLE Kiosk -- Create a table holding addresses for each kiosk as well as kiosk location
 (
-	customerAddressID int PRIMARY KEY IDENTITY(0000,1) NOT NULL,
+	kioskID int PRIMARY KEY IDENTITY(0000,1) NOT NULL,
+	location varchar(32) NULL,
 	addressLine1 varchar(32) NOT NULL,
 	addressLine2 varchar(32) NULL,
 	city varchar(32) NOT NULL,
