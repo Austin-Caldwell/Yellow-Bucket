@@ -1,5 +1,5 @@
 /* Austin Caldwell and Evan Wehr */
--- Updated 10/16/2015
+-- Updated 10/17/2015
 
 USE YellowBucketCSC365
 GO
@@ -12,5 +12,4 @@ CREATE TABLE Rental -- Create a table to hold information on current rentals hel
 	dateReturned datetime NULL, -- dateReturned will be NULL until the customer returns the movie
 	customerID int CONSTRAINT fk_Rental_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE NO ACTION, -- Raise an error if a customer is deleted from the database while that customer still has a movie on rental
 	stockID int CONSTRAINT fk_Rental_Inventory FOREIGN KEY REFERENCES Inventory(stockID) ON DELETE NO ACTION, -- Raise an error if a movie is deleted from the database while a customer still has the movie on rental
-	kioskID int CONSTRAINT fk_Rental_Kiosk FOREIGN KEY REFERENCES Kiosk(kioskID) ON DELETE SET NULL
 );

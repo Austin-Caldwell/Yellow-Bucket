@@ -1,5 +1,5 @@
 /* CREATE THE ENTIRE YellowBucketCSC365 DATABASE, AND CREATE/LINK ALL TABLES */ /* Austin Caldwell and Evan Wehr */
--- Updated 10/16/2015
+-- Updated 10/17/2015
 
 -- Create the database itself
 Use master
@@ -24,7 +24,8 @@ CREATE TABLE Movie -- Create a table of movies
 	avgRating int CONSTRAINT avgRating_Default DEFAULT 0 CONSTRAINT avgRating_CC CHECK(avgRating >= 0 AND avgRating <=5) NOT NULL,
 	director varchar(32) NOT NULL,
 	studio varchar(32) NOT NULL,
-	length int NOT NULL,
+	runTime int NOT NULL,
+	parentalRating varchar(8) NOT NULL,
 	genre varchar(32) NOT NULL,
 	releaseDate date NOT NULL,
 	coverPhoto varbinary(max) NULL
@@ -43,11 +44,12 @@ CREATE TABLE CustomerAddress -- Create a table of customers' addresses
 CREATE TABLE Customer -- Create a table of customers
 (
 	customerID int PRIMARY KEY IDENTITY(0000,1) NOT NULL,
-	name varchar(32) NOT NULL,
+	firstName varchar(32) NOT NULL,
+	lastName varchar(32) NOT NULL,
 	email varchar(32) NOT NULL,
-	userName varchar(32) NOT NULL,
-	userPassword varchar(24) NOT NULL,
-	creditCard int CONSTRAINT creditCard_LengthCC CHECK(creditCard = 16) NOT NULL,
+	userName varchar(32) UNIQUE NOT NULL,
+	userPassword varchar(32) NOT NULL,
+	creditCard varchar(19) NOT NULL,
 	customerAddressID int CONSTRAINT fk_Customer_CustomerAddress FOREIGN KEY REFERENCES CustomerAddress(customerAddressID) ON DELETE SET NULL
 );
 
@@ -96,7 +98,6 @@ CREATE TABLE Rental -- Create a table to hold information on current rentals hel
 	dateReturned datetime NULL, -- dateReturned will be NULL until the customer returns the movie
 	customerID int CONSTRAINT fk_Rental_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE NO ACTION, -- Raise an error if a customer is deleted from the database while that customer still has a movie on rental
 	stockID int CONSTRAINT fk_Rental_Inventory FOREIGN KEY REFERENCES Inventory(stockID) ON DELETE NO ACTION, -- Raise an error if a movie is deleted from the database while a customer still has the movie on rental
-	kioskID int CONSTRAINT fk_Rental_Kiosk FOREIGN KEY REFERENCES Kiosk(kioskID) ON DELETE SET NULL
 );
 
 CREATE TABLE RentalHistory -- Create a table to hold a record/history of all rentals performed by a particular customer
