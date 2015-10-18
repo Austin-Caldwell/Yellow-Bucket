@@ -1,5 +1,5 @@
 /* SEED THE YellowBucketCSC365 DATABASE WITH SAMPLE DATA */ /* Austin Caldwell and Evan Wehr */
--- Updated 10/17/2015
+-- Updated 10/18/2015
 
 USE YellowBucketCSC365
 GO
@@ -7,20 +7,18 @@ GO
 INSERT INTO CustomerAddress(addressLine1, city, stateProvince, postalCode)
 VALUES
 ('777 Kindgom Way', 'Ararat', 'New York', '13011'),
-('111 Texas Street', 'Lonestar', 'Texas', '18292'),
+('111 Lonestar Street', 'Mainville', 'Ohio', '18292'),
 ('581 Maisly Ave.', 'Gateway', 'Pennsylvania', '16911'),
-('196 Lighthouse Blvd.', 'Atlantia', 'North Carolina', '10222'),
-('009 Endline Circle', 'Faraway', 'Alaska', '19990'),
+('196 Lighthouse Blvd.', 'Atlantia', 'Pennsylvania', '10222'),
+('009 Endline Circle', 'Faraway', 'Ohio', '19990'),
 ('260 Geneva Hwy.', 'Snyder', 'Ohio', '17888'),
 ('282 Tulip Way', 'Greenhouse', 'New York', '13357'),
 ('985 Sunshine Ave.', 'Positive', 'Indiana', '15929'),
 ('171 Staw Lane', 'Brave', 'Pennsylvania', '00829'),
-('200 Jogger Place', 'Toetown', 'Louisiana', '16600'),
-('999 Papyrus Street', 'Jolly', 'California', '18802'),
+('200 Jogger Place', 'Toetown', 'West Virginia', '16600'),
+('999 Papyrus Street', 'Jolly', 'New York', '18802'),
 ('875 Peanut Hwy.', 'Endor', 'West Virginia', '17070');
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO Customer(firstName, lastName, email, userName, userPassword, creditCard, customerAddressID)
 VALUES
@@ -37,18 +35,14 @@ VALUES
 ('Hannah', 'Miller', 'hannah.miller@instrument.org', 'hmiller', 'Fiddle4Life', '0987-6543-6673-2828', 10),
 ('Audrey', 'Humphrey', 'audrey.humphrey@history.net', 'ahumphrey', 'GilmoreGirls', '0987-6543-3222-1299', 11);
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO Kiosk(location, addressLine1, city, stateProvince, postalCode)
 VALUES
 ('Walmart', '2001 Chippewa Street', 'Beaver Falls', 'Pennsylvania', '15010'),
-('Rite Aid', '9010 University Way', 'Pittsburgh', 'Pennsylvania', '10222'),
+('Rite Aid', '9010 University Way', 'Fredonia', 'New York', '10222'),
 ('Giant Eagle', '1000 Main St. Ext.', 'Meadville', 'Pennsylvania', '16335'),
 ('Target', '2039 Shopping Lane', 'Cadbury', 'Ohio', '19992');
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO Movie(title, movieDescription, avgRating, director, studio, runTime, parentalRating, genre, releaseDate)
 VALUES
@@ -58,8 +52,6 @@ VALUES
 ('The Peanuts Movie', 'A lonely boy and his search for friends.', 4, 'Charles Schultz', 'ComicsRUs', 90, 'G', 'Kids', '06/15/1995'),
 ('Penguins: A Documentary', 'Life of the tuxedo animals in Antarctica.', 3, 'Abigail Davis', 'Geneva Studios', 95, 'NR', 'Documentary', '12/13/2015');
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO Inventory(dvdBluRay, movieID, kioskID)
 VALUES
@@ -68,15 +60,16 @@ VALUES
 ('DVD', 0, 2),
 ('DVD', 1, 0),
 ('DVD', 1, 3),
+('DVD', 2, 1),
+('DVD', 2, 2),
 ('Blu-Ray', 2, 3),
 ('DVD', 3, 2),
 ('DVD', 3, 3),
 ('Blu-Ray', 4, 0),
 ('Blu-Ray', 4, 1),
-('Blu-Ray', 4, 2);
+('Blu-Ray', 4, 2),
+('DVD', 4, 3);
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO Wish(customerID, movieID)
 VALUES
@@ -87,33 +80,30 @@ VALUES
 (7, 1),
 (10, 2);
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO Rental(dateReturned, customerID, stockID)
 VALUES
 (NULL, 0, 5),
 (NULL, 1, 3),
-(GetDate(), 8, 8),
-(GetDate(), 3, 0),
+('04/16/2015', 8, 10),
+('07/10/2015', 3, 0),
 (NULL, 11, 4),
-(GetDate(), 9, 5);
+('10/17/2015', 9, 5),
+(GetDate(), 2, 13);
 
-USE YellowBucketCSC365
-GO
 
 INSERT INTO RentalHistory(customerID, movieID, outDate, inDate)
 VALUES
-(8, 4, '04/15/2015', '04/16/2015'),
-(3, 0, '06/10/2015', '06/20/2015'),
-(9, 2, '10/17/2015', '10/17/2015');
+(8, 4, '10/15/2015', '04/16/2015'),
+(3, 0, '10/16/2015', '07/10/2015'),
+(9, 2, '10/17/2015', '10/17/2015'),
+(2, 4, '10/18/2015', GetDate());
 
-USE YellowBucketCSC365
-GO
 
-INSERT INTO RatingReview(datePosted, reviewDescription, rating, customerID, movieID)
+INSERT INTO MovieReview(datePosted, reviewDescription, rating, customerID, movieID)
 VALUES
 ('04/16/2015', 'This movie is terrible!  I could have seen more action from traveling to Antarctica myself!', 1, 8, 4),
-('06/20/2015', 'Best Sci-Fi Film Ever!!', 5, 3, 0),
-('10/17/2015', 'Too Much Kissing.  Eww.', 2, 9, 2);
+('07/10/2015', 'Best Sci-Fi Film Ever!!', 5, 3, 0),
+('10/17/2015', 'Too Much Kissing.  Eww.', 2, 9, 2),
+(GetDate(), 'The penguins are so much fun to watch!', 4, 2, 4);
 
