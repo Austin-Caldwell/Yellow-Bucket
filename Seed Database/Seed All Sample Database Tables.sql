@@ -1,5 +1,5 @@
 /* SEED THE YellowBucketCSC365 DATABASE WITH SAMPLE DATA */ /* Austin Caldwell and Evan Wehr */
--- Updated 10/18/2015
+-- Updated 10/21/2015
 
 USE YellowBucketCSC365
 GO
@@ -85,25 +85,28 @@ INSERT INTO Rental(dateReturned, customerID, stockID)
 VALUES
 (NULL, 0, 5),
 (NULL, 1, 3),
-('04/16/2015', 8, 10),
-('07/10/2015', 3, 0),
-(NULL, 11, 4),
+('10/12/2015', 8, 10),
+('10/11/2015', 3, 0),
+(NULL, 11, 9),
 ('10/17/2015', 9, 5),
-(GetDate(), 2, 13);
+('10/20/2015', 2, 13),
+(GetDate(), 2, 4);
 
 
 INSERT INTO RentalHistory(customerID, movieID, outDate, inDate)
 VALUES
-(8, 4, '10/15/2015', '04/16/2015'),
-(3, 0, '10/16/2015', '07/10/2015'),
+(8, 4, '10/10/2015', '10/12/2015'),
+(3, 0, '10/10/2015', '10/11/2015'),
 (9, 2, '10/17/2015', '10/17/2015'),
-(2, 4, '10/18/2015', GetDate());
+(2, 4, '10/18/2015', '10/20/2015'),
+(2, 1, (GetDate() - 1), GetDate());
 
 
 INSERT INTO MovieReview(datePosted, reviewDescription, rating, customerID, movieID)
 VALUES
-('04/16/2015', 'This movie is terrible!  I could have seen more action from traveling to Antarctica myself!', 1, 8, 4),
-('07/10/2015', 'Best Sci-Fi Film Ever!!', 5, 3, 0),
+('10/12/2015', 'This movie is terrible!  I could have seen more action from traveling to Antarctica myself!', 1, 8, 4),
+('10/11/2015', 'Best Sci-Fi Film Ever!!', 5, 3, 0),
 ('10/17/2015', 'Too Much Kissing.  Eww.', 2, 9, 2),
-(GetDate(), 'The penguins are so much fun to watch!', 4, 2, 4);
+('10/20/2015', 'The penguins are so much fun to watch!', 4, 2, 4),
+(GetDate(), 'The culture of Star Wars with the thematics of Narnia.', 5, 2, 1);
 
