@@ -1,5 +1,5 @@
 /* CREATE THE ENTIRE YellowBucketCSC365 DATABASE, AND CREATE/LINK ALL TABLES */ /* Austin Caldwell and Evan Wehr */
--- Updated 10/18/2015
+-- Updated 10/21/2015
 
 -- Create the database itself
 Use master
@@ -24,7 +24,7 @@ CREATE TABLE Movie -- Create a table of movies
 	avgRating int CONSTRAINT avgRating_Default DEFAULT 0 CONSTRAINT avgRating_CC CHECK(avgRating >= 0 AND avgRating <=5) NOT NULL,
 	director varchar(32) NOT NULL,
 	studio varchar(32) NOT NULL,
-	runTime int NOT NULL,
+	runTime int CONSTRAINT runTime_CC Check(runTime >= 0) NOT NULL,
 	parentalRating varchar(8) NOT NULL,
 	genre varchar(32) NOT NULL,
 	releaseDate date NOT NULL,
@@ -47,9 +47,10 @@ CREATE TABLE Customer -- Create a table of customers
 	firstName varchar(32) NOT NULL,
 	lastName varchar(32) NOT NULL,
 	email varchar(32) NOT NULL,
+	alternateEmail varchar(32) NULL,
 	userName varchar(32) UNIQUE NOT NULL,
 	userPassword varchar(32) NOT NULL,
-	creditCard varchar(19) NOT NULL,
+	creditCard varchar(19) NULL,	-- Customer may create account online, but not have credit card information saved until he/she makes a first rental.  Also, customer may opt to not have credit card saved in the system
 	customerAddressID int CONSTRAINT fk_Customer_CustomerAddress FOREIGN KEY REFERENCES CustomerAddress(customerAddressID) ON DELETE SET NULL
 );
 
@@ -86,6 +87,9 @@ CREATE TABLE Inventory -- Create a table holding the inventory of each individua
 (
 	stockID int PRIMARY KEY IDENTITY(0000,1) NOT NULL,
 	dvdBluRay varchar(8) NOT NULL,
+	-- Allow one particular stockID to represent multiple copies of a movie at a particular kiosk.  When one is rented, decrement the count by one, and if count = 0 set inStock to "0" ("False")
+	quantityAtKiosk int CONSTRAINT quantityAtKiosk_CC Check(quantityAtKiosk >= 0) NOT NULL,
+	inStock bit CONSTRAINT inStock_Default DEFAULT 0 NOT NULL,
 	movieID int CONSTRAINT fk_Inventory_Movie FOREIGN KEY REFERENCES Movie(movieID) ON DELETE CASCADE NOT NULL,
 	kioskID int CONSTRAINT fk_Inventory_Kiosk FOREIGN KEY REFERENCES Kiosk(kioskID) ON DELETE SET NULL
 );

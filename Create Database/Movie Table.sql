@@ -1,5 +1,5 @@
 /* Austin Caldwell and Evan Wehr */
--- Updated 10/17/2015
+-- Updated 10/21/2015
 
 USE YellowBucketCSC365
 GO
@@ -12,7 +12,7 @@ CREATE TABLE Movie -- Create a table of movies
 	avgRating int CONSTRAINT avgRating_Default DEFAULT 0 CONSTRAINT avgRating_CC CHECK(avgRating >= 0 AND avgRating <=5) NOT NULL,
 	director varchar(32) NOT NULL,
 	studio varchar(32) NOT NULL,
-	runTime int NOT NULL,
+	runTime int CONSTRAINT runTime_CC Check(runTime >= 0) NOT NULL,
 	parentalRating varchar(8) NOT NULL,
 	genre varchar(32) NOT NULL,
 	releaseDate date NOT NULL,
