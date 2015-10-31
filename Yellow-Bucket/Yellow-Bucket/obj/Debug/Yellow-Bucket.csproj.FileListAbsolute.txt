@@ -1,1 +1,11 @@
 c:\users\austin\documents\visual studio 2013\Projects\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.exe.config
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.exe.config
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.exe
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.pdb
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.csprojResolveAssemblyReference.cache
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.YellowBucketHome.resources
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.Properties.Resources.resources
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.csproj.GenerateResource.Cache
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.exe
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.pdb
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.Customers.resources
