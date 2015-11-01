@@ -9,3 +9,4 @@ C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucke
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.exe
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.pdb
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.Customers.resources
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.About.resources

@@ -31,27 +31,28 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.hOMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.Color.Gold;
             this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hOMEToolStripMenuItem,
-            this.cUSTOMERSToolStripMenuItem});
+            this.cUSTOMERSToolStripMenuItem,
+            this.aBOUTToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(118, 261);
-            this.menuStrip1.TabIndex = 1;
+            this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
             // 
-            this.hOMEToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
-            this.hOMEToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
-            | System.Windows.Forms.Keys.H)));
             this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -59,11 +60,19 @@
             // 
             // cUSTOMERSToolStripMenuItem
             // 
-            this.cUSTOMERSToolStripMenuItem.Font = new System.Drawing.Font("Segoe UI", 12F);
             this.cUSTOMERSToolStripMenuItem.Name = "cUSTOMERSToolStripMenuItem";
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
+            // 
+            // aBOUTToolStripMenuItem
+            // 
+            this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
+            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.aBOUTToolStripMenuItem.Text = "ABOUT";
+            this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.aBOUTToolStripMenuItem.Click += new System.EventHandler(this.aBOUTToolStripMenuItem_Click);
             // 
             // Customers
             // 
@@ -71,6 +80,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(778, 261);
             this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "Customers";
             this.Text = "YELLOW BUCKET -- CUSTOMERS";
             this.menuStrip1.ResumeLayout(false);
@@ -85,5 +95,8 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
+
+
     }
 }
