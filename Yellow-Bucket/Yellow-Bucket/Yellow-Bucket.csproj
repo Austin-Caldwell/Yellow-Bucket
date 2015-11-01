@@ -56,6 +56,18 @@
     <Compile Include="Customers.Designer.cs">
       <DependentUpon>Customers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Kiosks.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Kiosks.Designer.cs">
+      <DependentUpon>Kiosks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Movies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Movies.Designer.cs">
+      <DependentUpon>Movies.cs</DependentUpon>
+    </Compile>
     <Compile Include="YellowBucketHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -69,6 +81,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers.resx">
       <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Kiosks.resx">
+      <DependentUpon>Kiosks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Movies.resx">
+      <DependentUpon>Movies.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="YellowBucketHome.resx">
       <DependentUpon>YellowBucketHome.cs</DependentUpon>

@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Yellow_Bucket
 {
-    public partial class Customers : Form
+    public partial class Kiosks : Form
     {
-        public Customers()
+        public Kiosks()
         {
             InitializeComponent();
         }

@@ -31,11 +31,30 @@ namespace Yellow_Bucket
             customers.Show();
         }
 
+        private void kIOSKSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Kiosks kiosks = new Kiosks();
+            kiosks.Show();
+        }
+
+        private void mOVIESToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Movies movies = new Movies();
+            movies.Show();
+        }
+
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
             About about = new About();
             about.Show();
+        }
+
+        private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
