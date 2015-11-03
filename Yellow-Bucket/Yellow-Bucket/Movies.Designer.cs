@@ -28,38 +28,41 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.hOMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kIOSKSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.genreLabel = new System.Windows.Forms.Label();
+            this.genreComboBox = new System.Windows.Forms.ComboBox();
+            this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // menuStrip1
+            // mainMenuStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Gold;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuStrip.BackColor = System.Drawing.Color.Gold;
+            this.mainMenuStrip.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mainMenuStrip.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hOMEToolStripMenuItem,
             this.cUSTOMERSToolStripMenuItem,
             this.kIOSKSToolStripMenuItem,
             this.mOVIESToolStripMenuItem,
             this.aBOUTToolStripMenuItem,
             this.qUITToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(118, 447);
-            this.menuStrip1.TabIndex = 0;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(118, 447);
+            this.mainMenuStrip.TabIndex = 0;
+            this.mainMenuStrip.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
             // 
             this.hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
-            this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.hOMEToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.hOMEToolStripMenuItem.Click += new System.EventHandler(this.hOMEToolStripMenuItem_Click);
@@ -67,7 +70,8 @@
             // cUSTOMERSToolStripMenuItem
             // 
             this.cUSTOMERSToolStripMenuItem.Name = "cUSTOMERSToolStripMenuItem";
-            this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.cUSTOMERSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
@@ -75,7 +79,8 @@
             // kIOSKSToolStripMenuItem
             // 
             this.kIOSKSToolStripMenuItem.Name = "kIOSKSToolStripMenuItem";
-            this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.kIOSKSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.kIOSKSToolStripMenuItem.Text = "KIOSKS";
             this.kIOSKSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kIOSKSToolStripMenuItem.Click += new System.EventHandler(this.kIOSKSToolStripMenuItem_Click);
@@ -83,7 +88,8 @@
             // mOVIESToolStripMenuItem
             // 
             this.mOVIESToolStripMenuItem.Name = "mOVIESToolStripMenuItem";
-            this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mOVIESToolStripMenuItem.Click += new System.EventHandler(this.mOVIESToolStripMenuItem_Click);
@@ -91,7 +97,8 @@
             // aBOUTToolStripMenuItem
             // 
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
-            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.aBOUTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.aBOUTToolStripMenuItem.Text = "ABOUT";
             this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.aBOUTToolStripMenuItem.Click += new System.EventHandler(this.aBOUTToolStripMenuItem_Click);
@@ -99,22 +106,44 @@
             // qUITToolStripMenuItem
             // 
             this.qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
-            this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.qUITToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 0);
+            this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.qUITToolStripMenuItem.Text = "QUIT";
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
+            // 
+            // genreLabel
+            // 
+            this.genreLabel.AutoSize = true;
+            this.genreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.genreLabel.Location = new System.Drawing.Point(225, 186);
+            this.genreLabel.Name = "genreLabel";
+            this.genreLabel.Size = new System.Drawing.Size(54, 20);
+            this.genreLabel.TabIndex = 1;
+            this.genreLabel.Text = "Genre";
+            // 
+            // genreComboBox
+            // 
+            this.genreComboBox.FormattingEnabled = true;
+            this.genreComboBox.Location = new System.Drawing.Point(285, 188);
+            this.genreComboBox.Name = "genreComboBox";
+            this.genreComboBox.Size = new System.Drawing.Size(121, 21);
+            this.genreComboBox.TabIndex = 2;
+            this.genreComboBox.SelectedIndexChanged += new System.EventHandler(this.genreComboBox_SelectedIndexChanged);
             // 
             // Movies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(615, 447);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.genreComboBox);
+            this.Controls.Add(this.genreLabel);
+            this.Controls.Add(this.mainMenuStrip);
+            this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Movies";
             this.Text = "Movies";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,12 +151,14 @@
 
         #endregion
 
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+        private System.Windows.Forms.Label genreLabel;
+        private System.Windows.Forms.ComboBox genreComboBox;
     }
 }

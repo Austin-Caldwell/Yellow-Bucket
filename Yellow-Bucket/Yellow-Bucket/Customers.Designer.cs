@@ -52,14 +52,15 @@
             this.qUITToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(118, 261);
+            this.menuStrip1.Size = new System.Drawing.Size(118, 434);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
             // 
             this.hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
-            this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.hOMEToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.hOMEToolStripMenuItem.Click += new System.EventHandler(this.hOMEToolStripMenuItem_Click);
@@ -67,7 +68,8 @@
             // cUSTOMERSToolStripMenuItem
             // 
             this.cUSTOMERSToolStripMenuItem.Name = "cUSTOMERSToolStripMenuItem";
-            this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.cUSTOMERSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
@@ -75,7 +77,8 @@
             // kIOSKSToolStripMenuItem
             // 
             this.kIOSKSToolStripMenuItem.Name = "kIOSKSToolStripMenuItem";
-            this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.kIOSKSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.kIOSKSToolStripMenuItem.Text = "KIOSKS";
             this.kIOSKSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kIOSKSToolStripMenuItem.Click += new System.EventHandler(this.kIOSKSToolStripMenuItem_Click);
@@ -83,7 +86,8 @@
             // mOVIESToolStripMenuItem
             // 
             this.mOVIESToolStripMenuItem.Name = "mOVIESToolStripMenuItem";
-            this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mOVIESToolStripMenuItem.Click += new System.EventHandler(this.mOVIESToolStripMenuItem_Click);
@@ -91,7 +95,8 @@
             // aBOUTToolStripMenuItem
             // 
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
-            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.aBOUTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.aBOUTToolStripMenuItem.Text = "ABOUT";
             this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.aBOUTToolStripMenuItem.Click += new System.EventHandler(this.aBOUTToolStripMenuItem_Click);
@@ -99,7 +104,8 @@
             // qUITToolStripMenuItem
             // 
             this.qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
-            this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 25);
+            this.qUITToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 0);
+            this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.qUITToolStripMenuItem.Text = "QUIT";
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
@@ -108,7 +114,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(778, 261);
+            this.ClientSize = new System.Drawing.Size(778, 434);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Customers";
