@@ -56,10 +56,5 @@ namespace Yellow_Bucket
         {
             Application.Exit();
         }
-
-        private void genreComboBox_SelectedIndexChanged(object sender, EventArgs e) // Event fires when a different value from the combo box is selected
-        {
-
-        }
     }
 }
