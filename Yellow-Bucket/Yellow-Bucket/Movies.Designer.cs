@@ -35,10 +35,8 @@
             this.mOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.genreLabel = new System.Windows.Forms.Label();
             this.movieTitleComboBox = new System.Windows.Forms.ComboBox();
             this.movieTitleLabel = new System.Windows.Forms.Label();
-            this.genreComboBox = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -114,23 +112,14 @@
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // genreLabel
-            // 
-            this.genreLabel.AutoSize = true;
-            this.genreLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.genreLabel.Location = new System.Drawing.Point(162, 92);
-            this.genreLabel.Name = "genreLabel";
-            this.genreLabel.Size = new System.Drawing.Size(58, 20);
-            this.genreLabel.TabIndex = 1;
-            this.genreLabel.Text = "Genre:";
-            // 
             // movieTitleComboBox
             // 
             this.movieTitleComboBox.FormattingEnabled = true;
             this.movieTitleComboBox.Location = new System.Drawing.Point(226, 55);
             this.movieTitleComboBox.Name = "movieTitleComboBox";
             this.movieTitleComboBox.Size = new System.Drawing.Size(121, 21);
-            this.movieTitleComboBox.TabIndex = 3;
+            this.movieTitleComboBox.TabIndex = 1;
+            this.movieTitleComboBox.Text = "Select A Movie";
             // 
             // movieTitleLabel
             // 
@@ -142,23 +131,13 @@
             this.movieTitleLabel.TabIndex = 4;
             this.movieTitleLabel.Text = "Movie Title:";
             // 
-            // genreComboBox
-            // 
-            this.genreComboBox.FormattingEnabled = true;
-            this.genreComboBox.Location = new System.Drawing.Point(226, 91);
-            this.genreComboBox.Name = "genreComboBox";
-            this.genreComboBox.Size = new System.Drawing.Size(121, 21);
-            this.genreComboBox.TabIndex = 5;
-            // 
             // Movies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 447);
-            this.Controls.Add(this.genreComboBox);
             this.Controls.Add(this.movieTitleLabel);
             this.Controls.Add(this.movieTitleComboBox);
-            this.Controls.Add(this.genreLabel);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Movies";
@@ -179,9 +158,7 @@
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
-        private System.Windows.Forms.Label genreLabel;
         private System.Windows.Forms.ComboBox movieTitleComboBox;
         private System.Windows.Forms.Label movieTitleLabel;
-        private System.Windows.Forms.ComboBox genreComboBox;
     }
 }

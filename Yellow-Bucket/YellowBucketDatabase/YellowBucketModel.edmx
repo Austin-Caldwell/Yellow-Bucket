@@ -1,0 +1,782 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="YellowBucketCSC365Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="alternateEmail" Type="varchar" MaxLength="32" />
+          <Property Name="userName" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="userPassword" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="creditCard" Type="varchar" MaxLength="19" />
+          <Property Name="customerAddressID" Type="int" />
+        </EntityType>
+        <EntityType Name="CustomerAddress">
+          <Key>
+            <PropertyRef Name="customerAddressID" />
+          </Key>
+          <Property Name="customerAddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="addressLine1" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="addressLine2" Type="varchar" MaxLength="32" />
+          <Property Name="city" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="stateProvince" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="postalCode" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="stockID" />
+          </Key>
+          <Property Name="stockID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="dvdBluRay" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="quantityAtKiosk" Type="int" Nullable="false" />
+          <Property Name="inStock" Type="bit" Nullable="false" />
+          <Property Name="movieID" Type="int" Nullable="false" />
+          <Property Name="kioskID" Type="int" />
+        </EntityType>
+        <EntityType Name="Kiosk">
+          <Key>
+            <PropertyRef Name="kioskID" />
+          </Key>
+          <Property Name="kioskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="location" Type="varchar" MaxLength="32" />
+          <Property Name="addressLine1" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="addressLine2" Type="varchar" MaxLength="32" />
+          <Property Name="city" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="stateProvince" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="postalCode" Type="varchar" MaxLength="16" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="movieID" />
+          </Key>
+          <Property Name="movieID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="title" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="movieDescription" Type="varchar" MaxLength="256" Nullable="false" />
+          <Property Name="avgRating" Type="decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="director" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="studio" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="runTime" Type="int" Nullable="false" />
+          <Property Name="parentalRating" Type="varchar" MaxLength="8" Nullable="false" />
+          <Property Name="genre" Type="varchar" MaxLength="32" Nullable="false" />
+          <Property Name="releaseDate" Type="date" Nullable="false" />
+          <Property Name="coverPhoto" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="MovieReview">
+          <Key>
+            <PropertyRef Name="reviewID" />
+          </Key>
+          <Property Name="reviewID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="datePosted" Type="date" Nullable="false" />
+          <Property Name="reviewDescription" Type="varchar" MaxLength="256" />
+          <Property Name="rating" Type="int" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="movieID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="rentalID" />
+          </Key>
+          <Property Name="rentalID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="rentalCost" Type="smallmoney" Nullable="false" />
+          <Property Name="dateRented" Type="datetime" Nullable="false" />
+          <Property Name="dateReturned" Type="datetime" />
+          <Property Name="customerID" Type="int" />
+          <Property Name="stockID" Type="int" />
+        </EntityType>
+        <EntityType Name="RentalHistory">
+          <Key>
+            <PropertyRef Name="historyID" />
+          </Key>
+          <Property Name="historyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="movieID" Type="int" />
+          <Property Name="outDate" Type="datetime" Nullable="false" />
+          <Property Name="inDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Wish">
+          <Key>
+            <PropertyRef Name="wishID" />
+          </Key>
+          <Property Name="wishID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerID" Type="int" Nullable="false" />
+          <Property Name="movieID" Type="int" />
+          <Property Name="dateWished" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="fk_Customer_CustomerAddress">
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerAddress">
+              <PropertyRef Name="customerAddressID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="customerAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_History_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalHistory" Type="Self.RentalHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="RentalHistory">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_History_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+          <End Role="RentalHistory" Type="Self.RentalHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="RentalHistory">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_Kiosk">
+          <End Role="Kiosk" Type="Self.Kiosk" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kiosk">
+              <PropertyRef Name="kioskID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="kioskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MovieReview_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MovieReview" Type="Self.MovieReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="MovieReview">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MovieReview_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MovieReview" Type="Self.MovieReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="MovieReview">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Rental_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Rental_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="stockID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="stockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Wish_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wish" Type="Self.Wish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Wish">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Wish_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+          <End Role="Wish" Type="Self.Wish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="Wish">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YellowBucketCSC365ModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerAddress" EntityType="Self.CustomerAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Inventory" EntityType="Self.Inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Kiosk" EntityType="Self.Kiosk" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movie" EntityType="Self.Movie" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovieReview" EntityType="Self.MovieReview" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Rental" EntityType="Self.Rental" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RentalHistory" EntityType="Self.RentalHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Wish" EntityType="Self.Wish" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="fk_Customer_CustomerAddress" Association="Self.fk_Customer_CustomerAddress">
+            <End Role="CustomerAddress" EntitySet="CustomerAddress" />
+            <End Role="Customer" EntitySet="Customer" />
+          </AssociationSet>
+          <AssociationSet Name="fk_History_Customer" Association="Self.fk_History_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="RentalHistory" EntitySet="RentalHistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_History_Movie" Association="Self.fk_History_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="RentalHistory" EntitySet="RentalHistory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_Kiosk" Association="Self.fk_Inventory_Kiosk">
+            <End Role="Kiosk" EntitySet="Kiosk" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_Movie" Association="Self.fk_Inventory_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="Inventory" EntitySet="Inventory" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MovieReview_Customer" Association="Self.fk_MovieReview_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="MovieReview" EntitySet="MovieReview" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MovieReview_Movie" Association="Self.fk_MovieReview_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="MovieReview" EntitySet="MovieReview" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Rental_Customer" Association="Self.fk_Rental_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Rental_Inventory" Association="Self.fk_Rental_Inventory">
+            <End Role="Inventory" EntitySet="Inventory" />
+            <End Role="Rental" EntitySet="Rental" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Wish_Customer" Association="Self.fk_Wish_Customer">
+            <End Role="Customer" EntitySet="Customer" />
+            <End Role="Wish" EntitySet="Wish" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Wish_Movie" Association="Self.fk_Wish_Movie">
+            <End Role="Movie" EntitySet="Movie" />
+            <End Role="Wish" EntitySet="Wish" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="YellowBucketCSC365Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="customerID" />
+          </Key>
+          <Property Name="customerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="firstName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="alternateEmail" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="userName" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="userPassword" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="creditCard" Type="String" MaxLength="19" FixedLength="false" Unicode="false" />
+          <Property Name="customerAddressID" Type="Int32" />
+          <NavigationProperty Name="CustomerAddress" Relationship="Self.fk_Customer_CustomerAddress" FromRole="Customer" ToRole="CustomerAddress" />
+          <NavigationProperty Name="RentalHistories" Relationship="Self.fk_History_Customer" FromRole="Customer" ToRole="RentalHistory" />
+          <NavigationProperty Name="MovieReviews" Relationship="Self.fk_MovieReview_Customer" FromRole="Customer" ToRole="MovieReview" />
+          <NavigationProperty Name="Rentals" Relationship="Self.fk_Rental_Customer" FromRole="Customer" ToRole="Rental" />
+          <NavigationProperty Name="Wishes" Relationship="Self.fk_Wish_Customer" FromRole="Customer" ToRole="Wish" />
+        </EntityType>
+        <EntityType Name="CustomerAddress">
+          <Key>
+            <PropertyRef Name="customerAddressID" />
+          </Key>
+          <Property Name="customerAddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="addressLine1" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="addressLine2" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stateProvince" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postalCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Customers" Relationship="Self.fk_Customer_CustomerAddress" FromRole="CustomerAddress" ToRole="Customer" />
+        </EntityType>
+        <EntityType Name="Inventory">
+          <Key>
+            <PropertyRef Name="stockID" />
+          </Key>
+          <Property Name="stockID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="dvdBluRay" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="quantityAtKiosk" Type="Int32" Nullable="false" />
+          <Property Name="inStock" Type="Boolean" Nullable="false" />
+          <Property Name="movieID" Type="Int32" Nullable="false" />
+          <Property Name="kioskID" Type="Int32" />
+          <NavigationProperty Name="Kiosk" Relationship="Self.fk_Inventory_Kiosk" FromRole="Inventory" ToRole="Kiosk" />
+          <NavigationProperty Name="Movie" Relationship="Self.fk_Inventory_Movie" FromRole="Inventory" ToRole="Movie" />
+          <NavigationProperty Name="Rentals" Relationship="Self.fk_Rental_Inventory" FromRole="Inventory" ToRole="Rental" />
+        </EntityType>
+        <EntityType Name="Kiosk">
+          <Key>
+            <PropertyRef Name="kioskID" />
+          </Key>
+          <Property Name="kioskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="location" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="addressLine1" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="addressLine2" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="city" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="stateProvince" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postalCode" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Inventories" Relationship="Self.fk_Inventory_Kiosk" FromRole="Kiosk" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="Movie">
+          <Key>
+            <PropertyRef Name="movieID" />
+          </Key>
+          <Property Name="movieID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="title" Type="String" MaxLength="64" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="movieDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="avgRating" Type="Decimal" Precision="2" Scale="1" Nullable="false" />
+          <Property Name="director" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="studio" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="runTime" Type="Int32" Nullable="false" />
+          <Property Name="parentalRating" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="genre" Type="String" MaxLength="32" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="releaseDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="coverPhoto" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Inventories" Relationship="Self.fk_Inventory_Movie" FromRole="Movie" ToRole="Inventory" />
+          <NavigationProperty Name="RentalHistories" Relationship="Self.fk_History_Movie" FromRole="Movie" ToRole="RentalHistory" />
+          <NavigationProperty Name="MovieReviews" Relationship="Self.fk_MovieReview_Movie" FromRole="Movie" ToRole="MovieReview" />
+          <NavigationProperty Name="Wishes" Relationship="Self.fk_Wish_Movie" FromRole="Movie" ToRole="Wish" />
+        </EntityType>
+        <EntityType Name="MovieReview">
+          <Key>
+            <PropertyRef Name="reviewID" />
+          </Key>
+          <Property Name="reviewID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="datePosted" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="reviewDescription" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Int32" Nullable="false" />
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="movieID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Customer" Relationship="Self.fk_MovieReview_Customer" FromRole="MovieReview" ToRole="Customer" />
+          <NavigationProperty Name="Movie" Relationship="Self.fk_MovieReview_Movie" FromRole="MovieReview" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="Rental">
+          <Key>
+            <PropertyRef Name="rentalID" />
+          </Key>
+          <Property Name="rentalID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="rentalCost" Type="Decimal" Precision="10" Scale="4" Nullable="false" />
+          <Property Name="dateRented" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="dateReturned" Type="DateTime" Precision="3" />
+          <Property Name="customerID" Type="Int32" />
+          <Property Name="stockID" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.fk_Rental_Customer" FromRole="Rental" ToRole="Customer" />
+          <NavigationProperty Name="Inventory" Relationship="Self.fk_Rental_Inventory" FromRole="Rental" ToRole="Inventory" />
+        </EntityType>
+        <EntityType Name="RentalHistory">
+          <Key>
+            <PropertyRef Name="historyID" />
+          </Key>
+          <Property Name="historyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="movieID" Type="Int32" />
+          <Property Name="outDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="inDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="Self.fk_History_Customer" FromRole="RentalHistory" ToRole="Customer" />
+          <NavigationProperty Name="Movie" Relationship="Self.fk_History_Movie" FromRole="RentalHistory" ToRole="Movie" />
+        </EntityType>
+        <EntityType Name="Wish">
+          <Key>
+            <PropertyRef Name="wishID" />
+          </Key>
+          <Property Name="wishID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerID" Type="Int32" Nullable="false" />
+          <Property Name="movieID" Type="Int32" />
+          <Property Name="dateWished" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Customer" Relationship="Self.fk_Wish_Customer" FromRole="Wish" ToRole="Customer" />
+          <NavigationProperty Name="Movie" Relationship="Self.fk_Wish_Movie" FromRole="Wish" ToRole="Movie" />
+        </EntityType>
+        <Association Name="fk_Customer_CustomerAddress">
+          <End Role="CustomerAddress" Type="Self.CustomerAddress" Multiplicity="0..1" />
+          <End Role="Customer" Type="Self.Customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CustomerAddress">
+              <PropertyRef Name="customerAddressID" />
+            </Principal>
+            <Dependent Role="Customer">
+              <PropertyRef Name="customerAddressID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_History_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="RentalHistory" Type="Self.RentalHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="RentalHistory">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MovieReview_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MovieReview" Type="Self.MovieReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="MovieReview">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Rental_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Wish_Customer">
+          <End Role="Customer" Type="Self.Customer" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Wish" Type="Self.Wish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customer">
+              <PropertyRef Name="customerID" />
+            </Principal>
+            <Dependent Role="Wish">
+              <PropertyRef Name="customerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_Kiosk">
+          <End Role="Kiosk" Type="Self.Kiosk" Multiplicity="0..1" />
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Kiosk">
+              <PropertyRef Name="kioskID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="kioskID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Inventory_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="Inventory">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Rental_Inventory">
+          <End Role="Inventory" Type="Self.Inventory" Multiplicity="0..1" />
+          <End Role="Rental" Type="Self.Rental" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Inventory">
+              <PropertyRef Name="stockID" />
+            </Principal>
+            <Dependent Role="Rental">
+              <PropertyRef Name="stockID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_History_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+          <End Role="RentalHistory" Type="Self.RentalHistory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="RentalHistory">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_MovieReview_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="MovieReview" Type="Self.MovieReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="MovieReview">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_Wish_Movie">
+          <End Role="Movie" Type="Self.Movie" Multiplicity="0..1" />
+          <End Role="Wish" Type="Self.Wish" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movie">
+              <PropertyRef Name="movieID" />
+            </Principal>
+            <Dependent Role="Wish">
+              <PropertyRef Name="movieID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="YellowBucketCSC365Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerAddresses" EntityType="Self.CustomerAddress" />
+          <EntitySet Name="Inventories" EntityType="Self.Inventory" />
+          <EntitySet Name="Kiosks" EntityType="Self.Kiosk" />
+          <EntitySet Name="Movies" EntityType="Self.Movie" />
+          <EntitySet Name="MovieReviews" EntityType="Self.MovieReview" />
+          <EntitySet Name="Rentals" EntityType="Self.Rental" />
+          <EntitySet Name="RentalHistories" EntityType="Self.RentalHistory" />
+          <EntitySet Name="Wishes" EntityType="Self.Wish" />
+          <AssociationSet Name="fk_Customer_CustomerAddress" Association="Self.fk_Customer_CustomerAddress">
+            <End Role="CustomerAddress" EntitySet="CustomerAddresses" />
+            <End Role="Customer" EntitySet="Customers" />
+          </AssociationSet>
+          <AssociationSet Name="fk_History_Customer" Association="Self.fk_History_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="RentalHistory" EntitySet="RentalHistories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MovieReview_Customer" Association="Self.fk_MovieReview_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="MovieReview" EntitySet="MovieReviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Rental_Customer" Association="Self.fk_Rental_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Wish_Customer" Association="Self.fk_Wish_Customer">
+            <End Role="Customer" EntitySet="Customers" />
+            <End Role="Wish" EntitySet="Wishes" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_Kiosk" Association="Self.fk_Inventory_Kiosk">
+            <End Role="Kiosk" EntitySet="Kiosks" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Inventory_Movie" Association="Self.fk_Inventory_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Inventory" EntitySet="Inventories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Rental_Inventory" Association="Self.fk_Rental_Inventory">
+            <End Role="Inventory" EntitySet="Inventories" />
+            <End Role="Rental" EntitySet="Rentals" />
+          </AssociationSet>
+          <AssociationSet Name="fk_History_Movie" Association="Self.fk_History_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="RentalHistory" EntitySet="RentalHistories" />
+          </AssociationSet>
+          <AssociationSet Name="fk_MovieReview_Movie" Association="Self.fk_MovieReview_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="MovieReview" EntitySet="MovieReviews" />
+          </AssociationSet>
+          <AssociationSet Name="fk_Wish_Movie" Association="Self.fk_Wish_Movie">
+            <End Role="Movie" EntitySet="Movies" />
+            <End Role="Wish" EntitySet="Wishes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="YellowBucketCSC365ModelStoreContainer" CdmEntityContainer="YellowBucketCSC365Entities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="alternateEmail" ColumnName="alternateEmail" />
+                <ScalarProperty Name="userName" ColumnName="userName" />
+                <ScalarProperty Name="userPassword" ColumnName="userPassword" />
+                <ScalarProperty Name="creditCard" ColumnName="creditCard" />
+                <ScalarProperty Name="customerAddressID" ColumnName="customerAddressID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerAddresses">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.CustomerAddress">
+              <MappingFragment StoreEntitySet="CustomerAddress">
+                <ScalarProperty Name="customerAddressID" ColumnName="customerAddressID" />
+                <ScalarProperty Name="addressLine1" ColumnName="addressLine1" />
+                <ScalarProperty Name="addressLine2" ColumnName="addressLine2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="stateProvince" ColumnName="stateProvince" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Inventories">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.Inventory">
+              <MappingFragment StoreEntitySet="Inventory">
+                <ScalarProperty Name="stockID" ColumnName="stockID" />
+                <ScalarProperty Name="dvdBluRay" ColumnName="dvdBluRay" />
+                <ScalarProperty Name="quantityAtKiosk" ColumnName="quantityAtKiosk" />
+                <ScalarProperty Name="inStock" ColumnName="inStock" />
+                <ScalarProperty Name="movieID" ColumnName="movieID" />
+                <ScalarProperty Name="kioskID" ColumnName="kioskID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Kiosks">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.Kiosk">
+              <MappingFragment StoreEntitySet="Kiosk">
+                <ScalarProperty Name="kioskID" ColumnName="kioskID" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="addressLine1" ColumnName="addressLine1" />
+                <ScalarProperty Name="addressLine2" ColumnName="addressLine2" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="stateProvince" ColumnName="stateProvince" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movies">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.Movie">
+              <MappingFragment StoreEntitySet="Movie">
+                <ScalarProperty Name="movieID" ColumnName="movieID" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="movieDescription" ColumnName="movieDescription" />
+                <ScalarProperty Name="avgRating" ColumnName="avgRating" />
+                <ScalarProperty Name="director" ColumnName="director" />
+                <ScalarProperty Name="studio" ColumnName="studio" />
+                <ScalarProperty Name="runTime" ColumnName="runTime" />
+                <ScalarProperty Name="parentalRating" ColumnName="parentalRating" />
+                <ScalarProperty Name="genre" ColumnName="genre" />
+                <ScalarProperty Name="releaseDate" ColumnName="releaseDate" />
+                <ScalarProperty Name="coverPhoto" ColumnName="coverPhoto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovieReviews">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.MovieReview">
+              <MappingFragment StoreEntitySet="MovieReview">
+                <ScalarProperty Name="reviewID" ColumnName="reviewID" />
+                <ScalarProperty Name="datePosted" ColumnName="datePosted" />
+                <ScalarProperty Name="reviewDescription" ColumnName="reviewDescription" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="movieID" ColumnName="movieID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Rentals">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.Rental">
+              <MappingFragment StoreEntitySet="Rental">
+                <ScalarProperty Name="rentalID" ColumnName="rentalID" />
+                <ScalarProperty Name="rentalCost" ColumnName="rentalCost" />
+                <ScalarProperty Name="dateRented" ColumnName="dateRented" />
+                <ScalarProperty Name="dateReturned" ColumnName="dateReturned" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="stockID" ColumnName="stockID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RentalHistories">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.RentalHistory">
+              <MappingFragment StoreEntitySet="RentalHistory">
+                <ScalarProperty Name="historyID" ColumnName="historyID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="movieID" ColumnName="movieID" />
+                <ScalarProperty Name="outDate" ColumnName="outDate" />
+                <ScalarProperty Name="inDate" ColumnName="inDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Wishes">
+            <EntityTypeMapping TypeName="YellowBucketCSC365Model.Wish">
+              <MappingFragment StoreEntitySet="Wish">
+                <ScalarProperty Name="wishID" ColumnName="wishID" />
+                <ScalarProperty Name="customerID" ColumnName="customerID" />
+                <ScalarProperty Name="movieID" ColumnName="movieID" />
+                <ScalarProperty Name="dateWished" ColumnName="dateWished" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
