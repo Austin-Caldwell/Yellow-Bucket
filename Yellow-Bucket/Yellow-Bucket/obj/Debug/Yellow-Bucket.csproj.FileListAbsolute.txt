@@ -12,3 +12,4 @@ C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucke
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.About.resources
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.Kiosks.resources
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.Movies.resources
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.ListAllMovies.resources

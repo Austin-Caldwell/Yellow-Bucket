@@ -111,5 +111,19 @@ namespace Yellow_Bucket
         {
             Application.Exit();
         }
+
+        private void lISTALLMOVIESToolStripMenuItem_Click(object sender, EventArgs e) // Display the Movies Form as "allMovies" showing a list box containing the names of all movies in the database
+        {
+            this.Hide();
+            ListAllMovies listAllMovies = new ListAllMovies();
+            listAllMovies.Show();
+        }
+
+        private void buttonToListAllMovies_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ListAllMovies listAllMovies = new ListAllMovies();
+            listAllMovies.Show();
+        }
     }
 }

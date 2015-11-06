@@ -33,10 +33,12 @@
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kIOSKSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lISTALLMOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.movieTitleComboBox = new System.Windows.Forms.ComboBox();
             this.movieTitleLabel = new System.Windows.Forms.Label();
+            this.buttonToListAllMovies = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -87,12 +89,23 @@
             // 
             // mOVIESToolStripMenuItem
             // 
+            this.mOVIESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.lISTALLMOVIESToolStripMenuItem});
             this.mOVIESToolStripMenuItem.Name = "mOVIESToolStripMenuItem";
             this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mOVIESToolStripMenuItem.Click += new System.EventHandler(this.mOVIESToolStripMenuItem_Click);
+            // 
+            // lISTALLMOVIESToolStripMenuItem
+            // 
+            this.lISTALLMOVIESToolStripMenuItem.Name = "lISTALLMOVIESToolStripMenuItem";
+            this.lISTALLMOVIESToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.L)));
+            this.lISTALLMOVIESToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
+            this.lISTALLMOVIESToolStripMenuItem.Text = "LIST ALL MOVIES";
+            this.lISTALLMOVIESToolStripMenuItem.Click += new System.EventHandler(this.lISTALLMOVIESToolStripMenuItem_Click);
             // 
             // aBOUTToolStripMenuItem
             // 
@@ -131,17 +144,29 @@
             this.movieTitleLabel.TabIndex = 4;
             this.movieTitleLabel.Text = "Movie Title:";
             // 
+            // buttonToListAllMovies
+            // 
+            this.buttonToListAllMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToListAllMovies.Location = new System.Drawing.Point(308, 13);
+            this.buttonToListAllMovies.Name = "buttonToListAllMovies";
+            this.buttonToListAllMovies.Size = new System.Drawing.Size(169, 23);
+            this.buttonToListAllMovies.TabIndex = 5;
+            this.buttonToListAllMovies.Text = "List All Movies";
+            this.buttonToListAllMovies.UseVisualStyleBackColor = true;
+            this.buttonToListAllMovies.Click += new System.EventHandler(this.buttonToListAllMovies_Click);
+            // 
             // Movies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(736, 447);
+            this.Controls.Add(this.buttonToListAllMovies);
             this.Controls.Add(this.movieTitleLabel);
             this.Controls.Add(this.movieTitleComboBox);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Movies";
-            this.Text = "Movies";
+            this.Text = "YELLOW BUCKET -- MOVIES";
             this.Load += new System.EventHandler(this.Movies_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
@@ -161,5 +186,7 @@
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.ComboBox movieTitleComboBox;
         private System.Windows.Forms.Label movieTitleLabel;
+        private System.Windows.Forms.ToolStripMenuItem lISTALLMOVIESToolStripMenuItem;
+        private System.Windows.Forms.Button buttonToListAllMovies;
     }
 }

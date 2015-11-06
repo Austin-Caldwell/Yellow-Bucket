@@ -49,7 +49,7 @@
             this.label1.Size = new System.Drawing.Size(297, 160);
             this.label1.TabIndex = 3;
             this.label1.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
-    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/01/2015 - 03:37 PM";
+    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/05/2015 - 10:10 PM";
             // 
             // menuStrip1
             // 
