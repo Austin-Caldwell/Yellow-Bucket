@@ -37,25 +37,39 @@ namespace Yellow_Bucket
 
             Console.WriteLine("Connected!");
 
-            //Movies_Load_1();
-            //DataTable movies = new DataTable();
+            fillMovieTitleComboBox();
 
-            //using (YellowBucketConnection = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        SqlDataAdapter adapter = new SqlDataAdapter("Select title FROM dbo.Movies", YellowBucketConnection);
-            //        adapter.Fill(movies);
+            try
+            {
+                YellowBucketConnection.Close();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+            }
+        }
 
-            //        movieTitleComboBox.DataSource = movies;
-            //        movieTitleComboBox.ValueMember = "id";
-            //        movieTitleComboBox.DisplayMember = "Title";
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        Console.WriteLine(ex.ToString());
-            //    }
-            //}
+        private void fillMovieTitleComboBox()
+        {
+            DataTable movies = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("Select title FROM dbo.Movie", YellowBucketConnection);
+                    adapter.Fill(movies);
+
+                    movieTitleComboBox.ValueMember = "id";
+                    movieTitleComboBox.DisplayMember = "title";
+                    movieTitleComboBox.DataSource = movies;
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)

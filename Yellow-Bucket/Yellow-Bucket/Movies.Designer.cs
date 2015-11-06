@@ -117,7 +117,7 @@
             this.movieTitleComboBox.FormattingEnabled = true;
             this.movieTitleComboBox.Location = new System.Drawing.Point(226, 55);
             this.movieTitleComboBox.Name = "movieTitleComboBox";
-            this.movieTitleComboBox.Size = new System.Drawing.Size(121, 21);
+            this.movieTitleComboBox.Size = new System.Drawing.Size(201, 21);
             this.movieTitleComboBox.TabIndex = 1;
             this.movieTitleComboBox.Text = "Select A Movie";
             // 
@@ -142,6 +142,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Movies";
             this.Text = "Movies";
+            this.Load += new System.EventHandler(this.Movies_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
