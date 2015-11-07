@@ -1,4 +1,5 @@
-﻿using System;
+﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,36 +21,36 @@ namespace Yellow_Bucket
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            YellowBucketHome home = new YellowBucketHome();
-            home.Show();
+            YellowBucketHome homeForm = new YellowBucketHome();
+            homeForm.Show();
         }
 
         private void cUSTOMERSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Customers customers = new Customers();
-            customers.Show();
+            Customers customerForm = new Customers();
+            customerForm.Show();
         }
 
         private void kIOSKSToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Kiosks kiosks = new Kiosks();
-            kiosks.Show();
+            Kiosks kioskForm = new Kiosks();
+            kioskForm.Show();
         }
 
         private void mOVIESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Movies movies = new Movies();
-            movies.Show();
+            Movies movieForm = new Movies();
+            movieForm.Show();
         }
 
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            About about = new About();
-            about.Show();
+            About aboutForm = new About();
+            aboutForm.Show();
         }
 
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)

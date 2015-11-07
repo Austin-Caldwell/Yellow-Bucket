@@ -33,12 +33,16 @@
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kIOSKSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.lISTALLMOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rENTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rETURNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.movieTitleComboBox = new System.Windows.Forms.ComboBox();
-            this.movieTitleLabel = new System.Windows.Forms.Label();
             this.buttonToListAllMovies = new System.Windows.Forms.Button();
+            this.buttonToAddMovie = new System.Windows.Forms.Button();
+            this.buttonToEditMovieInfo = new System.Windows.Forms.Button();
+            this.buttonToDeleteMovie = new System.Windows.Forms.Button();
+            this.buttonToViewMovieDetails = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,11 +56,14 @@
             this.cUSTOMERSToolStripMenuItem,
             this.kIOSKSToolStripMenuItem,
             this.mOVIESToolStripMenuItem,
+            this.rENTToolStripMenuItem,
+            this.rETURNToolStripMenuItem,
+            this.rEVIEWToolStripMenuItem,
             this.aBOUTToolStripMenuItem,
             this.qUITToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(118, 447);
+            this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -64,6 +71,8 @@
             // 
             this.hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
             this.hOMEToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.hOMEToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.H)));
             this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -73,6 +82,8 @@
             // 
             this.cUSTOMERSToolStripMenuItem.Name = "cUSTOMERSToolStripMenuItem";
             this.cUSTOMERSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cUSTOMERSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -82,6 +93,8 @@
             // 
             this.kIOSKSToolStripMenuItem.Name = "kIOSKSToolStripMenuItem";
             this.kIOSKSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.kIOSKSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.K)));
             this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.kIOSKSToolStripMenuItem.Text = "KIOSKS";
             this.kIOSKSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -89,28 +102,45 @@
             // 
             // mOVIESToolStripMenuItem
             // 
-            this.mOVIESToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.lISTALLMOVIESToolStripMenuItem});
             this.mOVIESToolStripMenuItem.Name = "mOVIESToolStripMenuItem";
             this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.mOVIESToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.M)));
             this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mOVIESToolStripMenuItem.Click += new System.EventHandler(this.mOVIESToolStripMenuItem_Click);
             // 
-            // lISTALLMOVIESToolStripMenuItem
+            // rENTToolStripMenuItem
             // 
-            this.lISTALLMOVIESToolStripMenuItem.Name = "lISTALLMOVIESToolStripMenuItem";
-            this.lISTALLMOVIESToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.L)));
-            this.lISTALLMOVIESToolStripMenuItem.Size = new System.Drawing.Size(284, 26);
-            this.lISTALLMOVIESToolStripMenuItem.Text = "LIST ALL MOVIES";
-            this.lISTALLMOVIESToolStripMenuItem.Click += new System.EventHandler(this.lISTALLMOVIESToolStripMenuItem_Click);
+            this.rENTToolStripMenuItem.Name = "rENTToolStripMenuItem";
+            this.rENTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rENTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rENTToolStripMenuItem.Text = "RENT";
+            this.rENTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rETURNToolStripMenuItem
+            // 
+            this.rETURNToolStripMenuItem.Name = "rETURNToolStripMenuItem";
+            this.rETURNToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rETURNToolStripMenuItem.Text = "RETURN";
+            this.rETURNToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rEVIEWToolStripMenuItem
+            // 
+            this.rEVIEWToolStripMenuItem.Name = "rEVIEWToolStripMenuItem";
+            this.rEVIEWToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rEVIEWToolStripMenuItem.Text = "REVIEW";
+            this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // aBOUTToolStripMenuItem
             // 
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
             this.aBOUTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.aBOUTToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.A)));
             this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.aBOUTToolStripMenuItem.Text = "ABOUT";
             this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -120,54 +150,79 @@
             // 
             this.qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
             this.qUITToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 0);
+            this.qUITToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Q)));
             this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.qUITToolStripMenuItem.Text = "QUIT";
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // movieTitleComboBox
-            // 
-            this.movieTitleComboBox.FormattingEnabled = true;
-            this.movieTitleComboBox.Location = new System.Drawing.Point(226, 55);
-            this.movieTitleComboBox.Name = "movieTitleComboBox";
-            this.movieTitleComboBox.Size = new System.Drawing.Size(201, 21);
-            this.movieTitleComboBox.TabIndex = 1;
-            this.movieTitleComboBox.Text = "Select A Movie";
-            // 
-            // movieTitleLabel
-            // 
-            this.movieTitleLabel.AutoSize = true;
-            this.movieTitleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.movieTitleLabel.Location = new System.Drawing.Point(133, 56);
-            this.movieTitleLabel.Name = "movieTitleLabel";
-            this.movieTitleLabel.Size = new System.Drawing.Size(87, 20);
-            this.movieTitleLabel.TabIndex = 4;
-            this.movieTitleLabel.Text = "Movie Title:";
-            // 
             // buttonToListAllMovies
             // 
-            this.buttonToListAllMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToListAllMovies.Location = new System.Drawing.Point(308, 13);
+            this.buttonToListAllMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.buttonToListAllMovies.Location = new System.Drawing.Point(437, 315);
             this.buttonToListAllMovies.Name = "buttonToListAllMovies";
-            this.buttonToListAllMovies.Size = new System.Drawing.Size(169, 23);
-            this.buttonToListAllMovies.TabIndex = 5;
+            this.buttonToListAllMovies.Size = new System.Drawing.Size(230, 77);
+            this.buttonToListAllMovies.TabIndex = 2;
             this.buttonToListAllMovies.Text = "List All Movies";
             this.buttonToListAllMovies.UseVisualStyleBackColor = true;
             this.buttonToListAllMovies.Click += new System.EventHandler(this.buttonToListAllMovies_Click);
+            // 
+            // buttonToAddMovie
+            // 
+            this.buttonToAddMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.buttonToAddMovie.Location = new System.Drawing.Point(437, 80);
+            this.buttonToAddMovie.Name = "buttonToAddMovie";
+            this.buttonToAddMovie.Size = new System.Drawing.Size(230, 77);
+            this.buttonToAddMovie.TabIndex = 0;
+            this.buttonToAddMovie.Text = "Add A Movie";
+            this.buttonToAddMovie.UseVisualStyleBackColor = true;
+            // 
+            // buttonToEditMovieInfo
+            // 
+            this.buttonToEditMovieInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.buttonToEditMovieInfo.Location = new System.Drawing.Point(437, 192);
+            this.buttonToEditMovieInfo.Name = "buttonToEditMovieInfo";
+            this.buttonToEditMovieInfo.Size = new System.Drawing.Size(230, 77);
+            this.buttonToEditMovieInfo.TabIndex = 1;
+            this.buttonToEditMovieInfo.Text = "Edit Movie Info";
+            this.buttonToEditMovieInfo.UseVisualStyleBackColor = true;
+            // 
+            // buttonToDeleteMovie
+            // 
+            this.buttonToDeleteMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.buttonToDeleteMovie.Location = new System.Drawing.Point(437, 560);
+            this.buttonToDeleteMovie.Name = "buttonToDeleteMovie";
+            this.buttonToDeleteMovie.Size = new System.Drawing.Size(230, 77);
+            this.buttonToDeleteMovie.TabIndex = 4;
+            this.buttonToDeleteMovie.Text = "Delete A Movie";
+            this.buttonToDeleteMovie.UseVisualStyleBackColor = true;
+            // 
+            // buttonToViewMovieDetails
+            // 
+            this.buttonToViewMovieDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.buttonToViewMovieDetails.Location = new System.Drawing.Point(437, 436);
+            this.buttonToViewMovieDetails.Name = "buttonToViewMovieDetails";
+            this.buttonToViewMovieDetails.Size = new System.Drawing.Size(230, 77);
+            this.buttonToViewMovieDetails.TabIndex = 3;
+            this.buttonToViewMovieDetails.Text = "View Movie Details";
+            this.buttonToViewMovieDetails.UseVisualStyleBackColor = true;
             // 
             // Movies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 447);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.buttonToViewMovieDetails);
+            this.Controls.Add(this.buttonToDeleteMovie);
+            this.Controls.Add(this.buttonToEditMovieInfo);
+            this.Controls.Add(this.buttonToAddMovie);
             this.Controls.Add(this.buttonToListAllMovies);
-            this.Controls.Add(this.movieTitleLabel);
-            this.Controls.Add(this.movieTitleComboBox);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "Movies";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- MOVIES";
-            this.Load += new System.EventHandler(this.Movies_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -184,9 +239,13 @@
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
-        private System.Windows.Forms.ComboBox movieTitleComboBox;
-        private System.Windows.Forms.Label movieTitleLabel;
-        private System.Windows.Forms.ToolStripMenuItem lISTALLMOVIESToolStripMenuItem;
         private System.Windows.Forms.Button buttonToListAllMovies;
+        private System.Windows.Forms.Button buttonToAddMovie;
+        private System.Windows.Forms.Button buttonToEditMovieInfo;
+        private System.Windows.Forms.Button buttonToDeleteMovie;
+        private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
+        private System.Windows.Forms.Button buttonToViewMovieDetails;
     }
 }

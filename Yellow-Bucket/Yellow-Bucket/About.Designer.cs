@@ -28,51 +28,60 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.lblAbout = new System.Windows.Forms.Label();
+            this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.hOMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kIOSKSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rENTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rETURNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1.SuspendLayout();
+            this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblAbout
             // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.SystemColors.Control;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label1.Location = new System.Drawing.Point(149, 74);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(297, 160);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
-    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/05/2015 - 10:10 PM";
+            this.lblAbout.AutoSize = true;
+            this.lblAbout.BackColor = System.Drawing.SystemColors.Control;
+            this.lblAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
+            this.lblAbout.Location = new System.Drawing.Point(250, 150);
+            this.lblAbout.Name = "lblAbout";
+            this.lblAbout.Size = new System.Drawing.Size(608, 296);
+            this.lblAbout.TabIndex = 3;
+            this.lblAbout.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
+    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/06/2015";
+            this.lblAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // menuStrip1
+            // mainMenuStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.Gold;
-            this.menuStrip1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mainMenuStrip.BackColor = System.Drawing.Color.Gold;
+            this.mainMenuStrip.Dock = System.Windows.Forms.DockStyle.Left;
+            this.mainMenuStrip.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.mainMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.hOMEToolStripMenuItem,
             this.cUSTOMERSToolStripMenuItem,
             this.kIOSKSToolStripMenuItem,
             this.mOVIESToolStripMenuItem,
+            this.rENTToolStripMenuItem,
+            this.rETURNToolStripMenuItem,
+            this.rEVIEWToolStripMenuItem,
             this.aBOUTToolStripMenuItem,
             this.qUITToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(118, 297);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mainMenuStrip.Name = "mainMenuStrip";
+            this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
+            this.mainMenuStrip.TabIndex = 4;
+            this.mainMenuStrip.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
             // 
             this.hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
             this.hOMEToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
+            this.hOMEToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.H)));
             this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -82,6 +91,8 @@
             // 
             this.cUSTOMERSToolStripMenuItem.Name = "cUSTOMERSToolStripMenuItem";
             this.cUSTOMERSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.cUSTOMERSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.C)));
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,6 +102,8 @@
             // 
             this.kIOSKSToolStripMenuItem.Name = "kIOSKSToolStripMenuItem";
             this.kIOSKSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.kIOSKSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.K)));
             this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.kIOSKSToolStripMenuItem.Text = "KIOSKS";
             this.kIOSKSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -100,15 +113,43 @@
             // 
             this.mOVIESToolStripMenuItem.Name = "mOVIESToolStripMenuItem";
             this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.mOVIESToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.M)));
             this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mOVIESToolStripMenuItem.Click += new System.EventHandler(this.mOVIESToolStripMenuItem_Click);
             // 
+            // rENTToolStripMenuItem
+            // 
+            this.rENTToolStripMenuItem.Name = "rENTToolStripMenuItem";
+            this.rENTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rENTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rENTToolStripMenuItem.Text = "RENT";
+            this.rENTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rETURNToolStripMenuItem
+            // 
+            this.rETURNToolStripMenuItem.Name = "rETURNToolStripMenuItem";
+            this.rETURNToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rETURNToolStripMenuItem.Text = "RETURN";
+            this.rETURNToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // rEVIEWToolStripMenuItem
+            // 
+            this.rEVIEWToolStripMenuItem.Name = "rEVIEWToolStripMenuItem";
+            this.rEVIEWToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rEVIEWToolStripMenuItem.Text = "REVIEW";
+            this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // aBOUTToolStripMenuItem
             // 
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
             this.aBOUTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.aBOUTToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.A)));
             this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.aBOUTToolStripMenuItem.Text = "ABOUT";
             this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -118,6 +159,8 @@
             // 
             this.qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
             this.qUITToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 0);
+            this.qUITToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.Q)));
             this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.qUITToolStripMenuItem.Text = "QUIT";
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -127,14 +170,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 297);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lblAbout);
+            this.Controls.Add(this.mainMenuStrip);
+            this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "About";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- ABOUT";
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.mainMenuStrip.ResumeLayout(false);
+            this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -142,13 +186,16 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.Label lblAbout;
+        private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
     }
 }
