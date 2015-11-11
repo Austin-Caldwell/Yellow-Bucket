@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;    // To Access Database
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class ListAllMovies : Form
+    public partial class ListAllCustomers : Form
     {
         protected SqlConnection YellowBucketConnection;
         protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
@@ -20,30 +19,30 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String = 
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
-        public ListAllMovies()
+        public ListAllCustomers()
         {
             InitializeComponent();
         }
 
-        private void ListAllMovies_Load(object sender, EventArgs e)
+        private void ListAllCustomers_Load(object sender, EventArgs e)
         {
-            fillListOfAllMovies();
+            fillListOfAllCustomers();
         }
 
-        private void fillListOfAllMovies()
+        private void fillListOfAllCustomers()
         {
-            DataTable allMovies = new DataTable();
+            DataTable allCustomers = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie", YellowBucketConnection);
-                    adapter.Fill(allMovies);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    adapter.Fill(allCustomers);
 
-                    listBoxOfAllMovies.ValueMember = "id";
-                    listBoxOfAllMovies.DisplayMember = "title";
-                    listBoxOfAllMovies.DataSource = allMovies;
+                    listBoxOfAllCustomers.ValueMember = "id";
+                    listBoxOfAllCustomers.DisplayMember = "fullname";
+                    listBoxOfAllCustomers.DataSource = allCustomers;
 
                     YellowBucketConnection.Close();
                 }

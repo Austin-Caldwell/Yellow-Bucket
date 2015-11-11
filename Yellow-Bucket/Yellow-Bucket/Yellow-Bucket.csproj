@@ -62,6 +62,12 @@
     <Compile Include="Kiosks.Designer.cs">
       <DependentUpon>Kiosks.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListAllCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ListAllCustomers.Designer.cs">
+      <DependentUpon>ListAllCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="ListAllMovies.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -90,6 +96,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Kiosks.resx">
       <DependentUpon>Kiosks.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ListAllCustomers.resx">
+      <DependentUpon>ListAllCustomers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ListAllMovies.resx">
       <DependentUpon>ListAllMovies.cs</DependentUpon>

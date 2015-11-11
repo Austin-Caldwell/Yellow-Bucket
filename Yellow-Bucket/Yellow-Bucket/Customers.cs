@@ -57,5 +57,12 @@ namespace Yellow_Bucket
         {
             Application.Exit();
         }
+
+        private void buttonToListAllCustomers_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ListAllCustomers listAllCustomersForm = new ListAllCustomers();
+            listAllCustomersForm.Show();
+        }
     }
 }
