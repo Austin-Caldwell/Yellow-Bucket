@@ -1,6 +1,6 @@
 ﻿namespace Yellow_Bucket
 {
-    partial class About
+    partial class YELLOW_BUCKET____DELETE_A_CUSTOMER
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblAbout = new System.Windows.Forms.Label();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.hOMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,21 +38,11 @@
             this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.comboBoxOfCustomers = new System.Windows.Forms.ComboBox();
+            this.lblCustomerName = new System.Windows.Forms.Label();
+            this.buttonToDeleteCustomer = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblAbout
-            // 
-            this.lblAbout.AutoSize = true;
-            this.lblAbout.BackColor = System.Drawing.SystemColors.Control;
-            this.lblAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.lblAbout.Location = new System.Drawing.Point(250, 150);
-            this.lblAbout.Name = "lblAbout";
-            this.lblAbout.Size = new System.Drawing.Size(608, 296);
-            this.lblAbout.TabIndex = 3;
-            this.lblAbout.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
-    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/14/2015";
-            this.lblAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mainMenuStrip
             // 
@@ -72,16 +61,14 @@
             this.qUITToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
-            this.mainMenuStrip.TabIndex = 4;
-            this.mainMenuStrip.Text = "menuStrip1";
+            this.mainMenuStrip.Size = new System.Drawing.Size(118, 741);
+            this.mainMenuStrip.TabIndex = 0;
+            this.mainMenuStrip.Text = "mainMenuStrip";
             // 
             // hOMEToolStripMenuItem
             // 
             this.hOMEToolStripMenuItem.Name = "hOMEToolStripMenuItem";
             this.hOMEToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
-            this.hOMEToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.H)));
             this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -91,8 +78,6 @@
             // 
             this.cUSTOMERSToolStripMenuItem.Name = "cUSTOMERSToolStripMenuItem";
             this.cUSTOMERSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.cUSTOMERSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.C)));
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -102,8 +87,6 @@
             // 
             this.kIOSKSToolStripMenuItem.Name = "kIOSKSToolStripMenuItem";
             this.kIOSKSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.kIOSKSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.K)));
             this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.kIOSKSToolStripMenuItem.Text = "KIOSKS";
             this.kIOSKSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -113,8 +96,6 @@
             // 
             this.mOVIESToolStripMenuItem.Name = "mOVIESToolStripMenuItem";
             this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.mOVIESToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.M)));
             this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -148,8 +129,6 @@
             // 
             this.aBOUTToolStripMenuItem.Name = "aBOUTToolStripMenuItem";
             this.aBOUTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.aBOUTToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.A)));
             this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.aBOUTToolStripMenuItem.Text = "ABOUT";
             this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -159,24 +138,54 @@
             // 
             this.qUITToolStripMenuItem.Name = "qUITToolStripMenuItem";
             this.qUITToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 0);
-            this.qUITToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-            | System.Windows.Forms.Keys.Q)));
             this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
             this.qUITToolStripMenuItem.Text = "QUIT";
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // About
+            // comboBoxOfCustomers
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.comboBoxOfCustomers.FormattingEnabled = true;
+            this.comboBoxOfCustomers.Location = new System.Drawing.Point(361, 168);
+            this.comboBoxOfCustomers.Name = "comboBoxOfCustomers";
+            this.comboBoxOfCustomers.Size = new System.Drawing.Size(391, 28);
+            this.comboBoxOfCustomers.TabIndex = 1;
+            this.comboBoxOfCustomers.Text = "Select A Customer";
+            // 
+            // lblCustomerName
+            // 
+            this.lblCustomerName.AutoSize = true;
+            this.lblCustomerName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
+            this.lblCustomerName.Location = new System.Drawing.Point(354, 128);
+            this.lblCustomerName.Name = "lblCustomerName";
+            this.lblCustomerName.Size = new System.Drawing.Size(219, 31);
+            this.lblCustomerName.TabIndex = 2;
+            this.lblCustomerName.Text = "Customer Name:";
+            // 
+            // buttonToDeleteCustomer
+            // 
+            this.buttonToDeleteCustomer.Location = new System.Drawing.Point(360, 235);
+            this.buttonToDeleteCustomer.Name = "buttonToDeleteCustomer";
+            this.buttonToDeleteCustomer.Size = new System.Drawing.Size(182, 44);
+            this.buttonToDeleteCustomer.TabIndex = 3;
+            this.buttonToDeleteCustomer.Text = "DELETE CUSTOMER";
+            this.buttonToDeleteCustomer.UseVisualStyleBackColor = true;
+            // 
+            // YELLOW_BUCKET____DELETE_A_CUSTOMER
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.lblAbout);
+            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.buttonToDeleteCustomer);
+            this.Controls.Add(this.lblCustomerName);
+            this.Controls.Add(this.comboBoxOfCustomers);
             this.Controls.Add(this.mainMenuStrip);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Name = "About";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YELLOW BUCKET -- ABOUT";
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.Name = "YELLOW_BUCKET____DELETE_A_CUSTOMER";
+            this.Text = "YELLOW BUCKET -- DELETE A CUSTOMER";
+            this.Load += new System.EventHandler(this.YELLOW_BUCKET____DELETE_A_CUSTOMER_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -186,16 +195,18 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblAbout;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxOfCustomers;
+        private System.Windows.Forms.Label lblCustomerName;
+        private System.Windows.Forms.Button buttonToDeleteCustomer;
     }
 }

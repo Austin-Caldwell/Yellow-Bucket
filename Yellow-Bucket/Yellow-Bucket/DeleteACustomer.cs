@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class ListAllCustomers : Form
+    public partial class YELLOW_BUCKET____DELETE_A_CUSTOMER : Form
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
@@ -20,30 +20,30 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String: 
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
-        public ListAllCustomers()
+        public YELLOW_BUCKET____DELETE_A_CUSTOMER()
         {
             InitializeComponent();
         }
 
-        private void ListAllCustomers_Load(object sender, EventArgs e)
+        private void YELLOW_BUCKET____DELETE_A_CUSTOMER_Load(object sender, EventArgs e)
         {
-            fillListOfAllCustomers();
+            fillCustomerComboBox();
         }
 
-        private void fillListOfAllCustomers()
+        private void fillCustomerComboBox()
         {
-            DataTable allCustomers = new DataTable();
+            DataTable customers = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
                     SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname) AS fullname FROM dbo.Customer", YellowBucketConnection);
-                    adapter.Fill(allCustomers);
+                    adapter.Fill(customers);
 
-                    listBoxOfAllCustomers.ValueMember = "id";
-                    listBoxOfAllCustomers.DisplayMember = "fullname";
-                    listBoxOfAllCustomers.DataSource = allCustomers;
+                    comboBoxOfCustomers.ValueMember = "id";
+                    comboBoxOfCustomers.DisplayMember = "fullname";
+                    comboBoxOfCustomers.DataSource = customers;
 
                     YellowBucketConnection.Close();
                 }

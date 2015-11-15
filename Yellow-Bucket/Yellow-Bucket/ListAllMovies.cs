@@ -15,9 +15,10 @@ namespace Yellow_Bucket
     public partial class ListAllMovies : Form
     {
         protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
         protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
-        // Evan Wehr's Connection String = 
-        // Jacob Girvin's Connection String = 
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String: 
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
         public ListAllMovies()

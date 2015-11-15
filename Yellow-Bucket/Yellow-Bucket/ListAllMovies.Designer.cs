@@ -163,16 +163,16 @@
             this.listBoxOfAllMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.listBoxOfAllMovies.FormattingEnabled = true;
             this.listBoxOfAllMovies.ItemHeight = 16;
-            this.listBoxOfAllMovies.Location = new System.Drawing.Point(133, 52);
+            this.listBoxOfAllMovies.Location = new System.Drawing.Point(125, 52);
             this.listBoxOfAllMovies.Name = "listBoxOfAllMovies";
-            this.listBoxOfAllMovies.Size = new System.Drawing.Size(863, 660);
+            this.listBoxOfAllMovies.Size = new System.Drawing.Size(871, 660);
             this.listBoxOfAllMovies.TabIndex = 0;
             // 
             // lblAllMoviesList
             // 
             this.lblAllMoviesList.AutoSize = true;
             this.lblAllMoviesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblAllMoviesList.Location = new System.Drawing.Point(129, 19);
+            this.lblAllMoviesList.Location = new System.Drawing.Point(121, 19);
             this.lblAllMoviesList.Name = "lblAllMoviesList";
             this.lblAllMoviesList.Size = new System.Drawing.Size(261, 20);
             this.lblAllMoviesList.TabIndex = 3;

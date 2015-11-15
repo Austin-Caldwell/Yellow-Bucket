@@ -40,6 +40,10 @@
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.listBoxOfAllCustomers = new System.Windows.Forms.ListBox();
             this.lblAllCustomersList = new System.Windows.Forms.Label();
+            this.buttonToAddCustomer = new System.Windows.Forms.Button();
+            this.buttonToEditCustomerInfo = new System.Windows.Forms.Button();
+            this.buttonToViewCustomerDetails = new System.Windows.Forms.Button();
+            this.buttonToDeleteCustomer = new System.Windows.Forms.Button();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -146,25 +150,69 @@
             // 
             this.listBoxOfAllCustomers.FormattingEnabled = true;
             this.listBoxOfAllCustomers.ItemHeight = 20;
-            this.listBoxOfAllCustomers.Location = new System.Drawing.Point(487, 85);
+            this.listBoxOfAllCustomers.Location = new System.Drawing.Point(125, 45);
             this.listBoxOfAllCustomers.Name = "listBoxOfAllCustomers";
-            this.listBoxOfAllCustomers.Size = new System.Drawing.Size(863, 644);
+            this.listBoxOfAllCustomers.Size = new System.Drawing.Size(1225, 684);
             this.listBoxOfAllCustomers.TabIndex = 1;
             // 
             // lblAllCustomersList
             // 
             this.lblAllCustomersList.AutoSize = true;
-            this.lblAllCustomersList.Location = new System.Drawing.Point(121, 47);
+            this.lblAllCustomersList.Location = new System.Drawing.Point(121, 9);
             this.lblAllCustomersList.Name = "lblAllCustomersList";
             this.lblAllCustomersList.Size = new System.Drawing.Size(211, 20);
             this.lblAllCustomersList.TabIndex = 2;
             this.lblAllCustomersList.Text = "All Yellow Bucket Customers";
+            // 
+            // buttonToAddCustomer
+            // 
+            this.buttonToAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToAddCustomer.Location = new System.Drawing.Point(708, 12);
+            this.buttonToAddCustomer.Name = "buttonToAddCustomer";
+            this.buttonToAddCustomer.Size = new System.Drawing.Size(134, 23);
+            this.buttonToAddCustomer.TabIndex = 3;
+            this.buttonToAddCustomer.Text = "Add A Customer";
+            this.buttonToAddCustomer.UseVisualStyleBackColor = true;
+            // 
+            // buttonToEditCustomerInfo
+            // 
+            this.buttonToEditCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToEditCustomerInfo.Location = new System.Drawing.Point(848, 12);
+            this.buttonToEditCustomerInfo.Name = "buttonToEditCustomerInfo";
+            this.buttonToEditCustomerInfo.Size = new System.Drawing.Size(151, 23);
+            this.buttonToEditCustomerInfo.TabIndex = 4;
+            this.buttonToEditCustomerInfo.Text = "Edit Customer Info";
+            this.buttonToEditCustomerInfo.UseVisualStyleBackColor = true;
+            // 
+            // buttonToViewCustomerDetails
+            // 
+            this.buttonToViewCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToViewCustomerDetails.Location = new System.Drawing.Point(1005, 12);
+            this.buttonToViewCustomerDetails.Name = "buttonToViewCustomerDetails";
+            this.buttonToViewCustomerDetails.Size = new System.Drawing.Size(168, 23);
+            this.buttonToViewCustomerDetails.TabIndex = 5;
+            this.buttonToViewCustomerDetails.Text = "View Customer Details";
+            this.buttonToViewCustomerDetails.UseVisualStyleBackColor = true;
+            // 
+            // buttonToDeleteCustomer
+            // 
+            this.buttonToDeleteCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToDeleteCustomer.Location = new System.Drawing.Point(1179, 12);
+            this.buttonToDeleteCustomer.Name = "buttonToDeleteCustomer";
+            this.buttonToDeleteCustomer.Size = new System.Drawing.Size(149, 23);
+            this.buttonToDeleteCustomer.TabIndex = 6;
+            this.buttonToDeleteCustomer.Text = "Delete A Customer";
+            this.buttonToDeleteCustomer.UseVisualStyleBackColor = true;
             // 
             // ListAllCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.buttonToDeleteCustomer);
+            this.Controls.Add(this.buttonToViewCustomerDetails);
+            this.Controls.Add(this.buttonToEditCustomerInfo);
+            this.Controls.Add(this.buttonToAddCustomer);
             this.Controls.Add(this.lblAllCustomersList);
             this.Controls.Add(this.listBoxOfAllCustomers);
             this.Controls.Add(this.mainMenuStrip);
@@ -195,5 +243,9 @@
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.ListBox listBoxOfAllCustomers;
         private System.Windows.Forms.Label lblAllCustomersList;
+        private System.Windows.Forms.Button buttonToAddCustomer;
+        private System.Windows.Forms.Button buttonToEditCustomerInfo;
+        private System.Windows.Forms.Button buttonToViewCustomerDetails;
+        private System.Windows.Forms.Button buttonToDeleteCustomer;
     }
 }
