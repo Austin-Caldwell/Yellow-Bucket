@@ -38,7 +38,7 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
                     adapter.Fill(allCustomers);
 
                     listBoxOfAllCustomers.ValueMember = "id";
@@ -93,6 +93,13 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
+            deleteCustomerForm.Show();
         }
     }
 }

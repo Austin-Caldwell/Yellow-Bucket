@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Data.SqlClient;    // To access database
 
 namespace Yellow_Bucket
 {
@@ -19,6 +19,9 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String: 
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
+        private string selectedCustomerFirstName;
+        private string selectedCustomerLastName;
+        private string selectedCustomerUserName;
 
         public YELLOW_BUCKET____DELETE_A_CUSTOMER()
         {
@@ -38,7 +41,7 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastName, ', ', firstName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
                     adapter.Fill(customers);
 
                     comboBoxOfCustomers.ValueMember = "id";
@@ -93,6 +96,42 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void comboBoxOfCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            char[] delimiterChars = {',', ' ', '-'};
+
+            lblDeletionStatus.Text = "";    // Reset status message when selected customer is changed
+
+            string[] customerName = comboBoxOfCustomers.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
+            selectedCustomerFirstName = customerName[2];
+            selectedCustomerLastName = customerName[0];
+            selectedCustomerUserName = customerName[5];
+        }
+
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+                    SqlCommand deleteCustomer = new SqlCommand("DELETE FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
+                    deleteCustomer.Parameters.Add("@userName", SqlDbType.VarChar);
+                    deleteCustomer.Parameters["@userName"].Value = selectedCustomerUserName;
+                    deleteCustomer.ExecuteNonQuery();
+
+                    lblDeletionStatus.Text = "Successfully Deleted Customer Record for " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + "!";
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    lblDeletionStatus.Text = "Customer Deletion of " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + " FAILED!";
+                }
+            }
         }
     }
 }

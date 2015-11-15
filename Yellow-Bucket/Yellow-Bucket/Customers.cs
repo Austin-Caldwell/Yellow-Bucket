@@ -64,5 +64,12 @@ namespace Yellow_Bucket
             ListAllCustomers listAllCustomersForm = new ListAllCustomers();
             listAllCustomersForm.Show();
         }
+
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
+            deleteCustomerForm.Show();
+        }
     }
 }

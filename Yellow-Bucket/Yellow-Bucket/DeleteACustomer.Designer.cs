@@ -41,6 +41,7 @@
             this.comboBoxOfCustomers = new System.Windows.Forms.ComboBox();
             this.lblCustomerName = new System.Windows.Forms.Label();
             this.buttonToDeleteCustomer = new System.Windows.Forms.Button();
+            this.lblDeletionStatus = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -151,6 +152,7 @@
             this.comboBoxOfCustomers.Size = new System.Drawing.Size(391, 28);
             this.comboBoxOfCustomers.TabIndex = 1;
             this.comboBoxOfCustomers.Text = "Select A Customer";
+            this.comboBoxOfCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxOfCustomers_SelectedIndexChanged);
             // 
             // lblCustomerName
             // 
@@ -170,12 +172,22 @@
             this.buttonToDeleteCustomer.TabIndex = 3;
             this.buttonToDeleteCustomer.Text = "DELETE CUSTOMER";
             this.buttonToDeleteCustomer.UseVisualStyleBackColor = true;
+            this.buttonToDeleteCustomer.Click += new System.EventHandler(this.buttonToDeleteCustomer_Click);
+            // 
+            // lblDeletionStatus
+            // 
+            this.lblDeletionStatus.AutoSize = true;
+            this.lblDeletionStatus.Location = new System.Drawing.Point(593, 247);
+            this.lblDeletionStatus.Name = "lblDeletionStatus";
+            this.lblDeletionStatus.Size = new System.Drawing.Size(0, 20);
+            this.lblDeletionStatus.TabIndex = 4;
             // 
             // YELLOW_BUCKET____DELETE_A_CUSTOMER
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.lblDeletionStatus);
             this.Controls.Add(this.buttonToDeleteCustomer);
             this.Controls.Add(this.lblCustomerName);
             this.Controls.Add(this.comboBoxOfCustomers);
@@ -208,5 +220,6 @@
         private System.Windows.Forms.ComboBox comboBoxOfCustomers;
         private System.Windows.Forms.Label lblCustomerName;
         private System.Windows.Forms.Button buttonToDeleteCustomer;
+        private System.Windows.Forms.Label lblDeletionStatus;
     }
 }
