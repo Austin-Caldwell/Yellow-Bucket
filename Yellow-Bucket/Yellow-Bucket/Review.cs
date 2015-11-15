@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,12 +7,20 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class Kiosks : Form
+    public partial class Review : Form
     {
-        public Kiosks()
+        protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
+        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String: 
+        // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
+
+        public Review()
         {
             InitializeComponent();
         }
@@ -65,6 +72,13 @@ namespace Yellow_Bucket
             reviewForm.Show();
         }
 
+        private void btnSeeReview_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SeeMovieReviews SeeMovieReviewForm = new SeeMovieReviews();
+            SeeMovieReviewForm.Show();
+        }
+
         private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -80,3 +94,5 @@ namespace Yellow_Bucket
         }
     }
 }
+    
+

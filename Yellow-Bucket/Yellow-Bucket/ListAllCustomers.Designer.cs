@@ -111,6 +111,7 @@
             this.rENTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rENTToolStripMenuItem.Text = "RENT";
             this.rENTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rENTToolStripMenuItem.Click += new System.EventHandler(this.rENTToolStripMenuItem_Click);
             // 
             // rETURNToolStripMenuItem
             // 
@@ -119,6 +120,7 @@
             this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rETURNToolStripMenuItem.Text = "RETURN";
             this.rETURNToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rETURNToolStripMenuItem.Click += new System.EventHandler(this.rETURNToolStripMenuItem_Click);
             // 
             // rEVIEWToolStripMenuItem
             // 
@@ -127,6 +129,7 @@
             this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rEVIEWToolStripMenuItem.Text = "REVIEW";
             this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rEVIEWToolStripMenuItem.Click += new System.EventHandler(this.rEVIEWToolStripMenuItem_Click);
             // 
             // aBOUTToolStripMenuItem
             // 

@@ -56,6 +56,24 @@
     <Compile Include="Customers.Designer.cs">
       <DependentUpon>Customers.cs</DependentUpon>
     </Compile>
+    <Compile Include="RentAMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RentAMovie.Designer.cs">
+      <DependentUpon>RentAMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReturnMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReturnMovie.Designer.cs">
+      <DependentUpon>ReturnMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Review.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Review.Designer.cs">
+      <DependentUpon>Review.cs</DependentUpon>
+    </Compile>
     <Compile Include="Kiosks.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +104,18 @@
     <Compile Include="DeleteACustomer.Designer.cs">
       <DependentUpon>DeleteACustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="SeeMovieReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SeeMovieReviews.Designer.cs">
+      <DependentUpon>SeeMovieReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WriteMovieReviews.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WriteMovieReviews.Designer.cs">
+      <DependentUpon>WriteMovieReviews.cs</DependentUpon>
+    </Compile>
     <Compile Include="YellowBucketHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -99,6 +129,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Customers.resx">
       <DependentUpon>Customers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RentAMovie.resx">
+      <DependentUpon>RentAMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReturnMovie.resx">
+      <DependentUpon>ReturnMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Review.resx">
+      <DependentUpon>Review.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Kiosks.resx">
       <DependentUpon>Kiosks.cs</DependentUpon>
@@ -115,6 +154,12 @@
     <EmbeddedResource Include="DeleteACustomer.resx">
       <DependentUpon>DeleteACustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="SeeMovieReviews.resx">
+      <DependentUpon>SeeMovieReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WriteMovieReviews.resx">
+      <DependentUpon>WriteMovieReviews.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="YellowBucketHome.resx">
       <DependentUpon>YellowBucketHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -127,6 +172,7 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Yellow_Bucket
 {
-    public partial class Kiosks : Form
+    public partial class ReturnMovie : Form
     {
-        public Kiosks()
+        public ReturnMovie()
         {
             InitializeComponent();
         }
@@ -42,8 +41,8 @@ namespace Yellow_Bucket
         private void mOVIESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Movies movieForm = new Movies();
-            movieForm.Show();
+            Kiosks kioskForm = new Kiosks();
+            kioskForm.Show();
         }
 
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
