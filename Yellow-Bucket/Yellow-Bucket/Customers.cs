@@ -65,6 +65,7 @@ namespace Yellow_Bucket
             listAllCustomersForm.Show();
         }
 
+<<<<<<< HEAD
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -84,6 +85,20 @@ namespace Yellow_Bucket
             this.Hide();
             RentAMovie RentAMovieForm = new RentAMovie();
             RentAMovieForm.Show();
+=======
+        private void buttonToAddCustomer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddACustomer addCustomerForm = new AddACustomer();
+            addCustomerForm.Show();
+        }
+
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
+            deleteCustomerForm.Show();
+>>>>>>> origin/master
         }
     }
 }

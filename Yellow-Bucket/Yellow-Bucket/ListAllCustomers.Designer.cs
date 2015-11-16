@@ -176,6 +176,7 @@
             this.buttonToAddCustomer.TabIndex = 3;
             this.buttonToAddCustomer.Text = "Add A Customer";
             this.buttonToAddCustomer.UseVisualStyleBackColor = true;
+            this.buttonToAddCustomer.Click += new System.EventHandler(this.buttonToAddCustomer_Click);
             // 
             // buttonToEditCustomerInfo
             // 
@@ -206,6 +207,7 @@
             this.buttonToDeleteCustomer.TabIndex = 6;
             this.buttonToDeleteCustomer.Text = "Delete A Customer";
             this.buttonToDeleteCustomer.UseVisualStyleBackColor = true;
+            this.buttonToDeleteCustomer.Click += new System.EventHandler(this.buttonToDeleteCustomer_Click);
             // 
             // ListAllCustomers
             // 

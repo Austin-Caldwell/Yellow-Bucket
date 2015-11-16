@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
+using System.Data.SqlClient;    // To access database
 
 namespace Yellow_Bucket
 {
@@ -20,6 +20,11 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String: 
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
+        // Variables to hold the firstname, lastname, and username of the customer selected in the comboBoxOfCustomers
+        private string selectedCustomerFirstName;
+        private string selectedCustomerLastName;
+        private string selectedCustomerUserName;
+
         public YELLOW_BUCKET____DELETE_A_CUSTOMER()
         {
             InitializeComponent();
@@ -30,7 +35,7 @@ namespace Yellow_Bucket
             fillCustomerComboBox();
         }
 
-        private void fillCustomerComboBox()
+        private void fillCustomerComboBox() // comboBoxOfCustomers is filled with customer firstnames, lastnames, and usernames
         {
             DataTable customers = new DataTable();
 
@@ -38,7 +43,7 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(firstName, ' ', lastName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
                     adapter.Fill(customers);
 
                     comboBoxOfCustomers.ValueMember = "id";
@@ -95,6 +100,7 @@ namespace Yellow_Bucket
             Application.Exit();
         }
 
+<<<<<<< HEAD
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -114,6 +120,42 @@ namespace Yellow_Bucket
             this.Hide();
             RentAMovie RentAMovieForm = new RentAMovie();
             RentAMovieForm.Show();
+=======
+        private void comboBoxOfCustomers_SelectedIndexChanged(object sender, EventArgs e) // Setting the selected customer's firstnames, lastnames, and usernames based on comboBoxOfCustomers selection
+        {
+            char[] delimiterChars = {' '};
+
+            lblDeletionStatus.Text = "";    // Reset status message when selected customer is changed
+
+            string[] customerName = comboBoxOfCustomers.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
+            selectedCustomerFirstName = customerName[0];
+            selectedCustomerLastName = customerName[1];
+            selectedCustomerUserName = customerName[3];
+        }
+
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)   // Delete customer record based on the selected customer's username
+        {
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+                    SqlCommand deleteCustomer = new SqlCommand("DELETE FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
+                    deleteCustomer.Parameters.Add("@userName", SqlDbType.VarChar);
+                    deleteCustomer.Parameters["@userName"].Value = selectedCustomerUserName;
+                    deleteCustomer.ExecuteNonQuery();
+
+                    lblDeletionStatus.Text = "Successfully Deleted Customer Record for " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + "!";
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                    lblDeletionStatus.Text = "Customer Deletion of " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + " FAILED!";
+                }
+            }
+>>>>>>> origin/master
         }
     }
 }
