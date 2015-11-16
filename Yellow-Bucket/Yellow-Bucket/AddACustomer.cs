@@ -67,15 +67,18 @@ namespace Yellow_Bucket
 
         private void buttonSaveNewCustomer_Click(object sender, EventArgs e)
         {
-            if(testPasswordValidity(textBoxPassword.Text, textBoxConfirmPassword.Text))
+            if(testPasswordValidity() && testTextBoxInputValidity())
             {
                 try
                 {
-                    //testIfAddressAlreadyExists(textBoxAddressLine1.Text, textBoxCity.Text, textBoxState.Text, maskedTextBoxPostalCode.Text);
+
+
+                    lblSaveStatus.Text = "SUCCESS: New Customer Information Saved!";
                 }
 
                 catch (Exception ex)
                 {
+                    lblSaveStatus.Text = "Unable to save new customer information: " + ex.ToString();
                     Console.WriteLine(ex.ToString());
                 }
             }
@@ -85,73 +88,79 @@ namespace Yellow_Bucket
             }
         }
 
-        private bool testPasswordValidity(string password1, string password2)
+        private bool testPasswordValidity() // Test to be sure that passwords are not null, too short, or too long
         {
+            string password1 = textBoxPassword.Text;
+            string password2 = textBoxConfirmPassword.Text;
+
+            lblPasswordInfoMessage.Text = "";
+            lblPasswordNull.Text = "";
+            lblPasswordLengthWarning.Text = "";
+            lblPasswordsMatch.Text = "";
+
             if (password1 == "" || password2 == "")
             {
                 lblPasswordNull.Text = "Password must not be empty!";
+                lblSaveStatus.Text = "Unable to save new customer information.  Password Error";
                 return false;
             }
             else
             {
-                lblPasswordNull.Text = "";
-
-                if (password1 == password2)
+                if (password1.Length < 8)
                 {
-                    lblPasswordsMatch.Text = "Passwords Match!";
-                    return true;
+                    lblPasswordLengthWarning.Text = "Password too short!";
+                    lblSaveStatus.Text = "Unable to save new customer information.  Password Error";
+                    return false;
                 }
                 else
                 {
-                    lblPasswordsMatch.Text = "Passwords Must Match!";
-                    lblSaveStatus.Text = "Unable to save new customer information.  Passwords do not match.";
-                    return false;
+                    if (password1.Length > 32)
+                    {
+                        lblPasswordLengthWarning.Text = "Password too long!";
+                        lblSaveStatus.Text = "Unable to save new customer information.  Password Error";
+                        return false;
+                    }
+                    else
+                    {
+                        if (password1 == password2)
+                        {
+                            lblSaveStatus.Text = "";
+                            lblPasswordsMatch.Text = "Passwords Match!";
+                            return true;
+                        }
+                        else
+                        {
+                            lblPasswordsMatch.Text = "Passwords Must Match!";
+                            lblSaveStatus.Text = "Unable to save new customer information.  Password Error";
+                            return false;
+                        }
+                    }
                 }
             }
         }
 
-        //private bool testIfAddressAlreadyExists(string addressLine1, string city, string state, string zipCode)
-        //{
-        //    int doesAddressExist = 0;
+        private bool testTextBoxInputValidity() // Test to be sure that no required field is null
+        {
+            string firstName = textBoxFirstName.Text;
+            string lastName = textBoxLastName.Text;
+            string email = textBoxEmail.Text;
+            string userName = textBoxUsername.Text;
+            string password = textBoxPassword.Text;
+            string confirmPassword = textBoxConfirmPassword.Text;
+            string address1 = textBoxAddressLine1.Text;
+            string city = textBoxCity.Text;
+            string state = textBoxState.Text;
+            string zip = textBoxZipCode.Text;
 
-        //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            YellowBucketConnection.Open();
-        //            SqlCommand addressCheck = new SqlCommand("SELECT * FROM dbo.CustomerAddress WHERE addressLine1 = @addressLine1 AND city = @city AND stateProvince = @stateProvince AND postalCode = @postalCode", YellowBucketConnection);
-        //            addressCheck.Parameters.Add("@addressLine1", SqlDbType.VarChar);
-        //            addressCheck.Parameters.Add("@city", SqlDbType.VarChar);
-        //            addressCheck.Parameters.Add("@stateProvince", SqlDbType.VarChar);
-        //            addressCheck.Parameters.Add("@postalCode", SqlDbType.VarChar);
-
-        //            addressCheck.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
-        //            addressCheck.Parameters["@city"].Value = textBoxCity.Text;
-        //            addressCheck.Parameters["@stateProvince"].Value = textBoxState.Text;
-        //            addressCheck.Parameters["@postalCode"].Value = maskedTextBoxPostalCode.Text;
-
-        //            doesAddressExist = addressCheck.ExecuteNonQuery();
-
-        //            if (doesAddressExist == 1)
-        //            {
-        //                lblSaveStatus.Text = "Yes, the address already exists.";
-        //                YellowBucketConnection.Close();
-        //                return true;
-        //            }
-        //            else
-        //            {
-        //                lblSaveStatus.Text = "No, the address did not already exist.";
-        //                YellowBucketConnection.Close();
-        //                return false;
-        //            }
-        //        }
-
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.ToString());
-        //            return false;
-        //        }
-        //    }
-        //}
+            if (firstName == "" || lastName == "" || email == "" || userName == "" || password == "" || confirmPassword == "" || address1 == "" || city == "" || state == "" || zip == "")
+            {
+                lblSaveStatus.Text = "Unable to save new customer information.  Required Fields Must Not Be Empty";
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

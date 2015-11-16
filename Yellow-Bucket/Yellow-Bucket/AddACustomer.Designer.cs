@@ -68,8 +68,10 @@
             this.textBoxCity = new System.Windows.Forms.TextBox();
             this.textBoxState = new System.Windows.Forms.TextBox();
             this.lblSaveStatus = new System.Windows.Forms.Label();
-            this.maskedTextBoxPostalCode = new System.Windows.Forms.MaskedTextBox();
             this.lblPasswordNull = new System.Windows.Forms.Label();
+            this.lblPasswordInfoMessage = new System.Windows.Forms.Label();
+            this.lblPasswordLengthWarning = new System.Windows.Forms.Label();
+            this.textBoxZipCode = new System.Windows.Forms.TextBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,7 +177,7 @@
             // lblFirstName
             // 
             this.lblFirstName.AutoSize = true;
-            this.lblFirstName.Location = new System.Drawing.Point(287, 111);
+            this.lblFirstName.Location = new System.Drawing.Point(288, 84);
             this.lblFirstName.Name = "lblFirstName";
             this.lblFirstName.Size = new System.Drawing.Size(100, 20);
             this.lblFirstName.TabIndex = 1;
@@ -184,7 +186,7 @@
             // lblLastName
             // 
             this.lblLastName.AutoSize = true;
-            this.lblLastName.Location = new System.Drawing.Point(287, 155);
+            this.lblLastName.Location = new System.Drawing.Point(287, 116);
             this.lblLastName.Name = "lblLastName";
             this.lblLastName.Size = new System.Drawing.Size(100, 20);
             this.lblLastName.TabIndex = 2;
@@ -193,7 +195,7 @@
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
-            this.lblEmail.Location = new System.Drawing.Point(325, 199);
+            this.lblEmail.Location = new System.Drawing.Point(325, 148);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(62, 20);
             this.lblEmail.TabIndex = 3;
@@ -202,7 +204,7 @@
             // lblAlternateEmail
             // 
             this.lblAlternateEmail.AutoSize = true;
-            this.lblAlternateEmail.Location = new System.Drawing.Point(266, 239);
+            this.lblAlternateEmail.Location = new System.Drawing.Point(266, 180);
             this.lblAlternateEmail.Name = "lblAlternateEmail";
             this.lblAlternateEmail.Size = new System.Drawing.Size(121, 20);
             this.lblAlternateEmail.TabIndex = 4;
@@ -211,7 +213,7 @@
             // lblUsername
             // 
             this.lblUsername.AutoSize = true;
-            this.lblUsername.Location = new System.Drawing.Point(290, 282);
+            this.lblUsername.Location = new System.Drawing.Point(290, 241);
             this.lblUsername.Name = "lblUsername";
             this.lblUsername.Size = new System.Drawing.Size(97, 20);
             this.lblUsername.TabIndex = 5;
@@ -239,7 +241,7 @@
             // 
             this.lblEnterInformation.AutoSize = true;
             this.lblEnterInformation.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F);
-            this.lblEnterInformation.Location = new System.Drawing.Point(387, 24);
+            this.lblEnterInformation.Location = new System.Drawing.Point(387, 9);
             this.lblEnterInformation.Name = "lblEnterInformation";
             this.lblEnterInformation.Size = new System.Drawing.Size(409, 31);
             this.lblEnterInformation.TabIndex = 8;
@@ -249,7 +251,7 @@
             // 
             this.lblDenotesRequired.AutoSize = true;
             this.lblDenotesRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.lblDenotesRequired.Location = new System.Drawing.Point(494, 55);
+            this.lblDenotesRequired.Location = new System.Drawing.Point(494, 40);
             this.lblDenotesRequired.Name = "lblDenotesRequired";
             this.lblDenotesRequired.Size = new System.Drawing.Size(187, 20);
             this.lblDenotesRequired.TabIndex = 9;
@@ -257,21 +259,21 @@
             // 
             // textBoxFirstName
             // 
-            this.textBoxFirstName.Location = new System.Drawing.Point(393, 105);
+            this.textBoxFirstName.Location = new System.Drawing.Point(394, 78);
             this.textBoxFirstName.Name = "textBoxFirstName";
             this.textBoxFirstName.Size = new System.Drawing.Size(403, 26);
             this.textBoxFirstName.TabIndex = 1;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(393, 149);
+            this.textBoxLastName.Location = new System.Drawing.Point(393, 110);
             this.textBoxLastName.Name = "textBoxLastName";
             this.textBoxLastName.Size = new System.Drawing.Size(403, 26);
             this.textBoxLastName.TabIndex = 2;
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(394, 281);
+            this.textBoxUsername.Location = new System.Drawing.Point(393, 235);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(402, 26);
             this.textBoxUsername.TabIndex = 5;
@@ -296,14 +298,14 @@
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(394, 198);
+            this.textBoxEmail.Location = new System.Drawing.Point(393, 142);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(402, 26);
+            this.textBoxEmail.Size = new System.Drawing.Size(403, 26);
             this.textBoxEmail.TabIndex = 3;
             // 
             // textBoxAlterateEmail
             // 
-            this.textBoxAlterateEmail.Location = new System.Drawing.Point(394, 238);
+            this.textBoxAlterateEmail.Location = new System.Drawing.Point(393, 174);
             this.textBoxAlterateEmail.Name = "textBoxAlterateEmail";
             this.textBoxAlterateEmail.Size = new System.Drawing.Size(402, 26);
             this.textBoxAlterateEmail.TabIndex = 4;
@@ -424,15 +426,6 @@
             this.lblSaveStatus.Size = new System.Drawing.Size(0, 20);
             this.lblSaveStatus.TabIndex = 18;
             // 
-            // maskedTextBoxPostalCode
-            // 
-            this.maskedTextBoxPostalCode.AllowPromptAsInput = false;
-            this.maskedTextBoxPostalCode.Location = new System.Drawing.Point(393, 631);
-            this.maskedTextBoxPostalCode.Mask = "000009999";
-            this.maskedTextBoxPostalCode.Name = "maskedTextBoxPostalCode";
-            this.maskedTextBoxPostalCode.Size = new System.Drawing.Size(95, 26);
-            this.maskedTextBoxPostalCode.TabIndex = 13;
-            // 
             // lblPasswordNull
             // 
             this.lblPasswordNull.AutoSize = true;
@@ -441,18 +434,44 @@
             this.lblPasswordNull.Size = new System.Drawing.Size(0, 20);
             this.lblPasswordNull.TabIndex = 19;
             // 
+            // lblPasswordInfoMessage
+            // 
+            this.lblPasswordInfoMessage.AutoSize = true;
+            this.lblPasswordInfoMessage.Location = new System.Drawing.Point(338, 284);
+            this.lblPasswordInfoMessage.Name = "lblPasswordInfoMessage";
+            this.lblPasswordInfoMessage.Size = new System.Drawing.Size(528, 20);
+            this.lblPasswordInfoMessage.TabIndex = 20;
+            this.lblPasswordInfoMessage.Text = "- Password must be between eight (8) and thirty-two (32) characters long -";
+            // 
+            // lblPasswordLengthWarning
+            // 
+            this.lblPasswordLengthWarning.AutoSize = true;
+            this.lblPasswordLengthWarning.Location = new System.Drawing.Point(808, 319);
+            this.lblPasswordLengthWarning.Name = "lblPasswordLengthWarning";
+            this.lblPasswordLengthWarning.Size = new System.Drawing.Size(0, 20);
+            this.lblPasswordLengthWarning.TabIndex = 21;
+            // 
+            // textBoxZipCode
+            // 
+            this.textBoxZipCode.Location = new System.Drawing.Point(393, 631);
+            this.textBoxZipCode.Name = "textBoxZipCode";
+            this.textBoxZipCode.Size = new System.Drawing.Size(166, 26);
+            this.textBoxZipCode.TabIndex = 13;
+            // 
             // AddACustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.textBoxZipCode);
+            this.Controls.Add(this.lblPasswordLengthWarning);
+            this.Controls.Add(this.lblPasswordInfoMessage);
             this.Controls.Add(this.lblPasswordNull);
             this.Controls.Add(this.lblSaveStatus);
             this.Controls.Add(this.textBoxState);
             this.Controls.Add(this.textBoxCity);
             this.Controls.Add(this.textBoxAddressLine2);
             this.Controls.Add(this.textBoxAddressLine1);
-            this.Controls.Add(this.maskedTextBoxPostalCode);
             this.Controls.Add(this.lblPostalCode);
             this.Controls.Add(this.lblState);
             this.Controls.Add(this.lblCity);
@@ -533,7 +552,9 @@
         private System.Windows.Forms.TextBox textBoxCity;
         private System.Windows.Forms.TextBox textBoxState;
         private System.Windows.Forms.Label lblSaveStatus;
-        private System.Windows.Forms.MaskedTextBox maskedTextBoxPostalCode;
         private System.Windows.Forms.Label lblPasswordNull;
+        private System.Windows.Forms.Label lblPasswordInfoMessage;
+        private System.Windows.Forms.Label lblPasswordLengthWarning;
+        private System.Windows.Forms.TextBox textBoxZipCode;
     }
 }
