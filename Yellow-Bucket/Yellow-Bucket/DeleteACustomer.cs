@@ -19,6 +19,8 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String: 
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
+
+        // Variables to hold the firstname, lastname, and username of the customer selected in the comboBoxOfCustomers
         private string selectedCustomerFirstName;
         private string selectedCustomerLastName;
         private string selectedCustomerUserName;
@@ -33,7 +35,7 @@ namespace Yellow_Bucket
             fillCustomerComboBox();
         }
 
-        private void fillCustomerComboBox()
+        private void fillCustomerComboBox() // comboBoxOfCustomers is filled with customer firstnames, lastnames, and usernames
         {
             DataTable customers = new DataTable();
 
@@ -41,7 +43,7 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastName, ', ', firstName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(firstName, ' ', lastName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
                     adapter.Fill(customers);
 
                     comboBoxOfCustomers.ValueMember = "id";
@@ -98,19 +100,19 @@ namespace Yellow_Bucket
             Application.Exit();
         }
 
-        private void comboBoxOfCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxOfCustomers_SelectedIndexChanged(object sender, EventArgs e) // Setting the selected customer's firstnames, lastnames, and usernames based on comboBoxOfCustomers selection
         {
-            char[] delimiterChars = {',', ' ', '-'};
+            char[] delimiterChars = {' '};
 
             lblDeletionStatus.Text = "";    // Reset status message when selected customer is changed
 
             string[] customerName = comboBoxOfCustomers.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
-            selectedCustomerFirstName = customerName[2];
-            selectedCustomerLastName = customerName[0];
-            selectedCustomerUserName = customerName[5];
+            selectedCustomerFirstName = customerName[0];
+            selectedCustomerLastName = customerName[1];
+            selectedCustomerUserName = customerName[3];
         }
 
-        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)   // Delete customer record based on the selected customer's username
         {
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {

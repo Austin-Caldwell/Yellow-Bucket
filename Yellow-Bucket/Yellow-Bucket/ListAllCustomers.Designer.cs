@@ -173,6 +173,7 @@
             this.buttonToAddCustomer.TabIndex = 3;
             this.buttonToAddCustomer.Text = "Add A Customer";
             this.buttonToAddCustomer.UseVisualStyleBackColor = true;
+            this.buttonToAddCustomer.Click += new System.EventHandler(this.buttonToAddCustomer_Click);
             // 
             // buttonToEditCustomerInfo
             // 

@@ -65,6 +65,13 @@ namespace Yellow_Bucket
             listAllCustomersForm.Show();
         }
 
+        private void buttonToAddCustomer_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddACustomer addCustomerForm = new AddACustomer();
+            addCustomerForm.Show();
+        }
+
         private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
         {
             this.Hide();
