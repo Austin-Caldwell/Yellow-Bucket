@@ -131,7 +131,7 @@ namespace Yellow_Bucket
                 catch (Exception ex)
                 {
                     Console.WriteLine(ex.ToString());
-                    lblDeletionStatus.Text = "Customer Deletion of " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + " FAILED!";
+                    lblDeletionStatus.Text = "Customer Deletion of " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + " FAILED!\n" + ex.ToString();
                 }
             }
         }

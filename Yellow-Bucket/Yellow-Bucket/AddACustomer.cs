@@ -69,17 +69,43 @@ namespace Yellow_Bucket
         {
             if(testPasswordValidity() && testTextBoxInputValidity())
             {
-                try
+                using (YellowBucketConnection = new SqlConnection(connectionString))
                 {
+                    try
+                    {
+                        YellowBucketConnection.Open();
+                        SqlCommand addCustomerRecord = new SqlCommand("INSERT INTO Customer(firstName, lastName, email, userName, userPassword, creditCard VALUES @firstName, @lastName, @email, @userName, @userPassword, @creditCard;", YellowBucketConnection);
+
+                        addCustomerRecord.Parameters.Add("@firstName", SqlDbType.VarChar);
+                        addCustomerRecord.Parameters.Add("@lastName", SqlDbType.VarChar);
+                        addCustomerRecord.Parameters.Add("@email", SqlDbType.VarChar);
+                        addCustomerRecord.Parameters.Add("@userName", SqlDbType.VarChar);
+                        addCustomerRecord.Parameters.Add("@userPassword", SqlDbType.VarChar);
+                        addCustomerRecord.Parameters.Add("@creditCard", SqlDbType.VarChar);
+
+                        addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
+                        addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
+                        addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
+                        addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
+                        addCustomerRecord.Parameters["@userPassword"].Value = textBoxPassword.Text;
+                        if(maskedTextBoxCreditCardNumber.Text == "")
+                        {
+                            addCustomerRecord.Parameters["@creditCard"].Value = null;
+                        }
+                        else
+                        {
+                            addCustomerRecord.Parameters["@creditCard"].Value = maskedTextBoxCreditCardNumber.Text;
+                        }
 
 
-                    lblSaveStatus.Text = "SUCCESS: New Customer Information Saved!";
-                }
+                        lblSaveStatus.Text = "SUCCESS: New Customer Information Saved!";
+                    }
 
-                catch (Exception ex)
-                {
-                    lblSaveStatus.Text = "Unable to save new customer information: " + ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    catch (Exception ex)
+                    {
+                        lblSaveStatus.Text = "Unable to save new customer information: " + ex.ToString();
+                        Console.WriteLine(ex.ToString());
+                    }
                 }
             }
             else
