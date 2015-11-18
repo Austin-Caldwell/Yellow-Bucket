@@ -338,7 +338,7 @@
             // 
             // buttonSaveNewCustomer
             // 
-            this.buttonSaveNewCustomer.Location = new System.Drawing.Point(448, 668);
+            this.buttonSaveNewCustomer.Location = new System.Drawing.Point(448, 653);
             this.buttonSaveNewCustomer.Name = "buttonSaveNewCustomer";
             this.buttonSaveNewCustomer.Size = new System.Drawing.Size(264, 49);
             this.buttonSaveNewCustomer.TabIndex = 14;
@@ -358,7 +358,7 @@
             // lblAddressLine2
             // 
             this.lblAddressLine2.AutoSize = true;
-            this.lblAddressLine2.Location = new System.Drawing.Point(259, 493);
+            this.lblAddressLine2.Location = new System.Drawing.Point(260, 490);
             this.lblAddressLine2.Name = "lblAddressLine2";
             this.lblAddressLine2.Size = new System.Drawing.Size(128, 20);
             this.lblAddressLine2.TabIndex = 14;
@@ -367,7 +367,7 @@
             // lblCity
             // 
             this.lblCity.AutoSize = true;
-            this.lblCity.Location = new System.Drawing.Point(338, 543);
+            this.lblCity.Location = new System.Drawing.Point(338, 522);
             this.lblCity.Name = "lblCity";
             this.lblCity.Size = new System.Drawing.Size(49, 20);
             this.lblCity.TabIndex = 15;
@@ -376,7 +376,7 @@
             // lblState
             // 
             this.lblState.AutoSize = true;
-            this.lblState.Location = new System.Drawing.Point(325, 593);
+            this.lblState.Location = new System.Drawing.Point(326, 554);
             this.lblState.Name = "lblState";
             this.lblState.Size = new System.Drawing.Size(62, 20);
             this.lblState.TabIndex = 16;
@@ -385,7 +385,7 @@
             // lblPostalCode
             // 
             this.lblPostalCode.AutoSize = true;
-            this.lblPostalCode.Location = new System.Drawing.Point(252, 637);
+            this.lblPostalCode.Location = new System.Drawing.Point(252, 586);
             this.lblPostalCode.Name = "lblPostalCode";
             this.lblPostalCode.Size = new System.Drawing.Size(135, 20);
             this.lblPostalCode.TabIndex = 17;
@@ -400,23 +400,23 @@
             // 
             // textBoxAddressLine2
             // 
-            this.textBoxAddressLine2.Location = new System.Drawing.Point(394, 492);
+            this.textBoxAddressLine2.Location = new System.Drawing.Point(394, 484);
             this.textBoxAddressLine2.Name = "textBoxAddressLine2";
             this.textBoxAddressLine2.Size = new System.Drawing.Size(402, 26);
             this.textBoxAddressLine2.TabIndex = 10;
             // 
             // textBoxCity
             // 
-            this.textBoxCity.Location = new System.Drawing.Point(393, 537);
+            this.textBoxCity.Location = new System.Drawing.Point(393, 516);
             this.textBoxCity.Name = "textBoxCity";
             this.textBoxCity.Size = new System.Drawing.Size(403, 26);
             this.textBoxCity.TabIndex = 11;
             // 
             // textBoxState
             // 
-            this.textBoxState.Location = new System.Drawing.Point(393, 587);
+            this.textBoxState.Location = new System.Drawing.Point(394, 548);
             this.textBoxState.Name = "textBoxState";
-            this.textBoxState.Size = new System.Drawing.Size(403, 26);
+            this.textBoxState.Size = new System.Drawing.Size(401, 26);
             this.textBoxState.TabIndex = 12;
             // 
             // lblSaveStatus
@@ -454,7 +454,7 @@
             // 
             // textBoxZipCode
             // 
-            this.textBoxZipCode.Location = new System.Drawing.Point(393, 631);
+            this.textBoxZipCode.Location = new System.Drawing.Point(393, 580);
             this.textBoxZipCode.Name = "textBoxZipCode";
             this.textBoxZipCode.Size = new System.Drawing.Size(166, 26);
             this.textBoxZipCode.TabIndex = 13;

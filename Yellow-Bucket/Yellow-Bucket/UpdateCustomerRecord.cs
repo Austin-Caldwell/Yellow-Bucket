@@ -7,14 +7,57 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
     public partial class UpdateCustomerRecord : Form
     {
+        protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+
+        // Variables to hold the firstname, lastname, and username of the customer selected in the comboBoxOfCustomers
+        private string selectedCustomerFirstName;
+        private string selectedCustomerLastName;
+        private string selectedCustomerUserName;
+
         public UpdateCustomerRecord()
         {
             InitializeComponent();
+        }
+
+        private void UpdateCustomerRecord_Load(object sender, EventArgs e)
+        {
+            fillCustomerComboBox();
+        }
+
+        private void fillCustomerComboBox() // comboBoxOfCustomers is filled with customer firstnames, lastnames, and usernames
+        {
+            DataTable customers = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(firstName, ' ', lastName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    adapter.Fill(customers);
+
+                    comboBoxOfCustomers.ValueMember = "id";
+                    comboBoxOfCustomers.DisplayMember = "fullname";
+                    comboBoxOfCustomers.DataSource = customers;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)

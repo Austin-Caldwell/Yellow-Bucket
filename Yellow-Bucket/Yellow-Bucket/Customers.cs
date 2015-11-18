@@ -129,5 +129,12 @@ namespace Yellow_Bucket
             YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
             deleteCustomerForm.Show();
         }
+
+        private void buttonToEditCustomerInfo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            UpdateCustomerRecord updateCustomerForm = new UpdateCustomerRecord();
+            updateCustomerForm.Show();
+        }
     }
 }

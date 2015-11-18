@@ -187,6 +187,7 @@
             this.buttonToEditCustomerInfo.TabIndex = 4;
             this.buttonToEditCustomerInfo.Text = "Edit Customer Info";
             this.buttonToEditCustomerInfo.UseVisualStyleBackColor = true;
+            this.buttonToEditCustomerInfo.Click += new System.EventHandler(this.buttonToEditCustomerInfo_Click);
             // 
             // buttonToViewCustomerDetails
             // 
@@ -209,7 +210,7 @@
             this.buttonToDeleteCustomer.UseVisualStyleBackColor = true;
             this.buttonToDeleteCustomer.Click += new System.EventHandler(this.buttonToDeleteCustomer_Click);
             // 
-            // ListAllCustomers
+            // Customers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -224,7 +225,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "ListAllCustomers";
+            this.Name = "Customers";
             this.Text = "YELLOW BUCKET -- LIST ALL CUSTOMERS";
             this.Load += new System.EventHandler(this.ListAllCustomers_Load);
             this.mainMenuStrip.ResumeLayout(false);
