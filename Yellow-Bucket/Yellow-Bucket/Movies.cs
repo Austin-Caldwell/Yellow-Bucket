@@ -8,14 +8,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;    // To Access Database
 
 namespace Yellow_Bucket
 {
     public partial class Movies : Form
     {
+        protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+
         public Movies()
         {
             InitializeComponent();
+        }
+
+        private void ListAllMovies_Load(object sender, EventArgs e)
+        {
+            fillListOfAllMovies();
+        }
+
+        private void fillListOfAllMovies()
+        {
+            DataTable allMovies = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie", YellowBucketConnection);
+                    adapter.Fill(allMovies);
+
+                    listBoxOfAllMovies.ValueMember = "id";
+                    listBoxOfAllMovies.DisplayMember = "title";
+                    listBoxOfAllMovies.DataSource = allMovies;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,13 +94,6 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void buttonToListAllMovies_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ListAllMovies listAllMoviesForm = new ListAllMovies();
-            listAllMoviesForm.Show();
         }
 
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)

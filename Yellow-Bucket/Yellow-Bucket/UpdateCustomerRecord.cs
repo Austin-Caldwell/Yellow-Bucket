@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Yellow_Bucket
 {
-    public partial class YellowBucketHome : Form
+    public partial class UpdateCustomerRecord : Form
     {
-        public YellowBucketHome()
+        public UpdateCustomerRecord()
         {
             InitializeComponent();
         }
@@ -46,6 +45,27 @@ namespace Yellow_Bucket
             movieForm.Show();
         }
 
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie rentMovieForm = new RentAMovie();
+            rentMovieForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
+        }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
+        }
+
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -57,48 +77,5 @@ namespace Yellow_Bucket
         {
             Application.Exit();
         }
-
-        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Review reviewForm = new Review();
-            reviewForm.Show();
-        }
-
-        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
-        }
-
-        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
-        }
-
-        private void buttonToRentMovie_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RentAMovie rentMovieForm = new RentAMovie();
-            rentMovieForm.Show();
-        }
-
-        private void buttonToReturnMovie_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ReturnMovie returnMovieForm = new ReturnMovie();
-            returnMovieForm.Show();
-        }
-
-        private void buttonToReviewMovie_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Review reviewForm = new Review();
-            reviewForm.Show();
-        }
     }
-    
 }

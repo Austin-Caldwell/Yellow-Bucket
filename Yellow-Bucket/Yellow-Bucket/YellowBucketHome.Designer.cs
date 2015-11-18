@@ -177,6 +177,7 @@
             this.buttonToRentMovie.TabIndex = 1;
             this.buttonToRentMovie.Text = "Rent A Movie";
             this.buttonToRentMovie.UseVisualStyleBackColor = true;
+            this.buttonToRentMovie.Click += new System.EventHandler(this.buttonToRentMovie_Click);
             // 
             // buttonToReturnMovie
             // 
@@ -187,6 +188,7 @@
             this.buttonToReturnMovie.TabIndex = 2;
             this.buttonToReturnMovie.Text = "Return A Movie";
             this.buttonToReturnMovie.UseVisualStyleBackColor = true;
+            this.buttonToReturnMovie.Click += new System.EventHandler(this.buttonToReturnMovie_Click);
             // 
             // buttonToReviewMovie
             // 
@@ -197,6 +199,7 @@
             this.buttonToReviewMovie.TabIndex = 3;
             this.buttonToReviewMovie.Text = "Review A Movie";
             this.buttonToReviewMovie.UseVisualStyleBackColor = true;
+            this.buttonToReviewMovie.Click += new System.EventHandler(this.buttonToReviewMovie_Click);
             // 
             // labelWelcome
             // 

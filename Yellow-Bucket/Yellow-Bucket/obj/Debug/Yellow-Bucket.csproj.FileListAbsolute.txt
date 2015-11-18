@@ -46,3 +46,4 @@ C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucke
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.SeeMovieReviews.resources
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.WriteMovieReviews.resources
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.ErrorDisplay.resources
+C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.UpdateCustomerRecord.resources

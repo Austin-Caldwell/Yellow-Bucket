@@ -7,11 +7,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
     public partial class RentAMovie : Form
     {
+        protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+
         public RentAMovie()
         {
             InitializeComponent();
@@ -55,8 +63,8 @@ namespace Yellow_Bucket
         private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
         }
 
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)

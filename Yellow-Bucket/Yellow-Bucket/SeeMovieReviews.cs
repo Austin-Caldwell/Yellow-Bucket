@@ -81,15 +81,15 @@ namespace Yellow_Bucket
         private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
+            RentAMovie rentMovieForm = new RentAMovie();
+            rentMovieForm.Show();
         }
 
         private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
         }
 
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)

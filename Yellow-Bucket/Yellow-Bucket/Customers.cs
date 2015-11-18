@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,14 +7,52 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
     public partial class Customers : Form
     {
+        protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+
         public Customers()
         {
             InitializeComponent();
+        }
+
+        private void ListAllCustomers_Load(object sender, EventArgs e)
+        {
+            fillListOfAllCustomers();
+        }
+
+        private void fillListOfAllCustomers()
+        {
+            DataTable allCustomers = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    adapter.Fill(allCustomers);
+
+                    listBoxOfAllCustomers.ValueMember = "id";
+                    listBoxOfAllCustomers.DisplayMember = "fullname";
+                    listBoxOfAllCustomers.DataSource = allCustomers;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,13 +93,6 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void buttonToListAllCustomers_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ListAllCustomers listAllCustomersForm = new ListAllCustomers();
-            listAllCustomersForm.Show();
         }
 
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)

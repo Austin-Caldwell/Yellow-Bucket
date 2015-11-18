@@ -15,9 +15,10 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        // Jacob Girvin's Connection String: 
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
         public Review()
@@ -75,22 +76,22 @@ namespace Yellow_Bucket
         private void btnSeeReview_Click(object sender, EventArgs e)
         {
             this.Hide();
-            SeeMovieReviews SeeMovieReviewForm = new SeeMovieReviews();
-            SeeMovieReviewForm.Show();
+            SeeMovieReviews seeMovieReviewForm = new SeeMovieReviews();
+            seeMovieReviewForm.Show();
         }
 
         private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
         }
 
         private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
+            RentAMovie rentMovieForm = new RentAMovie();
+            rentMovieForm.Show();
         }
     }
 }
