@@ -8,17 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace Yellow_Bucket
 {
     public partial class AddACustomer : Form
     {
+        static byte[] bytes = ASCIIEncoding.ASCII.GetBytes("HideWord");
+
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
         protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        // Jacob Girvin's Connection String: 
-        // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         public AddACustomer()
         {
@@ -74,11 +78,12 @@ namespace Yellow_Bucket
                     try
                     {
                         YellowBucketConnection.Open();
-                        SqlCommand addCustomerRecord = new SqlCommand("INSERT INTO Customer(firstName, lastName, email, userName, userPassword, creditCard VALUES @firstName, @lastName, @email, @userName, @userPassword, @creditCard;", YellowBucketConnection);
+                        SqlCommand addCustomerRecord = new SqlCommand("INSERT INTO Customer(firstName, lastName, email, alternateEmail, userName, userPassword, creditCard) VALUES (@firstName, @lastName, @email, @alternateEmail, @userName, @userPassword, @creditCard);", YellowBucketConnection);
 
                         addCustomerRecord.Parameters.Add("@firstName", SqlDbType.VarChar);
                         addCustomerRecord.Parameters.Add("@lastName", SqlDbType.VarChar);
                         addCustomerRecord.Parameters.Add("@email", SqlDbType.VarChar);
+                        addCustomerRecord.Parameters.Add("@alternateEmail", SqlDbType.VarChar);
                         addCustomerRecord.Parameters.Add("@userName", SqlDbType.VarChar);
                         addCustomerRecord.Parameters.Add("@userPassword", SqlDbType.VarChar);
                         addCustomerRecord.Parameters.Add("@creditCard", SqlDbType.VarChar);
@@ -86,24 +91,34 @@ namespace Yellow_Bucket
                         addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
                         addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
                         addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
-                        addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
-                        addCustomerRecord.Parameters["@userPassword"].Value = textBoxPassword.Text;
-                        if(maskedTextBoxCreditCardNumber.Text == "")
+                        if (textBoxAlterateEmail.Text == "")
                         {
-                            addCustomerRecord.Parameters["@creditCard"].Value = null;
+                            addCustomerRecord.Parameters["@alternateEmail"].Value = "";
+                        }
+                        else
+                        {
+                            addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlterateEmail.Text;
+                        }
+                        addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
+                        addCustomerRecord.Parameters["@userPassword"].Value = EncryptPassword(textBoxPassword.Text);
+                        if (maskedTextBoxCreditCardNumber.Text == "")
+                        {
+                            addCustomerRecord.Parameters["@creditCard"].Value = "";
                         }
                         else
                         {
                             addCustomerRecord.Parameters["@creditCard"].Value = maskedTextBoxCreditCardNumber.Text;
                         }
 
+                        addCustomerRecord.ExecuteNonQuery();
 
                         lblSaveStatus.Text = "SUCCESS: New Customer Information Saved!";
+
                     }
 
                     catch (Exception ex)
                     {
-                        lblSaveStatus.Text = "Unable to save new customer information: " + ex.ToString();
+                        label1.Text = "Unable to save new customer information: " + ex.ToString();
                         Console.WriteLine(ex.ToString());
                     }
                 }
@@ -140,7 +155,7 @@ namespace Yellow_Bucket
                 }
                 else
                 {
-                    if (password1.Length > 32)
+                    if (password1.Length > 24)
                     {
                         lblPasswordLengthWarning.Text = "Password too long!";
                         lblSaveStatus.Text = "Unable to save new customer information.  Password Error";
@@ -187,6 +202,61 @@ namespace Yellow_Bucket
             {
                 return true;
             }
+        }
+
+        //private bool testUsernameUniqueness()
+        //{
+        //    using (YellowBucketConnection = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            YellowBucketConnection.Open();
+        //            SqlCommand findUsernameCommand = new SqlCommand("SELECT userName FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
+        //            findUsernameCommand.Parameters.Add("@userName", SqlDbType.VarChar);
+        //            findUsernameCommand.Parameters["@userName"].Value = textBoxUsername.Text;
+                    
+        //            SqlDataAdapter findUsername = new SqlDataAdapter(findUsernameCommand);
+
+        //            if (findUsername.Equals(textBoxUsername.Text))
+        //            {
+        //                lblSaveStatus.Text = "Username " + textBoxUsername.Text + "already exists.  Username must be unique.";
+        //                YellowBucketConnection.Close();
+        //                return false;
+        //            }
+        //            else
+        //            {
+        //                YellowBucketConnection.Close();
+        //                return true;
+        //            }
+        //        }
+
+        //        catch (Exception ex)
+        //        {
+        //            lblSaveStatus.Text = "Unable to verify username uniqueness: " + ex.ToString();
+        //            YellowBucketConnection.Close();
+        //            return false;
+        //        }
+        //    }
+        //}
+
+        private string EncryptPassword(string stringToEncrypt)  // Code Copied From: http://www.codeproject.com/Articles/19538/Encrypt-Decrypt-String-using-DES-in-C
+        {
+            if(String.IsNullOrEmpty(stringToEncrypt))
+            {
+                throw new ArgumentNullException("The password to be encrypted cannot be blank.");
+            }
+
+            DESCryptoServiceProvider cryptoProvider = new DESCryptoServiceProvider();
+            MemoryStream memoryStream = new MemoryStream();
+            CryptoStream cryptoStream = new CryptoStream(memoryStream, cryptoProvider.CreateEncryptor(bytes, bytes), CryptoStreamMode.Write);
+
+            StreamWriter writer = new StreamWriter(cryptoStream);
+            writer.Write(stringToEncrypt);
+            writer.Flush();
+            cryptoStream.FlushFinalBlock();
+            writer.Flush();
+            label1.Text = Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
+            return Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
         }
     }
 }

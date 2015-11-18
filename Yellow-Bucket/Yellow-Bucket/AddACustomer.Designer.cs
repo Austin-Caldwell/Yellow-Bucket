@@ -72,6 +72,7 @@
             this.lblPasswordInfoMessage = new System.Windows.Forms.Label();
             this.lblPasswordLengthWarning = new System.Windows.Forms.Label();
             this.textBoxZipCode = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -439,9 +440,9 @@
             this.lblPasswordInfoMessage.AutoSize = true;
             this.lblPasswordInfoMessage.Location = new System.Drawing.Point(338, 284);
             this.lblPasswordInfoMessage.Name = "lblPasswordInfoMessage";
-            this.lblPasswordInfoMessage.Size = new System.Drawing.Size(528, 20);
+            this.lblPasswordInfoMessage.Size = new System.Drawing.Size(543, 20);
             this.lblPasswordInfoMessage.TabIndex = 20;
-            this.lblPasswordInfoMessage.Text = "- Password must be between eight (8) and thirty-two (32) characters long -";
+            this.lblPasswordInfoMessage.Text = "- Password must be between eight (8) and twenty-four (24) characters long -";
             // 
             // lblPasswordLengthWarning
             // 
@@ -458,11 +459,21 @@
             this.textBoxZipCode.Size = new System.Drawing.Size(166, 26);
             this.textBoxZipCode.TabIndex = 13;
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(-4, 284);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(51, 20);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "label1";
+            // 
             // AddACustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.textBoxZipCode);
             this.Controls.Add(this.lblPasswordLengthWarning);
             this.Controls.Add(this.lblPasswordInfoMessage);
@@ -556,5 +567,6 @@
         private System.Windows.Forms.Label lblPasswordInfoMessage;
         private System.Windows.Forms.Label lblPasswordLengthWarning;
         private System.Windows.Forms.TextBox textBoxZipCode;
+        private System.Windows.Forms.Label label1;
     }
 }

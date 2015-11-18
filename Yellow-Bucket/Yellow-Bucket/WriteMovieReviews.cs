@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -11,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Yellow_Bucket
 {
-    public partial class Kiosks : Form
+    public partial class WriteMovieReviews : Form
     {
-        public Kiosks()
+        public WriteMovieReviews()
         {
             InitializeComponent();
         }
@@ -42,8 +41,29 @@ namespace Yellow_Bucket
         private void mOVIESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Movies movieForm = new Movies();
-            movieForm.Show();
+            Kiosks kioskForm = new Kiosks();
+            kioskForm.Show();
+        }
+
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie RentAMovieForm = new RentAMovie();
+            RentAMovieForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie ReturnMovieForm = new ReturnMovie();
+            ReturnMovieForm.Show();
+        }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
         }
 
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
@@ -56,27 +76,6 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Review reviewForm = new Review();
-            reviewForm.Show();
-        }
-
-        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
-        }
-
-        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
         }
     }
 }

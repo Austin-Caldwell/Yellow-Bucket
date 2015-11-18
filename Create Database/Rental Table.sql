@@ -10,6 +10,6 @@ CREATE TABLE Rental -- Create a table to hold information on current rentals hel
 	rentalCost smallmoney CONSTRAINT rentalCost_Default DEFAULT $1.00 CONSTRAINT rentalCost_CC CHECK(rentalCost >= 0) NOT NULL,
 	dateRented datetime CONSTRAINT dateRented_Default DEFAULT GetDate() NOT NULL,
 	dateReturned datetime NULL, -- dateReturned will be NULL until the customer returns the movie
-	customerID int CONSTRAINT fk_Rental_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE NO ACTION, -- Raise an error if a customer is deleted from the database while that customer still has a movie on rental
-	stockID int CONSTRAINT fk_Rental_Inventory FOREIGN KEY REFERENCES Inventory(stockID) ON DELETE NO ACTION, -- Raise an error if a movie is deleted from the database while a customer still has the movie on rental
+	customerID int CONSTRAINT fk_Rental_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE SET NULL,
+	stockID int CONSTRAINT fk_Rental_Inventory FOREIGN KEY REFERENCES Inventory(stockID) ON DELETE SET NULL,
 );

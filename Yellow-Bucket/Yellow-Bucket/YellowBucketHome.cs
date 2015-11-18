@@ -57,5 +57,27 @@ namespace Yellow_Bucket
         {
             Application.Exit();
         }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie ReturnMovieForm = new ReturnMovie();
+            ReturnMovieForm.Show();
+        }
+
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie RentAMovieForm = new RentAMovie();
+            RentAMovieForm.Show();
+        }
     }
+    
 }

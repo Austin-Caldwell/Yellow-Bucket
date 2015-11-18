@@ -11,48 +11,18 @@ using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class ListAllCustomers : Form
+    public partial class Review : Form
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        // Jacob Girvin's Connection String:
-        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Jacob Girvin's Connection String: 
+        // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
-        public ListAllCustomers()
+        public Review()
         {
             InitializeComponent();
-        }
-
-        private void ListAllCustomers_Load(object sender, EventArgs e)
-        {
-            fillListOfAllCustomers();
-        }
-
-        private void fillListOfAllCustomers()
-        {
-            DataTable allCustomers = new DataTable();
-
-            using (YellowBucketConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
-                    adapter.Fill(allCustomers);
-
-                    listBoxOfAllCustomers.ValueMember = "id";
-                    listBoxOfAllCustomers.DisplayMember = "fullname";
-                    listBoxOfAllCustomers.DataSource = allCustomers;
-
-                    YellowBucketConnection.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
         }
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -102,6 +72,13 @@ namespace Yellow_Bucket
             reviewForm.Show();
         }
 
+        private void btnSeeReview_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            SeeMovieReviews SeeMovieReviewForm = new SeeMovieReviews();
+            SeeMovieReviewForm.Show();
+        }
+
         private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -115,19 +92,7 @@ namespace Yellow_Bucket
             RentAMovie RentAMovieForm = new RentAMovie();
             RentAMovieForm.Show();
         }
-
-        private void buttonToAddCustomer_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AddACustomer addCustomerForm = new AddACustomer();
-            addCustomerForm.Show();
-        }
-
-        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
-            deleteCustomerForm.Show();
-        }
     }
 }
+    
+

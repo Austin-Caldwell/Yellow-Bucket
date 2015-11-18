@@ -1,5 +1,5 @@
 /* CREATE THE ENTIRE YellowBucketCSC365 DATABASE, AND CREATE/LINK ALL TABLES */ /* Austin Caldwell and Evan Wehr */
--- Updated 10/22/2015
+-- Updated 11/17/2015
 
 -- Create the database itself
 Use master
@@ -49,8 +49,8 @@ CREATE TABLE Customer -- Create a table of customers
 	email varchar(32) NOT NULL,
 	alternateEmail varchar(32) NULL,
 	userName varchar(32) UNIQUE NOT NULL,
-	userPassword varchar(32) NOT NULL,
-	creditCard varchar(19) NULL,	-- Customer may create account online, but not have credit card information saved until he/she makes a first rental.  Also, customer may opt to not have credit card saved in the system
+	userPassword varchar(64) NOT NULL,
+	creditCard varchar(64) NULL,	-- Customer may create account online, but not have credit card information saved until he/she makes a first rental.  Also, customer may opt to not have credit card saved in the system
 	customerAddressID int CONSTRAINT fk_Customer_CustomerAddress FOREIGN KEY REFERENCES CustomerAddress(customerAddressID) ON DELETE SET NULL
 );
 
@@ -68,7 +68,7 @@ CREATE TABLE Wish -- Create a table linking customers to the movies they wish fo
 (
 	wishID int PRIMARY KEY IDENTITY(0000,1) NOT NULL,
 	customerID int CONSTRAINT fk_Wish_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE CASCADE NOT NULL,
-	movieID int CONSTRAINT fk_Wish_Movie FOREIGN KEY REFERENCES Movie(movieID) ON DELETE SET NULL,
+	movieID int CONSTRAINT fk_Wish_Movie FOREIGN KEY REFERENCES Movie(movieID) ON DELETE CASCADE NOT NULL,
 	dateWished datetime CONSTRAINT dateWished_Default DEFAULT GetDate() NOT NULL -- Pull the current date and time and record when the wish was posted
 );
 
@@ -100,8 +100,8 @@ CREATE TABLE Rental -- Create a table to hold information on current rentals hel
 	rentalCost smallmoney CONSTRAINT rentalCost_Default DEFAULT $1.00 CONSTRAINT rentalCost_CC CHECK(rentalCost >= 0) NOT NULL,
 	dateRented datetime CONSTRAINT dateRented_Default DEFAULT GetDate() NOT NULL,
 	dateReturned datetime NULL, -- dateReturned will be NULL until the customer returns the movie
-	customerID int CONSTRAINT fk_Rental_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE NO ACTION, -- Raise an error if a customer is deleted from the database while that customer still has a movie on rental
-	stockID int CONSTRAINT fk_Rental_Inventory FOREIGN KEY REFERENCES Inventory(stockID) ON DELETE NO ACTION, -- Raise an error if a movie is deleted from the database while a customer still has the movie on rental
+	customerID int CONSTRAINT fk_Rental_Customer FOREIGN KEY REFERENCES Customer(customerID) ON DELETE SET NULL,
+	stockID int CONSTRAINT fk_Rental_Inventory FOREIGN KEY REFERENCES Inventory(stockID) ON DELETE SET NULL,
 );
 
 CREATE TABLE RentalHistory -- Create a table to hold a record/history of all rentals performed by a particular customer

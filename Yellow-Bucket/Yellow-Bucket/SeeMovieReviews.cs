@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class ListAllCustomers : Form
+    public partial class SeeMovieReviews : Form
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
@@ -20,30 +20,25 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
-        public ListAllCustomers()
+        public SeeMovieReviews()
         {
             InitializeComponent();
         }
 
-        private void ListAllCustomers_Load(object sender, EventArgs e)
+        private void filllstBoxMovies()
         {
-            fillListOfAllCustomers();
-        }
-
-        private void fillListOfAllCustomers()
-        {
-            DataTable allCustomers = new DataTable();
+            DataTable allMovies = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
-                    adapter.Fill(allCustomers);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(title) AS fullname FROM dbo.Movie", YellowBucketConnection);
+                    adapter.Fill(allMovies);
 
-                    listBoxOfAllCustomers.ValueMember = "id";
-                    listBoxOfAllCustomers.DisplayMember = "fullname";
-                    listBoxOfAllCustomers.DataSource = allCustomers;
+                    lstBoxMovies.ValueMember = "id";
+                    lstBoxMovies.DisplayMember = "fullname";
+                    lstBoxMovies.DataSource = allMovies;
 
                     YellowBucketConnection.Close();
                 }
@@ -79,8 +74,29 @@ namespace Yellow_Bucket
         private void mOVIESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Movies movieForm = new Movies();
-            movieForm.Show();
+            Kiosks kioskForm = new Kiosks();
+            kioskForm.Show();
+        }
+
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie RentAMovieForm = new RentAMovie();
+            RentAMovieForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie ReturnMovieForm = new ReturnMovie();
+            ReturnMovieForm.Show();
+        }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
         }
 
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
@@ -93,41 +109,6 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Review reviewForm = new Review();
-            reviewForm.Show();
-        }
-
-        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
-        }
-
-        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
-        }
-
-        private void buttonToAddCustomer_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AddACustomer addCustomerForm = new AddACustomer();
-            addCustomerForm.Show();
-        }
-
-        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
-            deleteCustomerForm.Show();
         }
     }
 }

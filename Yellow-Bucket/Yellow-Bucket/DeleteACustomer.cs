@@ -17,8 +17,8 @@ namespace Yellow_Bucket
         // Austin Caldwell's Connection String:
         protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        // Jacob Girvin's Connection String: 
-        // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
+        // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         // Variables to hold the firstname, lastname, and username of the customer selected in the comboBoxOfCustomers
         private string selectedCustomerFirstName;
@@ -100,6 +100,27 @@ namespace Yellow_Bucket
             Application.Exit();
         }
 
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie ReturnMovieForm = new ReturnMovie();
+            ReturnMovieForm.Show();
+        }
+
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie RentAMovieForm = new RentAMovie();
+            RentAMovieForm.Show();
+        }
+
         private void comboBoxOfCustomers_SelectedIndexChanged(object sender, EventArgs e) // Setting the selected customer's firstnames, lastnames, and usernames based on comboBoxOfCustomers selection
         {
             char[] delimiterChars = {' '};
@@ -124,8 +145,8 @@ namespace Yellow_Bucket
                     deleteCustomer.Parameters["@userName"].Value = selectedCustomerUserName;
                     deleteCustomer.ExecuteNonQuery();
 
-                    lblDeletionStatus.Text = "Successfully Deleted Customer Record for " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + "!";
                     YellowBucketConnection.Close();
+                    fillCustomerComboBox();
                 }
 
                 catch (Exception ex)

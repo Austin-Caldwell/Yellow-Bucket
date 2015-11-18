@@ -52,7 +52,7 @@
             this.lblAbout.Size = new System.Drawing.Size(608, 296);
             this.lblAbout.TabIndex = 3;
             this.lblAbout.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
-    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/14/2015";
+    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/17/2015";
             this.lblAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mainMenuStrip
@@ -127,6 +127,7 @@
             this.rENTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rENTToolStripMenuItem.Text = "RENT";
             this.rENTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rENTToolStripMenuItem.Click += new System.EventHandler(this.rENTToolStripMenuItem_Click);
             // 
             // rETURNToolStripMenuItem
             // 
@@ -135,6 +136,7 @@
             this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rETURNToolStripMenuItem.Text = "RETURN";
             this.rETURNToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rETURNToolStripMenuItem.Click += new System.EventHandler(this.rETURNToolStripMenuItem_Click);
             // 
             // rEVIEWToolStripMenuItem
             // 
@@ -143,6 +145,7 @@
             this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rEVIEWToolStripMenuItem.Text = "REVIEW";
             this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.rEVIEWToolStripMenuItem.Click += new System.EventHandler(this.rEVIEWToolStripMenuItem_Click);
             // 
             // aBOUTToolStripMenuItem
             // 
