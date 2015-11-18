@@ -38,7 +38,8 @@
             this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonToListAllMovies = new System.Windows.Forms.Button();
+            this.listBoxOfAllMovies = new System.Windows.Forms.ListBox();
+            this.lblAllMoviesList = new System.Windows.Forms.Label();
             this.buttonToAddMovie = new System.Windows.Forms.Button();
             this.buttonToEditMovieInfo = new System.Windows.Forms.Button();
             this.buttonToDeleteMovie = new System.Windows.Forms.Button();
@@ -64,7 +65,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
-            this.mainMenuStrip.TabIndex = 0;
+            this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
@@ -86,7 +87,6 @@
             | System.Windows.Forms.Keys.C)));
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
-            this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
             // 
             // kIOSKSToolStripMenuItem
@@ -160,58 +160,68 @@
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // buttonToListAllMovies
+            // listBoxOfAllMovies
             // 
-            this.buttonToListAllMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToListAllMovies.Location = new System.Drawing.Point(437, 315);
-            this.buttonToListAllMovies.Name = "buttonToListAllMovies";
-            this.buttonToListAllMovies.Size = new System.Drawing.Size(230, 77);
-            this.buttonToListAllMovies.TabIndex = 2;
-            this.buttonToListAllMovies.Text = "List All Movies";
-            this.buttonToListAllMovies.UseVisualStyleBackColor = true;
-            this.buttonToListAllMovies.Click += new System.EventHandler(this.buttonToListAllMovies_Click);
+            this.listBoxOfAllMovies.BackColor = System.Drawing.SystemColors.Window;
+            this.listBoxOfAllMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.listBoxOfAllMovies.FormattingEnabled = true;
+            this.listBoxOfAllMovies.ItemHeight = 16;
+            this.listBoxOfAllMovies.Location = new System.Drawing.Point(125, 52);
+            this.listBoxOfAllMovies.Name = "listBoxOfAllMovies";
+            this.listBoxOfAllMovies.Size = new System.Drawing.Size(871, 660);
+            this.listBoxOfAllMovies.TabIndex = 0;
+            // 
+            // lblAllMoviesList
+            // 
+            this.lblAllMoviesList.AutoSize = true;
+            this.lblAllMoviesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblAllMoviesList.Location = new System.Drawing.Point(121, 19);
+            this.lblAllMoviesList.Name = "lblAllMoviesList";
+            this.lblAllMoviesList.Size = new System.Drawing.Size(261, 20);
+            this.lblAllMoviesList.TabIndex = 3;
+            this.lblAllMoviesList.Text = "All Movies Offered by Yellow Bucket";
             // 
             // buttonToAddMovie
             // 
-            this.buttonToAddMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToAddMovie.Location = new System.Drawing.Point(437, 80);
+            this.buttonToAddMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToAddMovie.Location = new System.Drawing.Point(435, 16);
             this.buttonToAddMovie.Name = "buttonToAddMovie";
-            this.buttonToAddMovie.Size = new System.Drawing.Size(230, 77);
-            this.buttonToAddMovie.TabIndex = 0;
+            this.buttonToAddMovie.Size = new System.Drawing.Size(124, 23);
+            this.buttonToAddMovie.TabIndex = 1;
             this.buttonToAddMovie.Text = "Add A Movie";
             this.buttonToAddMovie.UseVisualStyleBackColor = true;
             // 
             // buttonToEditMovieInfo
             // 
-            this.buttonToEditMovieInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToEditMovieInfo.Location = new System.Drawing.Point(437, 192);
+            this.buttonToEditMovieInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToEditMovieInfo.Location = new System.Drawing.Point(565, 15);
             this.buttonToEditMovieInfo.Name = "buttonToEditMovieInfo";
-            this.buttonToEditMovieInfo.Size = new System.Drawing.Size(230, 77);
-            this.buttonToEditMovieInfo.TabIndex = 1;
+            this.buttonToEditMovieInfo.Size = new System.Drawing.Size(124, 23);
+            this.buttonToEditMovieInfo.TabIndex = 2;
             this.buttonToEditMovieInfo.Text = "Edit Movie Info";
             this.buttonToEditMovieInfo.UseVisualStyleBackColor = true;
             // 
             // buttonToDeleteMovie
             // 
-            this.buttonToDeleteMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToDeleteMovie.Location = new System.Drawing.Point(437, 560);
+            this.buttonToDeleteMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToDeleteMovie.Location = new System.Drawing.Point(851, 15);
             this.buttonToDeleteMovie.Name = "buttonToDeleteMovie";
-            this.buttonToDeleteMovie.Size = new System.Drawing.Size(230, 77);
+            this.buttonToDeleteMovie.Size = new System.Drawing.Size(124, 23);
             this.buttonToDeleteMovie.TabIndex = 4;
             this.buttonToDeleteMovie.Text = "Delete A Movie";
             this.buttonToDeleteMovie.UseVisualStyleBackColor = true;
             // 
             // buttonToViewMovieDetails
             // 
-            this.buttonToViewMovieDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToViewMovieDetails.Location = new System.Drawing.Point(437, 436);
+            this.buttonToViewMovieDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.buttonToViewMovieDetails.Location = new System.Drawing.Point(695, 15);
             this.buttonToViewMovieDetails.Name = "buttonToViewMovieDetails";
-            this.buttonToViewMovieDetails.Size = new System.Drawing.Size(230, 77);
+            this.buttonToViewMovieDetails.Size = new System.Drawing.Size(150, 23);
             this.buttonToViewMovieDetails.TabIndex = 3;
             this.buttonToViewMovieDetails.Text = "View Movie Details";
             this.buttonToViewMovieDetails.UseVisualStyleBackColor = true;
             // 
-            // Movies
+            // ListAllMovies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -220,12 +230,14 @@
             this.Controls.Add(this.buttonToDeleteMovie);
             this.Controls.Add(this.buttonToEditMovieInfo);
             this.Controls.Add(this.buttonToAddMovie);
-            this.Controls.Add(this.buttonToListAllMovies);
+            this.Controls.Add(this.lblAllMoviesList);
+            this.Controls.Add(this.listBoxOfAllMovies);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Name = "Movies";
+            this.Name = "ListAllMovies";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YELLOW BUCKET -- MOVIES";
+            this.Text = "YELLOW BUCKET -- LIST ALL MOVIES";
+            this.Load += new System.EventHandler(this.ListAllMovies_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -237,18 +249,19 @@
 
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
+        private System.Windows.Forms.ListBox listBoxOfAllMovies;
+        private System.Windows.Forms.Label lblAllMoviesList;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
-        private System.Windows.Forms.Button buttonToListAllMovies;
-        private System.Windows.Forms.Button buttonToAddMovie;
-        private System.Windows.Forms.Button buttonToEditMovieInfo;
-        private System.Windows.Forms.Button buttonToDeleteMovie;
+        private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+        private System.Windows.Forms.Button buttonToAddMovie;
+        private System.Windows.Forms.Button buttonToEditMovieInfo;
+        private System.Windows.Forms.Button buttonToDeleteMovie;
         private System.Windows.Forms.Button buttonToViewMovieDetails;
     }
 }

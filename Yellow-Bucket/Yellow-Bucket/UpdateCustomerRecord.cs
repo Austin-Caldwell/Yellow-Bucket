@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;    // To Access Database
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class ListAllMovies : Form
+    public partial class UpdateCustomerRecord : Form
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
@@ -21,30 +20,35 @@ namespace Yellow_Bucket
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
-        public ListAllMovies()
+        // Variables to hold the firstname, lastname, and username of the customer selected in the comboBoxOfCustomers
+        private string selectedCustomerFirstName;
+        private string selectedCustomerLastName;
+        private string selectedCustomerUserName;
+
+        public UpdateCustomerRecord()
         {
             InitializeComponent();
         }
 
-        private void ListAllMovies_Load(object sender, EventArgs e)
+        private void UpdateCustomerRecord_Load(object sender, EventArgs e)
         {
-            fillListOfAllMovies();
+            fillCustomerComboBox();
         }
 
-        private void fillListOfAllMovies()
+        private void fillCustomerComboBox() // comboBoxOfCustomers is filled with customer firstnames, lastnames, and usernames
         {
-            DataTable allMovies = new DataTable();
+            DataTable customers = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie", YellowBucketConnection);
-                    adapter.Fill(allMovies);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(firstName, ' ', lastName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    adapter.Fill(customers);
 
-                    listBoxOfAllMovies.ValueMember = "id";
-                    listBoxOfAllMovies.DisplayMember = "title";
-                    listBoxOfAllMovies.DataSource = allMovies;
+                    comboBoxOfCustomers.ValueMember = "id";
+                    comboBoxOfCustomers.DisplayMember = "fullname";
+                    comboBoxOfCustomers.DataSource = customers;
 
                     YellowBucketConnection.Close();
                 }
@@ -84,6 +88,27 @@ namespace Yellow_Bucket
             movieForm.Show();
         }
 
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie rentMovieForm = new RentAMovie();
+            rentMovieForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
+        }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
+        }
+
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -94,27 +119,6 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Review reviewForm = new Review();
-            reviewForm.Show();
-        }
-
-        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
-        }
-
-        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
         }
     }
 }

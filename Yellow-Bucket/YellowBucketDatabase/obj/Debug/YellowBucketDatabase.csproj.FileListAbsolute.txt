@@ -1,5 +1,0 @@
-C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\YellowBucketDatabase\bin\Debug\YellowBucketDatabase.dll
-C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\YellowBucketDatabase\bin\Debug\YellowBucketDatabase.pdb
-C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\YellowBucketDatabase\obj\Debug\YellowBucketDatabase.csprojResolveAssemblyReference.cache
-C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\YellowBucketDatabase\obj\Debug\YellowBucketDatabase.dll
-C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\YellowBucketDatabase\obj\Debug\YellowBucketDatabase.pdb
