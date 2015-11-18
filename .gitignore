@@ -219,3 +219,9 @@ pip-log.txt
 .mr.developer.cfg
 *.exe
 *.exe
+*.exe
+Yellow-Bucket/Yellow-Bucket/obj/Debug/Yellow-Bucket.pdb
+*.exe
+Yellow-Bucket/Yellow-Bucket/bin/Debug/Yellow-Bucket.pdb
+*.exe
+Yellow-Bucket/Yellow-Bucket/obj/Debug/Yellow-Bucket.pdb

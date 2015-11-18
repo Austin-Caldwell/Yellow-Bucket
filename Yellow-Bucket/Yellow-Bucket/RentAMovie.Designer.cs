@@ -38,9 +38,16 @@
             this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+//<<<<<<< HEAD
+            this.label1 = new System.Windows.Forms.Label();
+            this.lstboxMovies = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.listBox2 = new System.Windows.Forms.ListBox();
+//=======
             this.lblSelectMovieText = new System.Windows.Forms.Label();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+//>>>>>>> origin/master
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,6 +174,15 @@
             // 
             // lblSelectMovieText
             // 
+//<<<<<<< HEAD
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(121, 39);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(348, 22);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Select Movie You Would Like To Rent";
+//=======
             this.lblSelectMovieText.AutoSize = true;
             this.lblSelectMovieText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSelectMovieText.Location = new System.Drawing.Point(359, 36);
@@ -175,9 +191,17 @@
             this.lblSelectMovieText.Size = new System.Drawing.Size(414, 26);
             this.lblSelectMovieText.TabIndex = 2;
             this.lblSelectMovieText.Text = "Select Movie You Would Like To Rent";
+//>>>>>>> origin/master
             // 
-            // listBox1
+            // lstboxMovies
             // 
+//<<<<<<< HEAD
+            this.lstboxMovies.FormattingEnabled = true;
+            this.lstboxMovies.Location = new System.Drawing.Point(172, 64);
+            this.lstboxMovies.Name = "lstboxMovies";
+            this.lstboxMovies.Size = new System.Drawing.Size(220, 303);
+            this.lstboxMovies.TabIndex = 3;
+//=======
             this.listBox1.FormattingEnabled = true;
             this.listBox1.ItemHeight = 20;
             this.listBox1.Location = new System.Drawing.Point(258, 98);
@@ -185,9 +209,27 @@
             this.listBox1.Name = "listBox1";
             this.listBox1.Size = new System.Drawing.Size(612, 464);
             this.listBox1.TabIndex = 3;
+//>>>>>>> origin/master
             // 
-            // button1
+            // label2
             // 
+//<<<<<<< HEAD
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(570, 39);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 22);
+            this.label2.TabIndex = 5;
+            this.label2.Text = "Kiosk Location";
+            // 
+            // listBox2
+            // 
+            this.listBox2.FormattingEnabled = true;
+            this.listBox2.Location = new System.Drawing.Point(525, 64);
+            this.listBox2.Name = "listBox2";
+            this.listBox2.Size = new System.Drawing.Size(220, 303);
+            this.listBox2.TabIndex = 6;
+//=======
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(510, 600);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -196,15 +238,24 @@
             this.button1.TabIndex = 4;
             this.button1.Text = "Rent";
             this.button1.UseVisualStyleBackColor = true;
+//>>>>>>> origin/master
             // 
             // RentAMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+//<<<<<<< HEAD
+            this.ClientSize = new System.Drawing.Size(805, 457);
+            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lstboxMovies);
+            this.Controls.Add(this.label1);
+//=======
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.lblSelectMovieText);
+//>>>>>>> origin/master
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -229,8 +280,15 @@
         private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+//<<<<<<< HEAD
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ListBox lstboxMovies;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox listBox2;
+//=======
         private System.Windows.Forms.Label lblSelectMovieText;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button button1;
+//>>>>>>> origin/master
     }
 }
