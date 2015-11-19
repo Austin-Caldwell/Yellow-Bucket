@@ -15,9 +15,23 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
+<<<<<<< HEAD
+<<<<<<< HEAD
         protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
+        //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+=======
+=======
+>>>>>>> origin/master
+        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String:
+        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
 
         public RentAMovie()
         {
@@ -32,16 +46,20 @@ namespace Yellow_Bucket
         //private void fillRentAMovie()
         //{
         //    DataTable allMovies = new DataTable();
-            //using (YellowBucketConnection = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
-            //        adapter.Fill(allMovies);
 
-            //        lstboxMovies.ValueMember = "id";
-            //        lstboxMovies.DisplayMember = "title";
-            //        lstboxMovies.DataSource = allMovies;
+<<<<<<< HEAD
+<<<<<<< HEAD
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
+                    adapter.Fill(allMovies);
+
+                    lstboxMovies.ValueMember = "id";
+                    lstboxMovies.DisplayMember = "title";
+                    lstboxMovies.DataSource = allMovies;
+=======
         //    using (YellowBucketConnection = new SqlConnection(connectionString))
         //    {
         //        try
@@ -49,6 +67,7 @@ namespace Yellow_Bucket
         //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
         //            adapter.Fill(allMovies);
 
+=======
         //    using (YellowBucketConnection = new SqlConnection(connectionString))
         //    {
         //        try
@@ -56,6 +75,7 @@ namespace Yellow_Bucket
         //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
         //            adapter.Fill(allMovies);
 
+>>>>>>> origin/master
         //            lstboxMovies.ValueMember = "id";
         //            lstboxMovies.DisplayMember = "title";
         //            lstboxMovies.DataSource = allMovies;
@@ -69,6 +89,10 @@ namespace Yellow_Bucket
         //        }
         //    }
         //}
+<<<<<<< HEAD
+>>>>>>> origin/master
+=======
+>>>>>>> origin/master
 
 
 

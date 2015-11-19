@@ -90,7 +90,14 @@ namespace Yellow_Bucket
                         findExistingAddress.Parameters.Add("@postalCode", SqlDbType.VarChar);
 
                         findExistingAddress.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
-                        findExistingAddress.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                        if (textBoxAddressLine2.Text == "")
+                        {
+                            findExistingAddress.Parameters["@addressLine2"].Value = DBNull.Value;
+                        }
+                        else
+                        {
+                            findExistingAddress.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                        }
                         findExistingAddress.Parameters["@city"].Value = textBoxCity.Text;
                         findExistingAddress.Parameters["@stateProvince"].Value = textBoxState.Text;
                         findExistingAddress.Parameters["@postalCode"].Value = textBoxZipCode.Text;
@@ -171,7 +178,14 @@ namespace Yellow_Bucket
                             addCustomerAddress.Parameters.Add("@postalCode", SqlDbType.VarChar);
 
                             addCustomerAddress.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
-                            addCustomerAddress.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                            if (textBoxAddressLine2.Text == "")
+                            {
+                                addCustomerAddress.Parameters["@addressLine2"].Value = DBNull.Value;
+                            }
+                            else
+                            {
+                                addCustomerAddress.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                            }
                             addCustomerAddress.Parameters["@city"].Value = textBoxCity.Text;
                             addCustomerAddress.Parameters["@stateProvince"].Value = textBoxState.Text;
                             addCustomerAddress.Parameters["@postalCode"].Value = textBoxZipCode.Text;
