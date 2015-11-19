@@ -120,26 +120,11 @@ namespace Yellow_Bucket
                             addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
                             addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
                             addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
-                            if (textBoxAlternateEmail.Text == "")
-                            {
-                                addCustomerRecord.Parameters["@alternateEmail"].Value = DBNull.Value;
-                            }
-                            else
-                            {
-                                addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlternateEmail.Text;
-                            }
+                            addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlternateEmail.Text;
 
                             addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
                             addCustomerRecord.Parameters["@userPassword"].Value = Encryptor(textBoxPassword.Text);
-
-                            if (maskedTextBoxCreditCardNumber.Text == "")
-                            {
-                                addCustomerRecord.Parameters["@creditCard"].Value = DBNull.Value;
-                            }
-                            else
-                            {
-                                addCustomerRecord.Parameters["@creditCard"].Value = Encryptor(maskedTextBoxCreditCardNumber.Text);
-                            }
+                            addCustomerRecord.Parameters["@creditCard"].Value = Encryptor(maskedTextBoxCreditCardNumber.Text);
 
                             addCustomerRecord.ExecuteNonQuery();
                             YellowBucketConnection.Close();
@@ -194,26 +179,11 @@ namespace Yellow_Bucket
                             addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
                             addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
                             addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
-                            if (textBoxAlternateEmail.Text == "")
-                            {
-                                addCustomerRecord.Parameters["@alternateEmail"].Value = DBNull.Value;
-                            }
-                            else
-                            {
-                                addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlternateEmail.Text;
-                            }
+                            addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlternateEmail.Text;
 
                             addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
                             addCustomerRecord.Parameters["@userPassword"].Value = Encryptor(textBoxPassword.Text);
-
-                            if (maskedTextBoxCreditCardNumber.Text == "")
-                            {
-                                addCustomerRecord.Parameters["@creditCard"].Value = DBNull.Value;
-                            }
-                            else
-                            {
-                                addCustomerRecord.Parameters["@creditCard"].Value = Encryptor(maskedTextBoxCreditCardNumber.Text);
-                            }
+                            addCustomerRecord.Parameters["@creditCard"].Value = Encryptor(maskedTextBoxCreditCardNumber.Text);
 
                             addCustomerRecord.ExecuteNonQuery();
                             YellowBucketConnection.Close();
@@ -230,21 +200,15 @@ namespace Yellow_Bucket
                             findAddressID.Parameters.Add("@postalCode", SqlDbType.VarChar);
 
                             findAddressID.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
-                            if (textBoxAddressLine2.Text == "")
-                            {
-                                findAddressID.Parameters["@addressLine2"].Value = DBNull.Value;
-                            }
-                            else
-                            {
-                                findAddressID.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
-                            }
+                            findAddressID.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+
                             findAddressID.Parameters["@city"].Value = textBoxCity.Text;
                             findAddressID.Parameters["@stateProvince"].Value = textBoxState.Text;
                             findAddressID.Parameters["@postalCode"].Value = textBoxZipCode.Text;
 
                             findCustomerAddressID = findAddressID.ExecuteReader();
                             existingAddress.Load(findCustomerAddressID);
-                            DataRow newAddressIDTableRow = existingAddress.Rows[0]; // ----- << No row at Rows[0] or Rows[1] when creating new address
+                            DataRow newAddressIDTableRow = existingAddress.Rows[0];
 
                             YellowBucketConnection.Close();
 
