@@ -74,6 +74,7 @@
             this.lblRentalHistory = new System.Windows.Forms.Label();
             this.lblReviews = new System.Windows.Forms.Label();
             this.lblRatings = new System.Windows.Forms.Label();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -187,6 +188,7 @@
             this.comboBoxOfCustomers.Size = new System.Drawing.Size(391, 28);
             this.comboBoxOfCustomers.TabIndex = 1;
             this.comboBoxOfCustomers.Text = "Select a Customer to View Details";
+            this.comboBoxOfCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxOfCustomers_SelectedIndexChanged);
             // 
             // buttonToEditCustomerInfo
             // 
@@ -450,9 +452,9 @@
             this.lstBoxCurrentRentals.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lstBoxCurrentRentals.FormattingEnabled = true;
             this.lstBoxCurrentRentals.ItemHeight = 16;
-            this.lstBoxCurrentRentals.Location = new System.Drawing.Point(480, 144);
+            this.lstBoxCurrentRentals.Location = new System.Drawing.Point(536, 144);
             this.lstBoxCurrentRentals.Name = "lstBoxCurrentRentals";
-            this.lstBoxCurrentRentals.Size = new System.Drawing.Size(255, 260);
+            this.lstBoxCurrentRentals.Size = new System.Drawing.Size(225, 260);
             this.lstBoxCurrentRentals.TabIndex = 29;
             // 
             // lstBoxRentalHistory
@@ -460,9 +462,9 @@
             this.lstBoxRentalHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lstBoxRentalHistory.FormattingEnabled = true;
             this.lstBoxRentalHistory.ItemHeight = 16;
-            this.lstBoxRentalHistory.Location = new System.Drawing.Point(741, 143);
+            this.lstBoxRentalHistory.Location = new System.Drawing.Point(772, 143);
             this.lstBoxRentalHistory.Name = "lstBoxRentalHistory";
-            this.lstBoxRentalHistory.Size = new System.Drawing.Size(255, 260);
+            this.lstBoxRentalHistory.Size = new System.Drawing.Size(225, 260);
             this.lstBoxRentalHistory.TabIndex = 30;
             // 
             // lstBoxReviews
@@ -470,9 +472,9 @@
             this.lstBoxReviews.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lstBoxReviews.FormattingEnabled = true;
             this.lstBoxReviews.ItemHeight = 16;
-            this.lstBoxReviews.Location = new System.Drawing.Point(480, 453);
+            this.lstBoxReviews.Location = new System.Drawing.Point(536, 453);
             this.lstBoxReviews.Name = "lstBoxReviews";
-            this.lstBoxReviews.Size = new System.Drawing.Size(255, 260);
+            this.lstBoxReviews.Size = new System.Drawing.Size(225, 260);
             this.lstBoxReviews.TabIndex = 31;
             // 
             // lstBoxRatings
@@ -480,56 +482,66 @@
             this.lstBoxRatings.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
             this.lstBoxRatings.FormattingEnabled = true;
             this.lstBoxRatings.ItemHeight = 16;
-            this.lstBoxRatings.Location = new System.Drawing.Point(741, 453);
+            this.lstBoxRatings.Location = new System.Drawing.Point(771, 453);
             this.lstBoxRatings.Name = "lstBoxRatings";
-            this.lstBoxRatings.Size = new System.Drawing.Size(255, 260);
+            this.lstBoxRatings.Size = new System.Drawing.Size(225, 260);
             this.lstBoxRatings.TabIndex = 32;
             // 
             // lblCurrentRentals
             // 
             this.lblCurrentRentals.AutoSize = true;
             this.lblCurrentRentals.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCurrentRentals.Location = new System.Drawing.Point(476, 121);
+            this.lblCurrentRentals.Location = new System.Drawing.Point(532, 120);
             this.lblCurrentRentals.Name = "lblCurrentRentals";
-            this.lblCurrentRentals.Size = new System.Drawing.Size(236, 20);
+            this.lblCurrentRentals.Size = new System.Drawing.Size(141, 20);
             this.lblCurrentRentals.TabIndex = 33;
-            this.lblCurrentRentals.Text = "Customer\'s Current Rentals:";
+            this.lblCurrentRentals.Text = "Current Rentals:";
             // 
             // lblRentalHistory
             // 
             this.lblRentalHistory.AutoSize = true;
             this.lblRentalHistory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRentalHistory.Location = new System.Drawing.Point(737, 120);
+            this.lblRentalHistory.Location = new System.Drawing.Point(768, 120);
             this.lblRentalHistory.Name = "lblRentalHistory";
-            this.lblRentalHistory.Size = new System.Drawing.Size(223, 20);
+            this.lblRentalHistory.Size = new System.Drawing.Size(128, 20);
             this.lblRentalHistory.TabIndex = 34;
-            this.lblRentalHistory.Text = "Customer\'s Rental History:";
+            this.lblRentalHistory.Text = "Rental History:";
             // 
             // lblReviews
             // 
             this.lblReviews.AutoSize = true;
             this.lblReviews.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblReviews.Location = new System.Drawing.Point(476, 430);
+            this.lblReviews.Location = new System.Drawing.Point(532, 430);
             this.lblReviews.Name = "lblReviews";
-            this.lblReviews.Size = new System.Drawing.Size(236, 20);
+            this.lblReviews.Size = new System.Drawing.Size(141, 20);
             this.lblReviews.TabIndex = 35;
-            this.lblReviews.Text = "Customer\'s Posted Reviews:";
+            this.lblReviews.Text = "Posted Reviews:";
             // 
             // lblRatings
             // 
             this.lblRatings.AutoSize = true;
             this.lblRatings.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRatings.Location = new System.Drawing.Point(737, 430);
+            this.lblRatings.Location = new System.Drawing.Point(767, 430);
             this.lblRatings.Name = "lblRatings";
-            this.lblRatings.Size = new System.Drawing.Size(171, 20);
+            this.lblRatings.Size = new System.Drawing.Size(76, 20);
             this.lblRatings.TabIndex = 36;
-            this.lblRatings.Text = "Customer\'s Ratings:";
+            this.lblRatings.Text = "Ratings:";
+            // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblErrorMessage.Location = new System.Drawing.Point(121, 631);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(0, 17);
+            this.lblErrorMessage.TabIndex = 37;
             // 
             // ViewCustomerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.lblRatings);
             this.Controls.Add(this.lblReviews);
             this.Controls.Add(this.lblRentalHistory);
@@ -628,5 +640,6 @@
         private System.Windows.Forms.Label lblRentalHistory;
         private System.Windows.Forms.Label lblReviews;
         private System.Windows.Forms.Label lblRatings;
+        private System.Windows.Forms.Label lblErrorMessage;
     }
 }
