@@ -41,3 +41,4 @@ C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucke
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.exe
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.pdb
 C:\Users\Austin\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.ViewCustomerDetails.resources
+C:\Users\Jacob\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.ViewCustomerDetails.resources
