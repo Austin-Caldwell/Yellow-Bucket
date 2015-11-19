@@ -104,13 +104,14 @@ namespace Yellow_Bucket
 
                     lstBoxFillMovie.ValueMember = "id";
                     lstBoxFillMovie.DisplayMember = "title";
-                    lstBoxFillMovie.DataSource = "allmovies";
+                    lstBoxFillMovie.DataSource = allmovies;
 
                     YellowBucketConnection.Close();
                 }
 
                 catch (Exception ex)
                 {
+                    lblErrorMessage.Text = ex.ToString();
                     Console.WriteLine(ex.ToString());
                 }
             }

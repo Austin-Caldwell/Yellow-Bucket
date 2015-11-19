@@ -19,6 +19,7 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        private object selectedmoviereview;
 
         public SeeMovieReviews()
         {
@@ -104,7 +105,7 @@ namespace Yellow_Bucket
 
                     lstBoxMovies.ValueMember = "id";
                     lstBoxMovies.DisplayMember = "title";
-                    lstBoxMovies.DataSource = "allmovies";
+                    lstBoxMovies.DataSource = allmovies;
 
                     YellowBucketConnection.Close();
                 }
@@ -114,6 +115,42 @@ namespace Yellow_Bucket
                     Console.WriteLine(ex.ToString());
                 }
             }
+        }
+
+        private void comboBoxOfCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            char[] delimiterChars = { ' ' };
+
+            string[] moviereviews = lstBoxReview.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
+            selectedmoviereview = moviereviews[3];
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+                    SqlDataReader readmoviereviews = null;
+                    SqlCommand fillmoviereviews = new SqlCommand("SELECT reviewID, reviewDescription FROM dbo.MovieReview, dbo.CustomerAddress WHERE userName = @userName AND Customer.customerAddressID = CustomerAddress.customerAddressID;", YellowBucketConnection);
+                    fillmoviereviews.Parameters.Add("@userName", SqlDbType.VarChar);
+                    fillmoviereviews.Parameters["@userName"].Value = selectedmoviereview;
+
+                    readmoviereviews = fillmoviereviews.ExecuteReader();
+
+                    while (readmoviereviews.Read())
+                    {
+
+                    }
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+
         }
     }
 }
