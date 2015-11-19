@@ -206,6 +206,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SeeMovieReviews";
             this.Text = "SeeMovieReviews";
+            this.Load += new System.EventHandler(this.SeeMovieReviews_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
