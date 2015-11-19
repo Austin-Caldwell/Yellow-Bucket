@@ -19,7 +19,6 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
-        // Use YellowBucketConnection = new SqlConnection(connectionString); when you need to open a connection
 
         public Review()
         {

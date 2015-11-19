@@ -19,9 +19,9 @@ namespace Yellow_Bucket
 
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         public AddACustomer()
@@ -71,54 +71,176 @@ namespace Yellow_Bucket
 
         private void buttonSaveNewCustomer_Click(object sender, EventArgs e)
         {
-            if(testPasswordValidity() && testTextBoxInputValidity())
+            if(testPasswordValidity() && testTextBoxInputValidity() && testUsernameUniqueness())
             {
                 using (YellowBucketConnection = new SqlConnection(connectionString))
                 {
                     try
                     {
                         YellowBucketConnection.Open();
-                        SqlCommand addCustomerRecord = new SqlCommand("INSERT INTO Customer(firstName, lastName, email, alternateEmail, userName, userPassword, creditCard) VALUES (@firstName, @lastName, @email, @alternateEmail, @userName, @userPassword, @creditCard);", YellowBucketConnection);
 
-                        addCustomerRecord.Parameters.Add("@firstName", SqlDbType.VarChar);
-                        addCustomerRecord.Parameters.Add("@lastName", SqlDbType.VarChar);
-                        addCustomerRecord.Parameters.Add("@email", SqlDbType.VarChar);
-                        addCustomerRecord.Parameters.Add("@alternateEmail", SqlDbType.VarChar);
-                        addCustomerRecord.Parameters.Add("@userName", SqlDbType.VarChar);
-                        addCustomerRecord.Parameters.Add("@userPassword", SqlDbType.VarChar);
-                        addCustomerRecord.Parameters.Add("@creditCard", SqlDbType.VarChar);
+                        // Discover if Address Already Exists in Database
+                        SqlDataReader doesCustomerAddressExist = null;
+                        SqlCommand findExistingAddress = new SqlCommand("SELECT customerAddressID FROM dbo.CustomerAddress WHERE addressLine1 = @addressLine1 AND addressLine2 = @addressLine2 AND city = @city AND stateProvince = @stateProvince AND postalCode = @postalCode;", YellowBucketConnection);
 
-                        addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
-                        addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
-                        addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
-                        if (textBoxAlterateEmail.Text == "")
+                        findExistingAddress.Parameters.Add("@addressLine1", SqlDbType.VarChar);
+                        findExistingAddress.Parameters.Add("@addressLine2", SqlDbType.VarChar);
+                        findExistingAddress.Parameters.Add("@city", SqlDbType.VarChar);
+                        findExistingAddress.Parameters.Add("@stateProvince", SqlDbType.VarChar);
+                        findExistingAddress.Parameters.Add("@postalCode", SqlDbType.VarChar);
+
+                        findExistingAddress.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
+                        findExistingAddress.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                        findExistingAddress.Parameters["@city"].Value = textBoxCity.Text;
+                        findExistingAddress.Parameters["@stateProvince"].Value = textBoxState.Text;
+                        findExistingAddress.Parameters["@postalCode"].Value = textBoxZipCode.Text;
+
+                        doesCustomerAddressExist = findExistingAddress.ExecuteReader();
+                        
+                        DataTable existingAddress = new DataTable();
+                        existingAddress.Load(doesCustomerAddressExist);
+                        YellowBucketConnection.Close();
+
+                        if(existingAddress.Rows.Count == 1) // If the address does already exist in the database
                         {
-                            addCustomerRecord.Parameters["@alternateEmail"].Value = "";
+                            // FIRST: Create New Customer
+                            YellowBucketConnection.Open();
+                            SqlCommand addCustomerRecord = new SqlCommand("INSERT INTO Customer(firstName, lastName, email, alternateEmail, userName, userPassword, creditCard) VALUES (@firstName, @lastName, @email, @alternateEmail, @userName, @userPassword, @creditCard);", YellowBucketConnection);
+
+                            addCustomerRecord.Parameters.Add("@firstName", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@lastName", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@email", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@alternateEmail", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@userName", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@userPassword", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@creditCard", SqlDbType.VarChar);
+
+                            addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
+                            addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
+                            addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
+                            addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlternateEmail.Text;
+                            addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
+
+                            addCustomerRecord.Parameters["@userPassword"].Value = Encryptor(textBoxPassword.Text);
+                            addCustomerRecord.Parameters["@creditCard"].Value = Encryptor(maskedTextBoxCreditCardNumber.Text);
+
+                            addCustomerRecord.ExecuteNonQuery();
+                            YellowBucketConnection.Close();
+
+                            // SECOND: Find AddressID of Address Already in Database
+                            YellowBucketConnection.Open();
+                            SqlDataReader findCustomerAddressID = null;
+                            SqlCommand findAddressID = new SqlCommand("SELECT customerAddressID FROM dbo.CustomerAddress WHERE addressLine1 = @addressLine1 AND addressLine2 = @addressLine2 AND city = @city AND stateProvince = @stateProvince AND postalCode = @postalCode;", YellowBucketConnection);
+
+                            findAddressID.Parameters.Add("@addressLine1", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@addressLine2", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@city", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@stateProvince", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@postalCode", SqlDbType.VarChar);
+
+                            findAddressID.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
+                            findAddressID.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                            findAddressID.Parameters["@city"].Value = textBoxCity.Text;
+                            findAddressID.Parameters["@stateProvince"].Value = textBoxState.Text;
+                            findAddressID.Parameters["@postalCode"].Value = textBoxZipCode.Text;
+
+                            findCustomerAddressID = findAddressID.ExecuteReader(CommandBehavior.CloseConnection);   // ---- http://stackoverflow.com/questions/8981386/invalid-attempt-to-call-read-when-reader-is-closed-when-using-a-sqldatareader
+                            YellowBucketConnection.Close();
+
+                            // THIRD: Connect New Customer to Address Already in Database
+                            YellowBucketConnection.Open();
+                            SqlCommand updateCustomerWithAddressID = new SqlCommand("UPDATE dbo.Customer SET customerAddressID = @addressID WHERE userName = @userName;", YellowBucketConnection);
+                            updateCustomerWithAddressID.Parameters.Add("@addressID", SqlDbType.Int);
+                            updateCustomerWithAddressID.Parameters["@addressID"].Value = findCustomerAddressID[0];    // ---- http://stackoverflow.com/questions/17928388/unable-to-cast-object-of-type-system-data-sqlclient-sqldatareader-to-type-sys
+                            updateCustomerWithAddressID.Parameters.Add("@userName", SqlDbType.VarChar);
+                            updateCustomerWithAddressID.Parameters["@userName"].Value = textBoxUsername.Text;
+
+                            updateCustomerWithAddressID.ExecuteNonQuery();
+                            YellowBucketConnection.Close();
                         }
                         else
                         {
-                            addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlterateEmail.Text;
-                        }
-                        addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
-                        addCustomerRecord.Parameters["@userPassword"].Value = EncryptPassword(textBoxPassword.Text);
-                        if (maskedTextBoxCreditCardNumber.Text == "")
-                        {
-                            addCustomerRecord.Parameters["@creditCard"].Value = "";
-                        }
-                        else
-                        {
-                            addCustomerRecord.Parameters["@creditCard"].Value = maskedTextBoxCreditCardNumber.Text;
-                        }
+                            // FIRST: Add New Address
+                            YellowBucketConnection.Open();
+                            SqlCommand addCustomerAddress = new SqlCommand("INSERT INTO dbo.CustomerAddress(addressLine1, addressLine2, city, stateProvince, postalCode) VALUES (@addressLine1, @addressLine2, @city, @stateProvince, @postalCode);", YellowBucketConnection);
 
-                        addCustomerRecord.ExecuteNonQuery();
+                            addCustomerAddress.Parameters.Add("@addressLine1", SqlDbType.VarChar);
+                            addCustomerAddress.Parameters.Add("@addressLine2", SqlDbType.VarChar);
+                            addCustomerAddress.Parameters.Add("@city", SqlDbType.VarChar);
+                            addCustomerAddress.Parameters.Add("@stateProvince", SqlDbType.VarChar);
+                            addCustomerAddress.Parameters.Add("@postalCode", SqlDbType.VarChar);
+
+                            addCustomerAddress.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
+                            addCustomerAddress.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                            addCustomerAddress.Parameters["@city"].Value = textBoxCity.Text;
+                            addCustomerAddress.Parameters["@stateProvince"].Value = textBoxState.Text;
+                            addCustomerAddress.Parameters["@postalCode"].Value = textBoxZipCode.Text;
+
+                            addCustomerAddress.ExecuteNonQuery();
+                            YellowBucketConnection.Close();
+
+                            // SECOND: Add New Customer
+                            YellowBucketConnection.Open();
+                            SqlCommand addCustomerRecord = new SqlCommand("INSERT INTO Customer(firstName, lastName, email, alternateEmail, userName, userPassword, creditCard) VALUES (@firstName, @lastName, @email, @alternateEmail, @userName, @userPassword, @creditCard);", YellowBucketConnection);
+
+                            addCustomerRecord.Parameters.Add("@firstName", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@lastName", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@email", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@alternateEmail", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@userName", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@userPassword", SqlDbType.VarChar);
+                            addCustomerRecord.Parameters.Add("@creditCard", SqlDbType.VarChar);
+
+                            addCustomerRecord.Parameters["@firstName"].Value = textBoxFirstName.Text;
+                            addCustomerRecord.Parameters["@lastName"].Value = textBoxLastName.Text;
+                            addCustomerRecord.Parameters["@email"].Value = textBoxEmail.Text;
+                            addCustomerRecord.Parameters["@alternateEmail"].Value = textBoxAlternateEmail.Text;
+                            addCustomerRecord.Parameters["@userName"].Value = textBoxUsername.Text;
+
+                            addCustomerRecord.Parameters["@userPassword"].Value = Encryptor(textBoxPassword.Text);
+                            addCustomerRecord.Parameters["@creditCard"].Value = Encryptor(maskedTextBoxCreditCardNumber.Text);
+
+                            addCustomerRecord.ExecuteNonQuery();
+                            YellowBucketConnection.Close();
+
+                            // THIRD: Find AddressID of Address Just Added to Database
+                            YellowBucketConnection.Open();
+                            SqlDataReader findCustomerAddressID = null;
+                            SqlCommand findAddressID = new SqlCommand("SELECT customerAddressID FROM dbo.CustomerAddress WHERE addressLine1 = @addressLine1 AND addressLine2 = @addressLine2 AND city = @city AND stateProvince = @stateProvince AND postalCode = @postalCode;", YellowBucketConnection);
+
+                            findAddressID.Parameters.Add("@addressLine1", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@addressLine2", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@city", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@stateProvince", SqlDbType.VarChar);
+                            findAddressID.Parameters.Add("@postalCode", SqlDbType.VarChar);
+
+                            findAddressID.Parameters["@addressLine1"].Value = textBoxAddressLine1.Text;
+                            findAddressID.Parameters["@addressLine2"].Value = textBoxAddressLine2.Text;
+                            findAddressID.Parameters["@city"].Value = textBoxCity.Text;
+                            findAddressID.Parameters["@stateProvince"].Value = textBoxState.Text;
+                            findAddressID.Parameters["@postalCode"].Value = textBoxZipCode.Text;
+
+                            findCustomerAddressID = findAddressID.ExecuteReader();
+                            YellowBucketConnection.Close();
+
+                            // FOURTH: Connect New Customer to New Address
+                            YellowBucketConnection.Open();
+                            SqlCommand updateCustomerWithAddressID = new SqlCommand("UPDATE dbo.Customer SET customerAddressID = @addressID WHERE userName = @userName;", YellowBucketConnection);
+                            updateCustomerWithAddressID.Parameters.Add("@addressID", SqlDbType.Int);
+                            updateCustomerWithAddressID.Parameters["@addressID"].Value = findCustomerAddressID;
+                            updateCustomerWithAddressID.Parameters.Add("@userName", SqlDbType.VarChar);
+                            updateCustomerWithAddressID.Parameters["@userName"].Value = textBoxUsername.Text;
+
+                            updateCustomerWithAddressID.ExecuteNonQuery();
+                            YellowBucketConnection.Close();
+                        }
 
                         lblSaveStatus.Text = "SUCCESS: New Customer Information Saved!";
-
                     }
 
                     catch (Exception ex)
                     {
-                        label1.Text = "Unable to save new customer information: " + ex.ToString();
+                        lblErrorMessage.Text = "Unable to save new customer information: " + ex.ToString();
                         Console.WriteLine(ex.ToString());
                     }
                 }
@@ -204,46 +326,49 @@ namespace Yellow_Bucket
             }
         }
 
-        //private bool testUsernameUniqueness()
-        //{
-        //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            YellowBucketConnection.Open();
-        //            SqlCommand findUsernameCommand = new SqlCommand("SELECT userName FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
-        //            findUsernameCommand.Parameters.Add("@userName", SqlDbType.VarChar);
-        //            findUsernameCommand.Parameters["@userName"].Value = textBoxUsername.Text;
-                    
-        //            SqlDataAdapter findUsername = new SqlDataAdapter(findUsernameCommand);
+        private bool testUsernameUniqueness()
+        {
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+                    DataTable userNames = new DataTable();
 
-        //            if (findUsername.Equals(textBoxUsername.Text))
-        //            {
-        //                lblSaveStatus.Text = "Username " + textBoxUsername.Text + "already exists.  Username must be unique.";
-        //                YellowBucketConnection.Close();
-        //                return false;
-        //            }
-        //            else
-        //            {
-        //                YellowBucketConnection.Close();
-        //                return true;
-        //            }
-        //        }
+                    SqlDataReader findUsername = null;
+                    SqlCommand findUsernameCommand = new SqlCommand("SELECT userName FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
+                    findUsernameCommand.Parameters.Add("@userName", SqlDbType.VarChar);
+                    findUsernameCommand.Parameters["@userName"].Value = textBoxUsername.Text;
 
-        //        catch (Exception ex)
-        //        {
-        //            lblSaveStatus.Text = "Unable to verify username uniqueness: " + ex.ToString();
-        //            YellowBucketConnection.Close();
-        //            return false;
-        //        }
-        //    }
-        //}
+                    findUsername = findUsernameCommand.ExecuteReader();
 
-        private string EncryptPassword(string stringToEncrypt)  // Code Copied From: http://www.codeproject.com/Articles/19538/Encrypt-Decrypt-String-using-DES-in-C
+                    userNames.Load(findUsername);
+
+                    if (userNames.Rows.Count == 1)
+                    {
+                        lblSaveStatus.Text = "Username already exists.  Change username.";
+                        return false;
+                    }
+                    else
+                    {
+                        return true;
+                    }
+                }
+
+                catch (Exception ex)
+                {
+                    lblSaveStatus.Text = "Unable to verify username uniqueness: " + ex.ToString();
+                    YellowBucketConnection.Close();
+                    return false;
+                }
+            }
+        }
+
+        private string Encryptor(string stringToEncrypt)  // Code Copied From: http://www.codeproject.com/Articles/19538/Encrypt-Decrypt-String-using-DES-in-C
         {
             if(String.IsNullOrEmpty(stringToEncrypt))
             {
-                throw new ArgumentNullException("The password to be encrypted cannot be blank.");
+                throw new ArgumentNullException("The string to be encrypted can not be null.");
             }
 
             DESCryptoServiceProvider cryptoProvider = new DESCryptoServiceProvider();
@@ -255,7 +380,6 @@ namespace Yellow_Bucket
             writer.Flush();
             cryptoStream.FlushFinalBlock();
             writer.Flush();
-            label1.Text = Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
             return Convert.ToBase64String(memoryStream.GetBuffer(), 0, (int)memoryStream.Length);
         }
     }

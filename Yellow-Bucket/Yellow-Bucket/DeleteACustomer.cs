@@ -15,9 +15,9 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         // Variables to hold the firstname, lastname, and username of the customer selected in the comboBoxOfCustomers
@@ -133,7 +133,7 @@ namespace Yellow_Bucket
             selectedCustomerUserName = customerName[3];
         }
 
-        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)   // Delete customer record based on the selected customer's username
+        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)   // Delete customer record based on the selected customer's username; Will also delete customer's address on record
         {
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
@@ -143,6 +143,7 @@ namespace Yellow_Bucket
                     SqlCommand deleteCustomer = new SqlCommand("DELETE FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
                     deleteCustomer.Parameters.Add("@userName", SqlDbType.VarChar);
                     deleteCustomer.Parameters["@userName"].Value = selectedCustomerUserName;
+
                     deleteCustomer.ExecuteNonQuery();
 
                     YellowBucketConnection.Close();
