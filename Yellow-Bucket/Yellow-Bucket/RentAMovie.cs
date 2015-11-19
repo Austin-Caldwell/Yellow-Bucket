@@ -90,7 +90,6 @@ namespace Yellow_Bucket
             fillwithmovies();
         }
 
-
         private void fillwithmovies()
         {
             DataTable allmovies = new DataTable();

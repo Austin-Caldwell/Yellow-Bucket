@@ -25,31 +25,6 @@ namespace Yellow_Bucket
             InitializeComponent();
         }
 
-        //private void filllstBoxMovies()
-        //{
-        //    DataTable allMovies = new DataTable();
-
-        //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(title) AS fullname FROM dbo.Movie", YellowBucketConnection);
-        //            adapter.Fill(allMovies);
-
-        //            lstBoxMovies.ValueMember = "id";
-        //            lstBoxMovies.DisplayMember = "fullname";
-        //            lstBoxMovies.DataSource = allMovies;
-
-        //            YellowBucketConnection.Close();
-        //        }
-
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.ToString());
-        //        }
-        //    }
-        //}
-
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
