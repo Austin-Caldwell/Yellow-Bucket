@@ -42,6 +42,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lstBoxFillMovie = new System.Windows.Forms.ListBox();
             this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -204,11 +205,21 @@
             this.listBox2.Size = new System.Drawing.Size(344, 424);
             this.listBox2.TabIndex = 7;
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.Location = new System.Drawing.Point(173, 534);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(176, 20);
+            this.lblErrorMessage.TabIndex = 8;
+            this.lblErrorMessage.Text = "Error Message: (NONE)";
+            // 
             // RentAMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.listBox2);
             this.Controls.Add(this.lstBoxFillMovie);
             this.Controls.Add(this.label2);
@@ -243,6 +254,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstBoxFillMovie;
         private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.Label lblErrorMessage;
         //>>>>>>> origin/master
     }
 }

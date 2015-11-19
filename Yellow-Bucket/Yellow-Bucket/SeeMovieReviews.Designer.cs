@@ -42,6 +42,7 @@
             this.lstBoxMovies = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lstBoxReview = new System.Windows.Forms.ListBox();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -192,11 +193,21 @@
             this.lstBoxReview.Size = new System.Drawing.Size(410, 404);
             this.lstBoxReview.TabIndex = 7;
             // 
+            // lblErrorMessage
+            // 
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.Location = new System.Drawing.Point(216, 521);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(51, 20);
+            this.lblErrorMessage.TabIndex = 8;
+            this.lblErrorMessage.Text = "label3";
+            // 
             // SeeMovieReviews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.lstBoxReview);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lstBoxMovies);
@@ -230,5 +241,6 @@
         private System.Windows.Forms.ListBox lstBoxMovies;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstBoxReview;
+        private System.Windows.Forms.Label lblErrorMessage;
     }
 }
