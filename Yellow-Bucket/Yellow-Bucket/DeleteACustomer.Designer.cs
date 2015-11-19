@@ -154,7 +154,7 @@
             this.comboBoxOfCustomers.Name = "comboBoxOfCustomers";
             this.comboBoxOfCustomers.Size = new System.Drawing.Size(391, 28);
             this.comboBoxOfCustomers.TabIndex = 1;
-            this.comboBoxOfCustomers.Text = "Select A Customer";
+            this.comboBoxOfCustomers.Text = "Select a Customer to Delete";
             this.comboBoxOfCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxOfCustomers_SelectedIndexChanged);
             // 
             // lblCustomerName

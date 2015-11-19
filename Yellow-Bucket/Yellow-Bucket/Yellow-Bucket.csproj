@@ -110,6 +110,12 @@
     <Compile Include="UpdateCustomerRecord.Designer.cs">
       <DependentUpon>UpdateCustomerRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewCustomerDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewCustomerDetails.Designer.cs">
+      <DependentUpon>ViewCustomerDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="WriteMovieReviews.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +162,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateCustomerRecord.resx">
       <DependentUpon>UpdateCustomerRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewCustomerDetails.resx">
+      <DependentUpon>ViewCustomerDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WriteMovieReviews.resx">
       <DependentUpon>WriteMovieReviews.cs</DependentUpon>

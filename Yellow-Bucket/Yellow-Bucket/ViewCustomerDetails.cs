@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class Customers : Form
+    public partial class ViewCustomerDetails : Form
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
@@ -20,30 +20,32 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
-        public Customers()
+        private string selectedCustomerUserName;    // Variable to hold the username of the customer selected in the comboBoxOfCustomers
+
+        public ViewCustomerDetails()
         {
             InitializeComponent();
         }
 
-        private void ListAllCustomers_Load(object sender, EventArgs e)
+        private void ViewCustomerDetails_Load(object sender, EventArgs e)
         {
-            fillListOfAllCustomers();
+            FillComboBoxOfCustomers();
         }
 
-        private void fillListOfAllCustomers()
+        private void FillComboBoxOfCustomers()
         {
-            DataTable allCustomers = new DataTable();
+            DataTable customers = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(lastname, ', ', firstname, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
-                    adapter.Fill(allCustomers);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(firstName, ' ', lastName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    adapter.Fill(customers);
 
-                    listBoxOfAllCustomers.ValueMember = "id";
-                    listBoxOfAllCustomers.DisplayMember = "fullname";
-                    listBoxOfAllCustomers.DataSource = allCustomers;
+                    comboBoxOfCustomers.ValueMember = "id";
+                    comboBoxOfCustomers.DisplayMember = "fullname";
+                    comboBoxOfCustomers.DataSource = customers;
 
                     YellowBucketConnection.Close();
                 }
@@ -83,6 +85,27 @@ namespace Yellow_Bucket
             movieForm.Show();
         }
 
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie rentAMovieForm = new RentAMovie();
+            rentAMovieForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
+        }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
+        }
+
         private void aBOUTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -95,53 +118,11 @@ namespace Yellow_Bucket
             Application.Exit();
         }
 
-        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            Review reviewForm = new Review();
-            reviewForm.Show();
-        }
-
-        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ReturnMovie ReturnMovieForm = new ReturnMovie();
-            ReturnMovieForm.Show();
-        }
-
-        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            RentAMovie RentAMovieForm = new RentAMovie();
-            RentAMovieForm.Show();
-        }
-
-        private void buttonToAddCustomer_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AddACustomer addCustomerForm = new AddACustomer();
-            addCustomerForm.Show();
-        }
-
-        private void buttonToDeleteCustomer_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            YELLOW_BUCKET____DELETE_A_CUSTOMER deleteCustomerForm = new YELLOW_BUCKET____DELETE_A_CUSTOMER();
-            deleteCustomerForm.Show();
-        }
-
         private void buttonToEditCustomerInfo_Click(object sender, EventArgs e)
         {
             this.Hide();
-            UpdateCustomerRecord updateCustomerForm = new UpdateCustomerRecord();
-            updateCustomerForm.Show();
-        }
-
-        private void buttonToViewCustomerDetails_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            ViewCustomerDetails viewCustomerDetailsForm = new ViewCustomerDetails();
-            viewCustomerDetailsForm.Show();
+            UpdateCustomerRecord updateCustomerRecordForm = new UpdateCustomerRecord();
+            updateCustomerRecordForm.Show();
         }
     }
 }

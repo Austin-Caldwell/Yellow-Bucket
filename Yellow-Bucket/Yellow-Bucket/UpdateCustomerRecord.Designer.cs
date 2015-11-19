@@ -299,7 +299,7 @@
             this.comboBoxOfCustomers.Name = "comboBoxOfCustomers";
             this.comboBoxOfCustomers.Size = new System.Drawing.Size(403, 28);
             this.comboBoxOfCustomers.TabIndex = 1;
-            this.comboBoxOfCustomers.Text = "Select A Customer";
+            this.comboBoxOfCustomers.Text = "Select a Customer to Edit Information";
             this.comboBoxOfCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxOfCustomers_SelectedIndexChanged);
             // 
             // lblSelectCustomer
@@ -475,7 +475,7 @@
             // lblCustomerFirstName
             // 
             this.lblCustomerFirstName.AutoSize = true;
-            this.lblCustomerFirstName.Location = new System.Drawing.Point(394, 139);
+            this.lblCustomerFirstName.Location = new System.Drawing.Point(393, 133);
             this.lblCustomerFirstName.Name = "lblCustomerFirstName";
             this.lblCustomerFirstName.Size = new System.Drawing.Size(207, 20);
             this.lblCustomerFirstName.TabIndex = 37;
@@ -484,7 +484,7 @@
             // lblCustomerLastName
             // 
             this.lblCustomerLastName.AutoSize = true;
-            this.lblCustomerLastName.Location = new System.Drawing.Point(393, 168);
+            this.lblCustomerLastName.Location = new System.Drawing.Point(393, 165);
             this.lblCustomerLastName.Name = "lblCustomerLastName";
             this.lblCustomerLastName.Size = new System.Drawing.Size(207, 20);
             this.lblCustomerLastName.TabIndex = 38;
