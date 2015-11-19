@@ -24,54 +24,6 @@ namespace Yellow_Bucket
             InitializeComponent();
         }
 
-        //private void RentAMovie_Load(object sender, EventArgs e)
-        //{
-        //    //fillRentAMovie();
-        //}
-
-        //private void fillRentAMovie()
-        //{
-        //    DataTable allMovies = new DataTable();
-            //using (YellowBucketConnection = new SqlConnection(connectionString))
-            //{
-            //    try
-            //    {
-            //        SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
-            //        adapter.Fill(allMovies);
-
-            //        lstboxMovies.ValueMember = "id";
-            //        lstboxMovies.DisplayMember = "title";
-            //        lstboxMovies.DataSource = allMovies;
-        //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
-        //            adapter.Fill(allMovies);
-
-        //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
-        //            adapter.Fill(allMovies);
-
-        //            lstboxMovies.ValueMember = "id";
-        //            lstboxMovies.DisplayMember = "title";
-        //            lstboxMovies.DataSource = allMovies;
-
-        //            YellowBucketConnection.Close();
-        //        }
-
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.ToString());
-        //        }
-        //    }
-        //}
-
-
-
         private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
