@@ -11,18 +11,50 @@ using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
-    public partial class SeeMovieReviews : Form
+    public partial class ViewCustomerDetails : Form
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
-        public SeeMovieReviews()
+        private string selectedCustomerUserName;    // Variable to hold the username of the customer selected in the comboBoxOfCustomers
+
+        public ViewCustomerDetails()
         {
             InitializeComponent();
+        }
+
+        private void ViewCustomerDetails_Load(object sender, EventArgs e)
+        {
+            FillComboBoxOfCustomers();
+        }
+
+        private void FillComboBoxOfCustomers()
+        {
+            DataTable customers = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(firstName, ' ', lastName, ' - ', userName) AS fullname FROM dbo.Customer", YellowBucketConnection);
+                    adapter.Fill(customers);
+
+                    comboBoxOfCustomers.ValueMember = "id";
+                    comboBoxOfCustomers.DisplayMember = "fullname";
+                    comboBoxOfCustomers.DataSource = customers;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
@@ -49,15 +81,15 @@ namespace Yellow_Bucket
         private void mOVIESToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            Kiosks kioskForm = new Kiosks();
-            kioskForm.Show();
+            Movies movieForm = new Movies();
+            movieForm.Show();
         }
 
         private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
-            RentAMovie rentMovieForm = new RentAMovie();
-            rentMovieForm.Show();
+            RentAMovie rentAMovieForm = new RentAMovie();
+            rentAMovieForm.Show();
         }
 
         private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,34 +118,11 @@ namespace Yellow_Bucket
             Application.Exit();
         }
 
-        private void SeeMovieReviews_Load(object sender, EventArgs e)
+        private void buttonToEditCustomerInfo_Click(object sender, EventArgs e)
         {
-            fillwithmovies();
-        }
-
-        private void fillwithmovies()
-        {
-            DataTable allmovies = new DataTable();
-
-            using (YellowBucketConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
-                    adapter.Fill(allmovies);
-
-                    lstBoxMovies.ValueMember = "id";
-                    lstBoxMovies.DisplayMember = "title";
-                    lstBoxMovies.DataSource = "allmovies";
-
-                    YellowBucketConnection.Close();
-                }
-
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
+            this.Hide();
+            UpdateCustomerRecord updateCustomerRecordForm = new UpdateCustomerRecord();
+            updateCustomerRecordForm.Show();
         }
     }
 }

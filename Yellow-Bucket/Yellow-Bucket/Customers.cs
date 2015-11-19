@@ -136,5 +136,12 @@ namespace Yellow_Bucket
             UpdateCustomerRecord updateCustomerForm = new UpdateCustomerRecord();
             updateCustomerForm.Show();
         }
+
+        private void buttonToViewCustomerDetails_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewCustomerDetails viewCustomerDetailsForm = new ViewCustomerDetails();
+            viewCustomerDetailsForm.Show();
+        }
     }
 }

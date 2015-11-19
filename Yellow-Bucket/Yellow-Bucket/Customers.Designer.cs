@@ -198,6 +198,7 @@
             this.buttonToViewCustomerDetails.TabIndex = 5;
             this.buttonToViewCustomerDetails.Text = "View Customer Details";
             this.buttonToViewCustomerDetails.UseVisualStyleBackColor = true;
+            this.buttonToViewCustomerDetails.Click += new System.EventHandler(this.buttonToViewCustomerDetails_Click);
             // 
             // buttonToDeleteCustomer
             // 

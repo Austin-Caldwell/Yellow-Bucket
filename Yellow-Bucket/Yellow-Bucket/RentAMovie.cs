@@ -15,47 +15,14 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
-        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         public RentAMovie()
         {
             InitializeComponent();
         }
-
-        //private void RentAMovie_Load(object sender, EventArgs e)
-        //{
-        //    //fillRentAMovie();
-        //}
-
-        //private void fillRentAMovie()
-        //{
-        //    DataTable allMovies = new DataTable();
-
-        //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
-        //        {
-        //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
-        //            adapter.Fill(allMovies);
-
-        //            lstboxMovies.ValueMember = "id";
-        //            lstboxMovies.DisplayMember = "title";
-        //            lstboxMovies.DataSource = allMovies;
-
-        //            YellowBucketConnection.Close();
-        //        }
-
-        //        catch (Exception ex)
-        //        {
-        //            Console.WriteLine(ex.ToString());
-        //        }
-        //    }
-        //}
-
-
 
         private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -122,7 +89,6 @@ namespace Yellow_Bucket
         {
             fillwithmovies();
         }
-
 
         private void fillwithmovies()
         {

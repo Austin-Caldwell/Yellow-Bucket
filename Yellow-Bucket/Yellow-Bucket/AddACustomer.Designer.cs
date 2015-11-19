@@ -53,7 +53,7 @@
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.maskedTextBoxCreditCardNumber = new System.Windows.Forms.MaskedTextBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
-            this.textBoxAlterateEmail = new System.Windows.Forms.TextBox();
+            this.textBoxAlternateEmail = new System.Windows.Forms.TextBox();
             this.lblConfirmPassword = new System.Windows.Forms.Label();
             this.textBoxConfirmPassword = new System.Windows.Forms.TextBox();
             this.lblPasswordsMatch = new System.Windows.Forms.Label();
@@ -72,7 +72,7 @@
             this.lblPasswordInfoMessage = new System.Windows.Forms.Label();
             this.lblPasswordLengthWarning = new System.Windows.Forms.Label();
             this.textBoxZipCode = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -304,12 +304,12 @@
             this.textBoxEmail.Size = new System.Drawing.Size(403, 26);
             this.textBoxEmail.TabIndex = 3;
             // 
-            // textBoxAlterateEmail
+            // textBoxAlternateEmail
             // 
-            this.textBoxAlterateEmail.Location = new System.Drawing.Point(393, 174);
-            this.textBoxAlterateEmail.Name = "textBoxAlterateEmail";
-            this.textBoxAlterateEmail.Size = new System.Drawing.Size(402, 26);
-            this.textBoxAlterateEmail.TabIndex = 4;
+            this.textBoxAlternateEmail.Location = new System.Drawing.Point(393, 174);
+            this.textBoxAlternateEmail.Name = "textBoxAlternateEmail";
+            this.textBoxAlternateEmail.Size = new System.Drawing.Size(402, 26);
+            this.textBoxAlternateEmail.TabIndex = 4;
             // 
             // lblConfirmPassword
             // 
@@ -459,21 +459,21 @@
             this.textBoxZipCode.Size = new System.Drawing.Size(166, 26);
             this.textBoxZipCode.TabIndex = 13;
             // 
-            // label1
+            // lblErrorMessage
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(-4, 284);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 20);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "label1";
+            this.lblErrorMessage.AutoSize = true;
+            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblErrorMessage.Location = new System.Drawing.Point(12, 335);
+            this.lblErrorMessage.Name = "lblErrorMessage";
+            this.lblErrorMessage.Size = new System.Drawing.Size(0, 17);
+            this.lblErrorMessage.TabIndex = 22;
             // 
             // AddACustomer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.textBoxZipCode);
             this.Controls.Add(this.lblPasswordLengthWarning);
             this.Controls.Add(this.lblPasswordInfoMessage);
@@ -492,7 +492,7 @@
             this.Controls.Add(this.lblPasswordsMatch);
             this.Controls.Add(this.textBoxConfirmPassword);
             this.Controls.Add(this.lblConfirmPassword);
-            this.Controls.Add(this.textBoxAlterateEmail);
+            this.Controls.Add(this.textBoxAlternateEmail);
             this.Controls.Add(this.textBoxEmail);
             this.Controls.Add(this.maskedTextBoxCreditCardNumber);
             this.Controls.Add(this.textBoxPassword);
@@ -548,7 +548,7 @@
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxCreditCardNumber;
         private System.Windows.Forms.TextBox textBoxEmail;
-        private System.Windows.Forms.TextBox textBoxAlterateEmail;
+        private System.Windows.Forms.TextBox textBoxAlternateEmail;
         private System.Windows.Forms.Label lblConfirmPassword;
         private System.Windows.Forms.TextBox textBoxConfirmPassword;
         private System.Windows.Forms.Label lblPasswordsMatch;
@@ -567,6 +567,6 @@
         private System.Windows.Forms.Label lblPasswordInfoMessage;
         private System.Windows.Forms.Label lblPasswordLengthWarning;
         private System.Windows.Forms.TextBox textBoxZipCode;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblErrorMessage;
     }
 }
