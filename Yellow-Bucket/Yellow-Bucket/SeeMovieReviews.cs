@@ -25,30 +25,30 @@ namespace Yellow_Bucket
             InitializeComponent();
         }
 
-        private void filllstBoxMovies()
-        {
-            DataTable allMovies = new DataTable();
+        //private void filllstBoxMovies()
+        //{
+        //    DataTable allMovies = new DataTable();
 
-            using (YellowBucketConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(title) AS fullname FROM dbo.Movie", YellowBucketConnection);
-                    adapter.Fill(allMovies);
+        //    using (YellowBucketConnection = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(title) AS fullname FROM dbo.Movie", YellowBucketConnection);
+        //            adapter.Fill(allMovies);
 
-                    lstBoxMovies.ValueMember = "id";
-                    lstBoxMovies.DisplayMember = "fullname";
-                    lstBoxMovies.DataSource = allMovies;
+        //            lstBoxMovies.ValueMember = "id";
+        //            lstBoxMovies.DisplayMember = "fullname";
+        //            lstBoxMovies.DataSource = allMovies;
 
-                    YellowBucketConnection.Close();
-                }
+        //            YellowBucketConnection.Close();
+        //        }
 
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.ToString());
-                }
-            }
-        }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.ToString());
+        //        }
+        //    }
+        //}
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -109,6 +109,36 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void SeeMovieReviews_Load(object sender, EventArgs e)
+        {
+            fillwithmovies();
+        }
+
+        private void fillwithmovies()
+        {
+            DataTable allmovies = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
+                    adapter.Fill(allmovies);
+
+                    lstBoxMovies.ValueMember = "id";
+                    lstBoxMovies.DisplayMember = "title";
+                    lstBoxMovies.DataSource = "allmovies";
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
     }
 }
