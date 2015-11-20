@@ -205,13 +205,13 @@ namespace Yellow_Bucket
 
         private void fillLstBoxCurrentRentals()
         {
-            DataTable currentRentalTable = new DataTable();
-
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
                     YellowBucketConnection.Open();
+
+                    DataTable currentRentalTable = new DataTable();
 
                     // Find Movies Currently Rented By Customer
                     SqlDataReader readCurrentRentals = null;
@@ -243,13 +243,13 @@ namespace Yellow_Bucket
 
         private void fillLstBoxRentalHistory()
         {
-            DataTable rentalHistoryTable = new DataTable();
-
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
                     YellowBucketConnection.Open();
+
+                    DataTable rentalHistoryTable = new DataTable();
 
                     // Find Historic Rentals for Customer
                     SqlDataReader readRentalHistory = null;
@@ -281,13 +281,13 @@ namespace Yellow_Bucket
 
         private void fillLstBoxReviews()
         {
-            DataTable customerReviewsTable = new DataTable();
-
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
                     YellowBucketConnection.Open();
+
+                    DataTable customerReviewsTable = new DataTable();
 
                     // Find Reviews Posted by Customer
                     SqlDataReader readCustomerReviews = null;
@@ -319,13 +319,13 @@ namespace Yellow_Bucket
 
         private void fillLstBoxRatings()
         {
-            DataTable customerRatingTable = new DataTable();
-
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
                     YellowBucketConnection.Open();
+
+                    DataTable customerRatingTable = new DataTable();
 
                     // Find All Movie Ratings Posted by Customer
                     SqlDataReader readCustomerRatings = null;
