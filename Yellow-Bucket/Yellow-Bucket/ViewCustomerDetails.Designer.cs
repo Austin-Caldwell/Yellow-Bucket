@@ -530,10 +530,10 @@
             // lblErrorMessage
             // 
             this.lblErrorMessage.AutoSize = true;
-            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
+            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
             this.lblErrorMessage.Location = new System.Drawing.Point(121, 631);
             this.lblErrorMessage.Name = "lblErrorMessage";
-            this.lblErrorMessage.Size = new System.Drawing.Size(0, 17);
+            this.lblErrorMessage.Size = new System.Drawing.Size(0, 9);
             this.lblErrorMessage.TabIndex = 37;
             // 
             // ViewCustomerDetails

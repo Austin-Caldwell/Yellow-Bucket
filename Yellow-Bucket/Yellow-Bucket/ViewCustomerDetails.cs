@@ -26,6 +26,7 @@ namespace Yellow_Bucket
 
         private string selectedCustomerUserName;    // Variable to hold the username of the customer selected in the comboBoxOfCustomers
         private int selectedCustomerID;             // Variable to hold the customer ID of the customer selected in the comboBoxOfCustomers
+        private DataTable customerID = new DataTable();
 
         public ViewCustomerDetails()
         {
@@ -34,10 +35,10 @@ namespace Yellow_Bucket
 
         private void ViewCustomerDetails_Load(object sender, EventArgs e)
         {
-            FillComboBoxOfCustomers();
+            fillComboBoxOfCustomers();
         }
 
-        private void FillComboBoxOfCustomers()
+        private void fillComboBoxOfCustomers()
         {
             DataTable customers = new DataTable();
 
@@ -91,8 +92,10 @@ namespace Yellow_Bucket
                         lblEmail.Text = readCustomerDetails["email"].ToString();
                         lblAlternateEmail.Text = readCustomerDetails["alternateEmail"].ToString();
                         lblUsername.Text = readCustomerDetails["userName"].ToString();
-                        lblPassword.Text = Decryptor(readCustomerDetails["userPassword"].ToString());
-                        lblCreditCardNumber.Text = Decryptor(readCustomerDetails["creditCard"].ToString());
+                        //lblPassword.Text = Decryptor(readCustomerDetails["userPassword"].ToString());
+                        lblPassword.Text = readCustomerDetails["userPassword"].ToString();
+                        //lblCreditCardNumber.Text = Decryptor(readCustomerDetails["creditCard"].ToString());
+                        lblCreditCardNumber.Text = readCustomerDetails["creditCard"].ToString();
 
                         // Populate Customer Address Fields
                         lblAddressLine1.Text = readCustomerDetails["addressLine1"].ToString();
@@ -102,6 +105,25 @@ namespace Yellow_Bucket
                         lblZipCode.Text = readCustomerDetails["postalCode"].ToString();
                     }
 
+                    YellowBucketConnection.Close();
+                    YellowBucketConnection.Open();
+
+                    SqlDataReader readCustomerID = null;
+                    SqlCommand findCustomerID = new SqlCommand("SELECT customerID FROM dbo.Customer WHERE userName = @userName;", YellowBucketConnection);
+
+                    findCustomerID.Parameters.Add("@userName", SqlDbType.VarChar);
+                    findCustomerID.Parameters["@userName"].Value = selectedCustomerUserName;
+                    readCustomerID = findCustomerID.ExecuteReader();
+
+                    customerID.Load(readCustomerID);
+                    DataRow customerIDTableRow = customerID.Rows[0];
+                    selectedCustomerID = Convert.ToInt32(customerIDTableRow["customerID"]);
+                    YellowBucketConnection.Close();
+
+                    fillLstBoxCurrentRentals();     // Fill List Box of Customer's Current Rentals
+                    fillLstBoxRentalHistory();      // Fill List Box of Customer's Rental History
+                    fillLstBoxReviews();            // Fill List Box of Customer's Posted Reviews
+                    fillLstBoxRatings();            // Fill List Box of Customer's Movie Ratings
                     YellowBucketConnection.Close();
                 }
 
@@ -179,6 +201,158 @@ namespace Yellow_Bucket
             this.Hide();
             UpdateCustomerRecord updateCustomerRecordForm = new UpdateCustomerRecord();
             updateCustomerRecordForm.Show();
+        }
+
+        private void fillLstBoxCurrentRentals()
+        {
+            DataTable currentRentalTable = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    // Find Movies Currently Rented By Customer
+                    SqlDataReader readCurrentRentals = null;
+                    SqlCommand findCurrentRentals = new SqlCommand("SELECT concat(title, ' Rented:', dateRented, ' Disc Type:', dvdBluRay) AS currentRental FROM dbo.Rental, dbo.Inventory, dbo.Movie WHERE customerID = @customerID AND Rental.stockID = Inventory.stockID AND Inventory.movieID = Movie.movieID;", YellowBucketConnection);
+                    findCurrentRentals.Parameters.Add("@customerID", SqlDbType.Int);
+                    findCurrentRentals.Parameters["@customerID"].Value = selectedCustomerID;
+
+                    readCurrentRentals = findCurrentRentals.ExecuteReader();
+
+                    while (readCurrentRentals.Read())   // ERROR OCCURS HERE!  "Invalid attempt to Read when Reader is closed."
+                    {
+                        currentRentalTable.Load(readCurrentRentals);
+                    }
+
+                    lstBoxCurrentRentals.ValueMember = "rentalID";
+                    lstBoxCurrentRentals.DisplayMember = "currentRental";
+                    lstBoxCurrentRentals.DataSource = currentRentalTable;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void fillLstBoxRentalHistory()
+        {
+            DataTable rentalHistoryTable = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    // Find Historic Rentals for Customer
+                    SqlDataReader readRentalHistory = null;
+                    SqlCommand findRentalHistory = new SqlCommand("SELECT concat(title, ' Rented:', outDate, ' Returned:', inDate) AS historicRental FROM dbo.RentalHistory, dbo.Customer, dbo.Movie WHERE RentalHistory.customerID = @customerID AND RentalHistory.movieID = Movie.movieID;", YellowBucketConnection);
+                    findRentalHistory.Parameters.Add("@customerID", SqlDbType.Int);
+                    findRentalHistory.Parameters["@customerID"].Value = selectedCustomerID;
+
+                    readRentalHistory = findRentalHistory.ExecuteReader();
+
+                    while (readRentalHistory.Read())
+                    {
+                        rentalHistoryTable.Load(readRentalHistory);
+                    }
+
+                    lstBoxRentalHistory.ValueMember = "historyID";
+                    lstBoxRentalHistory.DisplayMember = "historicRental";
+                    lstBoxRentalHistory.DataSource = rentalHistoryTable;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void fillLstBoxReviews()
+        {
+            DataTable customerReviewsTable = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    // Find Reviews Posted by Customer
+                    SqlDataReader readCustomerReviews = null;
+                    SqlCommand findCustomerReviews = new SqlCommand("SELECT concat(title, ' Date Posted:', datePosted, ' Review:', reviewDescription) AS postedReview FROM dbo.MovieReview, dbo.Movie WHERE customerID = @customerID AND MovieReview.movieID = Movie.movieID;", YellowBucketConnection);
+                    findCustomerReviews.Parameters.Add("@customerID", SqlDbType.Int);
+                    findCustomerReviews.Parameters["@customerID"].Value = selectedCustomerID;
+
+                    readCustomerReviews = findCustomerReviews.ExecuteReader();
+
+                    while (readCustomerReviews.Read())
+                    {
+                        customerReviewsTable.Load(readCustomerReviews);
+                    }
+
+                    lstBoxReviews.ValueMember = "reviewID";
+                    lstBoxReviews.DisplayMember = "postedReview";
+                    lstBoxReviews.DataSource = customerReviewsTable;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void fillLstBoxRatings()
+        {
+            DataTable customerRatingTable = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    // Find All Movie Ratings Posted by Customer
+                    SqlDataReader readCustomerRatings = null;
+                    SqlCommand findCustomerRatings = new SqlCommand("SELECT concat(title, ' Rating:', rating, ' Date Rated:', datePosted) AS ratingRecord FROM dbo.MovieReview, dbo.Movie WHERE customerID = @customerID AND MovieReview.movieID = Movie.movieID;", YellowBucketConnection);
+                    findCustomerRatings.Parameters.Add("@customerID", SqlDbType.Int);
+                    findCustomerRatings.Parameters["@customerID"].Value = selectedCustomerID;
+
+                    readCustomerRatings = findCustomerRatings.ExecuteReader();
+
+                    while (readCustomerRatings.Read())
+                    {
+                        customerRatingTable.Load(readCustomerRatings);
+                    }
+
+                    lstBoxRatings.ValueMember = "reviewID";
+                    lstBoxRatings.DisplayMember = "ratingRecord";
+                    lstBoxRatings.DataSource = customerRatingTable;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
 
         private string Decryptor(string stringToDecrypt)    // Code Copied From: http://www.codeproject.com/Articles/19538/Encrypt-Decrypt-String-using-DES-in-C
