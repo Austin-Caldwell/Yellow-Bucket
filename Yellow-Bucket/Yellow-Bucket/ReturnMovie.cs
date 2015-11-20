@@ -85,5 +85,40 @@ namespace Yellow_Bucket
             RentAMovie rentMovieForm = new RentAMovie();
             rentMovieForm.Show();
         }
+
+        private void ReturnMovie_Load(object sender, EventArgs e)
+        {
+            fillwithmovies();
+        }
+
+        private void fillwithmovies()
+        {
+            DataTable allmovies = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
+                    adapter.Fill(allmovies);
+
+                    lstBoxMovies.ValueMember = "id";
+                    lstBoxMovies.DisplayMember = "title";
+                    lstBoxMovies.DataSource = allmovies;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Movie Returned!!!");
+        }
     }
 }

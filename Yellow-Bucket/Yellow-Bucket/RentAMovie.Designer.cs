@@ -41,7 +41,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lstBoxFillMovie = new System.Windows.Forms.ListBox();
-            this.listBox2 = new System.Windows.Forms.ListBox();
+            this.lstBoxFillKiosk = new System.Windows.Forms.ListBox();
             this.lblErrorMessage = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
@@ -196,14 +196,15 @@
             this.lstBoxFillMovie.Size = new System.Drawing.Size(344, 424);
             this.lstBoxFillMovie.TabIndex = 6;
             // 
-            // listBox2
+            // lstBoxFillKiosk
             // 
-            this.listBox2.FormattingEnabled = true;
-            this.listBox2.ItemHeight = 20;
-            this.listBox2.Location = new System.Drawing.Point(560, 103);
-            this.listBox2.Name = "listBox2";
-            this.listBox2.Size = new System.Drawing.Size(344, 424);
-            this.listBox2.TabIndex = 7;
+            this.lstBoxFillKiosk.FormattingEnabled = true;
+            this.lstBoxFillKiosk.ItemHeight = 20;
+            this.lstBoxFillKiosk.Location = new System.Drawing.Point(560, 103);
+            this.lstBoxFillKiosk.Name = "lstBoxFillKiosk";
+            this.lstBoxFillKiosk.Size = new System.Drawing.Size(344, 424);
+            this.lstBoxFillKiosk.TabIndex = 7;
+            this.lstBoxFillKiosk.SelectedIndexChanged += new System.EventHandler(this.lstBoxFillKiosk_SelectedIndexChanged);
             // 
             // lblErrorMessage
             // 
@@ -220,7 +221,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.lblErrorMessage);
-            this.Controls.Add(this.listBox2);
+            this.Controls.Add(this.lstBoxFillKiosk);
             this.Controls.Add(this.lstBoxFillMovie);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -253,7 +254,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ListBox lstBoxFillMovie;
-        private System.Windows.Forms.ListBox listBox2;
+        private System.Windows.Forms.ListBox lstBoxFillKiosk;
         private System.Windows.Forms.Label lblErrorMessage;
         //>>>>>>> origin/master
     }

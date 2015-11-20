@@ -19,6 +19,7 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        private string selectedkiosklocation;
 
         public RentAMovie()
         {
@@ -116,6 +117,59 @@ namespace Yellow_Bucket
                 }
             }
         }
-      
+
+        private void lstBoxFillKiosk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            char[] delimiterChars = { ' ' };
+
+            string[] kiosklocation = lstBoxFillKiosk.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
+            selectedkiosklocation = kiosklocation[3];
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+                    SqlDataReader readkiosklocations = null;
+                    SqlCommand populatekiosklocations = new SqlCommand("SELECT  movieID FROM dbo.Inventory, dbo.Kiosk WHERE movieID = @movieID AND Inventory.KioskID = Kiosk.KioskID;", YellowBucketConnection);
+                    populatekiosklocations.Parameters.Add("@movieID", SqlDbType.Int);
+                    populatekiosklocations.Parameters["@movieID"].Value = selectedkiosklocation;
+
+                    readkiosklocations = populatekiosklocations.ExecuteReader();
+
+                    while (readkiosklocations.Read())
+                    {
+                        // Populate Customer Fields
+                        lstBoxFillKiosk.Text = readkiosklocations["movieID"].ToString();
+                        //    lblCustomerLastName.Text = readCustomerInfo["lastName"].ToString();
+                        //    textBoxEmail.Text = readCustomerInfo["email"].ToString();
+                        //    textBoxAlternateEmail.Text = readCustomerInfo["alternateEmail"].ToString();
+                        //    lblCustomerUsername.Text = readCustomerInfo["userName"].ToString();
+                        //    textBoxPassword.Text = Decryptor(readCustomerInfo["userPassword"].ToString());
+                        //    textBoxConfirmPassword.Text = Decryptor(readCustomerInfo["userPassword"].ToString());
+                        //    maskedTextBoxCreditCardNumber.Text = Decryptor(readCustomerInfo["creditCard"].ToString());
+
+                        //    // Populate Customer Address Fields
+                        //    textBoxAddressLine1.Text = readCustomerInfo["addressLine1"].ToString();
+                        //    textBoxAddressLine2.Text = readCustomerInfo["addressLine2"].ToString();
+                        //    textBoxCity.Text = readCustomerInfo["city"].ToString();
+                        //    textBoxState.Text = readCustomerInfo["stateProvince"].ToString();
+                        //    textBoxZipCode.Text = readCustomerInfo["postalCode"].ToString();
+                        //}
+
+                        YellowBucketConnection.Close();
+                    }
+                    }
+
+                catch (Exception ex)
+                {
+                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+       
+        }
     }
+    
+
 }

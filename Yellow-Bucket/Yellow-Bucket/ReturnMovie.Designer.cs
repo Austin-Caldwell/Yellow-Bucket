@@ -175,6 +175,7 @@
             this.button1.TabIndex = 2;
             this.button1.Text = "Return";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lstBoxMovies
             // 
@@ -210,6 +211,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ReturnMovie";
             this.Text = "ReturnMovie";
+            this.Load += new System.EventHandler(this.ReturnMovie_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
