@@ -39,10 +39,10 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.lstBoxMovies = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.lstBoxReview = new System.Windows.Forms.ListBox();
             this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.lstBoxReview = new System.Windows.Forms.ListBox();
+            this.comboBoxMovies = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,38 +160,16 @@
             this.label1.TabIndex = 4;
             this.label1.Text = "Select Movie";
             // 
-            // lstBoxMovies
-            // 
-            this.lstBoxMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstBoxMovies.FormattingEnabled = true;
-            this.lstBoxMovies.ItemHeight = 20;
-            this.lstBoxMovies.Location = new System.Drawing.Point(216, 108);
-            this.lstBoxMovies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lstBoxMovies.Name = "lstBoxMovies";
-            this.lstBoxMovies.Size = new System.Drawing.Size(319, 404);
-            this.lstBoxMovies.TabIndex = 5;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(567, 34);
+            this.label2.Location = new System.Drawing.Point(208, 109);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 26);
             this.label2.TabIndex = 6;
             this.label2.Text = "Movie Review";
-            // 
-            // lstBoxReview
-            // 
-            this.lstBoxReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstBoxReview.FormattingEnabled = true;
-            this.lstBoxReview.ItemHeight = 20;
-            this.lstBoxReview.Location = new System.Drawing.Point(574, 108);
-            this.lstBoxReview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lstBoxReview.Name = "lstBoxReview";
-            this.lstBoxReview.Size = new System.Drawing.Size(410, 404);
-            this.lstBoxReview.TabIndex = 7;
             // 
             // lblErrorMessage
             // 
@@ -202,15 +180,33 @@
             this.lblErrorMessage.TabIndex = 8;
             this.lblErrorMessage.Text = "label3";
             // 
+            // lstBoxReview
+            // 
+            this.lstBoxReview.FormattingEnabled = true;
+            this.lstBoxReview.ItemHeight = 20;
+            this.lstBoxReview.Location = new System.Drawing.Point(213, 139);
+            this.lstBoxReview.Name = "lstBoxReview";
+            this.lstBoxReview.Size = new System.Drawing.Size(565, 344);
+            this.lstBoxReview.TabIndex = 10;
+            // 
+            // comboBoxMovies
+            // 
+            this.comboBoxMovies.FormattingEnabled = true;
+            this.comboBoxMovies.Location = new System.Drawing.Point(213, 64);
+            this.comboBoxMovies.Name = "comboBoxMovies";
+            this.comboBoxMovies.Size = new System.Drawing.Size(551, 28);
+            this.comboBoxMovies.TabIndex = 11;
+            this.comboBoxMovies.SelectedIndexChanged += new System.EventHandler(this.comboBoxMovies_SelectedIndexChanged);
+            // 
             // SeeMovieReviews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
-            this.Controls.Add(this.lblErrorMessage);
+            this.Controls.Add(this.comboBoxMovies);
             this.Controls.Add(this.lstBoxReview);
+            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.lstBoxMovies);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -238,9 +234,10 @@
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ListBox lstBoxMovies;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lstBoxReview;
         private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.ComboBox comboBoxMovie;
+        private System.Windows.Forms.ListBox lstBoxReview;
+        private System.Windows.Forms.ComboBox comboBoxMovies;
     }
 }

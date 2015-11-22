@@ -204,7 +204,7 @@
             this.lstBoxFillKiosk.Name = "lstBoxFillKiosk";
             this.lstBoxFillKiosk.Size = new System.Drawing.Size(344, 424);
             this.lstBoxFillKiosk.TabIndex = 7;
-            this.lstBoxFillKiosk.SelectedIndexChanged += new System.EventHandler(this.lstBoxFillKiosk_SelectedIndexChanged);
+//            this.lstBoxFillKiosk.SelectedIndexChanged += new System.EventHandler(this.lstBoxFillKiosk_SelectedIndexChanged);
             // 
             // lblErrorMessage
             // 

@@ -20,6 +20,7 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String:
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         private string selectedkiosklocation;
+        private int selectedkioskID;
 
         public RentAMovie()
         {
@@ -92,6 +93,41 @@ namespace Yellow_Bucket
             fillwithmovies();
         }
 
+        private void fillkiosklocations()
+        {
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    DataTable KioskTable = new DataTable();
+
+                    SqlDataReader readKioskLocations = null;
+                    SqlCommand findkiosklocations = new SqlCommand("SELECT concat(location, ' --addressline1, ' --city, ' --stateProvince, ' --postalCode, ' --movieID, ' --kioskID) AS KioskLocations From dbo.Kiosk, dbo.Inventory,dbo.Kiosk WHERE KioskLocations.movieID = @movieID and KioskLocations.kioskID = @kioskID;", YellowBucketConnection);
+                    findkiosklocations.Parameters.Add("@movieID", SqlDbType.Int);
+                    findkiosklocations.Parameters.Add("@kioskID", SqlDbType.Int);
+                    findkiosklocations.Parameters["@movieID"].Value = selectedkioskID;
+                    findkiosklocations.Parameters["kioskID"].Value = selectedkioskID;
+
+                    readKioskLocations = findkiosklocations.ExecuteReader();
+
+                    KioskTable.Load(readKioskLocations);
+
+                    lstBoxFillKiosk.ValueMember = "stockID";
+                    lstBoxFillKiosk.DisplayMember = "KioskLocations";
+                    lstBoxFillKiosk.DataSource = KioskTable;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+
         private void fillwithmovies()
         {
             DataTable allmovies = new DataTable();
@@ -118,58 +154,44 @@ namespace Yellow_Bucket
             }
         }
 
-        private void lstBoxFillKiosk_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            char[] delimiterChars = { ' ' };
+        //private void lstBoxFillKiosk_SelectedIndexChanged(object sender, EventArgs e)
+        //{
+        //    char[] delimiterChars = { ' ' };
 
-            string[] kiosklocation = lstBoxFillKiosk.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
-            selectedkiosklocation = kiosklocation[3];
+        //    string[] kiosklocation = lstBoxFillKiosk.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
+        //    selectedkiosklocation = kiosklocation[3];
 
-            using (YellowBucketConnection = new SqlConnection(connectionString))
-            {
-                try
-                {
-                    YellowBucketConnection.Open();
-                    SqlDataReader readkiosklocations = null;
-                    SqlCommand populatekiosklocations = new SqlCommand("SELECT  movieID FROM dbo.Inventory, dbo.Kiosk WHERE movieID = @movieID AND Inventory.KioskID = Kiosk.KioskID;", YellowBucketConnection);
-                    populatekiosklocations.Parameters.Add("@movieID", SqlDbType.Int);
-                    populatekiosklocations.Parameters["@movieID"].Value = selectedkiosklocation;
+        //    using (YellowBucketConnection = new SqlConnection(connectionString))
+        //    {
+        //        try
+        //        {
+        //            YellowBucketConnection.Open();
+        //            SqlDataReader readkiosklocations = null;
+        //            SqlCommand populatekiosklocations = new SqlCommand("SELECT  movieID FROM dbo.Inventory, dbo.Kiosk WHERE movieID = @movieID AND Inventory.KioskID = Kiosk.KioskID;", YellowBucketConnection);
+        //            populatekiosklocations.Parameters.Add("@movieID", SqlDbType.Int);
+        //            populatekiosklocations.Parameters["@movieID"].Value = selectedkiosklocation;
 
-                    readkiosklocations = populatekiosklocations.ExecuteReader();
+        //            readkiosklocations = populatekiosklocations.ExecuteReader();
 
-                    while (readkiosklocations.Read())
-                    {
-                        // Populate Customer Fields
-                        lstBoxFillKiosk.Text = readkiosklocations["movieID"].ToString();
-                        //    lblCustomerLastName.Text = readCustomerInfo["lastName"].ToString();
-                        //    textBoxEmail.Text = readCustomerInfo["email"].ToString();
-                        //    textBoxAlternateEmail.Text = readCustomerInfo["alternateEmail"].ToString();
-                        //    lblCustomerUsername.Text = readCustomerInfo["userName"].ToString();
-                        //    textBoxPassword.Text = Decryptor(readCustomerInfo["userPassword"].ToString());
-                        //    textBoxConfirmPassword.Text = Decryptor(readCustomerInfo["userPassword"].ToString());
-                        //    maskedTextBoxCreditCardNumber.Text = Decryptor(readCustomerInfo["creditCard"].ToString());
+        //            while (readkiosklocations.Read())
+        //            {
+                        
+        //                lstBoxFillKiosk.Text = readkiosklocations["movieID"].ToString();
+                        
 
-                        //    // Populate Customer Address Fields
-                        //    textBoxAddressLine1.Text = readCustomerInfo["addressLine1"].ToString();
-                        //    textBoxAddressLine2.Text = readCustomerInfo["addressLine2"].ToString();
-                        //    textBoxCity.Text = readCustomerInfo["city"].ToString();
-                        //    textBoxState.Text = readCustomerInfo["stateProvince"].ToString();
-                        //    textBoxZipCode.Text = readCustomerInfo["postalCode"].ToString();
-                        //}
+        //                YellowBucketConnection.Close();
+        //            }
+        //            }
 
-                        YellowBucketConnection.Close();
-                    }
-                    }
-
-                catch (Exception ex)
-                {
-                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
-                    Console.WriteLine(ex.ToString());
-                }
-            }
+        //        catch (Exception ex)
+        //        {
+        //            Console.WriteLine(ex.ToString());
+        //        }
+        //    }
        
         }
     }
+
     
 
-}
+
