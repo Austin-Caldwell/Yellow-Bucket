@@ -56,6 +56,12 @@
     <Compile Include="AddACustomer.Designer.cs">
       <DependentUpon>AddACustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddMovieToKiosk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMovieToKiosk.Designer.cs">
+      <DependentUpon>AddMovieToKiosk.cs</DependentUpon>
+    </Compile>
     <Compile Include="RentAMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,12 @@
     </Compile>
     <Compile Include="SeeMovieReviews.Designer.cs">
       <DependentUpon>SeeMovieReviews.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ShowKioskInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowKioskInventory.Designer.cs">
+      <DependentUpon>ShowKioskInventory.cs</DependentUpon>
     </Compile>
     <Compile Include="UpdateCustomerRecord.cs">
       <SubType>Form</SubType>

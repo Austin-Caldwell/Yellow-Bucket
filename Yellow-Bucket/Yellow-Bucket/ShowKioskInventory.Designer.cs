@@ -1,6 +1,6 @@
 ﻿namespace Yellow_Bucket
 {
-    partial class Kiosks
+    partial class ShowKioskInventory
     {
         /// <summary>
         /// Required designer variable.
@@ -34,12 +34,13 @@
             this.kIOSKSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mOVIESToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rENTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rETURNToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.buttonToAddMovieToKiosk = new System.Windows.Forms.Button();
-            this.buttonToShowKioskInventory = new System.Windows.Forms.Button();
+            this.lblAllMoviesList = new System.Windows.Forms.Label();
+            this.comboBoxOfKiosks = new System.Windows.Forms.ComboBox();
+            this.listBoxOfMovies = new System.Windows.Forms.ListBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,14 +55,14 @@
             this.kIOSKSToolStripMenuItem,
             this.mOVIESToolStripMenuItem,
             this.rENTToolStripMenuItem,
-            this.rEVIEWToolStripMenuItem,
             this.rETURNToolStripMenuItem,
+            this.rEVIEWToolStripMenuItem,
             this.aBOUTToolStripMenuItem,
             this.qUITToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
-            this.mainMenuStrip.TabIndex = 0;
+            this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
@@ -83,7 +84,6 @@
             | System.Windows.Forms.Keys.C)));
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
-            this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
             // 
             // kIOSKSToolStripMenuItem
@@ -115,16 +115,6 @@
             this.rENTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rENTToolStripMenuItem.Text = "RENT";
             this.rENTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rENTToolStripMenuItem.Click += new System.EventHandler(this.rENTToolStripMenuItem_Click);
-            // 
-            // rEVIEWToolStripMenuItem
-            // 
-            this.rEVIEWToolStripMenuItem.Name = "rEVIEWToolStripMenuItem";
-            this.rEVIEWToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
-            this.rEVIEWToolStripMenuItem.Text = "REVIEW";
-            this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rEVIEWToolStripMenuItem.Click += new System.EventHandler(this.rEVIEWToolStripMenuItem_Click);
             // 
             // rETURNToolStripMenuItem
             // 
@@ -133,7 +123,14 @@
             this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.rETURNToolStripMenuItem.Text = "RETURN";
             this.rETURNToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.rETURNToolStripMenuItem.Click += new System.EventHandler(this.rETURNToolStripMenuItem_Click);
+            // 
+            // rEVIEWToolStripMenuItem
+            // 
+            this.rEVIEWToolStripMenuItem.Name = "rEVIEWToolStripMenuItem";
+            this.rEVIEWToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rEVIEWToolStripMenuItem.Text = "REVIEW";
+            this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // aBOUTToolStripMenuItem
             // 
@@ -157,40 +154,52 @@
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // buttonToAddMovieToKiosk
+            // lblAllMoviesList
             // 
-            this.buttonToAddMovieToKiosk.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToAddMovieToKiosk.Location = new System.Drawing.Point(437, 121);
-            this.buttonToAddMovieToKiosk.Name = "buttonToAddMovieToKiosk";
-            this.buttonToAddMovieToKiosk.Size = new System.Drawing.Size(230, 77);
-            this.buttonToAddMovieToKiosk.TabIndex = 1;
-            this.buttonToAddMovieToKiosk.Text = "Add Movie(s) To Kiosk";
-            this.buttonToAddMovieToKiosk.UseVisualStyleBackColor = true;
-            this.buttonToAddMovieToKiosk.Click += new System.EventHandler(this.buttonToAddMovieToKiosk_Click);
+            this.lblAllMoviesList.AutoSize = true;
+            this.lblAllMoviesList.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblAllMoviesList.Location = new System.Drawing.Point(121, 19);
+            this.lblAllMoviesList.Name = "lblAllMoviesList";
+            this.lblAllMoviesList.Size = new System.Drawing.Size(283, 20);
+            this.lblAllMoviesList.TabIndex = 3;
+            this.lblAllMoviesList.Text = "Select Kiosk Location In Yellow Bucket";
             // 
-            // buttonToShowKioskInventory
+            // comboBoxOfKiosks
             // 
-            this.buttonToShowKioskInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToShowKioskInventory.Location = new System.Drawing.Point(437, 239);
-            this.buttonToShowKioskInventory.Name = "buttonToShowKioskInventory";
-            this.buttonToShowKioskInventory.Size = new System.Drawing.Size(230, 77);
-            this.buttonToShowKioskInventory.TabIndex = 2;
-            this.buttonToShowKioskInventory.Text = "Show Kiosk Inventory";
-            this.buttonToShowKioskInventory.UseVisualStyleBackColor = true;
-            this.buttonToShowKioskInventory.Click += new System.EventHandler(this.buttonToShowKioskInventory_Click);
+            this.comboBoxOfKiosks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.comboBoxOfKiosks.FormattingEnabled = true;
+            this.comboBoxOfKiosks.Location = new System.Drawing.Point(125, 42);
+            this.comboBoxOfKiosks.Name = "comboBoxOfKiosks";
+            this.comboBoxOfKiosks.Size = new System.Drawing.Size(639, 28);
+            this.comboBoxOfKiosks.TabIndex = 5;
+            this.comboBoxOfKiosks.Text = "Select A Kiosk";
+            this.comboBoxOfKiosks.SelectedIndexChanged += new System.EventHandler(this.comboBoxOfKiosk_SelectedIndexChanged);
             // 
-            // Kiosks
+            // listBoxOfMovies
+            // 
+            this.listBoxOfMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.listBoxOfMovies.FormattingEnabled = true;
+            this.listBoxOfMovies.ItemHeight = 20;
+            this.listBoxOfMovies.Location = new System.Drawing.Point(125, 74);
+            this.listBoxOfMovies.Name = "listBoxOfMovies";
+            this.listBoxOfMovies.Size = new System.Drawing.Size(867, 624);
+            this.listBoxOfMovies.TabIndex = 6;
+            this.listBoxOfMovies.SelectedIndexChanged += new System.EventHandler(this.comboBoxOfKiosk_SelectedIndexChanged);
+            // 
+            // ShowKioskInventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.buttonToShowKioskInventory);
-            this.Controls.Add(this.buttonToAddMovieToKiosk);
+            this.Controls.Add(this.listBoxOfMovies);
+            this.Controls.Add(this.comboBoxOfKiosks);
+            this.Controls.Add(this.lblAllMoviesList);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Name = "Kiosks";
+            this.Name = "ShowKioskInventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YELLOW BUCKET -- KIOSKS";
+            this.Text = "YELLOW BUCKET -- LIST ALL KIOSKS";
+            this.Load += new System.EventHandler(this.ListAllKiosks_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -202,15 +211,16 @@
 
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
+        private System.Windows.Forms.Label lblAllMoviesList;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
-        private System.Windows.Forms.Button buttonToAddMovieToKiosk;
-        private System.Windows.Forms.Button buttonToShowKioskInventory;
+        private System.Windows.Forms.ComboBox comboBoxOfKiosks;
+        private System.Windows.Forms.ListBox listBoxOfMovies;
     }
 }
