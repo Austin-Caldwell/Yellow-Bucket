@@ -7,11 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace Yellow_Bucket
 {
     public partial class WriteMovieReviews : Form
     {
+        protected SqlConnection YellowBucketConnection;
+        // Austin Caldwell's Connection String:
+        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // Evan Wehr's Connection String:
+        // Jacob Girvin's Connection String:
+        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        private string selectedKiosk;
+        private string selectedMovie;
+        private string selectedtype;
+        private int quantity;
+
         public WriteMovieReviews()
         {
             InitializeComponent();
@@ -76,6 +88,39 @@ namespace Yellow_Bucket
         private void qUITToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void WriteMovieReviews_Load(object sender, EventArgs e)
+        {
+            fillwithmovies();
+            //fillMovieReviews();
+        }
+        private void fillwithmovies()
+        {
+            DataTable allmovies = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(movieID, ') ', title) AS listing FROM dbo.Movie;", YellowBucketConnection);
+                    adapter.Fill(allmovies);
+
+                    comboBoxMovie.ValueMember = "id";
+
+                    comboBoxMovie.DisplayMember = "listing";
+
+                    comboBoxMovie.DataSource = allmovies;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+
         }
     }
 }

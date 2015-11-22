@@ -92,6 +92,13 @@ namespace Yellow_Bucket
             RentAMovie rentMovieForm = new RentAMovie();
             rentMovieForm.Show();
         }
+
+        private void btnWriteReview_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            WriteMovieReviews writereviewForm = new WriteMovieReviews();
+            writereviewForm.Show();
+        }
     }
 }
     

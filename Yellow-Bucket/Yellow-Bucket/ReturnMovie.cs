@@ -19,6 +19,10 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        private string selectedKiosk;
+        private string selectedMovie;
+        private string selectedtype;
+        private int quantity;
 
         public ReturnMovie()
         {
@@ -89,6 +93,8 @@ namespace Yellow_Bucket
         private void ReturnMovie_Load(object sender, EventArgs e)
         {
             fillwithmovies();
+            fillwithlocations();
+            fillwithmovietypes();
         }
 
         private void fillwithmovies()
@@ -99,12 +105,14 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(movieID, ') ', title) AS listing FROM dbo.Movie;", YellowBucketConnection);
                     adapter.Fill(allmovies);
 
-                    lstBoxMovies.ValueMember = "id";
-                    lstBoxMovies.DisplayMember = "title";
-                    lstBoxMovies.DataSource = allmovies;
+                    comboBoxMovies.ValueMember = "id";
+
+                    comboBoxMovies.DisplayMember = "listing";
+
+                    comboBoxMovies.DataSource = allmovies;
 
                     YellowBucketConnection.Close();
                 }
@@ -114,11 +122,202 @@ namespace Yellow_Bucket
                     Console.WriteLine(ex.ToString());
                 }
             }
-        }
 
+        }
+        private void fillwithmovietypes()
+        {
+            DataTable alltypes = new DataTable();
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(stockID, ') ', dvdBluRay) AS listing FROM dbo.Inventory;", YellowBucketConnection);
+                    adapter.Fill(alltypes);
+
+                    comboBoxType.ValueMember = "id";
+
+                    comboBoxType.DisplayMember = "listing";
+
+                    comboBoxType.DataSource = alltypes;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    label3.Text = "Error populating customer information: " + ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+        private void fillwithlocations()
+        {
+            DataTable allKiosks = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(kioskID, ') ', location, ': ', addressLine1, addressLine2, ', ', city, ', ', stateProvince, ', ', postalCode) AS fulladdress FROM dbo.Kiosk", YellowBucketConnection);
+
+                    adapter.Fill(allKiosks);
+
+                    comboBoxKiosk.ValueMember = "id";
+
+                    comboBoxKiosk.DisplayMember = "fulladdress";
+
+                    comboBoxKiosk.DataSource = allKiosks;
+
+                    YellowBucketConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+            }
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Movie Returned!!!");
+            char[] delimiterChars = { ')' };
+
+            string[] kioskAddress = comboBoxKiosk.Text.Split(delimiterChars);
+
+            string[] movieAddress = comboBoxMovies.Text.Split(delimiterChars);
+
+            string[] TypeAddress = comboBoxType.Text.Split(delimiterChars);
+
+            selectedKiosk = kioskAddress[0];
+
+            selectedMovie = movieAddress[0];
+
+            selectedtype = TypeAddress[0];
+
+            DataTable inventory = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+
+                try //try to update a movie if it already exists
+                {
+                    //GET QUANTITY AND INCREMENT
+
+                    YellowBucketConnection.Open();
+
+                    SqlDataReader ReadInventory = null;
+
+
+
+
+                    //declare the command
+
+                    //SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+                    SqlCommand findListing = new SqlCommand("SELECT quantityAtKiosk, concat(stockID, ') ', title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
+
+
+
+
+                    //declare the varialbe type
+
+                    findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+
+                    findListing.Parameters.Add("@selectedMovie", SqlDbType.Int);
+
+                    findListing.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+
+
+
+                    //declare the definition of the variable (the definition is delcared about 10 lines up)
+
+                    findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
+
+                    findListing.Parameters["@selectedMovie"].Value = selectedMovie;
+
+                    findListing.Parameters["@movieType"].Value = selectedtype;
+
+
+
+
+                    //declares the execution trigger
+
+                    ReadInventory = findListing.ExecuteReader();
+
+
+
+                    //pulls trigger and increments quantity
+
+                    inventory.Load(ReadInventory);
+
+                    DataRow inventoryRow = inventory.Rows[0];
+
+                    quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
+
+                    quantity += 1;
+
+                    MessageBox.Show("New quantity: " + quantity.ToString());
+
+
+
+
+                    //UPDATE
+
+                    SqlCommand updateQuantity = new SqlCommand("UPDATE dbo.Inventory SET quantityAtKiosk = @quantity WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+
+
+
+                    //declare the varialbe type         
+
+                    updateQuantity.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+
+                    updateQuantity.Parameters.Add("@selectedMovie", SqlDbType.Int);
+
+                    updateQuantity.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+                    updateQuantity.Parameters.Add("@quantity", SqlDbType.Int);
+
+
+
+                    //declare the definition of the variable (the definition is delcared about 10 lines up)
+
+                    updateQuantity.Parameters["@selectedKiosk"].Value = selectedKiosk;
+
+                    updateQuantity.Parameters["@selectedMovie"].Value = selectedMovie;
+
+                    updateQuantity.Parameters["@movieType"].Value = selectedtype;
+
+                    updateQuantity.Parameters["@quantity"].Value = quantity;
+
+
+
+
+                    //runs update
+
+                    updateQuantity.ExecuteNonQuery();
+
+
+
+
+                    YellowBucketConnection.Close();
+
+
+
+
+                    MessageBox.Show("Add Successful");
+
+
+
+                } //inserts a new movie of quantitity = 1;
+
+                catch (Exception ex)
+
+                {
+
+                    MessageBox.Show("Add Unsuccessfull" + ex.ToString());
+
+                }
+
         }
     }
 }
