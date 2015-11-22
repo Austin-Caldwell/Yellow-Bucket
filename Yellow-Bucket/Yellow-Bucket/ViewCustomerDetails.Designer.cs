@@ -74,7 +74,6 @@
             this.lblRentalHistory = new System.Windows.Forms.Label();
             this.lblReviews = new System.Windows.Forms.Label();
             this.lblRatings = new System.Windows.Forms.Label();
-            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -531,21 +530,11 @@
             this.lblRatings.TabIndex = 36;
             this.lblRatings.Text = "Ratings:";
             // 
-            // lblErrorMessage
-            // 
-            this.lblErrorMessage.AutoSize = true;
-            this.lblErrorMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 6F);
-            this.lblErrorMessage.Location = new System.Drawing.Point(121, 631);
-            this.lblErrorMessage.Name = "lblErrorMessage";
-            this.lblErrorMessage.Size = new System.Drawing.Size(0, 9);
-            this.lblErrorMessage.TabIndex = 37;
-            // 
             // ViewCustomerDetails
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 729);
-            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.lblRatings);
             this.Controls.Add(this.lblReviews);
             this.Controls.Add(this.lblRentalHistory);
@@ -645,6 +634,5 @@
         private System.Windows.Forms.Label lblRentalHistory;
         private System.Windows.Forms.Label lblReviews;
         private System.Windows.Forms.Label lblRatings;
-        private System.Windows.Forms.Label lblErrorMessage;
     }
 }
