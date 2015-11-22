@@ -1,6 +1,6 @@
 ﻿namespace Yellow_Bucket
 {
-    partial class About
+    partial class AddMovieToKiosk
     {
         /// <summary>
         /// Required designer variable.
@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblAbout = new System.Windows.Forms.Label();
             this.mainMenuStrip = new System.Windows.Forms.MenuStrip();
             this.hOMEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cUSTOMERSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,21 +38,15 @@
             this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.lblselectkiosk = new System.Windows.Forms.Label();
+            this.comboBoxOfKiosks = new System.Windows.Forms.ComboBox();
+            this.addMovie = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboBoxOfMovies = new System.Windows.Forms.ComboBox();
+            this.comboBoxOfTypeOfDisk = new System.Windows.Forms.ComboBox();
+            this.selectTypeOfDisk = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblAbout
-            // 
-            this.lblAbout.AutoSize = true;
-            this.lblAbout.BackColor = System.Drawing.SystemColors.Control;
-            this.lblAbout.Font = new System.Drawing.Font("Microsoft Sans Serif", 24F);
-            this.lblAbout.Location = new System.Drawing.Point(250, 150);
-            this.lblAbout.Name = "lblAbout";
-            this.lblAbout.Size = new System.Drawing.Size(608, 296);
-            this.lblAbout.TabIndex = 3;
-            this.lblAbout.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
-    "Girvin, Evan Wehr\r\n\r\nLast Modified: 11/21/2015";
-            this.lblAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mainMenuStrip
             // 
@@ -73,7 +66,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
-            this.mainMenuStrip.TabIndex = 4;
+            this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
             // hOMEToolStripMenuItem
@@ -95,7 +88,6 @@
             | System.Windows.Forms.Keys.C)));
             this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
-            this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
             // 
             // kIOSKSToolStripMenuItem
@@ -169,17 +161,91 @@
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // About
+            // lblselectkiosk
+            // 
+            this.lblselectkiosk.AutoSize = true;
+            this.lblselectkiosk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.lblselectkiosk.Location = new System.Drawing.Point(121, 9);
+            this.lblselectkiosk.Name = "lblselectkiosk";
+            this.lblselectkiosk.Size = new System.Drawing.Size(283, 20);
+            this.lblselectkiosk.TabIndex = 3;
+            this.lblselectkiosk.Text = "Select Kiosk Location In Yellow Bucket";
+            // 
+            // comboBoxOfKiosks
+            // 
+            this.comboBoxOfKiosks.FormattingEnabled = true;
+            this.comboBoxOfKiosks.Location = new System.Drawing.Point(125, 32);
+            this.comboBoxOfKiosks.Name = "comboBoxOfKiosks";
+            this.comboBoxOfKiosks.Size = new System.Drawing.Size(411, 21);
+            this.comboBoxOfKiosks.TabIndex = 4;
+            this.comboBoxOfKiosks.Text = "Select A Kiosk";
+            // 
+            // addMovie
+            // 
+            this.addMovie.Location = new System.Drawing.Point(125, 191);
+            this.addMovie.Name = "addMovie";
+            this.addMovie.Size = new System.Drawing.Size(121, 28);
+            this.addMovie.TabIndex = 5;
+            this.addMovie.Text = "Add Movie";
+            this.addMovie.UseVisualStyleBackColor = true;
+            this.addMovie.Click += new System.EventHandler(this.addMovie_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label1.Location = new System.Drawing.Point(122, 78);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(99, 20);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Select Movie";
+            // 
+            // comboBoxOfMovies
+            // 
+            this.comboBoxOfMovies.FormattingEnabled = true;
+            this.comboBoxOfMovies.Location = new System.Drawing.Point(125, 101);
+            this.comboBoxOfMovies.Name = "comboBoxOfMovies";
+            this.comboBoxOfMovies.Size = new System.Drawing.Size(411, 21);
+            this.comboBoxOfMovies.TabIndex = 8;
+            this.comboBoxOfMovies.Text = "Select A Movie";
+            // 
+            // comboBoxOfTypeOfDisk
+            // 
+            this.comboBoxOfTypeOfDisk.FormattingEnabled = true;
+            this.comboBoxOfTypeOfDisk.Location = new System.Drawing.Point(125, 164);
+            this.comboBoxOfTypeOfDisk.Name = "comboBoxOfTypeOfDisk";
+            this.comboBoxOfTypeOfDisk.Size = new System.Drawing.Size(121, 21);
+            this.comboBoxOfTypeOfDisk.TabIndex = 9;
+            this.comboBoxOfTypeOfDisk.Text = "DVD";
+            // 
+            // selectTypeOfDisk
+            // 
+            this.selectTypeOfDisk.AutoSize = true;
+            this.selectTypeOfDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.selectTypeOfDisk.Location = new System.Drawing.Point(122, 141);
+            this.selectTypeOfDisk.Name = "selectTypeOfDisk";
+            this.selectTypeOfDisk.Size = new System.Drawing.Size(148, 20);
+            this.selectTypeOfDisk.TabIndex = 10;
+            this.selectTypeOfDisk.Text = "Select Type Of Disk";
+            // 
+            // AddMovieToKiosk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.lblAbout);
+            this.Controls.Add(this.selectTypeOfDisk);
+            this.Controls.Add(this.comboBoxOfTypeOfDisk);
+            this.Controls.Add(this.comboBoxOfMovies);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.addMovie);
+            this.Controls.Add(this.comboBoxOfKiosks);
+            this.Controls.Add(this.lblselectkiosk);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Name = "About";
+            this.Name = "AddMovieToKiosk";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "YELLOW BUCKET -- ABOUT";
+            this.Text = "YELLOW BUCKET -- Add Movie to Kiosk";
+            this.Load += new System.EventHandler(this.ListAllKiosks_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -189,16 +255,22 @@
 
         #endregion
 
-        private System.Windows.Forms.Label lblAbout;
         private System.Windows.Forms.MenuStrip mainMenuStrip;
         private System.Windows.Forms.ToolStripMenuItem hOMEToolStripMenuItem;
+        private System.Windows.Forms.Label lblselectkiosk;
         private System.Windows.Forms.ToolStripMenuItem cUSTOMERSToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mOVIESToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem kIOSKSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rENTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rETURNToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
+        private System.Windows.Forms.ComboBox comboBoxOfKiosks;
+        private System.Windows.Forms.Button addMovie;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboBoxOfMovies;
+        private System.Windows.Forms.ComboBox comboBoxOfTypeOfDisk;
+        private System.Windows.Forms.Label selectTypeOfDisk;
     }
 }

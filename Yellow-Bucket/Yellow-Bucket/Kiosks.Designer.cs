@@ -166,6 +166,7 @@
             this.buttonToAddMovieToKiosk.TabIndex = 1;
             this.buttonToAddMovieToKiosk.Text = "Add Movie(s) To Kiosk";
             this.buttonToAddMovieToKiosk.UseVisualStyleBackColor = true;
+            this.buttonToAddMovieToKiosk.Click += new System.EventHandler(this.buttonToAddMovieToKiosk_Click);
             // 
             // buttonToShowKioskInventory
             // 
@@ -176,6 +177,7 @@
             this.buttonToShowKioskInventory.TabIndex = 2;
             this.buttonToShowKioskInventory.Text = "Show Kiosk Inventory";
             this.buttonToShowKioskInventory.UseVisualStyleBackColor = true;
+            this.buttonToShowKioskInventory.Click += new System.EventHandler(this.buttonToShowKioskInventory_Click);
             // 
             // Kiosks
             // 

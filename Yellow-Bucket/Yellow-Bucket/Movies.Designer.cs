@@ -190,6 +190,7 @@
             this.buttonToAddMovie.TabIndex = 1;
             this.buttonToAddMovie.Text = "Add A Movie";
             this.buttonToAddMovie.UseVisualStyleBackColor = true;
+            this.buttonToAddMovie.Click += new System.EventHandler(this.buttonToAddMovie_Click);
             // 
             // buttonToEditMovieInfo
             // 
@@ -200,6 +201,7 @@
             this.buttonToEditMovieInfo.TabIndex = 2;
             this.buttonToEditMovieInfo.Text = "Edit Movie Info";
             this.buttonToEditMovieInfo.UseVisualStyleBackColor = true;
+            this.buttonToEditMovieInfo.Click += new System.EventHandler(this.buttonToEditMovieInfo_Click);
             // 
             // buttonToDeleteMovie
             // 
@@ -210,6 +212,7 @@
             this.buttonToDeleteMovie.TabIndex = 4;
             this.buttonToDeleteMovie.Text = "Delete A Movie";
             this.buttonToDeleteMovie.UseVisualStyleBackColor = true;
+            this.buttonToDeleteMovie.Click += new System.EventHandler(this.buttonToDeleteMovie_Click);
             // 
             // buttonToViewMovieDetails
             // 
@@ -221,7 +224,7 @@
             this.buttonToViewMovieDetails.Text = "View Movie Details";
             this.buttonToViewMovieDetails.UseVisualStyleBackColor = true;
             // 
-            // ListAllMovies
+            // Movies
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -234,7 +237,7 @@
             this.Controls.Add(this.listBoxOfAllMovies);
             this.Controls.Add(this.mainMenuStrip);
             this.MainMenuStrip = this.mainMenuStrip;
-            this.Name = "ListAllMovies";
+            this.Name = "Movies";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- LIST ALL MOVIES";
             this.Load += new System.EventHandler(this.ListAllMovies_Load);

@@ -1,5 +1,4 @@
-﻿// CSC 365 -- Austin Caldwell, Evan Wehr, Jacob Girvin -- 2015
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,8 +11,9 @@ using System.Data.SqlClient;    // To Access Database
 
 namespace Yellow_Bucket
 {
-    public partial class Movies : Form
+    public partial class ShowKioskInventory : Form
     {
+
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
         //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
@@ -22,32 +22,37 @@ namespace Yellow_Bucket
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
+        private string selectedKiosk;
 
-        public Movies()
+        public ShowKioskInventory()
         {
             InitializeComponent();
+
+        }
+        private void ListAllKiosks_Load(object sender, EventArgs e)
+        {
+            fillListOfAllKiosks();
         }
 
-        private void ListAllMovies_Load(object sender, EventArgs e)
+        private void fillListOfAllKiosks()
         {
-            fillListOfAllMovies();
+            DataTable allKiosks = new DataTable();
+            filldropdownOfAllKiosks();
         }
-
-        private void fillListOfAllMovies()
+        private void filldropdownOfAllKiosks()
         {
-            DataTable allMovies = new DataTable();
+            DataTable allKiosks = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(movieId, ') ', title, '(', releaseDate, ')') AS listing FROM dbo.Movie", YellowBucketConnection);
-                    adapter.Fill(allMovies);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(kioskID, ') ', location, ': ', addressLine1, addressLine2, ', ', city, ', ', stateProvince, ', ', postalCode) AS fulladdress FROM dbo.Kiosk", YellowBucketConnection);
+                    adapter.Fill(allKiosks);
 
-                    listBoxOfAllMovies.ValueMember = "id";
-                    listBoxOfAllMovies.DisplayMember = "listing";
-                    listBoxOfAllMovies.DataSource = allMovies;
-
+                    comboBoxOfKiosks.ValueMember = "id";
+                    comboBoxOfKiosks.DisplayMember = "fulladdress";
+                    comboBoxOfKiosks.DataSource = allKiosks;
                     YellowBucketConnection.Close();
                 }
 
@@ -57,6 +62,7 @@ namespace Yellow_Bucket
                 }
             }
         }
+
 
         private void hOMEToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -98,6 +104,44 @@ namespace Yellow_Bucket
             Application.Exit();
         }
 
+        private void comboBoxOfKiosk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            char[] delimiterChars = { ')' };
+            string[] kioskAddress = comboBoxOfKiosks.Text.Split(delimiterChars); 
+            selectedKiosk = kioskAddress[0];
+
+            DataTable inventory = new DataTable();
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+                    SqlDataReader ReadListing = null;
+                    //declare the command          
+                    SqlCommand findListing = new SqlCommand("SELECT concat(title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
+                        //declare the varialbe type
+                    findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+                        //declare the definition of the variable (the definition is delcared about 10 lines up)
+                    findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
+                        //declares the execution trigger
+                    ReadListing = findListing.ExecuteReader();
+                        //pulls trigger
+                    inventory.Load(ReadListing);
+
+                    listBoxOfMovies.ValueMember = "id";
+                    listBoxOfMovies.DisplayMember = "listing";
+                    listBoxOfMovies.DataSource = inventory;
+                    YellowBucketConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error populating kiosk inventory" + ex.ToString());
+                    Console.WriteLine(ex.ToString());
+                }
+                YellowBucketConnection.Close();
+            }
+        }
+
         private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.Hide();
@@ -119,26 +163,6 @@ namespace Yellow_Bucket
             RentAMovieForm.Show();
         }
 
-        private void buttonToDeleteMovie_Click(object sender, EventArgs e)
-        {
-            
-            this.Hide();
-            DeleteMovieForm DeleteMovieForm = new DeleteMovieForm();
-            DeleteMovieForm.Show();
-        }
 
-        private void buttonToAddMovie_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            AddMovie AddMovieForm = new AddMovie();
-            AddMovieForm.Show();
-        }
-
-        private void buttonToEditMovieInfo_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            EditMovieInfo EditMovieInfoForm = new EditMovieInfo();
-            EditMovieInfoForm.Show();
-        }
     }
 }

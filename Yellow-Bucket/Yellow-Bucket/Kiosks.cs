@@ -78,5 +78,19 @@ namespace Yellow_Bucket
             RentAMovie RentAMovieForm = new RentAMovie();
             RentAMovieForm.Show();
         }
+
+        private void buttonToAddMovieToKiosk_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddMovieToKiosk AddMovieToKioskForm = new AddMovieToKiosk();
+            AddMovieToKioskForm.Show();
+        }
+
+        private void buttonToShowKioskInventory_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ShowKioskInventory ShowKioskInventoryForm = new ShowKioskInventory();
+            ShowKioskInventoryForm.Show();
+        }
     }
 }

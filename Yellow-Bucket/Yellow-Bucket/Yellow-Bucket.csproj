@@ -56,6 +56,30 @@
     <Compile Include="AddACustomer.Designer.cs">
       <DependentUpon>AddACustomer.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMovie.Designer.cs">
+      <DependentUpon>AddMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AddMovieToKiosk.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddMovieToKiosk.Designer.cs">
+      <DependentUpon>AddMovieToKiosk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeleteMovie.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeleteMovie.Designer.cs">
+      <DependentUpon>DeleteMovie.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EditMovieInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMovieInfo.Designer.cs">
+      <DependentUpon>EditMovieInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="RentAMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,6 +128,12 @@
     <Compile Include="SeeMovieReviews.Designer.cs">
       <DependentUpon>SeeMovieReviews.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowKioskInventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowKioskInventory.Designer.cs">
+      <DependentUpon>ShowKioskInventory.cs</DependentUpon>
+    </Compile>
     <Compile Include="UpdateCustomerRecord.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -136,6 +166,18 @@
     <EmbeddedResource Include="AddACustomer.resx">
       <DependentUpon>AddACustomer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AddMovie.resx">
+      <DependentUpon>AddMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddMovieToKiosk.resx">
+      <DependentUpon>AddMovieToKiosk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeleteMovie.resx">
+      <DependentUpon>DeleteMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMovieInfo.resx">
+      <DependentUpon>EditMovieInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RentAMovie.resx">
       <DependentUpon>RentAMovie.cs</DependentUpon>
     </EmbeddedResource>
@@ -159,6 +201,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SeeMovieReviews.resx">
       <DependentUpon>SeeMovieReviews.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowKioskInventory.resx">
+      <DependentUpon>ShowKioskInventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UpdateCustomerRecord.resx">
       <DependentUpon>UpdateCustomerRecord.cs</DependentUpon>
