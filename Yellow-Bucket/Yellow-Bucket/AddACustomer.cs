@@ -229,8 +229,7 @@ namespace Yellow_Bucket
 
                     catch (Exception ex)
                     {
-                        lblErrorMessage.Text = "Unable to save new customer information: " + ex.ToString();
-                        Console.WriteLine(ex.ToString());
+                        MessageBox.Show("Unable to save new customer information: " + ex.ToString());
                     }
                 }
             }
@@ -346,7 +345,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblSaveStatus.Text = "Unable to verify username uniqueness: " + ex.ToString();
+                    MessageBox.Show("Unable to verify username uniqueness: " + ex.ToString());
                     YellowBucketConnection.Close();
                     return false;
                 }

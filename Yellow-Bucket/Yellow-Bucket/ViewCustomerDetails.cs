@@ -19,10 +19,10 @@ namespace Yellow_Bucket
 
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-       // protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+           protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
-        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         private string selectedCustomerUserName;    // Variable to hold the username of the customer selected in the comboBoxOfCustomers
         private int selectedCustomerID;             // Variable to hold the customer ID of the customer selected in the comboBoxOfCustomers
@@ -57,7 +57,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -130,8 +130,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -233,8 +232,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -268,8 +266,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -303,8 +300,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -338,8 +334,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }

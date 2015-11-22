@@ -50,7 +50,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
