@@ -119,7 +119,7 @@ namespace Yellow_Bucket
                     YellowBucketConnection.Open();
                     SqlDataReader ReadListing = null;
                     //declare the command          
-                    SqlCommand findListing = new SqlCommand("SELECT concat(stockID, ') ', title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
+                    SqlCommand findListing = new SqlCommand("SELECT concat(title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
                         //declare the varialbe type
                     findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
                         //declare the definition of the variable (the definition is delcared about 10 lines up)
@@ -141,6 +141,27 @@ namespace Yellow_Bucket
                 }
                 YellowBucketConnection.Close();
             }
+        }
+
+        private void rEVIEWToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Review reviewForm = new Review();
+            reviewForm.Show();
+        }
+
+        private void rETURNToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ReturnMovie ReturnMovieForm = new ReturnMovie();
+            ReturnMovieForm.Show();
+        }
+
+        private void rENTToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            RentAMovie RentAMovieForm = new RentAMovie();
+            RentAMovieForm.Show();
         }
 
 

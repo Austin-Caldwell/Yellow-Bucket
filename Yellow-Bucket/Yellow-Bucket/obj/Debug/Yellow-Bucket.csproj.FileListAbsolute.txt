@@ -64,3 +64,7 @@ C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bu
 C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow-Bucket.csproj.GenerateResource.Cache
 C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.exe
 C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\bin\Debug\Yellow-Bucket.pdb
+C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.AddMovieToKiosk.resources
+C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.DeleteMovieForm.resources
+C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.AddMovie.resources
+C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.ShowKioskInventory.resources

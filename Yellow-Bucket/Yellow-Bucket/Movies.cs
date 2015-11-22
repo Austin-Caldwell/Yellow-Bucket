@@ -16,10 +16,12 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
+        protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+
 
         public Movies()
         {
@@ -39,11 +41,11 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(movieId, ') ', title, '(', releaseDate, ')') AS listing FROM dbo.Movie", YellowBucketConnection);
                     adapter.Fill(allMovies);
 
                     listBoxOfAllMovies.ValueMember = "id";
-                    listBoxOfAllMovies.DisplayMember = "title";
+                    listBoxOfAllMovies.DisplayMember = "listing";
                     listBoxOfAllMovies.DataSource = allMovies;
 
                     YellowBucketConnection.Close();
@@ -115,6 +117,21 @@ namespace Yellow_Bucket
             this.Hide();
             RentAMovie RentAMovieForm = new RentAMovie();
             RentAMovieForm.Show();
+        }
+
+        private void buttonToDeleteMovie_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            DeleteMovieForm DeleteMovieForm = new DeleteMovieForm();
+            DeleteMovieForm.Show();
+        }
+
+        private void buttonToAddMovie_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            AddMovie AddMovieForm = new AddMovie();
+            AddMovieForm.Show();
         }
     }
 }
