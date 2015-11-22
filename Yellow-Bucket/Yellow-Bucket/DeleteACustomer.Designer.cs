@@ -62,7 +62,7 @@
             this.qUITToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(118, 741);
+            this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
@@ -189,7 +189,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.lblDeletionStatus);
             this.Controls.Add(this.buttonToDeleteCustomer);
             this.Controls.Add(this.lblCustomerName);
@@ -199,6 +199,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "YELLOW_BUCKET____DELETE_A_CUSTOMER";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- DELETE A CUSTOMER";
             this.Load += new System.EventHandler(this.YELLOW_BUCKET____DELETE_A_CUSTOMER_Load);
             this.mainMenuStrip.ResumeLayout(false);

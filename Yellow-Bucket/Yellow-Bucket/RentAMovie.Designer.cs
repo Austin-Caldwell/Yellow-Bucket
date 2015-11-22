@@ -40,7 +40,6 @@
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.comboBoxMovie = new System.Windows.Forms.ComboBox();
             this.comboBoxKiosk = new System.Windows.Forms.ComboBox();
             this.btnRent = new System.Windows.Forms.Button();
@@ -67,7 +66,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.mainMenuStrip.Size = new System.Drawing.Size(121, 599);
+            this.mainMenuStrip.Size = new System.Drawing.Size(121, 729);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -174,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(291, 35);
+            this.label1.Location = new System.Drawing.Point(300, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(348, 22);
             this.label1.TabIndex = 2;
@@ -184,25 +183,16 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(405, 144);
+            this.label2.Location = new System.Drawing.Point(395, 155);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 22);
             this.label2.TabIndex = 5;
             this.label2.Text = "Kiosk Location";
             // 
-            // lblErrorMessage
-            // 
-            this.lblErrorMessage.AutoSize = true;
-            this.lblErrorMessage.Location = new System.Drawing.Point(194, 417);
-            this.lblErrorMessage.Name = "lblErrorMessage";
-            this.lblErrorMessage.Size = new System.Drawing.Size(176, 20);
-            this.lblErrorMessage.TabIndex = 8;
-            this.lblErrorMessage.Text = "Error Message: (NONE)";
-            // 
             // comboBoxMovie
             // 
             this.comboBoxMovie.FormattingEnabled = true;
-            this.comboBoxMovie.Location = new System.Drawing.Point(198, 78);
+            this.comboBoxMovie.Location = new System.Drawing.Point(198, 88);
             this.comboBoxMovie.Name = "comboBoxMovie";
             this.comboBoxMovie.Size = new System.Drawing.Size(541, 28);
             this.comboBoxMovie.TabIndex = 9;
@@ -229,7 +219,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(423, 241);
+            this.label3.Location = new System.Drawing.Point(420, 244);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 22);
             this.label3.TabIndex = 12;
@@ -247,19 +237,19 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(976, 599);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnRent);
             this.Controls.Add(this.comboBoxKiosk);
             this.Controls.Add(this.comboBoxMovie);
-            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "RentAMovie";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "RentAMovie";
             this.Load += new System.EventHandler(this.RentAMovie_Load);
             this.mainMenuStrip.ResumeLayout(false);
@@ -284,7 +274,6 @@
 //<<<<<<< HEAD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblErrorMessage;
         private System.Windows.Forms.ComboBox comboBoxMovie;
         private System.Windows.Forms.ComboBox comboBoxKiosk;
         private System.Windows.Forms.Button btnRent;

@@ -110,8 +110,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("Error populating customer information: " + ex.ToString());
                 }
             }
         }
@@ -159,7 +158,6 @@ namespace Yellow_Bucket
 
         private void comboBoxMovies_SelectedIndexChanged(object sender, EventArgs e)
         {
-
             char[] delimiterChars = { ')' };
 
             string[] movieID = comboBoxMovies.Text.Split(delimiterChars);
@@ -169,11 +167,8 @@ namespace Yellow_Bucket
             DataTable inventory = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
-
             {
-
                 try
-
                 {
 
                     YellowBucketConnection.Open();
@@ -216,17 +211,11 @@ namespace Yellow_Bucket
                 catch (Exception ex)
 
                 {
-
                     MessageBox.Show("Error populating kiosk inventory" + ex.ToString());
-
-                    Console.WriteLine(ex.ToString());
-
                 }
 
                 YellowBucketConnection.Close();
-
             }
-
         }
     }
 }
