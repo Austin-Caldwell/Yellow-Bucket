@@ -67,7 +67,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.mainMenuStrip.Size = new System.Drawing.Size(121, 459);
+            this.mainMenuStrip.Size = new System.Drawing.Size(121, 599);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -223,7 +223,6 @@
             this.btnRent.TabIndex = 11;
             this.btnRent.Text = "Rent Movie";
             this.btnRent.UseVisualStyleBackColor = true;
-          //  this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
             // 
             // label3
             // 
@@ -247,7 +246,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(776, 459);
+            this.ClientSize = new System.Drawing.Size(976, 599);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.btnRent);

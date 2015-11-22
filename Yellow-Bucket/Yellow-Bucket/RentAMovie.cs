@@ -103,7 +103,7 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(dvdBluRay) AS listing FROM dbo.Inventory;", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(stockID, ') ', dvdBluRay) AS listing FROM dbo.Inventory;", YellowBucketConnection);
                     adapter.Fill(alltypes);
 
                     comboBox1.ValueMember = "id";
@@ -179,18 +179,34 @@ namespace Yellow_Bucket
 
         }
 
-        //private void btnRent_Click(object sender, EventArgs e)
+        //private void addMovie_Click(object sender, EventArgs e)
+
         //{
-            
+
         //    char[] delimiterChars = { ')' };
 
-        //    string[] MovieName = comboBoxMovie.Text.Split(delimiterChars);
 
-        //    string[] KioskLocation = comboBoxKiosk.Text.Split(delimiterChars);
 
-        //    selectedKiosk = KioskLocation[0];
 
-        //    selectedMovie = MovieName[0];
+        //    string[] kioskAddress = comboBoxOfKiosks.Text.Split(delimiterChars);
+
+        //    string[] movieAddress = comboBoxOfMovies.Text.Split(delimiterChars);
+
+        //    string[] TypeAddress = comboBoxOfTypeOfDisk.Text.Split(delimiterChars);
+
+
+
+
+        //    selectedKiosk = kioskAddress[0];
+
+        //    selectedMovie = movieAddress[0];
+
+        //    movieType = TypeAddress[0];
+
+
+
+
+
 
         //    DataTable inventory = new DataTable();
 
@@ -199,15 +215,24 @@ namespace Yellow_Bucket
         //        try //try to update a movie if it already exists
 
         //        {
+
+
+
         //            //GET QUANTITY AND INCREMENT
 
         //            YellowBucketConnection.Open();
 
         //            SqlDataReader ReadInventory = null;
 
+
+
+
         //            //declare the command
 
         //            SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+
+
+
 
         //            //declare the varialbe type
 
@@ -216,6 +241,9 @@ namespace Yellow_Bucket
         //            findMovie.Parameters.Add("@selectedMovie", SqlDbType.Int);
 
         //            findMovie.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+
+
 
         //            //declare the definition of the variable (the definition is delcared about 10 lines up)
 
