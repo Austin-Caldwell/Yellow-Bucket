@@ -39,8 +39,8 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
-            this.lstBoxMovies = new System.Windows.Forms.ListBox();
             this.lblSelectMovieText = new System.Windows.Forms.Label();
+            this.comboBoxMovies = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -168,43 +168,41 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(453, 517);
+            this.button1.Location = new System.Drawing.Point(472, 233);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 51);
             this.button1.TabIndex = 2;
             this.button1.Text = "Return";
             this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lstBoxMovies
-            // 
-            this.lstBoxMovies.FormattingEnabled = true;
-            this.lstBoxMovies.ItemHeight = 20;
-            this.lstBoxMovies.Location = new System.Drawing.Point(213, 80);
-            this.lstBoxMovies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.lstBoxMovies.Name = "lstBoxMovies";
-            this.lstBoxMovies.Size = new System.Drawing.Size(625, 424);
-            this.lstBoxMovies.TabIndex = 3;
+//            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblSelectMovieText
             // 
             this.lblSelectMovieText.AutoSize = true;
             this.lblSelectMovieText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectMovieText.Location = new System.Drawing.Point(314, 38);
+            this.lblSelectMovieText.Location = new System.Drawing.Point(310, 146);
             this.lblSelectMovieText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelectMovieText.Name = "lblSelectMovieText";
             this.lblSelectMovieText.Size = new System.Drawing.Size(435, 26);
             this.lblSelectMovieText.TabIndex = 4;
             this.lblSelectMovieText.Text = "Select Movie You Would Like To Return";
             // 
+            // comboBoxMovies
+            // 
+            this.comboBoxMovies.FormattingEnabled = true;
+            this.comboBoxMovies.Location = new System.Drawing.Point(315, 197);
+            this.comboBoxMovies.Name = "comboBoxMovies";
+            this.comboBoxMovies.Size = new System.Drawing.Size(430, 28);
+            this.comboBoxMovies.TabIndex = 5;
+            // 
             // ReturnMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.comboBoxMovies);
             this.Controls.Add(this.lblSelectMovieText);
-            this.Controls.Add(this.lstBoxMovies);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
@@ -232,7 +230,7 @@
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ListBox lstBoxMovies;
         private System.Windows.Forms.Label lblSelectMovieText;
+        private System.Windows.Forms.ComboBox comboBoxMovies;
     }
 }

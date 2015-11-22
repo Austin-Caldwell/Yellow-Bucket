@@ -40,9 +40,12 @@
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lstBoxFillMovie = new System.Windows.Forms.ListBox();
-            this.lstBoxFillKiosk = new System.Windows.Forms.ListBox();
             this.lblErrorMessage = new System.Windows.Forms.Label();
+            this.comboBoxMovie = new System.Windows.Forms.ComboBox();
+            this.comboBoxKiosk = new System.Windows.Forms.ComboBox();
+            this.btnRent = new System.Windows.Forms.Button();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -64,7 +67,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.mainMenuStrip.Size = new System.Drawing.Size(121, 729);
+            this.mainMenuStrip.Size = new System.Drawing.Size(121, 459);
             this.mainMenuStrip.TabIndex = 1;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -171,7 +174,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(169, 78);
+            this.label1.Location = new System.Drawing.Point(291, 35);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(348, 22);
             this.label1.TabIndex = 2;
@@ -181,48 +184,76 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(670, 78);
+            this.label2.Location = new System.Drawing.Point(405, 144);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 22);
             this.label2.TabIndex = 5;
             this.label2.Text = "Kiosk Location";
             // 
-            // lstBoxFillMovie
-            // 
-            this.lstBoxFillMovie.FormattingEnabled = true;
-            this.lstBoxFillMovie.ItemHeight = 20;
-            this.lstBoxFillMovie.Location = new System.Drawing.Point(173, 103);
-            this.lstBoxFillMovie.Name = "lstBoxFillMovie";
-            this.lstBoxFillMovie.Size = new System.Drawing.Size(344, 424);
-            this.lstBoxFillMovie.TabIndex = 6;
-            // 
-            // lstBoxFillKiosk
-            // 
-            this.lstBoxFillKiosk.FormattingEnabled = true;
-            this.lstBoxFillKiosk.ItemHeight = 20;
-            this.lstBoxFillKiosk.Location = new System.Drawing.Point(560, 103);
-            this.lstBoxFillKiosk.Name = "lstBoxFillKiosk";
-            this.lstBoxFillKiosk.Size = new System.Drawing.Size(344, 424);
-            this.lstBoxFillKiosk.TabIndex = 7;
-//            this.lstBoxFillKiosk.SelectedIndexChanged += new System.EventHandler(this.lstBoxFillKiosk_SelectedIndexChanged);
-            // 
             // lblErrorMessage
             // 
             this.lblErrorMessage.AutoSize = true;
-            this.lblErrorMessage.Location = new System.Drawing.Point(173, 534);
+            this.lblErrorMessage.Location = new System.Drawing.Point(194, 417);
             this.lblErrorMessage.Name = "lblErrorMessage";
             this.lblErrorMessage.Size = new System.Drawing.Size(176, 20);
             this.lblErrorMessage.TabIndex = 8;
             this.lblErrorMessage.Text = "Error Message: (NONE)";
             // 
+            // comboBoxMovie
+            // 
+            this.comboBoxMovie.FormattingEnabled = true;
+            this.comboBoxMovie.Location = new System.Drawing.Point(198, 78);
+            this.comboBoxMovie.Name = "comboBoxMovie";
+            this.comboBoxMovie.Size = new System.Drawing.Size(541, 28);
+            this.comboBoxMovie.TabIndex = 9;
+            // 
+            // comboBoxKiosk
+            // 
+            this.comboBoxKiosk.FormattingEnabled = true;
+            this.comboBoxKiosk.Location = new System.Drawing.Point(198, 180);
+            this.comboBoxKiosk.Name = "comboBoxKiosk";
+            this.comboBoxKiosk.Size = new System.Drawing.Size(541, 28);
+            this.comboBoxKiosk.TabIndex = 10;
+            // 
+            // btnRent
+            // 
+            this.btnRent.Location = new System.Drawing.Point(427, 350);
+            this.btnRent.Name = "btnRent";
+            this.btnRent.Size = new System.Drawing.Size(106, 39);
+            this.btnRent.TabIndex = 11;
+            this.btnRent.Text = "Rent Movie";
+            this.btnRent.UseVisualStyleBackColor = true;
+          //  this.btnRent.Click += new System.EventHandler(this.btnRent_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
+            this.label3.Location = new System.Drawing.Point(423, 241);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 22);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Movie Type";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(198, 269);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(541, 28);
+            this.comboBox1.TabIndex = 13;
+            // 
             // RentAMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(776, 459);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnRent);
+            this.Controls.Add(this.comboBoxKiosk);
+            this.Controls.Add(this.comboBoxMovie);
             this.Controls.Add(this.lblErrorMessage);
-            this.Controls.Add(this.lstBoxFillKiosk);
-            this.Controls.Add(this.lstBoxFillMovie);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
@@ -253,9 +284,12 @@
 //<<<<<<< HEAD
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ListBox lstBoxFillMovie;
-        private System.Windows.Forms.ListBox lstBoxFillKiosk;
         private System.Windows.Forms.Label lblErrorMessage;
+        private System.Windows.Forms.ComboBox comboBoxMovie;
+        private System.Windows.Forms.ComboBox comboBoxKiosk;
+        private System.Windows.Forms.Button btnRent;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
         //>>>>>>> origin/master
     }
 }

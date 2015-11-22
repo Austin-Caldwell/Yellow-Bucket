@@ -21,6 +21,8 @@ namespace Yellow_Bucket
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         private string selectedkiosklocation;
         private int selectedkioskID;
+        private string selectedKiosk;
+        private string selectedMovie;
 
         public RentAMovie()
         {
@@ -91,43 +93,35 @@ namespace Yellow_Bucket
         private void RentAMovie_Load(object sender, EventArgs e)
         {
             fillwithmovies();
+            fillwithlocations();
+            fillwithmovietypes();
         }
-
-        private void fillkiosklocations()
+        private void fillwithmovietypes()
         {
+            DataTable alltypes = new DataTable();
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    YellowBucketConnection.Open();
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(dvdBluRay) AS listing FROM dbo.Inventory;", YellowBucketConnection);
+                    adapter.Fill(alltypes);
 
-                    DataTable KioskTable = new DataTable();
+                    comboBox1.ValueMember = "id";
 
-                    SqlDataReader readKioskLocations = null;
-                    SqlCommand findkiosklocations = new SqlCommand("SELECT concat(location, ' --addressline1, ' --city, ' --stateProvince, ' --postalCode, ' --movieID, ' --kioskID) AS KioskLocations From dbo.Kiosk, dbo.Inventory,dbo.Kiosk WHERE KioskLocations.movieID = @movieID and KioskLocations.kioskID = @kioskID;", YellowBucketConnection);
-                    findkiosklocations.Parameters.Add("@movieID", SqlDbType.Int);
-                    findkiosklocations.Parameters.Add("@kioskID", SqlDbType.Int);
-                    findkiosklocations.Parameters["@movieID"].Value = selectedkioskID;
-                    findkiosklocations.Parameters["kioskID"].Value = selectedkioskID;
+                    comboBox1.DisplayMember = "listing";
 
-                    readKioskLocations = findkiosklocations.ExecuteReader();
-
-                    KioskTable.Load(readKioskLocations);
-
-                    lstBoxFillKiosk.ValueMember = "stockID";
-                    lstBoxFillKiosk.DisplayMember = "KioskLocations";
-                    lstBoxFillKiosk.DataSource = KioskTable;
+                    comboBox1.DataSource = alltypes;
 
                     YellowBucketConnection.Close();
                 }
 
                 catch (Exception ex)
                 {
+                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
                     Console.WriteLine(ex.ToString());
                 }
             }
         }
-
         private void fillwithmovies()
         {
             DataTable allmovies = new DataTable();
@@ -136,61 +130,186 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(movieID, ') ', title) AS listing FROM dbo.Movie;", YellowBucketConnection);
                     adapter.Fill(allmovies);
 
-                    lstBoxFillMovie.ValueMember = "id";
-                    lstBoxFillMovie.DisplayMember = "title";
-                    lstBoxFillMovie.DataSource = allmovies;
+                    comboBoxMovie.ValueMember = "id";
+
+                    comboBoxMovie.DisplayMember = "listing";
+
+                    comboBoxMovie.DataSource = allmovies;
 
                     YellowBucketConnection.Close();
                 }
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
+                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
                     Console.WriteLine(ex.ToString());
                 }
             }
         }
+        private void fillwithlocations()
+        {
+            DataTable allKiosks = new DataTable();
 
-        //private void lstBoxFillKiosk_SelectedIndexChanged(object sender, EventArgs e)
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(kioskID, ') ', location, ': ', addressLine1, addressLine2, ', ', city, ', ', stateProvince, ', ', postalCode) AS fulladdress FROM dbo.Kiosk", YellowBucketConnection);
+
+                    adapter.Fill(allKiosks);
+
+                    comboBoxKiosk.ValueMember = "id";
+
+                    comboBoxKiosk.DisplayMember = "fulladdress";
+
+                    comboBoxKiosk.DataSource = allKiosks;
+
+                    YellowBucketConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+            }
+
+        }
+
+        //private void btnRent_Click(object sender, EventArgs e)
         //{
-        //    char[] delimiterChars = { ' ' };
+            
+        //    char[] delimiterChars = { ')' };
 
-        //    string[] kiosklocation = lstBoxFillKiosk.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
-        //    selectedkiosklocation = kiosklocation[3];
+        //    string[] MovieName = comboBoxMovie.Text.Split(delimiterChars);
+
+        //    string[] KioskLocation = comboBoxKiosk.Text.Split(delimiterChars);
+
+        //    selectedKiosk = KioskLocation[0];
+
+        //    selectedMovie = MovieName[0];
+
+        //    DataTable inventory = new DataTable();
 
         //    using (YellowBucketConnection = new SqlConnection(connectionString))
-        //    {
-        //        try
+
+        //        try //try to update a movie if it already exists
+
         //        {
+        //            //GET QUANTITY AND INCREMENT
+
         //            YellowBucketConnection.Open();
-        //            SqlDataReader readkiosklocations = null;
-        //            SqlCommand populatekiosklocations = new SqlCommand("SELECT  movieID FROM dbo.Inventory, dbo.Kiosk WHERE movieID = @movieID AND Inventory.KioskID = Kiosk.KioskID;", YellowBucketConnection);
-        //            populatekiosklocations.Parameters.Add("@movieID", SqlDbType.Int);
-        //            populatekiosklocations.Parameters["@movieID"].Value = selectedkiosklocation;
 
-        //            readkiosklocations = populatekiosklocations.ExecuteReader();
+        //            SqlDataReader ReadInventory = null;
 
-        //            while (readkiosklocations.Read())
-        //            {
-                        
-        //                lstBoxFillKiosk.Text = readkiosklocations["movieID"].ToString();
-                        
+        //            //declare the command
 
-        //                YellowBucketConnection.Close();
-        //            }
-        //            }
+        //            SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+
+        //            //declare the varialbe type
+
+        //            findMovie.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+
+        //            findMovie.Parameters.Add("@selectedMovie", SqlDbType.Int);
+
+        //            findMovie.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+        //            //declare the definition of the variable (the definition is delcared about 10 lines up)
+
+        //            findMovie.Parameters["@selectedKiosk"].Value = selectedKiosk;
+
+        //            findMovie.Parameters["@selectedMovie"].Value = selectedMovie;
+
+        //            findMovie.Parameters["@movieType"].Value = movieType;
+
+
+
+
+        //            //declares the execution trigger
+
+        //            ReadInventory = findMovie.ExecuteReader();
+
+
+
+        //            //pulls trigger and increments quantity
+
+        //            inventory.Load(ReadInventory);
+
+        //            DataRow inventoryRow = inventory.Rows[0];
+
+        //            quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
+
+        //            quantity += 1;
+
+        //            MessageBox.Show("New quantity: " + quantity.ToString());
+
+
+
+
+        //            //UPDATE
+
+        //            SqlCommand updateQuantity = new SqlCommand("UPDATE dbo.Inventory SET quantityAtKiosk = @quantity WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+
+
+
+        //            //declare the varialbe type         
+
+        //            updateQuantity.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+
+        //            updateQuantity.Parameters.Add("@selectedMovie", SqlDbType.Int);
+
+        //            updateQuantity.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+        //            updateQuantity.Parameters.Add("@quantity", SqlDbType.Int);
+
+
+
+        //            //declare the definition of the variable (the definition is delcared about 10 lines up)
+
+        //            updateQuantity.Parameters["@selectedKiosk"].Value = selectedKiosk;
+
+        //            updateQuantity.Parameters["@selectedMovie"].Value = selectedMovie;
+
+        //            updateQuantity.Parameters["@movieType"].Value = movieType;
+
+        //            updateQuantity.Parameters["@quantity"].Value = quantity;
+
+
+
+
+        //            //runs update
+
+        //            updateQuantity.ExecuteNonQuery();
+
+
+
+
+        //            YellowBucketConnection.Close();
+
+
+
+
+        //            MessageBox.Show("Add Successful");
+
+
+
+        //        } //inserts a new movie of quantitity = 1;
 
         //        catch (Exception ex)
+
         //        {
-        //            Console.WriteLine(ex.ToString());
+
+        //            MessageBox.Show("Add Unsucsessfull" + ex.ToString());
+
         //        }
-        //    }
-       
-        }
+
+        //}
     }
+    }
+    
 
     
 

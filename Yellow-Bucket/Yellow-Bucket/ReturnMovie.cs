@@ -99,12 +99,14 @@ namespace Yellow_Bucket
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT title FROM dbo.Movie;", YellowBucketConnection);
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(movieID, ') ', title) AS listing FROM dbo.Movie;", YellowBucketConnection);
                     adapter.Fill(allmovies);
 
-                    lstBoxMovies.ValueMember = "id";
-                    lstBoxMovies.DisplayMember = "title";
-                    lstBoxMovies.DataSource = allmovies;
+                    comboBoxMovies.ValueMember = "id";
+
+                    comboBoxMovies.DisplayMember = "listing";
+
+                    comboBoxMovies.DataSource = allmovies;
 
                     YellowBucketConnection.Close();
                 }
@@ -114,11 +116,18 @@ namespace Yellow_Bucket
                     Console.WriteLine(ex.ToString());
                 }
             }
+
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Movie Returned!!!");
-        }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    if (existingAddress.Rows.Count == 1) // If the address does already exist in the database
+        //    {
+        //        // FIRST: Update Customer
+        //        YellowBucketConnection.Open();
+        //        SqlCommand updateCustomerRecord = new SqlCommand("UPDATE dbo.Customer SET email = @email, alternateEmail = @alternateEmail, userPassword = @userPassword, creditCard = @creditCard WHERE userName = @userName;", YellowBucketConnection);
+        //        MessageBox.Show("Movie Returned!!!");
+        //    }
+        //}
     }
 }
