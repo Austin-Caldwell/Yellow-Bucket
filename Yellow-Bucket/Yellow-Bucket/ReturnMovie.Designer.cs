@@ -168,20 +168,19 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(472, 233);
+            this.button1.Location = new System.Drawing.Point(486, 455);
             this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(112, 51);
             this.button1.TabIndex = 2;
             this.button1.Text = "Return";
             this.button1.UseVisualStyleBackColor = true;
-//            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // lblSelectMovieText
             // 
             this.lblSelectMovieText.AutoSize = true;
             this.lblSelectMovieText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectMovieText.Location = new System.Drawing.Point(310, 146);
+            this.lblSelectMovieText.Location = new System.Drawing.Point(310, 35);
             this.lblSelectMovieText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelectMovieText.Name = "lblSelectMovieText";
             this.lblSelectMovieText.Size = new System.Drawing.Size(435, 26);
@@ -191,7 +190,7 @@
             // comboBoxMovies
             // 
             this.comboBoxMovies.FormattingEnabled = true;
-            this.comboBoxMovies.Location = new System.Drawing.Point(315, 197);
+            this.comboBoxMovies.Location = new System.Drawing.Point(315, 79);
             this.comboBoxMovies.Name = "comboBoxMovies";
             this.comboBoxMovies.Size = new System.Drawing.Size(430, 28);
             this.comboBoxMovies.TabIndex = 5;

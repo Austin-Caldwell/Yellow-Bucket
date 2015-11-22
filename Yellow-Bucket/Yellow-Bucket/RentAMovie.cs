@@ -430,7 +430,7 @@ namespace Yellow_Bucket
 
                     quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
 
-                    quantity += 1;
+                    quantity = quantity - 1;
 
                     MessageBox.Show("New quantity: " + quantity.ToString());
 
