@@ -217,12 +217,13 @@
             // 
             // btnRent
             // 
-            this.btnRent.Location = new System.Drawing.Point(427, 350);
+            this.btnRent.Location = new System.Drawing.Point(427, 349);
             this.btnRent.Name = "btnRent";
             this.btnRent.Size = new System.Drawing.Size(106, 39);
             this.btnRent.TabIndex = 11;
             this.btnRent.Text = "Rent Movie";
             this.btnRent.UseVisualStyleBackColor = true;
+            this.btnRent.Click += new System.EventHandler(this.btnRent_Click_1);
             // 
             // label3
             // 

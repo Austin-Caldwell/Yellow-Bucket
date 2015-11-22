@@ -23,6 +23,8 @@ namespace Yellow_Bucket
         private int selectedkioskID;
         private string selectedKiosk;
         private string selectedMovie;
+        private string selectedtype;
+        private int quantity;
 
         public RentAMovie()
         {
@@ -163,7 +165,7 @@ namespace Yellow_Bucket
                     adapter.Fill(allKiosks);
 
                     comboBoxKiosk.ValueMember = "id";
-
+                    
                     comboBoxKiosk.DisplayMember = "fulladdress";
 
                     comboBoxKiosk.DataSource = allKiosks;
@@ -179,7 +181,7 @@ namespace Yellow_Bucket
 
         }
 
-        //private void addMovie_Click(object sender, EventArgs e)
+        //private void btnRent_Click(object sender, EventArgs e)
 
         //{
 
@@ -188,11 +190,11 @@ namespace Yellow_Bucket
 
 
 
-        //    string[] kioskAddress = comboBoxOfKiosks.Text.Split(delimiterChars);
+        //    string[] kioskAddress = comboBoxKiosk.Text.Split(delimiterChars);
 
-        //    string[] movieAddress = comboBoxOfMovies.Text.Split(delimiterChars);
+        //    string[] movieAddress = comboBoxMovie.Text.Split(delimiterChars);
 
-        //    string[] TypeAddress = comboBoxOfTypeOfDisk.Text.Split(delimiterChars);
+        //    string[] TypeAddress = comboBox1.Text.Split(delimiterChars);
 
 
 
@@ -201,7 +203,7 @@ namespace Yellow_Bucket
 
         //    selectedMovie = movieAddress[0];
 
-        //    movieType = TypeAddress[0];
+        //    selectedtype = TypeAddress[0];
 
 
 
@@ -229,36 +231,37 @@ namespace Yellow_Bucket
 
         //            //declare the command
 
-        //            SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+        //            //SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+        //            SqlCommand findListing = new SqlCommand("SELECT concat(stockID, ') ', title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
 
 
 
 
         //            //declare the varialbe type
 
-        //            findMovie.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+        //            findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
 
-        //            findMovie.Parameters.Add("@selectedMovie", SqlDbType.Int);
+        //            findListing.Parameters.Add("@selectedMovie", SqlDbType.Int);
 
-        //            findMovie.Parameters.Add("@movieType", SqlDbType.VarChar);
+        //            findListing.Parameters.Add("@movieType", SqlDbType.VarChar);
 
 
 
 
         //            //declare the definition of the variable (the definition is delcared about 10 lines up)
 
-        //            findMovie.Parameters["@selectedKiosk"].Value = selectedKiosk;
+        //            findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
 
-        //            findMovie.Parameters["@selectedMovie"].Value = selectedMovie;
+        //            findListing.Parameters["@selectedMovie"].Value = selectedMovie;
 
-        //            findMovie.Parameters["@movieType"].Value = movieType;
+        //            findListing.Parameters["@movieType"].Value = selectedtype;
 
 
 
 
         //            //declares the execution trigger
 
-        //            ReadInventory = findMovie.ExecuteReader();
+        //            ReadInventory = findListing.ExecuteReader();
 
 
 
@@ -301,7 +304,7 @@ namespace Yellow_Bucket
 
         //            updateQuantity.Parameters["@selectedMovie"].Value = selectedMovie;
 
-        //            updateQuantity.Parameters["@movieType"].Value = movieType;
+        //            updateQuantity.Parameters["@movieType"].Value = selectedtype;
 
         //            updateQuantity.Parameters["@quantity"].Value = quantity;
 
@@ -335,10 +338,167 @@ namespace Yellow_Bucket
         //        }
 
         //}
-    }
-    }
-    
+    //}
 
-    
+        private void btnRent_Click_1(object sender, EventArgs e)
+        {
+            char[] delimiterChars = { ')' };
+
+
+
+
+            string[] kioskAddress = comboBoxKiosk.Text.Split(delimiterChars);
+
+            string[] movieAddress = comboBoxMovie.Text.Split(delimiterChars);
+
+            string[] TypeAddress = comboBox1.Text.Split(delimiterChars);
+
+
+
+
+            selectedKiosk = kioskAddress[0];
+
+            selectedMovie = movieAddress[0];
+
+            selectedtype = TypeAddress[0];
+
+
+
+
+
+
+            DataTable inventory = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+
+                try //try to update a movie if it already exists
+
+                {
+
+
+
+                    //GET QUANTITY AND INCREMENT
+
+                    YellowBucketConnection.Open();
+
+                    SqlDataReader ReadInventory = null;
+
+
+
+
+                    //declare the command
+
+                    //SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+                    SqlCommand findListing = new SqlCommand("SELECT quantityAtKiosk, concat(stockID, ') ', title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
+
+
+
+
+                    //declare the varialbe type
+
+                    findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+
+                    findListing.Parameters.Add("@selectedMovie", SqlDbType.Int);
+
+                    findListing.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+
+
+
+                    //declare the definition of the variable (the definition is delcared about 10 lines up)
+
+                    findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
+
+                    findListing.Parameters["@selectedMovie"].Value = selectedMovie;
+
+                    findListing.Parameters["@movieType"].Value = selectedtype;
+
+
+
+
+                    //declares the execution trigger
+
+                    ReadInventory = findListing.ExecuteReader();
+
+
+
+                    //pulls trigger and increments quantity
+
+                    inventory.Load(ReadInventory);
+
+                    DataRow inventoryRow = inventory.Rows[0];
+
+                    quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
+
+                    quantity += 1;
+
+                    MessageBox.Show("New quantity: " + quantity.ToString());
+
+
+
+
+                    //UPDATE
+
+                    SqlCommand updateQuantity = new SqlCommand("UPDATE dbo.Inventory SET quantityAtKiosk = @quantity WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
+
+
+
+                    //declare the varialbe type         
+
+                    updateQuantity.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+
+                    updateQuantity.Parameters.Add("@selectedMovie", SqlDbType.Int);
+
+                    updateQuantity.Parameters.Add("@movieType", SqlDbType.VarChar);
+
+                    updateQuantity.Parameters.Add("@quantity", SqlDbType.Int);
+
+
+
+                    //declare the definition of the variable (the definition is delcared about 10 lines up)
+
+                    updateQuantity.Parameters["@selectedKiosk"].Value = selectedKiosk;
+
+                    updateQuantity.Parameters["@selectedMovie"].Value = selectedMovie;
+
+                    updateQuantity.Parameters["@movieType"].Value = selectedtype;
+
+                    updateQuantity.Parameters["@quantity"].Value = quantity;
+
+
+
+
+                    //runs update
+
+                    updateQuantity.ExecuteNonQuery();
+
+
+
+
+                    YellowBucketConnection.Close();
+
+
+
+
+                    MessageBox.Show("Add Successful");
+
+
+
+                } //inserts a new movie of quantitity = 1;
+
+                catch (Exception ex)
+
+                {
+
+                    MessageBox.Show("Add Unsucsessfull" + ex.ToString());
+
+                }
+
+        }
+    }
+    }
+
+
+
 
 
