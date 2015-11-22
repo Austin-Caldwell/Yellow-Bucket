@@ -39,8 +39,11 @@
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtBoxMovieName = new System.Windows.Forms.TextBox();
-            this.txtBoxWrittenReview = new System.Windows.Forms.TextBox();
+            this.comboBoxMovie = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,39 +153,70 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(154, 13);
+            this.label1.Location = new System.Drawing.Point(302, 35);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 26);
+            this.label1.Size = new System.Drawing.Size(137, 26);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Movie Name:";
+            this.label1.Text = "Select Movie";
             // 
-            // txtBoxMovieName
+            // comboBoxMovie
             // 
-            this.txtBoxMovieName.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxMovieName.Location = new System.Drawing.Point(301, 13);
-            this.txtBoxMovieName.Name = "txtBoxMovieName";
-            this.txtBoxMovieName.Size = new System.Drawing.Size(180, 30);
-            this.txtBoxMovieName.TabIndex = 4;
+            this.comboBoxMovie.FormattingEnabled = true;
+            this.comboBoxMovie.Location = new System.Drawing.Point(180, 84);
+            this.comboBoxMovie.Name = "comboBoxMovie";
+            this.comboBoxMovie.Size = new System.Drawing.Size(383, 21);
+            this.comboBoxMovie.TabIndex = 6;
             // 
-            // txtBoxWrittenReview
+            // label2
             // 
-            this.txtBoxWrittenReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtBoxWrittenReview.Location = new System.Drawing.Point(159, 94);
-            this.txtBoxWrittenReview.Name = "txtBoxWrittenReview";
-            this.txtBoxWrittenReview.Size = new System.Drawing.Size(446, 26);
-            this.txtBoxWrittenReview.TabIndex = 5;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(302, 207);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(141, 26);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Write Review";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(302, 119);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(142, 26);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Select Rating";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(180, 159);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(383, 21);
+            this.comboBox1.TabIndex = 9;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(180, 244);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(383, 20);
+            this.textBox1.TabIndex = 10;
             // 
             // WriteMovieReviews
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(658, 444);
-            this.Controls.Add(this.txtBoxWrittenReview);
-            this.Controls.Add(this.txtBoxMovieName);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.comboBoxMovie);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
             this.Name = "WriteMovieReviews";
             this.Text = "WriteMovieReviews";
+            this.Load += new System.EventHandler(this.WriteMovieReviews_Load);
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();
             this.ResumeLayout(false);
@@ -203,7 +237,10 @@
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtBoxMovieName;
-        private System.Windows.Forms.TextBox txtBoxWrittenReview;
+        private System.Windows.Forms.ComboBox comboBoxMovie;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

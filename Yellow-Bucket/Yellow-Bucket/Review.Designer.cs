@@ -156,6 +156,7 @@
             this.btnWriteReview.TabIndex = 2;
             this.btnWriteReview.Text = "Write a Review";
             this.btnWriteReview.UseVisualStyleBackColor = true;
+            this.btnWriteReview.Click += new System.EventHandler(this.btnWriteReview_Click);
             // 
             // btnSeeReview
             // 

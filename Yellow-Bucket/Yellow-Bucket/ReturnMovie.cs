@@ -19,6 +19,10 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        private string selectedKiosk;
+        private string selectedMovie;
+        private string selectedtype;
+        private int quantity;
 
         public ReturnMovie()
         {
@@ -89,6 +93,8 @@ namespace Yellow_Bucket
         private void ReturnMovie_Load(object sender, EventArgs e)
         {
             fillwithmovies();
+            fillwithlocations();
+            fillwithmovietypes();
         }
 
         private void fillwithmovies()
@@ -118,22 +124,70 @@ namespace Yellow_Bucket
             }
 
         }
+        private void fillwithmovietypes()
+        {
+            DataTable alltypes = new DataTable();
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(stockID, ') ', dvdBluRay) AS listing FROM dbo.Inventory;", YellowBucketConnection);
+                    adapter.Fill(alltypes);
 
+                    comboBoxType.ValueMember = "id";
+
+                    comboBoxType.DisplayMember = "listing";
+
+                    comboBoxType.DataSource = alltypes;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    label3.Text = "Error populating customer information: " + ex.ToString();
+                    Console.WriteLine(ex.ToString());
+                }
+            }
+        }
+        private void fillwithlocations()
+        {
+            DataTable allKiosks = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(kioskID, ') ', location, ': ', addressLine1, addressLine2, ', ', city, ', ', stateProvince, ', ', postalCode) AS fulladdress FROM dbo.Kiosk", YellowBucketConnection);
+
+                    adapter.Fill(allKiosks);
+
+                    comboBoxKiosk.ValueMember = "id";
+
+                    comboBoxKiosk.DisplayMember = "fulladdress";
+
+                    comboBoxKiosk.DataSource = allKiosks;
+
+                    YellowBucketConnection.Close();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+
+            }
+
+        }
         private void button1_Click(object sender, EventArgs e)
         {
             char[] delimiterChars = { ')' };
 
-
-
-
             string[] kioskAddress = comboBoxKiosk.Text.Split(delimiterChars);
 
-            string[] movieAddress = comboBoxMovie.Text.Split(delimiterChars);
+            string[] movieAddress = comboBoxMovies.Text.Split(delimiterChars);
 
-            string[] TypeAddress = comboBox1.Text.Split(delimiterChars);
-
-
-
+            string[] TypeAddress = comboBoxType.Text.Split(delimiterChars);
 
             selectedKiosk = kioskAddress[0];
 
@@ -141,21 +195,12 @@ namespace Yellow_Bucket
 
             selectedtype = TypeAddress[0];
 
-
-
-
-
-
             DataTable inventory = new DataTable();
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
 
                 try //try to update a movie if it already exists
-
                 {
-
-
-
                     //GET QUANTITY AND INCREMENT
 
                     YellowBucketConnection.Open();
@@ -209,7 +254,7 @@ namespace Yellow_Bucket
 
                     quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
 
-                    quantity = quantity - 1;
+                    quantity += 1;
 
                     MessageBox.Show("New quantity: " + quantity.ToString());
 
@@ -222,9 +267,9 @@ namespace Yellow_Bucket
 
 
 
-    //declare the varialbe type         
+                    //declare the varialbe type         
 
-    updateQuantity.Parameters.Add("@selectedKiosk", SqlDbType.Int);
+                    updateQuantity.Parameters.Add("@selectedKiosk", SqlDbType.Int);
 
                     updateQuantity.Parameters.Add("@selectedMovie", SqlDbType.Int);
 
@@ -269,7 +314,7 @@ namespace Yellow_Bucket
 
                 {
 
-                    MessageBox.Show("Add Unsucsessfull" + ex.ToString());
+                    MessageBox.Show("Add Unsuccessfull" + ex.ToString());
 
                 }
 
