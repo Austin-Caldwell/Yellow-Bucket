@@ -133,5 +133,12 @@ namespace Yellow_Bucket
             AddMovie AddMovieForm = new AddMovie();
             AddMovieForm.Show();
         }
+
+        private void buttonToEditMovieInfo_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            EditMovieInfo EditMovieInfoForm = new EditMovieInfo();
+            EditMovieInfoForm.Show();
+        }
     }
 }

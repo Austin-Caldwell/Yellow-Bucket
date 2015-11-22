@@ -74,6 +74,12 @@
     <Compile Include="DeleteMovie.Designer.cs">
       <DependentUpon>DeleteMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditMovieInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EditMovieInfo.Designer.cs">
+      <DependentUpon>EditMovieInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="RentAMovie.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -168,6 +174,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DeleteMovie.resx">
       <DependentUpon>DeleteMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EditMovieInfo.resx">
+      <DependentUpon>EditMovieInfo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RentAMovie.resx">
       <DependentUpon>RentAMovie.cs</DependentUpon>

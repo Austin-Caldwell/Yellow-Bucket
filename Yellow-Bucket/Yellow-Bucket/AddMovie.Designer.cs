@@ -53,9 +53,11 @@
             this.textStudio = new System.Windows.Forms.TextBox();
             this.textRunTime = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
-            this.textReleaseDate = new System.Windows.Forms.TextBox();
             this.comboBoxParentalRating = new System.Windows.Forms.ComboBox();
             this.buttonAddMovie = new System.Windows.Forms.Button();
+            this.textReleaseDate = new System.Windows.Forms.MaskedTextBox();
+            this.comboBoxGenre = new System.Windows.Forms.ComboBox();
+            this.label11 = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -196,7 +198,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label3.Location = new System.Drawing.Point(274, 102);
+            this.label3.Location = new System.Drawing.Point(274, 112);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 20);
             this.label3.TabIndex = 12;
@@ -206,7 +208,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label4.Location = new System.Drawing.Point(343, 203);
+            this.label4.Location = new System.Drawing.Point(343, 209);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(65, 20);
             this.label4.TabIndex = 13;
@@ -216,7 +218,7 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label5.Location = new System.Drawing.Point(353, 240);
+            this.label5.Location = new System.Drawing.Point(353, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 20);
             this.label5.TabIndex = 14;
@@ -226,7 +228,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label6.Location = new System.Drawing.Point(331, 273);
+            this.label6.Location = new System.Drawing.Point(331, 274);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(77, 20);
             this.label6.TabIndex = 15;
@@ -236,7 +238,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label7.Location = new System.Drawing.Point(289, 335);
+            this.label7.Location = new System.Drawing.Point(289, 336);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(119, 20);
             this.label7.TabIndex = 16;
@@ -246,7 +248,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label8.Location = new System.Drawing.Point(301, 303);
+            this.label8.Location = new System.Drawing.Point(301, 304);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(107, 20);
             this.label8.TabIndex = 17;
@@ -256,7 +258,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label9.Location = new System.Drawing.Point(492, 308);
+            this.label9.Location = new System.Drawing.Point(514, 309);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(75, 13);
             this.label9.TabIndex = 18;
@@ -273,7 +275,7 @@
             // textMovieDescription
             // 
             this.textMovieDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textMovieDescription.Location = new System.Drawing.Point(414, 99);
+            this.textMovieDescription.Location = new System.Drawing.Point(414, 109);
             this.textMovieDescription.Multiline = true;
             this.textMovieDescription.Name = "textMovieDescription";
             this.textMovieDescription.Size = new System.Drawing.Size(403, 91);
@@ -282,7 +284,7 @@
             // textDirector
             // 
             this.textDirector.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textDirector.Location = new System.Drawing.Point(414, 200);
+            this.textDirector.Location = new System.Drawing.Point(414, 206);
             this.textDirector.Name = "textDirector";
             this.textDirector.Size = new System.Drawing.Size(403, 26);
             this.textDirector.TabIndex = 21;
@@ -290,7 +292,7 @@
             // textStudio
             // 
             this.textStudio.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textStudio.Location = new System.Drawing.Point(414, 237);
+            this.textStudio.Location = new System.Drawing.Point(414, 238);
             this.textStudio.Name = "textStudio";
             this.textStudio.Size = new System.Drawing.Size(403, 26);
             this.textStudio.TabIndex = 22;
@@ -298,7 +300,7 @@
             // textRunTime
             // 
             this.textRunTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textRunTime.Location = new System.Drawing.Point(414, 270);
+            this.textRunTime.Location = new System.Drawing.Point(414, 271);
             this.textRunTime.Name = "textRunTime";
             this.textRunTime.Size = new System.Drawing.Size(72, 26);
             this.textRunTime.TabIndex = 23;
@@ -307,25 +309,17 @@
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.label10.Location = new System.Drawing.Point(492, 278);
+            this.label10.Location = new System.Drawing.Point(492, 279);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(114, 13);
             this.label10.TabIndex = 24;
             this.label10.Text = "IN MINUTES (ex: 147)";
             // 
-            // textReleaseDate
-            // 
-            this.textReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textReleaseDate.Location = new System.Drawing.Point(414, 300);
-            this.textReleaseDate.Name = "textReleaseDate";
-            this.textReleaseDate.Size = new System.Drawing.Size(72, 26);
-            this.textReleaseDate.TabIndex = 25;
-            // 
             // comboBoxParentalRating
             // 
             this.comboBoxParentalRating.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboBoxParentalRating.FormattingEnabled = true;
-            this.comboBoxParentalRating.Location = new System.Drawing.Point(414, 332);
+            this.comboBoxParentalRating.Location = new System.Drawing.Point(414, 333);
             this.comboBoxParentalRating.Name = "comboBoxParentalRating";
             this.comboBoxParentalRating.Size = new System.Drawing.Size(72, 28);
             this.comboBoxParentalRating.TabIndex = 26;
@@ -333,21 +327,55 @@
             // 
             // buttonAddMovie
             // 
-            this.buttonAddMovie.Location = new System.Drawing.Point(414, 366);
+            this.buttonAddMovie.Location = new System.Drawing.Point(414, 398);
             this.buttonAddMovie.Name = "buttonAddMovie";
             this.buttonAddMovie.Size = new System.Drawing.Size(121, 32);
             this.buttonAddMovie.TabIndex = 27;
             this.buttonAddMovie.Text = "Add Movie";
             this.buttonAddMovie.UseVisualStyleBackColor = true;
+            this.buttonAddMovie.Click += new System.EventHandler(this.buttonAddMovie_Click);
+            // 
+            // textReleaseDate
+            // 
+            this.textReleaseDate.AllowPromptAsInput = false;
+            this.textReleaseDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textReleaseDate.Location = new System.Drawing.Point(414, 302);
+            this.textReleaseDate.Mask = "0000-00-00";
+            this.textReleaseDate.Name = "textReleaseDate";
+            this.textReleaseDate.Size = new System.Drawing.Size(94, 26);
+            this.textReleaseDate.TabIndex = 28;
+            this.textReleaseDate.TextMaskFormat = System.Windows.Forms.MaskFormat.IncludePromptAndLiterals;
+            // 
+            // comboBoxGenre
+            // 
+            this.comboBoxGenre.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.comboBoxGenre.FormattingEnabled = true;
+            this.comboBoxGenre.Location = new System.Drawing.Point(414, 364);
+            this.comboBoxGenre.Name = "comboBoxGenre";
+            this.comboBoxGenre.Size = new System.Drawing.Size(94, 28);
+            this.comboBoxGenre.TabIndex = 30;
+            this.comboBoxGenre.Text = "Action";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label11.Location = new System.Drawing.Point(354, 367);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(54, 20);
+            this.label11.TabIndex = 29;
+            this.label11.Text = "Genre";
             // 
             // AddMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.comboBoxGenre);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.textReleaseDate);
             this.Controls.Add(this.buttonAddMovie);
             this.Controls.Add(this.comboBoxParentalRating);
-            this.Controls.Add(this.textReleaseDate);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.textRunTime);
             this.Controls.Add(this.textStudio);
@@ -403,8 +431,10 @@
         private System.Windows.Forms.TextBox textStudio;
         private System.Windows.Forms.TextBox textRunTime;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.TextBox textReleaseDate;
         private System.Windows.Forms.ComboBox comboBoxParentalRating;
         private System.Windows.Forms.Button buttonAddMovie;
+        private System.Windows.Forms.MaskedTextBox textReleaseDate;
+        private System.Windows.Forms.ComboBox comboBoxGenre;
+        private System.Windows.Forms.Label label11;
     }
 }

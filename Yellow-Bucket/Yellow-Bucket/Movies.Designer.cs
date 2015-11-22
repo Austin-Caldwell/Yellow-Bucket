@@ -201,6 +201,7 @@
             this.buttonToEditMovieInfo.TabIndex = 2;
             this.buttonToEditMovieInfo.Text = "Edit Movie Info";
             this.buttonToEditMovieInfo.UseVisualStyleBackColor = true;
+            this.buttonToEditMovieInfo.Click += new System.EventHandler(this.buttonToEditMovieInfo_Click);
             // 
             // buttonToDeleteMovie
             // 

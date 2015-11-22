@@ -68,3 +68,4 @@ C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bu
 C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.DeleteMovieForm.resources
 C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.AddMovie.resources
 C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.ShowKioskInventory.resources
+C:\Users\enweh_000\Documents\GitHub\Yellow-Bucket-CSC365\Yellow-Bucket\Yellow-Bucket\obj\Debug\Yellow_Bucket.EditMovieInfo.resources
