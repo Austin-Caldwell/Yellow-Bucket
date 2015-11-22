@@ -55,7 +55,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -152,8 +152,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
-                    lblDeletionStatus.Text = "Customer Deletion of " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " +selectedCustomerUserName + " FAILED!\n" + ex.ToString();
+                    MessageBox.Show("Customer Deletion of " + selectedCustomerFirstName + " " + selectedCustomerLastName + " with Username: " + selectedCustomerUserName + " FAILED!\n" + ex.ToString());
                 }
             }
         }

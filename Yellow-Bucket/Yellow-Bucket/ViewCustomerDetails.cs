@@ -19,10 +19,10 @@ namespace Yellow_Bucket
 
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-       // protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+           protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
-        protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        // protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
         private string selectedCustomerUserName;    // Variable to hold the username of the customer selected in the comboBoxOfCustomers
         private int selectedCustomerID;             // Variable to hold the customer ID of the customer selected in the comboBoxOfCustomers
@@ -57,7 +57,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -66,7 +66,6 @@ namespace Yellow_Bucket
         {
             char[] delimiterChars = { ' ' };
 
-            lblErrorMessage.Text = "";
             DataTable customerID = new DataTable();
 
             string[] customerName = comboBoxOfCustomers.Text.Split(delimiterChars); // Parse text from comboBoxOfCustomers to separate customer first name from last name
@@ -118,7 +117,6 @@ namespace Yellow_Bucket
                     customerID.Load(readCustomerID);
                     DataRow customerIDTableRow = customerID.Rows[0];
                     selectedCustomerID = Convert.ToInt32(customerIDTableRow["customerID"]);
-                    lblErrorMessage.Text = selectedCustomerUserName + " " + selectedCustomerID;
                     YellowBucketConnection.Close();
 
                     fillLstBoxCurrentRentals();     // Fill List Box of Customer's Current Rentals
@@ -130,8 +128,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -233,8 +230,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -251,7 +247,7 @@ namespace Yellow_Bucket
 
                     // Find Historic Rentals for Customer
                     SqlDataReader readRentalHistory = null;
-                    SqlCommand findRentalHistory = new SqlCommand("SELECT concat(title, ' -- Rented: ', outDate, ' -- Returned: ', inDate) AS historicRental FROM dbo.RentalHistory, dbo.Customer, dbo.Movie WHERE RentalHistory.customerID = @customerID AND RentalHistory.movieID = Movie.movieID;", YellowBucketConnection);
+                    SqlCommand findRentalHistory = new SqlCommand("SELECT DISTINCT concat(title, ' -- Rented: ', outDate, ' -- Returned: ', inDate) AS historicRental FROM dbo.RentalHistory, dbo.Customer, dbo.Movie WHERE RentalHistory.customerID = @customerID AND RentalHistory.movieID = Movie.movieID;", YellowBucketConnection);
                     findRentalHistory.Parameters.Add("@customerID", SqlDbType.Int);
                     findRentalHistory.Parameters["@customerID"].Value = selectedCustomerID;
 
@@ -268,8 +264,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -303,8 +298,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
@@ -338,8 +332,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
         }
