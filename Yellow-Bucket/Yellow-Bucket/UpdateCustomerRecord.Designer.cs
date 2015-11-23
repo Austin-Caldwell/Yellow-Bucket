@@ -546,6 +546,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UpdateCustomerRecord";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- UPDATE CUSTOMER RECORD";
             this.Load += new System.EventHandler(this.UpdateCustomerRecord_Load);
             this.mainMenuStrip.ResumeLayout(false);

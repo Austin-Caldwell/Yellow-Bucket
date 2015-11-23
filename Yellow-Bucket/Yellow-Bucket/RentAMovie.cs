@@ -119,8 +119,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("Error populating customer information: " + ex.ToString());
                 }
             }
         }
@@ -146,8 +145,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    lblErrorMessage.Text = "Error populating customer information: " + ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("Error populating customer information: " + ex.ToString());
                 }
             }
         }

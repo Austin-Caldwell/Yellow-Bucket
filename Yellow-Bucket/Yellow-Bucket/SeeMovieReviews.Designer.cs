@@ -64,7 +64,7 @@
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
             this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
-            this.mainMenuStrip.Size = new System.Drawing.Size(121, 741);
+            this.mainMenuStrip.Size = new System.Drawing.Size(121, 729);
             this.mainMenuStrip.TabIndex = 3;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
@@ -202,7 +202,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.comboBoxMovies);
             this.Controls.Add(this.lstBoxReview);
             this.Controls.Add(this.lblErrorMessage);
@@ -212,6 +212,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "SeeMovieReviews";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "SeeMovieReviews";
             this.Load += new System.EventHandler(this.SeeMovieReviews_Load);
             this.mainMenuStrip.ResumeLayout(false);

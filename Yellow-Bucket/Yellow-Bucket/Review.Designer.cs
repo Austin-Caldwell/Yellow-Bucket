@@ -149,7 +149,7 @@
             // btnWriteReview
             // 
             this.btnWriteReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnWriteReview.Location = new System.Drawing.Point(466, 151);
+            this.btnWriteReview.Location = new System.Drawing.Point(414, 153);
             this.btnWriteReview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnWriteReview.Name = "btnWriteReview";
             this.btnWriteReview.Size = new System.Drawing.Size(312, 77);
@@ -161,7 +161,7 @@
             // btnSeeReview
             // 
             this.btnSeeReview.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSeeReview.Location = new System.Drawing.Point(466, 308);
+            this.btnSeeReview.Location = new System.Drawing.Point(414, 310);
             this.btnSeeReview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnSeeReview.Name = "btnSeeReview";
             this.btnSeeReview.Size = new System.Drawing.Size(312, 98);
@@ -181,6 +181,7 @@
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Review";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- MOVIE REVIEWS";
             this.mainMenuStrip.ResumeLayout(false);
             this.mainMenuStrip.PerformLayout();

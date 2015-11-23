@@ -38,7 +38,7 @@
             this.rEVIEWToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aBOUTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnReturnMovie = new System.Windows.Forms.Button();
             this.lblSelectMovieText = new System.Windows.Forms.Label();
             this.comboBoxMovies = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -46,6 +46,8 @@
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.comboBoxKiosk = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.comboBoxCustomers = new System.Windows.Forms.ComboBox();
+            this.lblSelectCustomerText = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,41 +172,43 @@
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
             // 
-            // button1
+            // btnReturnMovie
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(481, 432);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 51);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Return";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnReturnMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReturnMovie.Location = new System.Drawing.Point(455, 515);
+            this.btnReturnMovie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnReturnMovie.Name = "btnReturnMovie";
+            this.btnReturnMovie.Size = new System.Drawing.Size(160, 51);
+            this.btnReturnMovie.TabIndex = 2;
+            this.btnReturnMovie.Text = "Return Movie";
+            this.btnReturnMovie.UseVisualStyleBackColor = true;
+            this.btnReturnMovie.Click += new System.EventHandler(this.btnReturnMovie_Click);
             // 
             // lblSelectMovieText
             // 
             this.lblSelectMovieText.AutoSize = true;
             this.lblSelectMovieText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectMovieText.Location = new System.Drawing.Point(310, 35);
+            this.lblSelectMovieText.Location = new System.Drawing.Point(322, 179);
             this.lblSelectMovieText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelectMovieText.Name = "lblSelectMovieText";
-            this.lblSelectMovieText.Size = new System.Drawing.Size(435, 26);
+            this.lblSelectMovieText.Size = new System.Drawing.Size(442, 26);
             this.lblSelectMovieText.TabIndex = 4;
-            this.lblSelectMovieText.Text = "Select Movie You Would Like To Return";
+            this.lblSelectMovieText.Text = "Select Movie You Would Like To Return:";
             // 
             // comboBoxMovies
             // 
             this.comboBoxMovies.FormattingEnabled = true;
-            this.comboBoxMovies.Location = new System.Drawing.Point(315, 79);
+            this.comboBoxMovies.Location = new System.Drawing.Point(327, 208);
             this.comboBoxMovies.Name = "comboBoxMovies";
             this.comboBoxMovies.Size = new System.Drawing.Size(430, 28);
             this.comboBoxMovies.TabIndex = 5;
+            this.comboBoxMovies.Text = "Select A Movie To Return";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(431, 285);
+            this.label1.Location = new System.Drawing.Point(434, 450);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(207, 26);
@@ -215,17 +219,17 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(333, 160);
+            this.label2.Location = new System.Drawing.Point(322, 318);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(403, 26);
+            this.label2.Size = new System.Drawing.Size(410, 26);
             this.label2.TabIndex = 7;
-            this.label2.Text = "Select Kiosk You Are Returning It To";
+            this.label2.Text = "Select Kiosk You Are Returning It To:";
             // 
             // comboBoxType
             // 
             this.comboBoxType.FormattingEnabled = true;
-            this.comboBoxType.Location = new System.Drawing.Point(315, 348);
+            this.comboBoxType.Location = new System.Drawing.Point(327, 479);
             this.comboBoxType.Name = "comboBoxType";
             this.comboBoxType.Size = new System.Drawing.Size(430, 28);
             this.comboBoxType.TabIndex = 8;
@@ -233,7 +237,7 @@
             // comboBoxKiosk
             // 
             this.comboBoxKiosk.FormattingEnabled = true;
-            this.comboBoxKiosk.Location = new System.Drawing.Point(315, 214);
+            this.comboBoxKiosk.Location = new System.Drawing.Point(327, 347);
             this.comboBoxKiosk.Name = "comboBoxKiosk";
             this.comboBoxKiosk.Size = new System.Drawing.Size(430, 28);
             this.comboBoxKiosk.TabIndex = 9;
@@ -247,11 +251,32 @@
             this.label3.TabIndex = 10;
             this.label3.Text = "label3";
             // 
+            // comboBoxCustomers
+            // 
+            this.comboBoxCustomers.FormattingEnabled = true;
+            this.comboBoxCustomers.Location = new System.Drawing.Point(327, 65);
+            this.comboBoxCustomers.Name = "comboBoxCustomers";
+            this.comboBoxCustomers.Size = new System.Drawing.Size(430, 28);
+            this.comboBoxCustomers.TabIndex = 11;
+            this.comboBoxCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomers_SelectedIndexChanged);
+            // 
+            // lblSelectCustomerText
+            // 
+            this.lblSelectCustomerText.AutoSize = true;
+            this.lblSelectCustomerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSelectCustomerText.Location = new System.Drawing.Point(322, 37);
+            this.lblSelectCustomerText.Name = "lblSelectCustomerText";
+            this.lblSelectCustomerText.Size = new System.Drawing.Size(450, 25);
+            this.lblSelectCustomerText.TabIndex = 12;
+            this.lblSelectCustomerText.Text = "Select Customer Who Is Returning Movie:";
+            // 
             // ReturnMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.Controls.Add(this.lblSelectCustomerText);
+            this.Controls.Add(this.comboBoxCustomers);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxKiosk);
             this.Controls.Add(this.comboBoxType);
@@ -259,11 +284,12 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.comboBoxMovies);
             this.Controls.Add(this.lblSelectMovieText);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnReturnMovie);
             this.Controls.Add(this.mainMenuStrip);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "ReturnMovie";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ReturnMovie";
             this.Load += new System.EventHandler(this.ReturnMovie_Load);
             this.mainMenuStrip.ResumeLayout(false);
@@ -285,7 +311,7 @@
         private System.Windows.Forms.ToolStripMenuItem rEVIEWToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aBOUTToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnReturnMovie;
         private System.Windows.Forms.Label lblSelectMovieText;
         private System.Windows.Forms.ComboBox comboBoxMovies;
         private System.Windows.Forms.Label label1;
@@ -293,5 +319,7 @@
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.ComboBox comboBoxKiosk;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.ComboBox comboBoxCustomers;
+        private System.Windows.Forms.Label lblSelectCustomerText;
     }
 }

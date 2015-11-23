@@ -130,8 +130,7 @@ namespace Yellow_Bucket
         {
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
-                try
-                {
+                
                     YellowBucketConnection.Open();
 
                     // Discover if Address Already Exists in Database
@@ -165,65 +164,62 @@ namespace Yellow_Bucket
                     doesMovieExist = findExistingMovie.ExecuteReader();
 
                     DataTable existingMovie = new DataTable();    // Data table to hold rows returned if address is found to exist
-
+                    
                     existingMovie.Load(doesMovieExist);
 
-                    
 
-                    if(existingMovie.Rows.Count == 1)
+                    if (existingMovie.Rows.Count == 1)
                     {
                         MessageBox.Show("Movie already exists!");
                     }
-                    
-                }
+                    else
+                    {
+                        using (YellowBucketConnection = new SqlConnection(connectionString))
 
-                catch
-                {
-                    using (YellowBucketConnection = new SqlConnection(connectionString))
+                            try
+                            {
+                                YellowBucketConnection.Open();
+                                //INSERT
+                                SqlCommand addMovie = new SqlCommand("INSERT INTO dbo.Movie(title, movieDescription, director, studio, runTime, parentalRating, genre, releaseDate) VALUES(@title, @movieDescription, @director, @studio, @runTime, @parentalRating, @genre, @releaseDate);", YellowBucketConnection);
 
-                        try
-                        {
-                            YellowBucketConnection.Open();
-                            //INSERT
-                            SqlCommand addMovie = new SqlCommand("INSERT INTO dbo.Movie(title, movieDescription, director, studio, runTime, parentalRating, genre, releaseDate) VALUES(@title, @movieDescription, @director, @studio, @runTime, @parentalRating, @genre, @releaseDate);", YellowBucketConnection);
+                                addMovie.Parameters.Add("@title", SqlDbType.VarChar);
+                                addMovie.Parameters["@title"].Value = textTitle.Text;
 
-                            addMovie.Parameters.Add("@title", SqlDbType.VarChar);
-                            addMovie.Parameters["@title"].Value = textTitle.Text;
+                                addMovie.Parameters.Add("@movieDescription", SqlDbType.VarChar);
+                                addMovie.Parameters["@movieDescription"].Value = textMovieDescription.Text;
 
-                            addMovie.Parameters.Add("@movieDescription", SqlDbType.VarChar);
-                            addMovie.Parameters["@movieDescription"].Value = textMovieDescription.Text;
+                                addMovie.Parameters.Add("@director", SqlDbType.VarChar);
+                                addMovie.Parameters["@director"].Value = textDirector.Text;
 
-                            addMovie.Parameters.Add("@director", SqlDbType.VarChar);
-                            addMovie.Parameters["@director"].Value = textDirector.Text;
+                                addMovie.Parameters.Add("@studio", SqlDbType.VarChar);
+                                addMovie.Parameters["@studio"].Value = textStudio.Text;
 
-                            addMovie.Parameters.Add("@studio", SqlDbType.VarChar);
-                            addMovie.Parameters["@studio"].Value = textStudio.Text;
+                                addMovie.Parameters.Add("@releaseDate", SqlDbType.Date);
+                                addMovie.Parameters["@releaseDate"].Value = textReleaseDate.Text;
 
-                            addMovie.Parameters.Add("@releaseDate", SqlDbType.Date);
-                            addMovie.Parameters["@releaseDate"].Value = textReleaseDate.Text;
+                                addMovie.Parameters.Add("@runTime", SqlDbType.Int);
+                                addMovie.Parameters["@runTime"].Value = textRunTime.Text;
 
-                            addMovie.Parameters.Add("@runTime", SqlDbType.Int);
-                            addMovie.Parameters["@runTime"].Value = textRunTime.Text;
+                                addMovie.Parameters.Add("@parentalRating", SqlDbType.VarChar);
+                                addMovie.Parameters["@parentalRating"].Value = comboBoxParentalRating.Text;
 
-                            addMovie.Parameters.Add("@parentalRating", SqlDbType.VarChar);
-                            addMovie.Parameters["@parentalRating"].Value = comboBoxParentalRating.Text;
+                                addMovie.Parameters.Add("@genre", SqlDbType.VarChar);
+                                addMovie.Parameters["@genre"].Value = comboBoxGenre.Text;
+                                
+                                //runs insert
+                                addMovie.ExecuteNonQuery();
 
-                            addMovie.Parameters.Add("@genre", SqlDbType.VarChar);
-                            addMovie.Parameters["@genre"].Value = comboBoxGenre.Text;
+                                MessageBox.Show("Add Successful");
 
-                            //runs insert
-                            addMovie.ExecuteNonQuery();
-
-                            MessageBox.Show("Add Successful");
-
-                        }
-                        catch (Exception ex)
-                        {
-                            MessageBox.Show("Add Unsucsessfull" + ex.ToString());
-                        }
-                }
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("Add Unsucsessfull" + ex.ToString());
+                            }
+                    }
+                    YellowBucketConnection.Close();
             }
-            YellowBucketConnection.Close();
+            
         }
         
     }

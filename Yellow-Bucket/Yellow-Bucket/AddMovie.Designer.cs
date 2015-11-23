@@ -352,7 +352,7 @@
             this.comboBoxGenre.FormattingEnabled = true;
             this.comboBoxGenre.Location = new System.Drawing.Point(414, 364);
             this.comboBoxGenre.Name = "comboBoxGenre";
-            this.comboBoxGenre.Size = new System.Drawing.Size(94, 28);
+            this.comboBoxGenre.Size = new System.Drawing.Size(121, 28);
             this.comboBoxGenre.TabIndex = 30;
             this.comboBoxGenre.Text = "Action";
             // 
@@ -392,6 +392,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "AddMovie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
