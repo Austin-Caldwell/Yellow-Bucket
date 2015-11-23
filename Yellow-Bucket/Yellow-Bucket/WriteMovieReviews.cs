@@ -19,9 +19,9 @@ namespace Yellow_Bucket
         // Evan Wehr's Connection String:
         // Jacob Girvin's Connection String:
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
-        private string selectedKiosk;
+        private string selectedRating;
         private string selectedMovie;
-        private string selectedtype;
+        private string NewReview;
         private int quantity;
 
         public WriteMovieReviews()
@@ -93,7 +93,6 @@ namespace Yellow_Bucket
         private void WriteMovieReviews_Load(object sender, EventArgs e)
         {
             fillwithmovies();
-            //fillMovieReviews();
         }
         private void fillwithmovies()
         {
@@ -122,5 +121,117 @@ namespace Yellow_Bucket
             }
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            char[] delimiterChars = { ')' };
+            string[] movieAddress = comboBoxMovie.Text.Split(delimiterChars);
+            selectedMovie = movieAddress[0];
+
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+
+                try //try to update a movie if it already exists
+                {
+                    //GET QUANTITY AND INCREMENT
+
+                    YellowBucketConnection.Open();
+
+                    SqlDataReader doesReviewExist = null;
+
+                    //declare the command
+
+                    SqlCommand findExistingReview = new SqlCommand("Select reviewID FROM dbo.MovieReview WHERE reviewDescription = @reviewDescription AND movieID = @movieId AND rating = @rating AND datePosted = @datePosted;", YellowBucketConnection);
+
+                    findExistingReview.Parameters.Add("@reviewDesription", SqlDbType.VarChar);
+                    findExistingReview.Parameters.Add("@movieID", SqlDbType.Int);
+                    findExistingReview.Parameters.Add("@rating", SqlDbType.Int);
+                    findExistingReview.Parameters.Add("@datePosted", SqlDbType.Date);
+                    findExistingReview.Parameters["@reviewDescription"].Value = textBox1.Text;
+                    findExistingReview.Parameters["@movieID"].Value = selectedMovie;
+                    findExistingReview.Parameters["@rating"].Value = comboBoxRating.Text;
+                    findExistingReview.Parameters["@datePosted"].Value = textBox2.Text;
+
+
+                    doesReviewExist = findExistingReview.ExecuteReader();
+
+                    DataTable existingReview = new DataTable();
+
+                    existingReview.Load(doesReviewExist);
+
+                    if(existingReview.Rows.Count==1)
+                    {
+                        MessageBox.Show("Review already exists");
+                    }
+                }
+                catch
+                {
+                    using (YellowBucketConnection = new SqlConnection(connectionString))
+                        try
+                        {
+                            YellowBucketConnection.Open();
+                            //INSERT
+                            SqlCommand addReview = new SqlCommand("INSERT INTO dbo.MovieReview(reviewDescription, movieID, rating, datePosted) VALUES(@reviewDescription, @movieID, @rating, @datePosted);", YellowBucketConnection);
+
+                            addReview.Parameters.Add("@reviewDescription", SqlDbType.VarChar);
+                            addReview.Parameters.Add("@movieID", SqlDbType.Int);
+                            addReview.Parameters.Add("@rating", SqlDbType.Int);
+                            addReview.Parameters.Add("@datePosted", SqlDbType.Date);
+                            addReview.Parameters["@reviewDescription"].Value = textBox1.Text;
+                            addReview.Parameters["@movieID"].Value = selectedMovie;
+                            addReview.Parameters["@rating"].Value = comboBoxRating.Text;
+                            addReview.Parameters["@datePosted"].Value = textBox2.Text;
+
+                            addReview.ExecuteNonQuery();
+
+                            MessageBox.Show("Add Successful");
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("Add Unsuccessfull" + ex.ToString());
+                        }
+                }
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxRating_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxMovie_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+    
 }

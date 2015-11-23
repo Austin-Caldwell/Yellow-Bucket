@@ -413,9 +413,10 @@
             // 
             // EditMovieInfo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
+<<<<<<< HEAD
             this.Controls.Add(this.comboBoxOfMovies);
             this.Controls.Add(this.comboBoxGenre);
             this.Controls.Add(this.label11);
@@ -441,6 +442,10 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblEditCustomerInfo);
             this.Controls.Add(this.mainMenuStrip);
+=======
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+>>>>>>> origin/master
             this.Name = "EditMovieInfo";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EditMovieInfo";

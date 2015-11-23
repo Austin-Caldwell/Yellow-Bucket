@@ -392,6 +392,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.MainMenuStrip = this.mainMenuStrip;
             this.Name = "AddMovie";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

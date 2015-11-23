@@ -64,7 +64,7 @@
             this.qUITToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(118, 741);
+            this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "mainMenuStrip";
             // 
@@ -155,13 +155,13 @@
             this.listBoxOfAllCustomers.ItemHeight = 20;
             this.listBoxOfAllCustomers.Location = new System.Drawing.Point(125, 45);
             this.listBoxOfAllCustomers.Name = "listBoxOfAllCustomers";
-            this.listBoxOfAllCustomers.Size = new System.Drawing.Size(1225, 684);
+            this.listBoxOfAllCustomers.Size = new System.Drawing.Size(871, 664);
             this.listBoxOfAllCustomers.TabIndex = 1;
             // 
             // lblAllCustomersList
             // 
             this.lblAllCustomersList.AutoSize = true;
-            this.lblAllCustomersList.Location = new System.Drawing.Point(121, 9);
+            this.lblAllCustomersList.Location = new System.Drawing.Point(121, 15);
             this.lblAllCustomersList.Name = "lblAllCustomersList";
             this.lblAllCustomersList.Size = new System.Drawing.Size(211, 20);
             this.lblAllCustomersList.TabIndex = 2;
@@ -170,7 +170,7 @@
             // buttonToAddCustomer
             // 
             this.buttonToAddCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToAddCustomer.Location = new System.Drawing.Point(708, 12);
+            this.buttonToAddCustomer.Location = new System.Drawing.Point(376, 12);
             this.buttonToAddCustomer.Name = "buttonToAddCustomer";
             this.buttonToAddCustomer.Size = new System.Drawing.Size(134, 23);
             this.buttonToAddCustomer.TabIndex = 3;
@@ -181,7 +181,7 @@
             // buttonToEditCustomerInfo
             // 
             this.buttonToEditCustomerInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToEditCustomerInfo.Location = new System.Drawing.Point(848, 12);
+            this.buttonToEditCustomerInfo.Location = new System.Drawing.Point(516, 12);
             this.buttonToEditCustomerInfo.Name = "buttonToEditCustomerInfo";
             this.buttonToEditCustomerInfo.Size = new System.Drawing.Size(151, 23);
             this.buttonToEditCustomerInfo.TabIndex = 4;
@@ -192,7 +192,7 @@
             // buttonToViewCustomerDetails
             // 
             this.buttonToViewCustomerDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToViewCustomerDetails.Location = new System.Drawing.Point(1005, 12);
+            this.buttonToViewCustomerDetails.Location = new System.Drawing.Point(673, 12);
             this.buttonToViewCustomerDetails.Name = "buttonToViewCustomerDetails";
             this.buttonToViewCustomerDetails.Size = new System.Drawing.Size(168, 23);
             this.buttonToViewCustomerDetails.TabIndex = 5;
@@ -203,7 +203,7 @@
             // buttonToDeleteCustomer
             // 
             this.buttonToDeleteCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToDeleteCustomer.Location = new System.Drawing.Point(1179, 12);
+            this.buttonToDeleteCustomer.Location = new System.Drawing.Point(847, 12);
             this.buttonToDeleteCustomer.Name = "buttonToDeleteCustomer";
             this.buttonToDeleteCustomer.Size = new System.Drawing.Size(149, 23);
             this.buttonToDeleteCustomer.TabIndex = 6;
@@ -215,7 +215,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.buttonToDeleteCustomer);
             this.Controls.Add(this.buttonToViewCustomerDetails);
             this.Controls.Add(this.buttonToEditCustomerInfo);
@@ -227,6 +227,7 @@
             this.MainMenuStrip = this.mainMenuStrip;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Customers";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- LIST ALL CUSTOMERS";
             this.Load += new System.EventHandler(this.ListAllCustomers_Load);
             this.mainMenuStrip.ResumeLayout(false);

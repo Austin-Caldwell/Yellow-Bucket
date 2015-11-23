@@ -60,7 +60,8 @@
             this.qUITToolStripMenuItem});
             this.mainMenuStrip.Location = new System.Drawing.Point(0, 0);
             this.mainMenuStrip.Name = "mainMenuStrip";
-            this.mainMenuStrip.Size = new System.Drawing.Size(118, 729);
+            this.mainMenuStrip.Padding = new System.Windows.Forms.Padding(9, 3, 0, 3);
+            this.mainMenuStrip.Size = new System.Drawing.Size(121, 729);
             this.mainMenuStrip.TabIndex = 0;
             this.mainMenuStrip.Text = "menuStrip1";
             // 
@@ -70,7 +71,7 @@
             this.hOMEToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 0, 4, 2);
             this.hOMEToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.H)));
-            this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
+            this.hOMEToolStripMenuItem.Size = new System.Drawing.Size(102, 27);
             this.hOMEToolStripMenuItem.Text = "HOME";
             this.hOMEToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.hOMEToolStripMenuItem.Click += new System.EventHandler(this.hOMEToolStripMenuItem_Click);
@@ -81,7 +82,7 @@
             this.cUSTOMERSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.cUSTOMERSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.C)));
-            this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.cUSTOMERSToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.cUSTOMERSToolStripMenuItem.Text = "CUSTOMERS";
             this.cUSTOMERSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.cUSTOMERSToolStripMenuItem.Click += new System.EventHandler(this.cUSTOMERSToolStripMenuItem_Click);
@@ -92,7 +93,7 @@
             this.kIOSKSToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.kIOSKSToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.K)));
-            this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.kIOSKSToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.kIOSKSToolStripMenuItem.Text = "KIOSKS";
             this.kIOSKSToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.kIOSKSToolStripMenuItem.Click += new System.EventHandler(this.kIOSKSToolStripMenuItem_Click);
@@ -103,7 +104,7 @@
             this.mOVIESToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.mOVIESToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.M)));
-            this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.mOVIESToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.mOVIESToolStripMenuItem.Text = "MOVIES";
             this.mOVIESToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.mOVIESToolStripMenuItem.Click += new System.EventHandler(this.mOVIESToolStripMenuItem_Click);
@@ -112,7 +113,7 @@
             // 
             this.rENTToolStripMenuItem.Name = "rENTToolStripMenuItem";
             this.rENTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.rENTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rENTToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.rENTToolStripMenuItem.Text = "RENT";
             this.rENTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.rENTToolStripMenuItem.Click += new System.EventHandler(this.rENTToolStripMenuItem_Click);
@@ -121,7 +122,7 @@
             // 
             this.rEVIEWToolStripMenuItem.Name = "rEVIEWToolStripMenuItem";
             this.rEVIEWToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rEVIEWToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.rEVIEWToolStripMenuItem.Text = "REVIEW";
             this.rEVIEWToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.rEVIEWToolStripMenuItem.Click += new System.EventHandler(this.rEVIEWToolStripMenuItem_Click);
@@ -130,7 +131,7 @@
             // 
             this.rETURNToolStripMenuItem.Name = "rETURNToolStripMenuItem";
             this.rETURNToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
-            this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.rETURNToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.rETURNToolStripMenuItem.Text = "RETURN";
             this.rETURNToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.rETURNToolStripMenuItem.Click += new System.EventHandler(this.rETURNToolStripMenuItem_Click);
@@ -141,7 +142,7 @@
             this.aBOUTToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.aBOUTToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.A)));
-            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(105, 29);
+            this.aBOUTToolStripMenuItem.Size = new System.Drawing.Size(102, 29);
             this.aBOUTToolStripMenuItem.Text = "ABOUT";
             this.aBOUTToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.aBOUTToolStripMenuItem.Click += new System.EventHandler(this.aBOUTToolStripMenuItem_Click);
@@ -152,7 +153,7 @@
             this.qUITToolStripMenuItem.Padding = new System.Windows.Forms.Padding(4, 2, 4, 0);
             this.qUITToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
             | System.Windows.Forms.Keys.Q)));
-            this.qUITToolStripMenuItem.Size = new System.Drawing.Size(105, 27);
+            this.qUITToolStripMenuItem.Size = new System.Drawing.Size(102, 27);
             this.qUITToolStripMenuItem.Text = "QUIT";
             this.qUITToolStripMenuItem.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.qUITToolStripMenuItem.Click += new System.EventHandler(this.qUITToolStripMenuItem_Click);
@@ -160,9 +161,10 @@
             // buttonToAddMovieToKiosk
             // 
             this.buttonToAddMovieToKiosk.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToAddMovieToKiosk.Location = new System.Drawing.Point(437, 121);
+            this.buttonToAddMovieToKiosk.Location = new System.Drawing.Point(396, 172);
+            this.buttonToAddMovieToKiosk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonToAddMovieToKiosk.Name = "buttonToAddMovieToKiosk";
-            this.buttonToAddMovieToKiosk.Size = new System.Drawing.Size(230, 77);
+            this.buttonToAddMovieToKiosk.Size = new System.Drawing.Size(345, 118);
             this.buttonToAddMovieToKiosk.TabIndex = 1;
             this.buttonToAddMovieToKiosk.Text = "Add Movie(s) To Kiosk";
             this.buttonToAddMovieToKiosk.UseVisualStyleBackColor = true;
@@ -171,9 +173,10 @@
             // buttonToShowKioskInventory
             // 
             this.buttonToShowKioskInventory.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.buttonToShowKioskInventory.Location = new System.Drawing.Point(437, 239);
+            this.buttonToShowKioskInventory.Location = new System.Drawing.Point(396, 388);
+            this.buttonToShowKioskInventory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonToShowKioskInventory.Name = "buttonToShowKioskInventory";
-            this.buttonToShowKioskInventory.Size = new System.Drawing.Size(230, 77);
+            this.buttonToShowKioskInventory.Size = new System.Drawing.Size(345, 118);
             this.buttonToShowKioskInventory.TabIndex = 2;
             this.buttonToShowKioskInventory.Text = "Show Kiosk Inventory";
             this.buttonToShowKioskInventory.UseVisualStyleBackColor = true;
@@ -181,13 +184,15 @@
             // 
             // Kiosks
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.buttonToShowKioskInventory);
             this.Controls.Add(this.buttonToAddMovieToKiosk);
             this.Controls.Add(this.mainMenuStrip);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.MainMenuStrip = this.mainMenuStrip;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Kiosks";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "YELLOW BUCKET -- KIOSKS";
