@@ -28,6 +28,7 @@ namespace Yellow_Bucket
         private int selectedMovieID;
         private int quantity;
         private string selectedDiscType;
+        private DateTime currentDate = DateTime.Now;
 
         public ReturnMovie()
         {
@@ -283,13 +284,23 @@ namespace Yellow_Bucket
                     updateRentalRecord.Parameters.Add("@customerID", SqlDbType.Int);
                     updateRentalRecord.Parameters.Add("@stockID", SqlDbType.Int);
 
-                    updateRentalRecord.Parameters["@dateReturned"].Value = DateTime.Now;
+                    updateRentalRecord.Parameters["@dateReturned"].Value = currentDate;
                     updateRentalRecord.Parameters["@customerID"].Value = selectedCustomerID;
                     updateRentalRecord.Parameters["@stockID"].Value = selectedStockID;
 
                     updateRentalRecord.ExecuteNonQuery();
 
                     // UPDATE RENTALHISTORY Table
+                    SqlCommand updateRecordHistory = new SqlCommand("UPDATE dbo.RentalHistory SET inDate = @inDate WHERE customerID = @customerID AND movieID = @movieID;", YellowBucketConnection);
+                    updateRecordHistory.Parameters.Add("@inDate", SqlDbType.DateTime);
+                    updateRecordHistory.Parameters.Add("@customerID", SqlDbType.Int);
+                    updateRecordHistory.Parameters.Add("@movieID", SqlDbType.Int);
+
+                    updateRecordHistory.Parameters["@inDate"].Value = currentDate;
+                    updateRecordHistory.Parameters["@customerID"].Value = selectedCustomerID;
+                    updateRecordHistory.Parameters["@movieID"].Value = selectedMovieID;
+
+                    updateRecordHistory.ExecuteNonQuery();
 
                     // INSERT new record INTO INVENTORY Table
                     DataTable inventoryAlreadyExists = new DataTable();
@@ -347,12 +358,18 @@ namespace Yellow_Bucket
 
                     }
                     YellowBucketConnection.Close();
+                    MessageBox.Show("Successfully Returned Your Movie!");
                 }
 
                 catch (Exception ex)
                 {
                     MessageBox.Show("Return UNSUCCESSFUL: " + ex.ToString());
                 }
+
+            // Reload Form and All Fields
+            this.Hide();
+            ReturnMovie returnMovieForm = new ReturnMovie();
+            returnMovieForm.Show();
         }
 
         private void comboBoxMovies_SelectedIndexChanged(object sender, EventArgs e)    // Find stockID of movie selected for return
