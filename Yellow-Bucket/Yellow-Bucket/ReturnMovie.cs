@@ -279,18 +279,21 @@ namespace Yellow_Bucket
                 {
                     YellowBucketConnection.Open();
 
-                    SqlCommand updateRentalRecord = new SqlCommand("UPDATE dbo.Rental SET dateReturned = @dateReturned WHERE customerID = @customerID AND stockID = @stockID;", YellowBucketConnection);
+                    // UPDATE RENTAL Table
+                    SqlCommand updateRentalRecord = new SqlCommand("UPDATE dbo.Rental SET dateReturned = @dateReturned WHERE customerID = @customerID AND Rental.stockID = @stockID;", YellowBucketConnection);
+                    updateRentalRecord.Parameters.Add("@dateReturned", SqlDbType.DateTime);
                     updateRentalRecord.Parameters.Add("@customerID", SqlDbType.Int);
                     updateRentalRecord.Parameters.Add("@stockID", SqlDbType.Int);
 
+                    updateRentalRecord.Parameters["@dateReturned"].Value = DateTime.Now;
                     updateRentalRecord.Parameters["@customerID"].Value = selectedCustomerID;
                     updateRentalRecord.Parameters["@stockID"].Value = selectedStockID;
 
                     updateRentalRecord.ExecuteNonQuery();
 
+                    // INSERT new record INTO INVENTORY Table
+                    SqlCommand insertNewInventoryRecord = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, inStock, movieID, kioskID) VALUES(@discType, @quantity, @inStock, @movieID, @kioskID);", YellowBucketConnection);
 
-
-                    //SqlCommand insertNewInventoryRecord = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, ) VALUES();", YellowBucketConnection);
                 }
 
                 catch (Exception ex)
@@ -299,7 +302,7 @@ namespace Yellow_Bucket
                 }
         }
 
-        private void comboBoxMovies_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxMovies_SelectedIndexChanged(object sender, EventArgs e)    // Find stockID of movie selected for return
         {
             DataTable stockIDs = new DataTable();
             char[] delimiterChars = { ')' };
@@ -313,16 +316,24 @@ namespace Yellow_Bucket
                 {
                     YellowBucketConnection.Open();
 
-                    SqlCommand findRentalID = new SqlCommand("SELECT rentalID FROM dbo.Rental WHERE Rental.customerID = @customerID AND Rental.stockID = Inventory.stockID AND Inventory.movieID = @movieID AND dateReturned IS NULL;", YellowBucketConnection);
+                    SqlDataReader readRentalID = null;
+                    SqlCommand findRentalID = new SqlCommand("SELECT Rental.stockID FROM dbo.Rental, dbo.Inventory WHERE Rental.customerID = @customerID AND Rental.stockID = Inventory.stockID AND Inventory.movieID = @movieID AND dateReturned IS NULL;", YellowBucketConnection);
                     findRentalID.Parameters.Add("@customerID", SqlDbType.Int);
                     findRentalID.Parameters.Add("@movieID", SqlDbType.Int);
 
                     findRentalID.Parameters["@customerID"].Value = selectedCustomerID;
                     findRentalID.Parameters["@movieID"].Value = selectedMovieID;
 
-                    
+                    readRentalID = findRentalID.ExecuteReader();
 
+                    stockIDs.Load(readRentalID);
 
+                    DataRow stockIDRow = stockIDs.Rows[0];
+                    selectedStockID = Convert.ToInt32(stockIDRow["stockID"]);
+
+                    //MessageBox.Show("Selected StockID is: " + selectedStockID.ToString());
+
+                    YellowBucketConnection.Close();
                 }
 
                 catch (Exception ex)
@@ -330,6 +341,6 @@ namespace Yellow_Bucket
                     MessageBox.Show("Unable to obtain rented movie's stockID: " + ex.ToString());
                 }
             }
-        }
+        }   // Get Stock
     }
 }
