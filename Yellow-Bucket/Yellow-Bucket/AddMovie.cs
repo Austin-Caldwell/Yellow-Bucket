@@ -15,9 +15,9 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        //protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
@@ -102,7 +102,7 @@ namespace Yellow_Bucket
 
 
             comboBoxGenre.Items.Add("Action");
-            comboBoxGenre.Items.Add("Abventure");
+            comboBoxGenre.Items.Add("Adventure");
             comboBoxGenre.Items.Add("Animation");
             comboBoxGenre.Items.Add("Biography");
             comboBoxGenre.Items.Add("Comedy");
@@ -208,9 +208,7 @@ namespace Yellow_Bucket
                                 
                                 //runs insert
                                 addMovie.ExecuteNonQuery();
-
                                 MessageBox.Show("Add Successful");
-
                             }
                             catch (Exception ex)
                             {

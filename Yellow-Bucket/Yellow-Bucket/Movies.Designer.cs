@@ -230,6 +230,7 @@
             this.buttonToViewMovieDetails.TabIndex = 3;
             this.buttonToViewMovieDetails.Text = "View Movie Details";
             this.buttonToViewMovieDetails.UseVisualStyleBackColor = true;
+            this.buttonToViewMovieDetails.Click += new System.EventHandler(this.buttonToViewMovieDetails_Click);
             // 
             // Movies
             // 

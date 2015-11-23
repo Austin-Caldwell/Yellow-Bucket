@@ -146,6 +146,12 @@
     <Compile Include="ViewCustomerDetails.Designer.cs">
       <DependentUpon>ViewCustomerDetails.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewMovieDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ViewMovieDetails.Designer.cs">
+      <DependentUpon>ViewMovieDetails.cs</DependentUpon>
+    </Compile>
     <Compile Include="WriteMovieReviews.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +216,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ViewCustomerDetails.resx">
       <DependentUpon>ViewCustomerDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ViewMovieDetails.resx">
+      <DependentUpon>ViewMovieDetails.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="WriteMovieReviews.resx">
       <DependentUpon>WriteMovieReviews.cs</DependentUpon>

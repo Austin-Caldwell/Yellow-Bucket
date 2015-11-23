@@ -16,9 +16,9 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        //protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        //protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Jacob Girvin's Connection String:
         //protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
 
@@ -139,6 +139,13 @@ namespace Yellow_Bucket
             this.Hide();
             EditMovieInfo EditMovieInfoForm = new EditMovieInfo();
             EditMovieInfoForm.Show();
+        }
+
+        private void buttonToViewMovieDetails_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewMovieDetails ViewMovieDetailsForm = new ViewMovieDetails();
+            ViewMovieDetailsForm.Show();
         }
     }
 }

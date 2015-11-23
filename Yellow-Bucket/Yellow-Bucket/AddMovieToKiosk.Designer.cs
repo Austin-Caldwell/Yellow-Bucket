@@ -45,6 +45,8 @@
             this.comboBoxOfMovies = new System.Windows.Forms.ComboBox();
             this.comboBoxOfTypeOfDisk = new System.Windows.Forms.ComboBox();
             this.selectTypeOfDisk = new System.Windows.Forms.Label();
+            this.textQuantity = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -175,6 +177,7 @@
             // 
             // comboBoxOfKiosks
             // 
+            this.comboBoxOfKiosks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboBoxOfKiosks.FormattingEnabled = true;
             this.comboBoxOfKiosks.Location = new System.Drawing.Point(188, 49);
             this.comboBoxOfKiosks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -207,6 +210,7 @@
             // 
             // comboBoxOfMovies
             // 
+            this.comboBoxOfMovies.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboBoxOfMovies.FormattingEnabled = true;
             this.comboBoxOfMovies.Location = new System.Drawing.Point(188, 155);
             this.comboBoxOfMovies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -217,6 +221,7 @@
             // 
             // comboBoxOfTypeOfDisk
             // 
+            this.comboBoxOfTypeOfDisk.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
             this.comboBoxOfTypeOfDisk.FormattingEnabled = true;
             this.comboBoxOfTypeOfDisk.Location = new System.Drawing.Point(188, 252);
             this.comboBoxOfTypeOfDisk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -236,11 +241,32 @@
             this.selectTypeOfDisk.TabIndex = 10;
             this.selectTypeOfDisk.Text = "Select Type Of Disk";
             // 
+            // textQuantity
+            // 
+            this.textQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.textQuantity.Location = new System.Drawing.Point(408, 252);
+            this.textQuantity.Name = "textQuantity";
+            this.textQuantity.Size = new System.Drawing.Size(122, 26);
+            this.textQuantity.TabIndex = 11;
+            this.textQuantity.Text = "1";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.label2.Location = new System.Drawing.Point(404, 217);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(255, 20);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Number Of Movies You Are Adding";
+            // 
             // AddMovieToKiosk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1362, 741);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.textQuantity);
             this.Controls.Add(this.selectTypeOfDisk);
             this.Controls.Add(this.comboBoxOfTypeOfDisk);
             this.Controls.Add(this.comboBoxOfMovies);
@@ -282,5 +308,7 @@
         private System.Windows.Forms.ComboBox comboBoxOfMovies;
         private System.Windows.Forms.ComboBox comboBoxOfTypeOfDisk;
         private System.Windows.Forms.Label selectTypeOfDisk;
+        private System.Windows.Forms.TextBox textQuantity;
+        private System.Windows.Forms.Label label2;
     }
 }
