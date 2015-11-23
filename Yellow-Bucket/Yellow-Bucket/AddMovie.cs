@@ -102,7 +102,7 @@ namespace Yellow_Bucket
 
 
             comboBoxGenre.Items.Add("Action");
-            comboBoxGenre.Items.Add("Abventure");
+            comboBoxGenre.Items.Add("Adventure");
             comboBoxGenre.Items.Add("Animation");
             comboBoxGenre.Items.Add("Biography");
             comboBoxGenre.Items.Add("Comedy");

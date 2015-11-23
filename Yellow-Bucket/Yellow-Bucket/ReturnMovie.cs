@@ -22,9 +22,9 @@ namespace Yellow_Bucket
 
         private int selectedCustomerID;
         private string selectedCustomerUsername;
+        private int selectedStockID;
         private string selectedKiosk;
         private string selectedMovie;
-        private string selectedtype;
         private int quantity;
 
         public ReturnMovie()
@@ -95,13 +95,11 @@ namespace Yellow_Bucket
 
         private void ReturnMovie_Load(object sender, EventArgs e)
         {
-            fillwithCustomers();
-            //fillwithmovies();
-            //fillwithlocations();
-            //fillwithmovietypes();
+            fillwithCustomers();    // FIRST: Fill list of customers, and have user select one
+            fillwithLocations();
         }
 
-        private void fillwithCustomers()
+        private void fillwithCustomers()    // Populate list of customers
         {
             DataTable allCustomers = new DataTable();
 
@@ -126,7 +124,7 @@ namespace Yellow_Bucket
             }
         }
 
-        private void fillwithmovies()
+        private void fillwithmovies()   // Populate list of movies currently held as rentals by the selected customer
         {
             DataTable allmovies = new DataTable();
 
@@ -136,13 +134,12 @@ namespace Yellow_Bucket
                 {
                     YellowBucketConnection.Open();
 
-                    SqlCommand findCustomerRentals = new SqlCommand("SELECT concat(movieID, ') ', title) AS listing FROM dbo.Movie, dbo.Customer, dbo.Rental WHERE Customer.customerID = @customerID AND Customer.customerID = Rental.customerID AND dateReturned IS NULL;", YellowBucketConnection);
+                    SqlCommand findCustomerRentals = new SqlCommand("SELECT concat(Movie.movieID, ') ', title) AS listing FROM dbo.Rental, dbo.Inventory, dbo.Movie WHERE Rental.customerID = @customerID AND Rental.stockID = Inventory.stockID AND Inventory.movieID = Movie.movieID AND dateReturned IS NULL;", YellowBucketConnection);
                     findCustomerRentals.Parameters.Add("@customerID", SqlDbType.Int);
                     findCustomerRentals.Parameters["@customerID"].Value = selectedCustomerID;
                     
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     adapter.SelectCommand = findCustomerRentals;
-                    
 
                     adapter.Fill(allmovies);
 
@@ -157,40 +154,48 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("Unable to populate list of movies: " + ex.ToString());
                 }
             }
 
         }
 
-        private void fillwithmovietypes()
+        private string findDiscType()   // Find and return the disc type (DVD or BluRay) of the inventory stockID movie selected to be returned
         {
-            DataTable alltypes = new DataTable();
+            DataTable typeOfDisc = new DataTable();
+            string returnedMovieDiscType = "";
+
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
                 try
                 {
-                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(stockID, ') ', dvdBluRay) AS listing FROM dbo.Inventory;", YellowBucketConnection);
-                    adapter.Fill(alltypes);
+                    YellowBucketConnection.Open();
 
-                    comboBoxType.ValueMember = "id";
+                    SqlCommand discTypeFinder = new SqlCommand("SELECT dvdBluRay FROM dbo.Inventory WHERE stockID = @stockID;", YellowBucketConnection);
+                    discTypeFinder.Parameters.Add("@stockID", SqlDbType.Int);
+                    discTypeFinder.Parameters["stockID"].Value = selectedStockID;
+                    SqlDataAdapter adapter = new SqlDataAdapter();
+                    adapter.SelectCommand = discTypeFinder;
 
-                    comboBoxType.DisplayMember = "listing";
+                    adapter.Fill(typeOfDisc);
 
-                    comboBoxType.DataSource = alltypes;
+                    DataRow discTypeRow = typeOfDisc.Rows[0];
+
+                    returnedMovieDiscType = discTypeRow["dvdBluRay"].ToString();
 
                     YellowBucketConnection.Close();
                 }
 
                 catch (Exception ex)
                 {
-                    label3.Text = "Error populating customer information: " + ex.ToString();
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show(ex.ToString());
                 }
             }
+
+            return returnedMovieDiscType;
         }
 
-        private void fillwithlocations()
+        private void fillwithLocations()    // Fill comboBoxKiosk with list of all kiosk locations
         {
             DataTable allKiosks = new DataTable();
 
@@ -198,6 +203,7 @@ namespace Yellow_Bucket
             {
                 try
                 {
+                    YellowBucketConnection.Open();
 
                     SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(kioskID, ') ', location, ': ', addressLine1, addressLine2, ', ', city, ', ', stateProvince, ', ', postalCode) AS fulladdress FROM dbo.Kiosk", YellowBucketConnection);
 
@@ -213,11 +219,9 @@ namespace Yellow_Bucket
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("Error populating list of kiosk locations: " + ex.ToString());
                 }
-
             }
-
         }
 
         private void btnReturnMovie_Click(object sender, EventArgs e)
@@ -228,13 +232,9 @@ namespace Yellow_Bucket
 
             string[] movieAddress = comboBoxMovies.Text.Split(delimiterChars);
 
-            string[] TypeAddress = comboBoxType.Text.Split(delimiterChars);
-
             selectedKiosk = kioskAddress[0];
 
             selectedMovie = movieAddress[0];
-
-            selectedtype = TypeAddress[0];
 
             DataTable inventory = new DataTable();
 
@@ -262,16 +262,12 @@ namespace Yellow_Bucket
 
                     findListing.Parameters.Add("@selectedMovie", SqlDbType.Int);
 
-                    findListing.Parameters.Add("@movieType", SqlDbType.VarChar);
-
 
                     //declare the definition of the variable (the definition is delcared about 10 lines up)
 
                     findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
 
                     findListing.Parameters["@selectedMovie"].Value = selectedMovie;
-
-                    findListing.Parameters["@movieType"].Value = selectedtype;
 
 
                     //declares the execution trigger
@@ -310,7 +306,7 @@ namespace Yellow_Bucket
 
                     updateQuantity.Parameters["@selectedMovie"].Value = selectedMovie;
 
-                    updateQuantity.Parameters["@movieType"].Value = selectedtype;
+                    updateQuantity.Parameters["@movieType"].Value = findDiscType();
 
                     updateQuantity.Parameters["@quantity"].Value = quantity;
 
@@ -329,7 +325,7 @@ namespace Yellow_Bucket
                 }
         }
 
-        private void comboBoxCustomers_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxCustomers_SelectedIndexChanged(object sender, EventArgs e)     // Find customerID and fill comboBoxMovies based on selected customer
         {
             DataTable customerIDs = new DataTable();
             char[] delimiterChars = { ' ' };
@@ -365,6 +361,11 @@ namespace Yellow_Bucket
             }
             comboBoxMovies.Text = "";
             fillwithmovies();
+        }
+
+        private void comboBoxKiosk_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

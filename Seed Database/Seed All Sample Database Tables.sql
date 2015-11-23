@@ -1,5 +1,5 @@
 /* SEED THE YellowBucketCSC365 DATABASE WITH SAMPLE DATA */ /* Austin Caldwell and Evan Wehr */
--- Updated 11/21/2015
+-- Updated 11/22/2015
 
 USE YellowBucketCSC365
 GO
@@ -91,7 +91,7 @@ VALUES
 (NULL, 11, 9),
 ('10/17/2015', 9, 5),
 ('10/20/2015', 2, 13),
-(GetDate(), 2, 4);
+('11/22/2015', 2, 4);
 
 
 INSERT INTO RentalHistory(customerID, movieID, outDate, inDate)

@@ -45,7 +45,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.comboBoxType = new System.Windows.Forms.ComboBox();
             this.comboBoxKiosk = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.comboBoxCustomers = new System.Windows.Forms.ComboBox();
             this.lblSelectCustomerText = new System.Windows.Forms.Label();
             this.mainMenuStrip.SuspendLayout();
@@ -241,15 +240,7 @@
             this.comboBoxKiosk.Name = "comboBoxKiosk";
             this.comboBoxKiosk.Size = new System.Drawing.Size(430, 28);
             this.comboBoxKiosk.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(158, 432);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(51, 20);
-            this.label3.TabIndex = 10;
-            this.label3.Text = "label3";
+            this.comboBoxKiosk.SelectedIndexChanged += new System.EventHandler(this.comboBoxKiosk_SelectedIndexChanged);
             // 
             // comboBoxCustomers
             // 
@@ -258,6 +249,7 @@
             this.comboBoxCustomers.Name = "comboBoxCustomers";
             this.comboBoxCustomers.Size = new System.Drawing.Size(430, 28);
             this.comboBoxCustomers.TabIndex = 11;
+            this.comboBoxCustomers.Text = "Select A Customer";
             this.comboBoxCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomers_SelectedIndexChanged);
             // 
             // lblSelectCustomerText
@@ -277,7 +269,6 @@
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.lblSelectCustomerText);
             this.Controls.Add(this.comboBoxCustomers);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.comboBoxKiosk);
             this.Controls.Add(this.comboBoxType);
             this.Controls.Add(this.label2);
@@ -318,7 +309,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.ComboBox comboBoxType;
         private System.Windows.Forms.ComboBox comboBoxKiosk;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBoxCustomers;
         private System.Windows.Forms.Label lblSelectCustomerText;
     }
