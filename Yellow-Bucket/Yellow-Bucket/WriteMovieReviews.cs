@@ -21,6 +21,7 @@ namespace Yellow_Bucket
         protected string connectionString = "Server=COLLEGECOMPUTER\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         private string selectedRating;
         private string selectedMovie;
+        private string selectedcustomer;
         private string NewReview;
         private int quantity;
 
@@ -93,6 +94,33 @@ namespace Yellow_Bucket
         private void WriteMovieReviews_Load(object sender, EventArgs e)
         {
             fillwithmovies();
+            fillwithcustomers();
+        }
+        private void fillwithcustomers()
+        {
+            DataTable allcustomers = new DataTable();
+
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    SqlDataAdapter adapter = new SqlDataAdapter("SELECT concat(customerID, ') ', firstName, ' ', lastName, ' - ', userName) AS listing FROM dbo.Customer;", YellowBucketConnection);
+                    adapter.Fill(allcustomers);
+
+                    comboBoxCustomer.ValueMember = "id";
+
+                    comboBoxCustomer.DisplayMember = "listing";
+
+                    comboBoxCustomer.DataSource = allcustomers;
+
+                    YellowBucketConnection.Close();
+                }
+
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.ToString());
+                }
+            }
         }
         private void fillwithmovies()
         {
@@ -126,12 +154,14 @@ namespace Yellow_Bucket
         {
             char[] delimiterChars = { ')' };
             string[] movieAddress = comboBoxMovie.Text.Split(delimiterChars);
+            string[] customername = comboBoxCustomer.Text.Split(delimiterChars);
             selectedMovie = movieAddress[0];
+            selectedcustomer = customername[0];
 
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
 
-                try //try to update a movie if it already exists
+                try 
                 {
                     //GET QUANTITY AND INCREMENT
 
@@ -141,16 +171,18 @@ namespace Yellow_Bucket
 
                     //declare the command
 
-                    SqlCommand findExistingReview = new SqlCommand("Select reviewID FROM dbo.MovieReview WHERE reviewDescription = @reviewDescription AND movieID = @movieId AND rating = @rating AND datePosted = @datePosted;", YellowBucketConnection);
+                    SqlCommand findExistingReview = new SqlCommand("Select reviewID FROM dbo.MovieReview WHERE reviewDescription = @reviewDescription AND movieID = @movieId AND rating = @rating AND datePosted = @datePosted AND customerID = @customerID;", YellowBucketConnection);
 
                     findExistingReview.Parameters.Add("@reviewDesription", SqlDbType.VarChar);
                     findExistingReview.Parameters.Add("@movieID", SqlDbType.Int);
                     findExistingReview.Parameters.Add("@rating", SqlDbType.Int);
                     findExistingReview.Parameters.Add("@datePosted", SqlDbType.Date);
+                    findExistingReview.Parameters.Add("@customerID", SqlDbType.Int);
                     findExistingReview.Parameters["@reviewDescription"].Value = textBox1.Text;
                     findExistingReview.Parameters["@movieID"].Value = selectedMovie;
                     findExistingReview.Parameters["@rating"].Value = comboBoxRating.Text;
                     findExistingReview.Parameters["@datePosted"].Value = textBox2.Text;
+                    findExistingReview.Parameters["@customerID"].Value = selectedcustomer;
 
 
                     doesReviewExist = findExistingReview.ExecuteReader();
@@ -171,16 +203,18 @@ namespace Yellow_Bucket
                         {
                             YellowBucketConnection.Open();
                             //INSERT
-                            SqlCommand addReview = new SqlCommand("INSERT INTO dbo.MovieReview(reviewDescription, movieID, rating, datePosted) VALUES(@reviewDescription, @movieID, @rating, @datePosted);", YellowBucketConnection);
+                            SqlCommand addReview = new SqlCommand("INSERT INTO dbo.MovieReview(reviewDescription, movieID, rating, datePosted, customerID) VALUES(@reviewDescription, @movieID, @rating, @datePosted, @customerID);", YellowBucketConnection);
 
                             addReview.Parameters.Add("@reviewDescription", SqlDbType.VarChar);
                             addReview.Parameters.Add("@movieID", SqlDbType.Int);
                             addReview.Parameters.Add("@rating", SqlDbType.Int);
                             addReview.Parameters.Add("@datePosted", SqlDbType.Date);
+                            addReview.Parameters.Add("@customerID", SqlDbType.Int);
                             addReview.Parameters["@reviewDescription"].Value = textBox1.Text;
                             addReview.Parameters["@movieID"].Value = selectedMovie;
                             addReview.Parameters["@rating"].Value = comboBoxRating.Text;
                             addReview.Parameters["@datePosted"].Value = textBox2.Text;
+                            addReview.Parameters["@customerID"].Value = selectedcustomer;
 
                             addReview.ExecuteNonQuery();
 
@@ -193,45 +227,6 @@ namespace Yellow_Bucket
                 }
         }
 
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxRating_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void comboBoxMovie_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
     }
     
 }

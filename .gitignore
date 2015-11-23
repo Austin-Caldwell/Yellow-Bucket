@@ -245,3 +245,5 @@ Yellow-Bucket/Yellow-Bucket/obj/Debug/Yellow-Bucket.exe
 *.exe
 *.pdb
 >>>>>>> origin/master
+*.exe
+*.pdb

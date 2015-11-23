@@ -43,8 +43,8 @@
             this.comboBoxMovie = new System.Windows.Forms.ComboBox();
             this.comboBoxKiosk = new System.Windows.Forms.ComboBox();
             this.btnRent = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.comboBoxCustomer = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -173,7 +173,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(300, 63);
+            this.label1.Location = new System.Drawing.Point(301, 232);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(348, 22);
             this.label1.TabIndex = 2;
@@ -183,7 +183,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(395, 155);
+            this.label2.Location = new System.Drawing.Point(404, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(141, 22);
             this.label2.TabIndex = 5;
@@ -192,22 +192,23 @@
             // comboBoxMovie
             // 
             this.comboBoxMovie.FormattingEnabled = true;
-            this.comboBoxMovie.Location = new System.Drawing.Point(198, 88);
+            this.comboBoxMovie.Location = new System.Drawing.Point(124, 257);
             this.comboBoxMovie.Name = "comboBoxMovie";
-            this.comboBoxMovie.Size = new System.Drawing.Size(541, 28);
+            this.comboBoxMovie.Size = new System.Drawing.Size(726, 28);
             this.comboBoxMovie.TabIndex = 9;
             // 
             // comboBoxKiosk
             // 
             this.comboBoxKiosk.FormattingEnabled = true;
-            this.comboBoxKiosk.Location = new System.Drawing.Point(198, 180);
+            this.comboBoxKiosk.Location = new System.Drawing.Point(124, 179);
             this.comboBoxKiosk.Name = "comboBoxKiosk";
-            this.comboBoxKiosk.Size = new System.Drawing.Size(541, 28);
+            this.comboBoxKiosk.Size = new System.Drawing.Size(726, 28);
             this.comboBoxKiosk.TabIndex = 10;
+            this.comboBoxKiosk.SelectedIndexChanged += new System.EventHandler(this.comboBoxKiosk_SelectedIndexChanged_1);
             // 
             // btnRent
             // 
-            this.btnRent.Location = new System.Drawing.Point(427, 349);
+            this.btnRent.Location = new System.Drawing.Point(427, 310);
             this.btnRent.Name = "btnRent";
             this.btnRent.Size = new System.Drawing.Size(106, 39);
             this.btnRent.TabIndex = 11;
@@ -215,31 +216,31 @@
             this.btnRent.UseVisualStyleBackColor = true;
             this.btnRent.Click += new System.EventHandler(this.btnRent_Click_1);
             // 
-            // label3
+            // label4
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold);
-            this.label3.Location = new System.Drawing.Point(420, 244);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 22);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Movie Type";
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(423, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(95, 22);
+            this.label4.TabIndex = 14;
+            this.label4.Text = "Customer";
             // 
-            // comboBox1
+            // comboBoxCustomer
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(198, 269);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(541, 28);
-            this.comboBox1.TabIndex = 13;
+            this.comboBoxCustomer.FormattingEnabled = true;
+            this.comboBoxCustomer.Location = new System.Drawing.Point(124, 92);
+            this.comboBoxCustomer.Name = "comboBoxCustomer";
+            this.comboBoxCustomer.Size = new System.Drawing.Size(726, 28);
+            this.comboBoxCustomer.TabIndex = 15;
             // 
             // RentAMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
-            this.Controls.Add(this.comboBox1);
-            this.Controls.Add(this.label3);
+            this.ClientSize = new System.Drawing.Size(855, 729);
+            this.Controls.Add(this.comboBoxCustomer);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnRent);
             this.Controls.Add(this.comboBoxKiosk);
             this.Controls.Add(this.comboBoxMovie);
@@ -277,8 +278,8 @@
         private System.Windows.Forms.ComboBox comboBoxMovie;
         private System.Windows.Forms.ComboBox comboBoxKiosk;
         private System.Windows.Forms.Button btnRent;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboBoxCustomer;
         //>>>>>>> origin/master
     }
 }
