@@ -182,22 +182,14 @@
             this.comboBoxOfKiosks.Location = new System.Drawing.Point(188, 49);
             this.comboBoxOfKiosks.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxOfKiosks.Name = "comboBoxOfKiosks";
-<<<<<<< HEAD
-            this.comboBoxOfKiosks.Size = new System.Drawing.Size(609, 28);
-=======
             this.comboBoxOfKiosks.Size = new System.Drawing.Size(614, 28);
->>>>>>> origin/master
             this.comboBoxOfKiosks.TabIndex = 4;
             this.comboBoxOfKiosks.Text = "Select A Kiosk";
             // 
             // addMovie
             // 
-<<<<<<< HEAD
-            this.addMovie.Location = new System.Drawing.Point(126, 256);
-=======
             this.addMovie.Location = new System.Drawing.Point(188, 294);
             this.addMovie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
->>>>>>> origin/master
             this.addMovie.Name = "addMovie";
             this.addMovie.Size = new System.Drawing.Size(182, 43);
             this.addMovie.TabIndex = 5;
@@ -223,11 +215,7 @@
             this.comboBoxOfMovies.Location = new System.Drawing.Point(188, 155);
             this.comboBoxOfMovies.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxOfMovies.Name = "comboBoxOfMovies";
-<<<<<<< HEAD
-            this.comboBoxOfMovies.Size = new System.Drawing.Size(423, 28);
-=======
             this.comboBoxOfMovies.Size = new System.Drawing.Size(614, 28);
->>>>>>> origin/master
             this.comboBoxOfMovies.TabIndex = 8;
             this.comboBoxOfMovies.Text = "Select A Movie";
             // 
@@ -238,11 +226,7 @@
             this.comboBoxOfTypeOfDisk.Location = new System.Drawing.Point(188, 252);
             this.comboBoxOfTypeOfDisk.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.comboBoxOfTypeOfDisk.Name = "comboBoxOfTypeOfDisk";
-<<<<<<< HEAD
-            this.comboBoxOfTypeOfDisk.Size = new System.Drawing.Size(121, 28);
-=======
             this.comboBoxOfTypeOfDisk.Size = new System.Drawing.Size(180, 28);
->>>>>>> origin/master
             this.comboBoxOfTypeOfDisk.TabIndex = 9;
             this.comboBoxOfTypeOfDisk.Text = "DVD";
             // 
@@ -260,7 +244,7 @@
             // textQuantity
             // 
             this.textQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.textQuantity.Location = new System.Drawing.Point(125, 224);
+            this.textQuantity.Location = new System.Drawing.Point(408, 252);
             this.textQuantity.Name = "textQuantity";
             this.textQuantity.Size = new System.Drawing.Size(122, 26);
             this.textQuantity.TabIndex = 11;
@@ -270,7 +254,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.label2.Location = new System.Drawing.Point(122, 201);
+            this.label2.Location = new System.Drawing.Point(404, 217);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(255, 20);
             this.label2.TabIndex = 12;
@@ -280,13 +264,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-<<<<<<< HEAD
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1362, 741);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textQuantity);
-=======
-            this.ClientSize = new System.Drawing.Size(1362, 741);
->>>>>>> origin/master
             this.Controls.Add(this.selectTypeOfDisk);
             this.Controls.Add(this.comboBoxOfTypeOfDisk);
             this.Controls.Add(this.comboBoxOfMovies);

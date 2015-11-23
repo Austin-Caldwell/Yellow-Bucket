@@ -16,9 +16,9 @@ namespace Yellow_Bucket
     {
         protected SqlConnection YellowBucketConnection;
         // Austin Caldwell's Connection String:
-        // protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         // Evan Wehr's Connection String:
-        protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        //protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
         public string selectedMovie;
         private double averageRating = 0;
         private double sum = 0;
