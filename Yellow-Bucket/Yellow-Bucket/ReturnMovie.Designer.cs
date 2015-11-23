@@ -185,7 +185,7 @@
             // 
             this.lblSelectMovieText.AutoSize = true;
             this.lblSelectMovieText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectMovieText.Location = new System.Drawing.Point(346, 265);
+            this.lblSelectMovieText.Location = new System.Drawing.Point(289, 265);
             this.lblSelectMovieText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblSelectMovieText.Name = "lblSelectMovieText";
             this.lblSelectMovieText.Size = new System.Drawing.Size(442, 26);
@@ -195,9 +195,9 @@
             // comboBoxMovies
             // 
             this.comboBoxMovies.FormattingEnabled = true;
-            this.comboBoxMovies.Location = new System.Drawing.Point(351, 294);
+            this.comboBoxMovies.Location = new System.Drawing.Point(294, 294);
             this.comboBoxMovies.Name = "comboBoxMovies";
-            this.comboBoxMovies.Size = new System.Drawing.Size(430, 28);
+            this.comboBoxMovies.Size = new System.Drawing.Size(526, 28);
             this.comboBoxMovies.TabIndex = 5;
             this.comboBoxMovies.Text = "Select A Movie To Return";
             this.comboBoxMovies.SelectedIndexChanged += new System.EventHandler(this.comboBoxMovies_SelectedIndexChanged);
@@ -206,7 +206,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(346, 435);
+            this.label2.Location = new System.Drawing.Point(289, 435);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(410, 26);
@@ -216,18 +216,18 @@
             // comboBoxKiosk
             // 
             this.comboBoxKiosk.FormattingEnabled = true;
-            this.comboBoxKiosk.Location = new System.Drawing.Point(351, 464);
+            this.comboBoxKiosk.Location = new System.Drawing.Point(294, 464);
             this.comboBoxKiosk.Name = "comboBoxKiosk";
-            this.comboBoxKiosk.Size = new System.Drawing.Size(430, 28);
+            this.comboBoxKiosk.Size = new System.Drawing.Size(526, 28);
             this.comboBoxKiosk.TabIndex = 9;
             this.comboBoxKiosk.SelectedIndexChanged += new System.EventHandler(this.comboBoxKiosk_SelectedIndexChanged);
             // 
             // comboBoxCustomers
             // 
             this.comboBoxCustomers.FormattingEnabled = true;
-            this.comboBoxCustomers.Location = new System.Drawing.Point(351, 128);
+            this.comboBoxCustomers.Location = new System.Drawing.Point(294, 128);
             this.comboBoxCustomers.Name = "comboBoxCustomers";
-            this.comboBoxCustomers.Size = new System.Drawing.Size(430, 28);
+            this.comboBoxCustomers.Size = new System.Drawing.Size(526, 28);
             this.comboBoxCustomers.TabIndex = 11;
             this.comboBoxCustomers.Text = "Select A Customer";
             this.comboBoxCustomers.SelectedIndexChanged += new System.EventHandler(this.comboBoxCustomers_SelectedIndexChanged);
@@ -236,7 +236,7 @@
             // 
             this.lblSelectCustomerText.AutoSize = true;
             this.lblSelectCustomerText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSelectCustomerText.Location = new System.Drawing.Point(346, 100);
+            this.lblSelectCustomerText.Location = new System.Drawing.Point(289, 100);
             this.lblSelectCustomerText.Name = "lblSelectCustomerText";
             this.lblSelectCustomerText.Size = new System.Drawing.Size(450, 25);
             this.lblSelectCustomerText.TabIndex = 12;

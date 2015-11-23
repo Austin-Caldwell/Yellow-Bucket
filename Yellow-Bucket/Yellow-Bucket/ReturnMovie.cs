@@ -27,6 +27,7 @@ namespace Yellow_Bucket
         private string selectedMovie;
         private int selectedMovieID;
         private int quantity;
+        private string selectedDiscType;
 
         public ReturnMovie()
         {
@@ -161,10 +162,9 @@ namespace Yellow_Bucket
 
         }
 
-        private string findDiscType()   // Find and return the disc type (DVD or BluRay) of the inventory stockID movie selected to be returned
+        private void findDiscType()   // Find and return the disc type (DVD or BluRay) of the inventory stockID movie selected to be returned
         {
             DataTable typeOfDisc = new DataTable();
-            string returnedMovieDiscType = "";
 
             using (YellowBucketConnection = new SqlConnection(connectionString))
             {
@@ -174,7 +174,7 @@ namespace Yellow_Bucket
 
                     SqlCommand discTypeFinder = new SqlCommand("SELECT dvdBluRay FROM dbo.Inventory WHERE stockID = @stockID;", YellowBucketConnection);
                     discTypeFinder.Parameters.Add("@stockID", SqlDbType.Int);
-                    discTypeFinder.Parameters["stockID"].Value = selectedStockID;
+                    discTypeFinder.Parameters["@stockID"].Value = selectedStockID;
                     SqlDataAdapter adapter = new SqlDataAdapter();
                     adapter.SelectCommand = discTypeFinder;
 
@@ -182,7 +182,7 @@ namespace Yellow_Bucket
 
                     DataRow discTypeRow = typeOfDisc.Rows[0];
 
-                    returnedMovieDiscType = discTypeRow["dvdBluRay"].ToString();
+                    selectedDiscType = discTypeRow["dvdBluRay"].ToString();
 
                     YellowBucketConnection.Close();
                 }
@@ -192,8 +192,6 @@ namespace Yellow_Bucket
                     MessageBox.Show(ex.ToString());
                 }
             }
-
-            return returnedMovieDiscType;
         }
 
         private void fillwithLocations()    // Fill comboBoxKiosk with list of all kiosk locations
@@ -291,9 +289,64 @@ namespace Yellow_Bucket
 
                     updateRentalRecord.ExecuteNonQuery();
 
-                    // INSERT new record INTO INVENTORY Table
-                    SqlCommand insertNewInventoryRecord = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, inStock, movieID, kioskID) VALUES(@discType, @quantity, @inStock, @movieID, @kioskID);", YellowBucketConnection);
+                    // UPDATE RENTALHISTORY Table
 
+                    // INSERT new record INTO INVENTORY Table
+                    DataTable inventoryAlreadyExists = new DataTable();
+
+                    SqlDataReader readInventory = null;
+                    SqlCommand findInventory = new SqlCommand("SELECT stockID, quantityAtKiosk FROM dbo.Inventory WHERE dvdBluRay = @discType AND movieID = @movieID AND kioskID = @kioskID;", YellowBucketConnection);
+                    findInventory.Parameters.Add("@discType", SqlDbType.VarChar);
+                    findInventory.Parameters.Add("@movieID", SqlDbType.Int);
+                    findInventory.Parameters.Add("@kioskID", SqlDbType.Int);
+
+                    findInventory.Parameters["@discType"].Value = selectedDiscType;
+                    findInventory.Parameters["@movieID"].Value = selectedMovieID;
+                    findInventory.Parameters["@kioskID"].Value = selectedKioskID;
+
+                    readInventory = findInventory.ExecuteReader();
+
+                    inventoryAlreadyExists.Load(readInventory);
+
+                    if (inventoryAlreadyExists.Rows.Count == 1) // Kiosk already has similar movies to the one being returned, so just update quantity at kiosk
+                    {
+                        DataRow quantityRow = inventoryAlreadyExists.Rows[0];
+                        int currentQuantityAtKiosk = Convert.ToInt32(quantityRow["quantityAtKiosk"]);
+
+                        SqlCommand updateKioskQuantity = new SqlCommand("UPDATE dbo.Inventory SET quantityAtKiosk = @quantity, inStock = @inStock WHERE dvdBluRay = @discType AND movieID = @movieID AND kioskID = @kioskID;", YellowBucketConnection);
+                        updateKioskQuantity.Parameters.Add("@quantity", SqlDbType.Int);
+                        updateKioskQuantity.Parameters.Add("@inStock", SqlDbType.Int);
+                        updateKioskQuantity.Parameters.Add("@discType", SqlDbType.VarChar);
+                        updateKioskQuantity.Parameters.Add("@movieID", SqlDbType.Int);
+                        updateKioskQuantity.Parameters.Add("@kioskID", SqlDbType.Int);
+
+                        updateKioskQuantity.Parameters["@quantity"].Value = (currentQuantityAtKiosk + 1);
+                        updateKioskQuantity.Parameters["@inStock"].Value = 1;
+                        updateKioskQuantity.Parameters["@discType"].Value = selectedDiscType;
+                        updateKioskQuantity.Parameters["@movieID"].Value = selectedMovieID;
+                        updateKioskQuantity.Parameters["@kioskID"].Value = selectedKioskID;
+                    }
+                    
+                    // Kiosk did not already have any exact matches for the movie being returned
+                    else
+                    {
+                        SqlCommand insertNewInventoryRecord = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, inStock, movieID, kioskID) VALUES(@discType, @quantity, @inStock, @movieID, @kioskID);", YellowBucketConnection);
+                        insertNewInventoryRecord.Parameters.Add("@discType", SqlDbType.VarChar);
+                        insertNewInventoryRecord.Parameters.Add("@quantity", SqlDbType.Int);
+                        insertNewInventoryRecord.Parameters.Add("@inStock", SqlDbType.Int);
+                        insertNewInventoryRecord.Parameters.Add("@movieID", SqlDbType.Int);
+                        insertNewInventoryRecord.Parameters.Add("@kioskID", SqlDbType.Int);
+
+                        insertNewInventoryRecord.Parameters["@discType"].Value = selectedDiscType;
+                        insertNewInventoryRecord.Parameters["@quantity"].Value = 1;
+                        insertNewInventoryRecord.Parameters["@inStock"].Value = 1;
+                        insertNewInventoryRecord.Parameters["@movieID"].Value = selectedMovieID;
+                        insertNewInventoryRecord.Parameters["@kioskID"].Value = selectedKioskID;
+
+                        insertNewInventoryRecord.ExecuteNonQuery();
+
+                    }
+                    YellowBucketConnection.Close();
                 }
 
                 catch (Exception ex)
@@ -341,6 +394,8 @@ namespace Yellow_Bucket
                     MessageBox.Show("Unable to obtain rented movie's stockID: " + ex.ToString());
                 }
             }
-        }   // Get Stock
+
+            findDiscType();
+        }
     }
 }
