@@ -138,7 +138,8 @@ namespace Yellow_Bucket
                 {
                     YellowBucketConnection.Open();
                     SqlDataReader readCustomerInfo = null;
-                    SqlCommand populateCustomerFields = new SqlCommand("SELECT firstName, lastName, email, alternateEmail, userName, userPassword, creditCard, addressLine1, addressLine2, city, stateProvince, postalCode FROM dbo.Customer, dbo.CustomerAddress WHERE userName = @userName AND Customer.customerAddressID = CustomerAddress.customerAddressID;", YellowBucketConnection);
+                    SqlCommand populateCustomerFields = new SqlCommand("SELECT * FROM dbo.Customer, dbo.CustomerAddress WHERE userName = @userName AND Customer.customerAddressID = CustomerAddress.customerAddressID;", YellowBucketConnection);
+                    // SELECTing firstName, lastName, email, alternateEmail, userName, userPassword, creditCard, addressLine1, addressLine2, city, stateProvince, postalCode FROM dbo.Customer, dbo.CustomerAddress
                     populateCustomerFields.Parameters.Add("@userName", SqlDbType.VarChar);
                     populateCustomerFields.Parameters["@userName"].Value = selectedCustomerUserName;
 
