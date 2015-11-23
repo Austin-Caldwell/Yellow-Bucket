@@ -23,8 +23,9 @@ namespace Yellow_Bucket
         private int selectedCustomerID;
         private string selectedCustomerUsername;
         private int selectedStockID;
-        private string selectedKiosk;
+        private int selectedKioskID;
         private string selectedMovie;
+        private int selectedMovieID;
         private int quantity;
 
         public ReturnMovie()
@@ -224,108 +225,7 @@ namespace Yellow_Bucket
             }
         }
 
-        private void btnReturnMovie_Click(object sender, EventArgs e)
-        {
-            char[] delimiterChars = { ')' };
-
-            string[] kioskAddress = comboBoxKiosk.Text.Split(delimiterChars);
-
-            string[] movieAddress = comboBoxMovies.Text.Split(delimiterChars);
-
-            selectedKiosk = kioskAddress[0];
-
-            selectedMovie = movieAddress[0];
-
-            DataTable inventory = new DataTable();
-
-
-            using (YellowBucketConnection = new SqlConnection(connectionString))
-
-                try //try to update a movie if it already exists
-                {
-                    //GET QUANTITY AND INCREMENT
-
-                    YellowBucketConnection.Open();
-
-                    SqlDataReader ReadInventory = null;
-
-
-                    //declare the command
-
-                    //SqlCommand findMovie = new SqlCommand("Select quantityAtKiosk FROM dbo.Inventory WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
-                    SqlCommand findListing = new SqlCommand("SELECT quantityAtKiosk, concat(stockID, ') ', title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
-
-
-                    //declare the varialbe type
-
-                    findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
-
-                    findListing.Parameters.Add("@selectedMovie", SqlDbType.Int);
-
-
-                    //declare the definition of the variable (the definition is delcared about 10 lines up)
-
-                    findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
-
-                    findListing.Parameters["@selectedMovie"].Value = selectedMovie;
-
-
-                    //declares the execution trigger
-                    ReadInventory = findListing.ExecuteReader();
-
-
-                    //pulls trigger and increments quantity
-                    inventory.Load(ReadInventory);
-
-                    DataRow inventoryRow = inventory.Rows[0];
-
-                    quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
-
-                    quantity += 1;
-
-                    MessageBox.Show("New quantity: " + quantity.ToString());
-
-
-                    // UPDATE
-
-                    SqlCommand updateQuantity = new SqlCommand("UPDATE dbo.Inventory SET quantityAtKiosk = @quantity WHERE kioskID = @selectedKiosk AND movieID = @selectedMovie AND dvdBluRay = @movieType;", YellowBucketConnection);
-
-                    //declare the varialbe type         
-
-                    updateQuantity.Parameters.Add("@selectedKiosk", SqlDbType.Int);
-
-                    updateQuantity.Parameters.Add("@selectedMovie", SqlDbType.Int);
-
-                    updateQuantity.Parameters.Add("@movieType", SqlDbType.VarChar);
-
-                    updateQuantity.Parameters.Add("@quantity", SqlDbType.Int);
-
-                    //declare the definition of the variable (the definition is delcared about 10 lines up)
-
-                    updateQuantity.Parameters["@selectedKiosk"].Value = selectedKiosk;
-
-                    updateQuantity.Parameters["@selectedMovie"].Value = selectedMovie;
-
-                    updateQuantity.Parameters["@movieType"].Value = findDiscType();
-
-                    updateQuantity.Parameters["@quantity"].Value = quantity;
-
-                    //runs update
-                    updateQuantity.ExecuteNonQuery();
-
-                    YellowBucketConnection.Close();
-
-                    MessageBox.Show("Add Successful");
-
-                } //inserts a new movie of quantitity = 1;
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show("Add Unsuccessfull" + ex.ToString());
-                }
-        }
-
-        private void comboBoxCustomers_SelectedIndexChanged(object sender, EventArgs e)     // Find customerID and fill comboBoxMovies based on selected customer
+        private void comboBoxCustomers_SelectedIndexChanged(object sender, EventArgs e)     // Find customerID of customer returning movie and fill comboBoxMovies based on selected customer
         {
             DataTable customerIDs = new DataTable();
             char[] delimiterChars = { ' ' };
@@ -363,9 +263,73 @@ namespace Yellow_Bucket
             fillwithmovies();
         }
 
-        private void comboBoxKiosk_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxKiosk_SelectedIndexChanged(object sender, EventArgs e) // Find kioskID where the movie will be returned to
         {
+            DataTable kioskIDs = new DataTable();
+            char[] delimiterChars = { ')' };
+            string[] kioskLocation = comboBoxKiosk.Text.Split(delimiterChars);
+            selectedKioskID = Convert.ToInt32(kioskLocation[0]);
+        }
 
+        private void btnReturnMovie_Click(object sender, EventArgs e)   // UPDATE RENTAL table to show that the movie was returned (WHERE Rental.customerID = @customerID AND Rental.stockID = @stockID), then UPDATE RENTALHISTORY table, then INSERT new entry INTO INVENTORY Table
+        {
+            using (YellowBucketConnection = new SqlConnection(connectionString))
+
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    SqlCommand updateRentalRecord = new SqlCommand("UPDATE dbo.Rental SET dateReturned = @dateReturned WHERE customerID = @customerID AND stockID = @stockID;", YellowBucketConnection);
+                    updateRentalRecord.Parameters.Add("@customerID", SqlDbType.Int);
+                    updateRentalRecord.Parameters.Add("@stockID", SqlDbType.Int);
+
+                    updateRentalRecord.Parameters["@customerID"].Value = selectedCustomerID;
+                    updateRentalRecord.Parameters["@stockID"].Value = selectedStockID;
+
+                    updateRentalRecord.ExecuteNonQuery();
+
+
+
+                    //SqlCommand insertNewInventoryRecord = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, ) VALUES();", YellowBucketConnection);
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Return UNSUCCESSFUL: " + ex.ToString());
+                }
+        }
+
+        private void comboBoxMovies_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DataTable stockIDs = new DataTable();
+            char[] delimiterChars = { ')' };
+
+            string[] movieSelected = comboBoxMovies.Text.Split(delimiterChars);
+            selectedMovieID = Convert.ToInt32(movieSelected[0]);
+
+            using(YellowBucketConnection = new SqlConnection(connectionString))
+            {
+                try
+                {
+                    YellowBucketConnection.Open();
+
+                    SqlCommand findRentalID = new SqlCommand("SELECT rentalID FROM dbo.Rental WHERE Rental.customerID = @customerID AND Rental.stockID = Inventory.stockID AND Inventory.movieID = @movieID AND dateReturned IS NULL;", YellowBucketConnection);
+                    findRentalID.Parameters.Add("@customerID", SqlDbType.Int);
+                    findRentalID.Parameters.Add("@movieID", SqlDbType.Int);
+
+                    findRentalID.Parameters["@customerID"].Value = selectedCustomerID;
+                    findRentalID.Parameters["@movieID"].Value = selectedMovieID;
+
+                    
+
+
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Unable to obtain rented movie's stockID: " + ex.ToString());
+                }
+            }
         }
     }
 }
