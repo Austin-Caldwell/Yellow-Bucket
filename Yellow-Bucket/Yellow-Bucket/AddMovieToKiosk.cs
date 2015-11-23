@@ -132,6 +132,8 @@ namespace Yellow_Bucket
             string[] movieAddress = comboBoxOfMovies.Text.Split(delimiterChars);
             string[] TypeAddress = comboBoxOfTypeOfDisk.Text.Split(delimiterChars);
 
+           
+            
             selectedKiosk = kioskAddress[0];
             selectedMovie = movieAddress[0];
             movieType = TypeAddress[0];
@@ -166,8 +168,12 @@ namespace Yellow_Bucket
                    //pulls trigger and increments quantity
                    inventory.Load(ReadInventory);
                    DataRow inventoryRow = inventory.Rows[0];
-                   quantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
-                   quantity += 1;
+                   int currentQuantity;
+                   currentQuantity = Convert.ToInt32(inventoryRow["quantityAtKiosk"]);
+                   string stringQuantity = textQuantity.Text;
+                   int addQuantity = Convert.ToInt32(stringQuantity);
+                   quantity = currentQuantity + addQuantity;
+                   
                    MessageBox.Show("New quantity: " + quantity.ToString());
 
                         //UPDATE
@@ -199,17 +205,25 @@ namespace Yellow_Bucket
                    {
                        YellowBucketConnection.Open();
                        //INSERT
-                           SqlCommand addMovie = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, inStock, movieID, kioskID) VALUES(@movieType, 1, 1, @selectedMovie, @selectedKiosk);", YellowBucketConnection);
+
+                       //gets quanity to add
+                       string stringQuantity = textQuantity.Text;
+                       int addQuantity = Convert.ToInt32(stringQuantity);
+                       quantity = addQuantity;
+
+                       SqlCommand addMovie = new SqlCommand("INSERT INTO dbo.Inventory(dvdBluRay, quantityAtKiosk, inStock, movieID, kioskID) VALUES(@movieType, @quantity, 1, @selectedMovie, @selectedKiosk);", YellowBucketConnection);
 
                            //declare the varialbe type         
                            addMovie.Parameters.Add("@selectedKiosk", SqlDbType.Int);
                            addMovie.Parameters.Add("@selectedMovie", SqlDbType.Int);
                            addMovie.Parameters.Add("@movieType", SqlDbType.VarChar);
+                           addMovie.Parameters.Add("@quantity", SqlDbType.Int);
 
                            //declare the definition of the variable (the definition is delcared about 10 lines up)
                            addMovie.Parameters["@selectedKiosk"].Value = selectedKiosk;
                            addMovie.Parameters["@selectedMovie"].Value = selectedMovie;
                            addMovie.Parameters["@movieType"].Value = movieType;
+                           addMovie.Parameters["@quantity"].Value = quantity;
 
                            //runs insert
                            addMovie.ExecuteNonQuery();

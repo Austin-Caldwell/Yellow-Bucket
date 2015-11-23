@@ -140,5 +140,12 @@ namespace Yellow_Bucket
             EditMovieInfo EditMovieInfoForm = new EditMovieInfo();
             EditMovieInfoForm.Show();
         }
+
+        private void buttonToViewMovieDetails_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            ViewMovieDetails ViewMovieDetailsForm = new ViewMovieDetails();
+            ViewMovieDetailsForm.Show();
+        }
     }
 }
