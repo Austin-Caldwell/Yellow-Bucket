@@ -187,10 +187,10 @@
             // buttonToAddMovie
             // 
             this.buttonToAddMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToAddMovie.Location = new System.Drawing.Point(526, 14);
+            this.buttonToAddMovie.Location = new System.Drawing.Point(385, 14);
             this.buttonToAddMovie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonToAddMovie.Name = "buttonToAddMovie";
-            this.buttonToAddMovie.Size = new System.Drawing.Size(186, 35);
+            this.buttonToAddMovie.Size = new System.Drawing.Size(147, 35);
             this.buttonToAddMovie.TabIndex = 1;
             this.buttonToAddMovie.Text = "Add A Movie";
             this.buttonToAddMovie.UseVisualStyleBackColor = true;
@@ -199,10 +199,10 @@
             // buttonToEditMovieInfo
             // 
             this.buttonToEditMovieInfo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToEditMovieInfo.Location = new System.Drawing.Point(720, 14);
+            this.buttonToEditMovieInfo.Location = new System.Drawing.Point(540, 14);
             this.buttonToEditMovieInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonToEditMovieInfo.Name = "buttonToEditMovieInfo";
-            this.buttonToEditMovieInfo.Size = new System.Drawing.Size(186, 35);
+            this.buttonToEditMovieInfo.Size = new System.Drawing.Size(147, 35);
             this.buttonToEditMovieInfo.TabIndex = 2;
             this.buttonToEditMovieInfo.Text = "Edit Movie Info";
             this.buttonToEditMovieInfo.UseVisualStyleBackColor = true;
@@ -211,10 +211,10 @@
             // buttonToDeleteMovie
             // 
             this.buttonToDeleteMovie.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToDeleteMovie.Location = new System.Drawing.Point(1276, 23);
+            this.buttonToDeleteMovie.Location = new System.Drawing.Point(695, 14);
             this.buttonToDeleteMovie.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonToDeleteMovie.Name = "buttonToDeleteMovie";
-            this.buttonToDeleteMovie.Size = new System.Drawing.Size(186, 35);
+            this.buttonToDeleteMovie.Size = new System.Drawing.Size(146, 35);
             this.buttonToDeleteMovie.TabIndex = 4;
             this.buttonToDeleteMovie.Text = "Delete A Movie";
             this.buttonToDeleteMovie.UseVisualStyleBackColor = true;
@@ -223,10 +223,10 @@
             // buttonToViewMovieDetails
             // 
             this.buttonToViewMovieDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F);
-            this.buttonToViewMovieDetails.Location = new System.Drawing.Point(1042, 23);
+            this.buttonToViewMovieDetails.Location = new System.Drawing.Point(849, 14);
             this.buttonToViewMovieDetails.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.buttonToViewMovieDetails.Name = "buttonToViewMovieDetails";
-            this.buttonToViewMovieDetails.Size = new System.Drawing.Size(225, 35);
+            this.buttonToViewMovieDetails.Size = new System.Drawing.Size(146, 35);
             this.buttonToViewMovieDetails.TabIndex = 3;
             this.buttonToViewMovieDetails.Text = "View Movie Details";
             this.buttonToViewMovieDetails.UseVisualStyleBackColor = true;
@@ -236,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1008, 729);
+            this.ClientSize = new System.Drawing.Size(1029, 729);
             this.Controls.Add(this.buttonToViewMovieDetails);
             this.Controls.Add(this.buttonToDeleteMovie);
             this.Controls.Add(this.buttonToEditMovieInfo);
