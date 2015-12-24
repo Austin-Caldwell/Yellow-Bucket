@@ -113,7 +113,7 @@ namespace Yellow_Bucket
                     YellowBucketConnection.Open();
                     SqlDataReader ReadListing = null;
                     //declare the command          
-                    SqlCommand findListing = new SqlCommand("SELECT concat(title, ' (', releaseDate, ') - ', quantityAtKiosk, ' copies in the form of ', dvdBluRay) AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
+                    SqlCommand findListing = new SqlCommand("SELECT concat(title, ' (', releaseDate, ') - ', quantityAtKiosk, ' ', dvdBluRay, ' Copies In Stock') AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
                         //declare the varialbe type
                     findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
                         //declare the definition of the variable (the definition is delcared about 10 lines up)
