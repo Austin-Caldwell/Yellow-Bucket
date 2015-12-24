@@ -251,3 +251,6 @@ Yellow-Bucket/Yellow-Bucket/obj/Debug/Yellow-Bucket.exe
 *.pdb
 *.suo
 *.Cache
+*.pdb
+*.exe
+*.suo
