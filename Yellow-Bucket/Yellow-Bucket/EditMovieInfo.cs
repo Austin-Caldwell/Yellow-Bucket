@@ -1,23 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;    // To Access Database
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;    // To Access Database
 
 namespace Yellow_Bucket
 {
     public partial class EditMovieInfo : Form
     {
         protected SqlConnection YellowBucketConnection;
-        // Austin Caldwell's Connection String:
-        protected string connectionString = "Server=AUSTINC-LAPTOP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
-        // Evan Wehr's Connection String:
-        //protected string connectionString = "Server=HP\\SQLEXPRESS;Database=YellowBucketCSC365;Trusted_Connection=True;";
+        protected string connectionString = ConfigurationManager.ConnectionStrings["connectionString"].ConnectionString;
 
         public string selectedMovie;
         public EditMovieInfo()

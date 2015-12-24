@@ -40,7 +40,6 @@
             this.qUITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.lblErrorMessage = new System.Windows.Forms.Label();
             this.lstBoxReview = new System.Windows.Forms.ListBox();
             this.comboBoxMovies = new System.Windows.Forms.ComboBox();
             this.mainMenuStrip.SuspendLayout();
@@ -171,15 +170,6 @@
             this.label2.TabIndex = 6;
             this.label2.Text = "Movie Review";
             // 
-            // lblErrorMessage
-            // 
-            this.lblErrorMessage.AutoSize = true;
-            this.lblErrorMessage.Location = new System.Drawing.Point(216, 521);
-            this.lblErrorMessage.Name = "lblErrorMessage";
-            this.lblErrorMessage.Size = new System.Drawing.Size(51, 20);
-            this.lblErrorMessage.TabIndex = 8;
-            this.lblErrorMessage.Text = "label3";
-            // 
             // lstBoxReview
             // 
             this.lstBoxReview.FormattingEnabled = true;
@@ -205,7 +195,6 @@
             this.ClientSize = new System.Drawing.Size(1008, 729);
             this.Controls.Add(this.comboBoxMovies);
             this.Controls.Add(this.lstBoxReview);
-            this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.mainMenuStrip);
@@ -236,8 +225,6 @@
         private System.Windows.Forms.ToolStripMenuItem qUITToolStripMenuItem;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblErrorMessage;
-        private System.Windows.Forms.ComboBox comboBoxMovie;
         private System.Windows.Forms.ListBox lstBoxReview;
         private System.Windows.Forms.ComboBox comboBoxMovies;
     }
