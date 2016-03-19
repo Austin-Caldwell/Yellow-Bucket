@@ -53,7 +53,7 @@ namespace Yellow_Bucket
 
                 catch (Exception ex)
                 {
-                    Console.WriteLine(ex.ToString());
+                    MessageBox.Show("Error filling list of kiosks " + ex.ToString());
                 }
             }
         }
@@ -114,7 +114,7 @@ namespace Yellow_Bucket
                     SqlDataReader ReadListing = null;
                     //declare the command          
                     SqlCommand findListing = new SqlCommand("SELECT concat(title, ' (', releaseDate, ') - ', quantityAtKiosk, ' ', dvdBluRay, ' Copies In Stock') AS listing FROM dbo.Movie, dbo.Inventory WHERE kioskID = @selectedKiosk AND Movie.movieID = Inventory.movieID ORDER BY title;", YellowBucketConnection);
-                        //declare the varialbe type
+                        //declare the variable type
                     findListing.Parameters.Add("@selectedKiosk", SqlDbType.Int);
                         //declare the definition of the variable (the definition is delcared about 10 lines up)
                     findListing.Parameters["@selectedKiosk"].Value = selectedKiosk;
@@ -131,7 +131,6 @@ namespace Yellow_Bucket
                 catch (Exception ex)
                 {
                     MessageBox.Show("Error populating kiosk inventory" + ex.ToString());
-                    Console.WriteLine(ex.ToString());
                 }
                 YellowBucketConnection.Close();
             }

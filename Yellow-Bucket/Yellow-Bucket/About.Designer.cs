@@ -51,8 +51,8 @@
             this.lblAbout.Name = "lblAbout";
             this.lblAbout.Size = new System.Drawing.Size(608, 296);
             this.lblAbout.TabIndex = 3;
-            this.lblAbout.Text = "2015\r\n\r\nCSC365 Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jacob " +
-    "Girvin, Evan Wehr\r\n\r\nLast Modified: 12/24/2015";
+            this.lblAbout.Text = "2015\r\n\r\nCSC 365 - Databases\r\nYellow Bucket Design Project\r\n\r\nAustin Caldwell, Jac" +
+    "ob Girvin, Evan Wehr\r\n\r\nLast Modified: 03/19/2016";
             this.lblAbout.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // mainMenuStrip
