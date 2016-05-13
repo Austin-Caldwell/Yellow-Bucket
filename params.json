@@ -1,0 +1,6 @@
+{
+  "name": "Yellow-Bucket",
+  "tagline": "Yellow-Bucket Movie Database and C# WinForms Application",
+  "body": "### Project Description\r\nYellow-Bucket is a C# Windows Forms application which interacts with a SQL database (originally on Microsoft SQL Server 2014) and allows users to rent, return, and rate movies stored in the database.  This project originated as a college class project, so it does not have an actual (commercial) implementation.\r\n\r\n### Authors and Contributors\r\nIn 2015, Austin Caldwell (@Austin-Caldwell), Evan Wehr (@ENWehr), and Jacob Girvin (@Girv53) started work on the Yellow-Bucket-CSC365 Database Design Project for the CSC 365 - Databases class at Geneva College.  Since then, edits have been made to continue to continue the project and fix bugs in the code.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
